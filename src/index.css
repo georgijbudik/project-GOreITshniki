@@ -1,10 +1,19 @@
 @import-normalize; /* bring in normalize.css styles */
+@import url('./fonts/fonts.css');
+
+:root {
+  --main-text-color: #efede8;
+  --accent-color: #e6533c;
+  --background-color: #040404;
+  --icon-color: #ef8964;
+  --green-colro: #419b09;
+  --red-color: #e9101d;
+  --border-color: rgba(239, 237, 232, 0.2);
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
