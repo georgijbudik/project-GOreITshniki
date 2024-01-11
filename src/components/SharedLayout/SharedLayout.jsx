@@ -1,7 +1,13 @@
-import React from 'react';
+import Header from 'components/Header';
+import MainContainer from 'components/MainContainer';
 
 const SharedLayout = () => {
-  return <div>SharedLayout</div>;
+  return (
+    <MainContainer>
+      <Header></Header>
+      <main></main>
+    </MainContainer>
+  );
 };
 
 export default SharedLayout;

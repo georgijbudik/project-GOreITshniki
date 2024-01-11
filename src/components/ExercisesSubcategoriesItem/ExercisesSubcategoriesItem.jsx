@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ExercisesSubcategoriesItem = () => {
-  return (
-    <div>ExercisesSubcategoriesItem</div>
-  )
-}
+  return <div>ExercisesSubcategoriesItem</div>;
+};
 
-export default ExercisesSubcategoriesItem
+export default ExercisesSubcategoriesItem;

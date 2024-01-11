@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ExercisesList = () => {
-  return (
-    <div>ExercisesList</div>
-  )
-}
+  return <div>ExercisesList</div>;
+};
 
-export default ExercisesList
+export default ExercisesList;
