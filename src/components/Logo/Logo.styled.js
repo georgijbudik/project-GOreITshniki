@@ -22,7 +22,8 @@ export const StyledLogoIcon = styled.svg`
   width: 36px;
   height: 13px;
 
-  fill: var(--accent-color);
+  fill: ${({ $filled }) =>
+    $filled ? 'var(--accent-color)' : 'var(--main-text-color)'};
 
   @media screen and (min-width: 768px) {
     width: 44px;
