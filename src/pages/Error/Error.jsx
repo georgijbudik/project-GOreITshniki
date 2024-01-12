@@ -1,7 +1,12 @@
 import React from 'react';
+import WelcomeImage from 'components/WelcomeImage';
 
 const Error = () => {
-  return <div>Error</div>;
+  return (
+    <div>
+      <WelcomeImage />
+    </div>
+  );
 };
 
 export default Error;
