@@ -1,3 +1,8 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { setIsModalOpen } from '../../redux/global/globalSlice';
+
 import { createPortal } from 'react-dom';
 
 import {
@@ -8,10 +13,30 @@ import {
 } from './BasicModalWindow.styled';
 
 const BasicModalWindow = ({ children }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        dispatch(setIsModalOpen(false));
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [dispatch]);
+
+  const closeModal = () => {
+    dispatch(setIsModalOpen(false));
+  };
+
   return createPortal(
-    <StyledModalOverlay>
-      <StyledModal>
-        <StyledModalCloseButton>
+    <StyledModalOverlay onClick={closeModal}>
+      <StyledModal onClick={e => e.stopPropagation()}>
+        <StyledModalCloseButton onClick={closeModal}>
           <svg width="22" height="22">
             <use
               xlinkHref={

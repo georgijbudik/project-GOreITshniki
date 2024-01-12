@@ -1,27 +1,26 @@
-import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { useState } from 'react';
+import {
+  setIsModalOpen,
+  selectIsModalOpen,
+} from '../../redux/global/globalSlice';
 
 import Button from 'components/Button';
+import BasicModalWindow from 'components/BasicModalWindow';
 
 const Welcome = () => {
-  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(selectIsModalOpen);
+
+  const handleModalOpen = () => {
+    dispatch(setIsModalOpen(true));
+  };
 
   return (
     <div>
-      <Button>Primary</Button>
+      <Button onClick={handleModalOpen}>Open Modal</Button>
 
-      <Button secondary>Secondary</Button>
-
-      <Button disabled={disabled}>Disabled</Button>
-
-      <Button
-        onClick={() => {
-          setDisabled(prev => !prev);
-        }}
-      >
-        onClick
-      </Button>
+      {isModalOpen && <BasicModalWindow>Hello world</BasicModalWindow>}
     </div>
   );
 };
