@@ -1,9 +1,9 @@
 import { StyledLogo, StyledLogoText, StyledLogoIcon } from './Logo.styled';
 
-const Logo = () => {
+const Logo = ({ filled }) => {
   return (
     <StyledLogo>
-      <StyledLogoIcon>
+      <StyledLogoIcon $filled={filled}>
         <use
           xlinkHref={
             process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-logo'
