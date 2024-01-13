@@ -1,30 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
-
-import {
-  setIsModalOpen,
-  selectIsModalOpen,
-} from '../../redux/global/globalSlice';
+import { HeroText, WelcomePageContainer, ButtonContainer } from './index';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
-import BasicModalWindow from 'components/BasicModalWindow';
-import AuthNav from 'components/AuthNav';
 
 const Welcome = () => {
-  const dispatch = useDispatch();
-  const isModalOpen = useSelector(selectIsModalOpen);
-
-  const handleModalOpen = () => {
-    dispatch(setIsModalOpen(true));
-  };
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Transforming your body shape with Power Pulse</h1>
-      <AuthNav />
-      <Button onClick={handleModalOpen}>Open Modal</Button>
-
-      {isModalOpen && <BasicModalWindow>Hello world</BasicModalWindow>}
-    </div>
+    <WelcomePageContainer>
+      <HeroText>Transforming your body shape with Power Pulse</HeroText>
+      <ButtonContainer>
+        <Button onClick={() => navigate('/signup')}>Sign Up</Button>
+        <Button secondary="black" onClick={() => navigate('/signin')}>
+          Sign In
+        </Button>
+      </ButtonContainer>
+    </WelcomePageContainer>
   );
 };
 
