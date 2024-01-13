@@ -17,13 +17,8 @@ export const StyledModal = styled.div`
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: #10100f;
-  padding: 48px 24px;
   color: var(--main-text-color);
   position: relative;
-
-  @media screen and (min-width: 768px) {
-    padding: 48px 32px;
-  }
 `;
 
 export const StyledModalCloseButton = styled.button`
