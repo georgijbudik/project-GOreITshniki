@@ -1,11 +1,6 @@
-import {
-  StyledWelcomeImagePicture,
-  StyledWelcomeImageWrapper,
-} from './WelcomeImage.styled';
+import { StyledWelcomeImageWrapper } from './WelcomeImage.styled';
 
 const WelcomeImage = () => {
-  const publicUrl = process.env.PUBLIC_URL;
-
   return <StyledWelcomeImageWrapper></StyledWelcomeImageWrapper>;
 };
 
