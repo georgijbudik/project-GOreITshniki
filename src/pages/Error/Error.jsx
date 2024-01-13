@@ -1,11 +1,16 @@
 import React from 'react';
-import WelcomeImage from 'components/WelcomeImage';
+import WelcomeImage from './components/WelcomeImage';
+
+import Sidenav from './components/Sidenav';
+
+import { StyledErrorPageWrapper } from './ErrorPage.styled';
 
 const Error = () => {
   return (
-    <div>
+    <StyledErrorPageWrapper>
+      <Sidenav />
       <WelcomeImage />
-    </div>
+    </StyledErrorPageWrapper>
   );
 };
 
