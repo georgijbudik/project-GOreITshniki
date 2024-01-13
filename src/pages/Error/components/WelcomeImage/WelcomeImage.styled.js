@@ -8,8 +8,8 @@ export const StyledWelcomeImageWrapper = styled.div`
   background-image: ${() =>
     `url(${process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image.png'})`};
   background-repeat: no-repeat;
-  background-position: bottom 10% right 25%;
-  background-size: 446px auto;
+  background-position: bottom right 25%;
+  background-size: 300px auto;
 
   @media screen and (max-width: 767px) and (min-resolution: 2dppx) {
     background-image: ${() =>
@@ -22,7 +22,7 @@ export const StyledWelcomeImageWrapper = styled.div`
     width: 65.31%;
 
     background-position: bottom right;
-    background-size: contain;
+    background-size: 446px auto;
 
     background-image: ${() =>
       `url(${process.env.PUBLIC_URL + '/images/tablet/md-welcome-image.png'})`};
@@ -40,7 +40,7 @@ export const StyledWelcomeImageWrapper = styled.div`
     width: 53.54%;
 
     background-size: contain;
-    background-position: center right;
+    background-position: bottom right;
 
     background-image: ${() =>
       `url(${
