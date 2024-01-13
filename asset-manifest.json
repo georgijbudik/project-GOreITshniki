@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/project-GOreITshniki/static/css/main.feb39a6f.css",
-    "main.js": "/project-GOreITshniki/static/js/main.5e2951bf.js",
+    "main.js": "/project-GOreITshniki/static/js/main.d60ecd52.js",
     "index.html": "/project-GOreITshniki/index.html",
     "main.feb39a6f.css.map": "/project-GOreITshniki/static/css/main.feb39a6f.css.map",
-    "main.5e2951bf.js.map": "/project-GOreITshniki/static/js/main.5e2951bf.js.map"
+    "main.d60ecd52.js.map": "/project-GOreITshniki/static/js/main.d60ecd52.js.map"
   },
   "entrypoints": [
     "static/css/main.feb39a6f.css",
-    "static/js/main.5e2951bf.js"
+    "static/js/main.d60ecd52.js"
   ]
 }
