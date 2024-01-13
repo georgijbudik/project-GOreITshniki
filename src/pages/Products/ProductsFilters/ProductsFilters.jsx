@@ -1,6 +1,8 @@
 // import { useSelector } from "react-redux";
 // import { selectCategories } from "../../../redux/products/productSlice";
 
+import {CategorySelect, RecommendSelect, SearchBtn, SearchBtns, SearchContainer, SearchInput, SelectContainer } from "./ProductsFilters.styled";
+
 const ProductsFilters = () => {
   
   // const data = useSelector(selectCategories);
@@ -11,45 +13,50 @@ const ProductsFilters = () => {
 
   return (
     <form>
-      <div>
+      <SearchContainer>
         <label>
-          <input type="text" placeholder="Search" />
+          <SearchInput type="text" placeholder="Search"/>
         </label>
-        <button type="button">
-          <svg width="10" height="10" stroke="black">
+        <SearchBtns>
+          <SearchBtn type="button">
+          <svg width="18" height="18" stroke="var(--accent-color)">
             <use
               href={
                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-cross'
               }
             ></use>
           </svg>
-        </button>
-        <button type="submit">
-          <svg width="10" height="10" stroke="black">
+        </SearchBtn>
+        <SearchBtn type="submit">
+          <svg width="18" height="18" fill="var(--main-text-color)">
             <use
               href={
                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-search'
               }
             ></use>
           </svg>
-        </button>
-      </div>
-      <label>
-        <select>
+        </SearchBtn>
+        </SearchBtns>
+      </SearchContainer>
+      <SelectContainer>
+        <label>
+        <CategorySelect>
           {categories.map(category => (
             <option key={category} value={category}>
               {category[0].toUpperCase() + category.slice(1)}
             </option>
           ))}
-        </select>
+        </CategorySelect>
       </label>
       <label>
-        <select>
+        <RecommendSelect>
           <option value="all">All</option>
           <option value="recommended">Recommended</option>
           <option value="not recommended">Not recommended</option>
-        </select>
+        </RecommendSelect>
       </label>
+      </SelectContainer>
+      
     </form>
   );
 };
