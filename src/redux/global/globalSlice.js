@@ -14,7 +14,7 @@ const globalSlice = createSlice({
     },
 
     setIsModalOpen: (state, action) => {
-      state.isLoading = action.payload;
+      state.isModalOpen = action.payload;
     },
   },
 });

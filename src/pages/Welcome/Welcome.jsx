@@ -1,28 +1,21 @@
-import React from 'react';
-
-import { useState } from 'react';
+import { HeroText, WelcomePageContainer, ButtonContainer } from './index';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 
 const Welcome = () => {
-  const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <Button>Primary</Button>
-
-      <Button secondary>Secondary</Button>
-
-      <Button disabled={disabled}>Disabled</Button>
-
-      <Button
-        onClick={() => {
-          setDisabled(prev => !prev);
-        }}
-      >
-        onClick
-      </Button>
-    </div>
+    <WelcomePageContainer>
+      <HeroText>Transforming your body shape with Power Pulse</HeroText>
+      <ButtonContainer>
+        <Button onClick={() => navigate('/signup')}>Sign Up</Button>
+        <Button secondary="black" onClick={() => navigate('/signin')}>
+          Sign In
+        </Button>
+      </ButtonContainer>
+    </WelcomePageContainer>
   );
 };
 
