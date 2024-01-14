@@ -19,8 +19,13 @@ export const StyledModal = styled.div`
   background: #10100f;
   color: var(--main-text-color);
   position: relative;
-`;
+  max-height: 90vh;
+  overflow-y: auto;
 
+  @media screen and (min-width: 1440px) {
+    max-height: 80vh;
+  }
+`;
 export const StyledModalCloseButton = styled.button`
   padding: 0;
   line-height: 0;
