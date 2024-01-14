@@ -7,8 +7,19 @@ import Button from 'components/Button';
 
 import { StyledSidenavWrapper, StyledSidenavContent } from './Sidenav.styled';
 
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectIsModalOpen,
+  setIsModalOpen,
+} from '../../../../redux/global/globalSlice';
+
+import AddExerciseForm from 'pages/Exercises/AddExerciseForm';
+
 const Sidenav = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isModalOpen = useSelector(selectIsModalOpen);
 
   return (
     <StyledSidenavWrapper>
@@ -28,6 +39,16 @@ const Sidenav = () => {
         >
           Go Home
         </Button>
+        <Button
+          secondary
+          onClick={() => {
+            dispatch(setIsModalOpen(true));
+          }}
+        >
+          Open Modal
+        </Button>
+
+        {isModalOpen && <AddExerciseForm />}
       </StyledSidenavContent>
     </StyledSidenavWrapper>
   );
