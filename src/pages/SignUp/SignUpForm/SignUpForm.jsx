@@ -1,5 +1,5 @@
 import { Field, Formik, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -21,8 +21,11 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    console.log(name, email, password);
+    // dispatch(register({ name, email, password }));
     resetForm();
   };
 
@@ -49,9 +52,6 @@ const SignUpForm = () => {
           </Form>
         )}
       </Formik>
-      <p>
-        Already have an account? <Link to="/signin">Sign In</Link>
-      </p>
     </>
   );
 };

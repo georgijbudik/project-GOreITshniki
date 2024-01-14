@@ -1,5 +1,4 @@
 import { Field, Formik, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -44,9 +43,6 @@ const SignInForm = () => {
           </Form>
         )}
       </Formik>
-      <p>
-        Don’t have an account? <Link to="/signup">Sign Up</Link>
-      </p>
     </>
   );
 };
