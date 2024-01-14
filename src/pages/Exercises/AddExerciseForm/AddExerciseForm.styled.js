@@ -5,12 +5,21 @@ export const StyledAddExerciseFormWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 48px 32px;
+    display: flex;
+    height: 456px;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 694px;
   }
 `;
 
 export const StyledAddExerciseFormGifWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  margin-bottom: 14px;
 `;
 
 export const StyledAddExerciseFormGif = styled.div`
@@ -35,10 +44,23 @@ export const StyledAddExerciseFormTimerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-bottom: 40px;
 `;
 
 export const StyledAddExerciseFormTimer = styled.div`
   margin-bottom: 14px;
+
+  transform: rotate(180deg);
+`;
+
+export const StyledAddExerciseFormTime = styled.p`
+  color: var(--main-text-color);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 16px;
+  line-height: 150%;
+
+  transform: rotate(180deg);
 `;
 
 export const StyledAddExerciseFormTimerTitle = styled.p`
@@ -47,10 +69,11 @@ export const StyledAddExerciseFormTimerTitle = styled.p`
   font-size: 10px;
   line-height: 140%;
 
+  margin: 0;
   margin-bottom: 4px;
 `;
 
-export const StyledAddExerciseFromTimerButton = styled.button`
+export const StyledAddExerciseFormTimerButton = styled.button`
   border: none;
   line-height: 0;
   padding: 0;
@@ -60,11 +83,13 @@ export const StyledAddExerciseFromTimerButton = styled.button`
   margin-bottom: 8px;
 `;
 
-export const StyledAddExerciseFromTimerCalories = styled.p`
+export const StyledAddExerciseFormTimerCalories = styled.p`
   color: rgba(239, 237, 232, 0.3);
 
   font-size: 14px;
   line-height: 128.571%;
+
+  margin: 0;
 
   & > span {
     color: var(--accent-color);
@@ -72,6 +97,13 @@ export const StyledAddExerciseFromTimerCalories = styled.p`
     font-size: 14px;
     line-height: 128.571%;
   }
+`;
+
+export const StyledAddExerciseFormRightPartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
 `;
 
 export const StyledAddExerciseFormInfoList = styled.div`
