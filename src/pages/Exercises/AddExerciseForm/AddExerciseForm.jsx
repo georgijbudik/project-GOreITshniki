@@ -10,9 +10,11 @@ import {
   StyledAddExerciseFormGif,
   StyledAddExerciseFormTimerWrapper,
   StyledAddExerciseFormTimer,
+  StyledAddExerciseFormTime,
   StyledAddExerciseFormTimerTitle,
-  StyledAddExerciseFromTimerButton,
-  StyledAddExerciseFromTimerCalories,
+  StyledAddExerciseFormTimerButton,
+  StyledAddExerciseFormTimerCalories,
+  StyledAddExerciseFormRightPartWrapper,
   StyledAddExerciseFormInfoList,
   StyledAddExerciseFormInfoItem,
 } from './AddExerciseForm.styled';
@@ -38,90 +40,111 @@ const renderTime = ({ remainingTime }) => {
   const minutes = Math.floor(remainingTime / 60);
   const seconds = remainingTime % 60;
 
-  return `${minutes}:${seconds === 0 ? '00' : seconds}`;
+  const timeString = `${minutes}:${String(seconds).padStart(2, '0')}`;
+
+  return <StyledAddExerciseFormTime>{timeString}</StyledAddExerciseFormTime>;
 };
 
 const AddExerciseForm = ({ exercise }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [burnedCalories, setBurnedCalories] = useState(0);
 
   return (
     <BasicModalWindow>
       <StyledAddExerciseFormWrapper>
-        <StyledAddExerciseFormGifWrapper>
-          <StyledAddExerciseFormGif $gif={mockExercise.gifUrl} />
-        </StyledAddExerciseFormGifWrapper>
+        <div>
+          <StyledAddExerciseFormGifWrapper>
+            <StyledAddExerciseFormGif $gif={mockExercise.gifUrl} />
+          </StyledAddExerciseFormGifWrapper>
 
-        <StyledAddExerciseFormTimerWrapper>
-          <StyledAddExerciseFormTimerTitle>
-            Time
-          </StyledAddExerciseFormTimerTitle>
+          <StyledAddExerciseFormTimerWrapper>
+            <StyledAddExerciseFormTimerTitle>
+              Time
+            </StyledAddExerciseFormTimerTitle>
 
-          <StyledAddExerciseFormTimer>
-            <CountdownCircleTimer
-              isPlaying={isPlaying}
-              duration={mockExercise.time * 60}
-              colors={'#e6533c'}
-              colorsTime={[7, 5, 2, 0]}
+            <StyledAddExerciseFormTimer>
+              <CountdownCircleTimer
+                isPlaying={isPlaying}
+                rotation="counterclockwise"
+                duration={mockExercise.time * 60}
+                colors={'#e6533c'}
+                size={124}
+                strokeWidth={4}
+                strokeLinecap="square"
+                trailColor="rgba(239, 237, 232, 0.10)"
+                trailStrokeWidth={5}
+                onUpdate={remainingTime => {
+                  const calories =
+                    (mockExercise.burnedCalories / (mockExercise.time * 60)) *
+                    (mockExercise.time * 60 - remainingTime);
+
+                  setBurnedCalories(calories.toFixed());
+                }}
+                onComplete={() => {
+                  setIsPlaying(false);
+                }}
+              >
+                {renderTime}
+              </CountdownCircleTimer>
+            </StyledAddExerciseFormTimer>
+
+            <StyledAddExerciseFormTimerButton
+              onClick={() => {
+                setIsPlaying(prev => !prev);
+              }}
             >
-              {renderTime}
-            </CountdownCircleTimer>
-          </StyledAddExerciseFormTimer>
+              {isPlaying ? (
+                <svg width="32" height="32">
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-pause'
+                    }
+                  ></use>
+                </svg>
+              ) : (
+                <svg width="32" height="32">
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-play'
+                    }
+                  ></use>
+                </svg>
+              )}
+            </StyledAddExerciseFormTimerButton>
 
-          <StyledAddExerciseFromTimerButton
-            onClick={() => {
-              setIsPlaying(prev => !prev);
-            }}
-          >
-            {isPlaying ? (
-              <svg width="32" height="32">
-                <use
-                  xlinkHref={
-                    process.env.PUBLIC_URL +
-                    '/images/sprite/sprite.svg#icon-pause'
-                  }
-                ></use>
-              </svg>
-            ) : (
-              <svg width="32" height="32">
-                <use
-                  xlinkHref={
-                    process.env.PUBLIC_URL +
-                    '/images/sprite/sprite.svg#icon-play'
-                  }
-                ></use>
-              </svg>
-            )}
-          </StyledAddExerciseFromTimerButton>
+            <StyledAddExerciseFormTimerCalories>
+              Burned calories: <span>{burnedCalories}</span>
+            </StyledAddExerciseFormTimerCalories>
+          </StyledAddExerciseFormTimerWrapper>
+        </div>
+        <StyledAddExerciseFormRightPartWrapper>
+          <StyledAddExerciseFormInfoList>
+            <StyledAddExerciseFormInfoItem>
+              <span>Name</span>
+              <p>{formatDescription(mockExercise.name)}</p>
+            </StyledAddExerciseFormInfoItem>
+            <StyledAddExerciseFormInfoItem>
+              <span>Target</span>
+              <p>{formatDescription(mockExercise.target)}</p>
+            </StyledAddExerciseFormInfoItem>
 
-          <StyledAddExerciseFromTimerCalories>
-            Burned calories: <span>{mockExercise.burnedCalories}</span>
-          </StyledAddExerciseFromTimerCalories>
-        </StyledAddExerciseFormTimerWrapper>
+            <StyledAddExerciseFormInfoItem>
+              <span>Body part</span>
+              <p>{formatDescription(mockExercise.bodyPart)}</p>
+            </StyledAddExerciseFormInfoItem>
 
-        <StyledAddExerciseFormInfoList>
-          <StyledAddExerciseFormInfoItem>
-            <span>Name</span>
-            <p>{formatDescription(mockExercise.name)}</p>
-          </StyledAddExerciseFormInfoItem>
-          <StyledAddExerciseFormInfoItem>
-            <span>Target</span>
-            <p>{formatDescription(mockExercise.target)}</p>
-          </StyledAddExerciseFormInfoItem>
+            <StyledAddExerciseFormInfoItem>
+              <span>Equipment</span>
+              <p>{formatDescription(mockExercise.equipment)}</p>
+            </StyledAddExerciseFormInfoItem>
+          </StyledAddExerciseFormInfoList>
 
-          <StyledAddExerciseFormInfoItem>
-            <span>Body part</span>
-            <p>{formatDescription(mockExercise.bodyPart)}</p>
-          </StyledAddExerciseFormInfoItem>
-
-          <StyledAddExerciseFormInfoItem>
-            <span>Equipment</span>
-            <p>{formatDescription(mockExercise.equipment)}</p>
-          </StyledAddExerciseFormInfoItem>
-        </StyledAddExerciseFormInfoList>
-
-        <Button paddingX={32} paddingY={12}>
-          Add to diary
-        </Button>
+          <Button paddingX={32} paddingY={12}>
+            Add to diary
+          </Button>
+        </StyledAddExerciseFormRightPartWrapper>
       </StyledAddExerciseFormWrapper>
     </BasicModalWindow>
   );
