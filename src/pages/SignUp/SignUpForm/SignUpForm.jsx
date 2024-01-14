@@ -1,5 +1,5 @@
 import { Field, Formik, Form, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -21,7 +21,7 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
     console.log(name, email, password);
