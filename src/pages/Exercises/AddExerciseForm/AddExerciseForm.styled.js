@@ -100,10 +100,12 @@ export const StyledAddExerciseFormTimerCalories = styled.p`
 `;
 
 export const StyledAddExerciseFormRightPartWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: end;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+  }
 `;
 
 export const StyledAddExerciseFormInfoList = styled.div`
