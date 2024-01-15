@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { setIsModalOpen } from '../../../redux/global/globalSlice';
 import {
   Container,
   DietText,
@@ -18,6 +20,13 @@ import {
 } from './ProductsItem.styled';
 
 const ProductsItem = ({ product }) => {
+
+  const dispatch = useDispatch();
+
+  const handleAddBtn = () => {
+    dispatch(setIsModalOpen(true));
+  };
+  
   return (
     <li>
       <Container>
@@ -30,7 +39,7 @@ const ProductsItem = ({ product }) => {
               <Circle></Circle>
               <RecomText>Recommended</RecomText>
             </RecomContainer>
-            <AddBtn type="button">
+            <AddBtn type="button" onClick={handleAddBtn}>
               Add
               <AddSvg width="16" height="16" stroke="var(--accent-color)">
                 <use

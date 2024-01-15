@@ -68,6 +68,7 @@ export const AddBtn = styled.button`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
+  cursor: pointer;
 `;
 
 export const AddSvg = styled.svg`

@@ -3,6 +3,10 @@ import React from 'react';
 import ProductsFilters from './ProductsFilters';
 import ProductsList from './ProductsList';
 import { ProductsSection } from './Products.styled';
+import TitlePage from 'components/TitlePage';
+import { useSelector } from 'react-redux';
+import { selectIsModalOpen } from '../../redux/global/globalSlice';
+import AddProductForm from './AddProductForm';
 // import { fetchCategories, fetchProducts} from '../../redux/products/productOperations';
 
 const Products = () => {
@@ -16,10 +20,13 @@ const Products = () => {
   //   dispatch(fetchProducts());
   // }, [dispatch]);
 
+  const isModalOpen = useSelector(selectIsModalOpen);
+
   return (
-    <main>
+    <main> 
+      {isModalOpen && <AddProductForm/>}
       <ProductsSection>
-        <h1>Products</h1>
+        <TitlePage>Products</TitlePage>
         <ProductsFilters />
         <ProductsList />
       </ProductsSection>
