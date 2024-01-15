@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setIsModalOpen } from '../../redux/global/globalSlice';
 
 import { createPortal } from 'react-dom';
+
 import MainContainer from 'components/MainContainer';
 
 import {
@@ -13,13 +14,21 @@ import {
   StyledModalCloseButton,
 } from './BasicModalWindow.styled';
 
-const BasicModalWindow = ({ children }) => {
+const BasicModalWindow = ({ onClose, children }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setIsModalOpen(true));
+
+    return () => {
+      dispatch(setIsModalOpen(false));
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
-        dispatch(setIsModalOpen(false));
+        onClose();
       }
     };
 
@@ -28,10 +37,10 @@ const BasicModalWindow = ({ children }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch]);
+  }, [onClose]);
 
   const closeModal = () => {
-    dispatch(setIsModalOpen(false));
+    onClose();
   };
 
   return createPortal(
