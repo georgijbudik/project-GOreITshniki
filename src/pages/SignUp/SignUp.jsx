@@ -1,14 +1,19 @@
+import { Link } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
+import { Heading, Info } from './SignUpForm/SignUpForm.styled';
 
 const SignUp = () => {
   return (
     <>
-      <h2>Sign Up</h2>
-      <p>
+      <Heading>Sign Up</Heading>
+      <Info>
         Thank you for your interest in our platform. To complete the
         registration process, please provide us with the following information.
-      </p>
+      </Info>
       <SignUpForm />
+      <Info>
+        Already have an account? <Link to="/signin">Sign In</Link>
+      </Info>
     </>
   );
 };
