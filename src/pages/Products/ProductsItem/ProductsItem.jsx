@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setIsModalOpen } from '../../../redux/global/globalSlice';
+import { setProductToAdd } from '../../../redux/products/productSlice';
 import {
   Container,
   DietText,
@@ -25,8 +26,9 @@ const ProductsItem = ({ product }) => {
 
   const handleAddBtn = () => {
     dispatch(setIsModalOpen(true));
+    dispatch(setProductToAdd(product))
   };
-  
+
   return (
     <li>
       <Container>

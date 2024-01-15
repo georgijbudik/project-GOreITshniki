@@ -1,44 +1,63 @@
-import BasicModalWindow from 'components/BasicModalWindow';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+// import dayjs from 'dayjs';
 import { setIsModalOpen } from '../../../redux/global/globalSlice';
+import {
+  selectError,
+  selectProductToAdd,
+  setCaloriesByUser,
+  setProductToAdd,
+} from '../../../redux/products/productSlice';
+import BasicModalWindow from 'components/BasicModalWindow';
 import Button from 'components/Button';
 
 const AddProductForm = () => {
+  const [grams, setGrams] = useState(null);
+
+  const error = useSelector(selectError);
+
   const dispatch = useDispatch();
 
-  const productToAdd = {
-    _id: {
-      $oid: '5d51694902b2373622ff5b7f',
-    },
-    weight: 100,
-    calories: 112,
-    category: 'fish',
-    title: 'marlin',
-    groupBloodNotAllowed: {
-      1: false,
-      2: false,
-      3: false,
-      4: false,
-    },
-  };
-
-  let gramsValue;
+  const productToAdd = useSelector(selectProductToAdd);
 
   const handleChangeGrams = ({ target: { value } }) => {
-    gramsValue = value;
+    setGrams(Number(value));
   };
 
-  const caloriesByWeight = Math.round(
-    (productToAdd.calories * gramsValue) / 100
+  const caloriesByUsersGrams = Math.round(
+    (productToAdd.calories * grams) / 100
   );
 
-  const handleCancelClick = () => {
+  // const date = dayjs();
+  // const formattedDate = dayjs(date).format('DD/MM/YYYY');
+  // const productToAddToDiary = {
+  //   product: productToAdd._id.$oid,
+  //   date: formattedDate,
+  //   amount: grams,
+  //   calories: caloriesByUsersGrams,
+  // };
+
+  const handleAddToDiaryBtn = e => {
+    e.preventDefault();
+    // dispatch(addProduct(productToAddToDiary));
+    if (error) {
+      // notification
+      console.log('try again');
+      return;
+    }
+    dispatch(setCaloriesByUser(caloriesByUsersGrams));
     dispatch(setIsModalOpen(false));
+    dispatch(setProductToAdd(null));
+  };
+
+  const handleCancelBtn = () => {
+    dispatch(setIsModalOpen(false));
+    dispatch(setProductToAdd(null));
   };
 
   return (
     <BasicModalWindow>
-      <div>
+      <form onSubmit={handleAddToDiaryBtn}>
         <label>
           <input
             type="text"
@@ -46,22 +65,24 @@ const AddProductForm = () => {
               productToAdd.title[0].toUpperCase() + productToAdd.title.slice(1)
             }
             readOnly
-          />
+          />{' '}
+        </label>
+        <label>
           <input
             type="number"
             onChange={handleChangeGrams}
             placeholder="grams"
             required
           />
-          <p>
-            Calories: <span>{!gramsValue ? 0 : caloriesByWeight}</span>
-          </p>
-          <Button type="submit">Add to diary</Button>
-          <Button type="button" secondary onClick={handleCancelClick}>
-            Cancel
-          </Button>
         </label>
-      </div>
+        <p>
+          Calories: <span>{!grams ? 0 : caloriesByUsersGrams}</span>
+        </p>
+        <Button type="submit">Add to diary</Button>
+        <Button type="button" secondary onClick={handleCancelBtn}>
+          Cancel
+        </Button>
+      </form>
     </BasicModalWindow>
   );
 };
