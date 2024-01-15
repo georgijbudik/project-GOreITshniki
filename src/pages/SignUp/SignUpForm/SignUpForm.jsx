@@ -22,7 +22,7 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
