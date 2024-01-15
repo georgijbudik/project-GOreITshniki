@@ -1,12 +1,34 @@
-import { Link } from 'react-router-dom';
+import TitlePage from '../../../components/TitlePage';
+import ChapterTemplate from '../ChapterTemplate';
+
+import {
+  ChaptersWrapper,
+  LinkStyled,
+  DesktopWrapper,
+} from '../Exercises.styled';
 
 const ExercisesCategories = () => {
   return (
-    <div>
-      <Link to="bodyparts">Link na boyparts</Link>
-      <Link to=""></Link>
-      <Link to=""></Link>
-    </div>
+    <DesktopWrapper>
+      <TitlePage>Exercises</TitlePage>
+      <ChaptersWrapper>
+        <li>
+          <LinkStyled to="bodyparts">
+            <ChapterTemplate>Body parts</ChapterTemplate>
+          </LinkStyled>
+        </li>
+        <li>
+          <LinkStyled to="muscles">
+            <ChapterTemplate>Muscles</ChapterTemplate>
+          </LinkStyled>
+        </li>
+        <li>
+          <LinkStyled to="equipment">
+            <ChapterTemplate>Equipment</ChapterTemplate>
+          </LinkStyled>
+        </li>
+      </ChaptersWrapper>
+    </DesktopWrapper>
   );
 };
 
