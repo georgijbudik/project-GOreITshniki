@@ -135,6 +135,10 @@ export const StyledAddExerciseFormInfoItem = styled.div`
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 12px;
     line-height: 133.333%;
+
+    @media screen and (min-width: 768px) {
+      line-height: 150%;
+    }
   }
 
   & > p {
@@ -145,5 +149,10 @@ export const StyledAddExerciseFormInfoItem = styled.div`
     line-height: 128.571%;
 
     margin: 0;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 150%;
+    }
   }
 `;
