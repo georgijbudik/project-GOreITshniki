@@ -1,9 +1,8 @@
 import React from 'react';
 import WelcomeImage from './components/WelcomeImage';
 
-import Sidenav from './components/Sidenav';
-
 import { StyledErrorPageWrapper } from './ErrorPage.styled';
+import Sidenav from '../../pages/Error/components/Sidenav';
 
 const Error = () => {
   return (
