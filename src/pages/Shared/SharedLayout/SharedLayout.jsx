@@ -1,5 +1,4 @@
 import MainContainer from 'components/MainContainer';
-import UserNav from '../../../components/UserNav';
 import { Outlet } from 'react-router';
 import { Header } from 'components/Header/Header';
 
@@ -15,9 +14,8 @@ const SharedLayout = () => {
     <>
       <GlobalStyles $isModalOpen={isModalOpen} />
       <MainContainer>
-        <Header>
-          <UserNav></UserNav>
-        </Header>
+        <Header />
+
         <main>
           <Outlet />
         </main>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ErrorInfo from '../ErrorInfo';
@@ -5,21 +6,13 @@ import ErrorInfo from '../ErrorInfo';
 import Logo from 'components/Logo';
 import Button from 'components/Button';
 
-import { StyledSidenavWrapper, StyledSidenavContent } from './Sidenav.styled';
-
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectIsModalOpen,
-  setIsModalOpen,
-} from '../../../../redux/global/globalSlice';
-
 import AddExerciseForm from 'pages/Exercises/AddExerciseForm';
 
-const Sidenav = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+import { StyledSidenavWrapper, StyledSidenavContent } from './Sidenav.styled';
 
-  const isModalOpen = useSelector(selectIsModalOpen);
+const Sidenav = () => {
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <StyledSidenavWrapper>
@@ -42,13 +35,19 @@ const Sidenav = () => {
         <Button
           secondary
           onClick={() => {
-            dispatch(setIsModalOpen(true));
+            setisModalOpen(true);
           }}
         >
           Open Modal
         </Button>
 
-        {isModalOpen && <AddExerciseForm />}
+        {isModalOpen && (
+          <AddExerciseForm
+            onClose={() => {
+              setisModalOpen(false);
+            }}
+          />
+        )}
       </StyledSidenavContent>
     </StyledSidenavWrapper>
   );
