@@ -15,9 +15,10 @@
 
 // export const fetchProducts = createAsyncThunk(
 //     'product/fetchProducts',
-//     async (_, thunkAPI) => {
+//     async (dataFromForm, thunkAPI) => {
+//      const { search, category, recommendation } = dataFromForm;
 //       try {
-//         const response = await axios.get('/products');
+//         const response = await axios.get('/products/?search={search}&category={category}&recommendation={recommendation}');
 //         return response;
 //       } catch (error) {
 //         return thunkAPI.rejectWithValue(error);

@@ -6,8 +6,9 @@ import { ProductsSection } from './Products.styled';
 import TitlePage from 'components/TitlePage';
 import { useSelector } from 'react-redux';
 import AddProductForm from './AddProductForm';
-import { selectIsProductSuccesAdded, selectProductToAdd } from '../../redux/products/productSlice';
+import { selectIsLoading, selectIsProductSuccesAdded, selectProductToAdd } from '../../redux/products/productSlice';
 import AddProductSuccess from './AddProductSuccess';
+import Loader from 'components/Loader';
 // import { fetchCategories, fetchProducts} from '../../redux/products/productOperations';
 
 const Products = () => {
@@ -23,9 +24,11 @@ const Products = () => {
 
   const isProductToAdd = useSelector(selectProductToAdd);
   const isProductSuccesAdded = useSelector(selectIsProductSuccesAdded);
-
+  const isLoading = useSelector(selectIsLoading);
+  
   return (
     <main> 
+      {isLoading && <Loader />}
       {isProductSuccesAdded && <AddProductSuccess/>}
       {isProductToAdd && <AddProductForm/>}
       <ProductsSection>
