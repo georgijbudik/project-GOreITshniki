@@ -1,10 +1,5 @@
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import {
-//   selectIsLoggedin,
-//   selectUserEmail,
-// } from '../../redux/auth/authSelectors';
-// import { logOut } from '../../redux/auth/authOperations';
+// import { useSelector } from 'react-redux';
+// import { selectIsLoggedin } from '../../redux/auth/authSelectors';
 
 import Logo from 'components/Logo';
 import UserNav from 'components/UserNav';
@@ -24,6 +19,13 @@ export function Header() {
         <UserBar />
         <UserNav />
       </StyledHeaderUserMenu>
+
+      {/* {isLoggedIn && (
+        <StyledHeaderUserMenu>
+          <UserBar />
+          <UserNav />
+        </StyledHeaderUserMenu>
+      )} */}
     </StyledHeader>
   );
 }

@@ -30,6 +30,9 @@ const productSlice = createSlice({
     },
     setCaloriesByUser (state, action) {
       state.caloriesByUser = action.payload;
+    },
+    setIsProductSuccesAdded (state, action) {
+      state.isProductSuccesAdded = action.payload;
     }
   },
 //   extraReducers: builder => {
@@ -51,7 +54,7 @@ const productSlice = createSlice({
 //       .addCase(fetchProducts.rejected, handleRejected)
 
 //        .addCase(addProduct.fulfilled, (state, action) => {
-//        state.isProductSuccesAdded = true;
+//         state.isProductSuccesAdded = true;
 //         state.isLoading = false;
 //         state.error = null;
 //       })
@@ -68,6 +71,6 @@ export const selectIsProductSuccesAdded = state => state.productReducer.isProduc
 export const selectIsLoading = state => state.productReducer.isLoading;
 export const selectError = state => state.productReducer.error;
 
-export const { setProductToAdd, setCaloriesByUser } = productSlice.actions;
+export const { setProductToAdd, setCaloriesByUser, setIsProductSuccesAdded } = productSlice.actions;
 
 export const productReducer = productSlice.reducer;

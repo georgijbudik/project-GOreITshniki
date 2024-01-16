@@ -35,7 +35,7 @@ const SignUpForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
-    dispatch(register({ name, email, password }));
+    //dispatch(register({ name, email, password }));
     resetForm();
   };
 
