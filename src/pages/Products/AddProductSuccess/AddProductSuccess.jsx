@@ -1,40 +1,39 @@
 import BasicModalWindow from 'components/BasicModalWindow';
 import Button from 'components/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsModalOpen } from '../../../redux/global/globalSlice';
 import { useNavigate } from 'react-router-dom';
 import {
   selectCaloriesByUser,
   setCaloriesByUser,
+  setIsProductSuccesAdded,
 } from '../../../redux/products/productSlice';
 
 const AddProductSuccess = () => {
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const caloriesByUser = useSelector(selectCaloriesByUser);
 
-  const handleNextProductBtn = () => {
-    dispatch(setIsModalOpen(false));
+  const navigate = useNavigate();
+
+  const handleCloseSuccessModal = () => {
+    dispatch(setIsProductSuccesAdded(null));
     dispatch(setCaloriesByUser(null));
   };
 
   const handleToDiaryBtn = () => {
-    dispatch(setIsModalOpen(false));
-    dispatch(setCaloriesByUser(null));
+    handleCloseSuccessModal();
     navigate('/diary');
   };
 
   return (
-    <BasicModalWindow>
+    <BasicModalWindow onClose={handleCloseSuccessModal}>
       <div>
         <img src="" alt="Avocado" />
         <p>Well done</p>
         <p>
           Calories: <span>{caloriesByUser}</span>
         </p>
-        <Button type="button" onClick={handleNextProductBtn}>
+        <Button type="button" onClick={handleCloseSuccessModal}>
           Next product
         </Button>
         <button type="button" onClick={handleToDiaryBtn}>

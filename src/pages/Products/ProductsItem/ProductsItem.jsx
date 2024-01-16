@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import { setIsModalOpen } from '../../../redux/global/globalSlice';
 import { setProductToAdd } from '../../../redux/products/productSlice';
 import {
   Container,
@@ -25,7 +24,6 @@ const ProductsItem = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddBtn = () => {
-    dispatch(setIsModalOpen(true));
     dispatch(setProductToAdd(product))
   };
 

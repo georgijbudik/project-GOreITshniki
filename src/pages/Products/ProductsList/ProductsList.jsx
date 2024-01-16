@@ -40,11 +40,23 @@ const ProductsList = () => {
   ];
 
   return (
-    <List>
-      {products.map(product => (
-        <ProductsItem key={product._id.$oid} product={product} />
-      ))}
-    </List>
+    <>
+    {products.length === 0 && <div>
+        <p>
+          <span>Sorry, no results were found</span> for the product filters you
+          selected. You may want to consider other search options to find the
+          product you want. Our range is wide and you have the opportunity to
+          find more options that suit your needs.
+        </p>
+        <p>Try changing the search parameters.</p>
+      </div>}
+      
+      <List>
+        {products.map(product => (
+          <ProductsItem key={product._id.$oid} product={product} />
+        ))}
+      </List>
+    </>
   );
 };
 
