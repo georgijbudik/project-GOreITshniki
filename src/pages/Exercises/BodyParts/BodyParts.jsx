@@ -1,0 +1,57 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { getExercisesBodyparts } from '../../../redux/exercises/exerciseOperations';
+import Pagination from '../Pagination';
+import { WrapperPagination } from './BodyParts.styled';
+
+import ExercisesSubcategoriesList from '../ExercisesSubcategoriesList';
+
+const BodyParts = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const { bodyparts } = useSelector(state => state.exercises);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getExercisesBodyparts());
+  }, [dispatch]);
+
+  function perPage() {
+    let exePerPage;
+    if (window.matchMedia('(min-width: 1440px)').matches) {
+      exePerPage = 10;
+    } else {
+      exePerPage = 9;
+    }
+
+    return exePerPage;
+  }
+
+  const lastExeIndex = currentPage * perPage();
+  const firstExeIndex = lastExeIndex - perPage();
+  const allExersise = bodyparts.length;
+
+  function arrayPerPage() {
+    const currentExe = bodyparts.slice(firstExeIndex, lastExeIndex);
+    return currentExe;
+  }
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  return (
+    <>
+      <ExercisesSubcategoriesList arr={arrayPerPage()} />
+      <WrapperPagination>
+        {allExersise !== perPage() && (
+          <Pagination
+            exePerPage={perPage()}
+            paginate={paginate}
+            totalExe={bodyparts.length}
+            currentPage={currentPage}
+          />
+        )}
+      </WrapperPagination>
+    </>
+  );
+};
+
+export default BodyParts;
