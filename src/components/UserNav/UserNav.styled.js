@@ -33,6 +33,69 @@ export const StyledUserNavBurgerIcon = styled.svg`
   }
 `;
 
+export const StyledUserNavMobileNavModal = styled.div`
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 200px;
+  height: 100vh;
+  background-color: var(--accent-color);
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+`;
+
+export const StyledUserNavMobileNavContent = styled.div`
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const StyledUserNavMobileNavCloseButton = styled.button`
+  position: absolute;
+  top: 19px;
+  right: 20px;
+
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    top: 26px;
+    right: 32px;
+  }
+`;
+
+export const StyledUserNavMobileNavCloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: rgba(239, 237, 232, 1);
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const StyledUserNavMobileNavLogoOutBtnWrapper = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+`;
+
 export const StyledUserNavButtonList = styled.ul`
   @media screen and (max-width: 1439px) {
     display: none;
@@ -49,4 +112,6 @@ export const StyledUserNavButton = styled(StyledButton)`
   padding: 10px 27px;
   font-size: 16px;
   line-height: 150%;
+
+  border: ${({ $active }) => $active && '1px solid var(--main-text-color)'};
 `;

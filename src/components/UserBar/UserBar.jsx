@@ -9,6 +9,7 @@ import {
   StyledUserBarAvatarWrapper,
   StyledUserBarAvatarBackgroundIcon,
   StyledUserBarAvatarIcon,
+  StyledUserBarLogOutBtnWrapper,
 } from './UserBar.styled';
 
 const UserBar = () => {
@@ -48,7 +49,9 @@ const UserBar = () => {
         </StyledUserBarAvatarIcon>
       </StyledUserBarAvatarWrapper>
 
-      <LogOutBtn />
+      <StyledUserBarLogOutBtnWrapper>
+        <LogOutBtn filled />
+      </StyledUserBarLogOutBtnWrapper>
     </StyledUserBar>
   );
 };
