@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://georgijbudik.github.io/project-GOreITshniki/",
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
     "@mui/material": "^5.15.4",
     "@mui/styled-engine-sc": "^6.0.0-alpha.12",
     "@mui/x-date-pickers": "^6.18.7",

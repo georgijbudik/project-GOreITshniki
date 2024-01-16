@@ -1,7 +1,9 @@
-import { Field, Formik, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/auth/authOperations';
+import * as yup from 'yup';
+import { Error, Forma, Input } from '../../SignUp/SignUpForm/SignUpForm.styled';
+import Button from 'components/Button';
 
 const schema = yup.object().shape({
   email: yup
@@ -36,18 +38,27 @@ const SignInForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
-          <Form autoComplete="off">
-            <Field type="email" name="email" placeholder="Email" />
-            {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-            <ErrorMessage name="email" component="div" />
-
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-
-            <button type="submit">Sign In</button>
-          </Form>
-        )}
+        <Forma autoComplete="off">
+          <div>
+            <Input
+              type="email"
+              name="email"
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              required
+              placeholder="Email"
+            />
+            <Error name="email" component="div" />
+            <Input
+              type="password"
+              placeholder="Password"
+              minlength="6"
+              name="password"
+              placeholder="Password"
+            />
+            <Error name="password" component="div" />
+          </div>
+          <Button type="submit">Sign In</Button>
+        </Forma>
       </Formik>
     </>
   );
