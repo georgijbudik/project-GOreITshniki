@@ -22,8 +22,6 @@ export const StyledButton = styled.button`
 
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
 
-  border: ${({ $brdclr }) => $brdclr && 'transparent'};
-
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
     background-color: ${({ $secondary }) =>

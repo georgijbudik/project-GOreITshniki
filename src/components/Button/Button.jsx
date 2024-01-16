@@ -5,7 +5,6 @@ const Button = ({
   onClick,
   secondary,
   disabled,
-  border = false,
   paddingY = 12,
   paddingX = 40,
   fontSize = 16,
@@ -17,7 +16,6 @@ const Button = ({
 
   return (
     <StyledButton
-      $brdclr={border}
       $secondary={secondary}
       $disabled={disabled}
       $paddingY={paddingY}

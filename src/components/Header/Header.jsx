@@ -30,7 +30,6 @@ export function Header() {
         <Button
           type="button"
           secondary
-          border
           paddingY={12}
           paddingX={12}
           onClick={handleLogOut}

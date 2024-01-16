@@ -2,7 +2,6 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
-// import { Error, Forma, Input } from './SignUpForm.styled';
 import { Error, Forma, Input } from '../../SignUp/SignUpForm/SignUpForm.styled';
 import Button from 'components/Button';
 
