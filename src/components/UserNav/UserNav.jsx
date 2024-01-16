@@ -98,7 +98,12 @@ const UserNav = () => {
               </StyledUserNavMobileNavContent>
 
               <StyledUserNavMobileNavLogoOutBtnWrapper>
-                <LogOutBtn />
+                <LogOutBtn
+                  onClose={() => {
+                    setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
+                  }}
+                />
               </StyledUserNavMobileNavLogoOutBtnWrapper>
             </StyledUserNavMobileNavModal>
           </StyledUserNavMobileNavModalOverlay>,
