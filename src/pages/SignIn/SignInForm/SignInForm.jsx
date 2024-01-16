@@ -2,8 +2,14 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
-import { Error, Forma, Input } from '../../SignUp/SignUpForm/SignUpForm.styled';
+import {
+  ContainerInput,
+  Error,
+  Forma,
+  Input,
+} from '../../SignUp/SignUpForm/SignUpForm.styled';
 import Button from 'components/Button';
+import AuthButton from 'pages/SignUp/SignAuthButton';
 
 const schema = yup.object().shape({
   email: yup
@@ -25,7 +31,6 @@ const SignInForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { email, password } = values;
     dispatch(logIn({ email, password }));
     resetForm();
@@ -39,7 +44,7 @@ const SignInForm = () => {
         onSubmit={handleSubmit}
       >
         <Forma autoComplete="off">
-          <div>
+          <ContainerInput>
             <Input
               type="email"
               name="email"
@@ -50,13 +55,13 @@ const SignInForm = () => {
             <Error name="email" component="div" />
             <Input
               type="password"
-              placeholder="Password"
-              minlength="6"
               name="password"
-                          />
+              placeholder="Password"
+              minLength="6"
+            />
             <Error name="password" component="div" />
-          </div>
-          <Button type="submit">Sign In</Button>
+          </ContainerInput>
+          <AuthButton type="submit">Sign In</AuthButton>
         </Forma>
       </Formik>
     </>

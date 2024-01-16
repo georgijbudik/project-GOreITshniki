@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logOut } from '../../redux/auth/authOperations';
 
 import toast from 'react-hot-toast';
 
@@ -9,6 +8,8 @@ import {
   StyledLogOutBtnIcon,
   StyledLogOutBtnText,
 } from './LogOutBtn.styled';
+import { selectIsLoggedin } from '../../redux/auth/authSelectors';
+import { logOut } from '../../redux/auth/authOperations';
 
 const LogOutBtn = ({ filled, onClose }) => {
   const dispatch = useDispatch();
