@@ -77,3 +77,11 @@ export const StyledUserBarAvatarIcon = styled.svg`
     height: 24px;
   }
 `;
+
+export const StyledUserBarLogOutBtnWrapper = styled.div`
+  display: none;
+
+  @media screen and (min-width: 1440px) {
+    display: block;
+  }
+`;
