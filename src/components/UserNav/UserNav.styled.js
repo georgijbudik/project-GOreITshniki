@@ -33,9 +33,18 @@ export const StyledUserNavBurgerIcon = styled.svg`
   }
 `;
 
+export const StyledUserNavMobileNavModalOverlay = styled.div`
+  z-index: 9999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 4, 4, 0.4);
+`;
+
 export const StyledUserNavMobileNavModal = styled.div`
-  z-index: 9999;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
 
@@ -94,6 +103,11 @@ export const StyledUserNavMobileNavLogoOutBtnWrapper = styled.div`
   position: absolute;
   bottom: 20px;
   left: 20px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 32px;
+    left: 32px;
+  }
 `;
 
 export const StyledUserNavButtonList = styled.ul`
