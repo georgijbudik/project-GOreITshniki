@@ -53,8 +53,7 @@ const SignInForm = () => {
               placeholder="Password"
               minlength="6"
               name="password"
-              placeholder="Password"
-            />
+                          />
             <Error name="password" component="div" />
           </div>
           <Button type="submit">Sign In</Button>
