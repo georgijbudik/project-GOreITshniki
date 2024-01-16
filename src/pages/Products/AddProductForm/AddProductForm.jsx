@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 // import dayjs from 'dayjs';
-import { setIsModalOpen } from '../../../redux/global/globalSlice';
 import {
   selectError,
   selectProductToAdd,
   setCaloriesByUser,
+  setIsProductSuccesAdded,
   setProductToAdd,
 } from '../../../redux/products/productSlice';
 import BasicModalWindow from 'components/BasicModalWindow';
@@ -14,11 +14,10 @@ import Button from 'components/Button';
 const AddProductForm = () => {
   const [grams, setGrams] = useState(null);
 
-  const error = useSelector(selectError);
-
   const dispatch = useDispatch();
 
   const productToAdd = useSelector(selectProductToAdd);
+  const error = useSelector(selectError);
 
   const handleChangeGrams = ({ target: { value } }) => {
     setGrams(Number(value));
@@ -41,22 +40,22 @@ const AddProductForm = () => {
     e.preventDefault();
     // dispatch(addProduct(productToAddToDiary));
     if (error) {
-      // notification
+      // notification 
       console.log('try again');
       return;
     }
-    dispatch(setCaloriesByUser(caloriesByUsersGrams));
-    dispatch(setIsModalOpen(false));
     dispatch(setProductToAdd(null));
+    dispatch(setCaloriesByUser(caloriesByUsersGrams));
+    // TEMPORARY UNTIL POST IS READY
+    dispatch(setIsProductSuccesAdded(true));
   };
 
-  const handleCancelBtn = () => {
-    dispatch(setIsModalOpen(false));
+  const handleCloseAddModal = () => {
     dispatch(setProductToAdd(null));
   };
 
   return (
-    <BasicModalWindow>
+    <BasicModalWindow onClose={handleCloseAddModal}>
       <form onSubmit={handleAddToDiaryBtn}>
         <label>
           <input
@@ -79,7 +78,7 @@ const AddProductForm = () => {
           Calories: <span>{!grams ? 0 : caloriesByUsersGrams}</span>
         </p>
         <Button type="submit">Add to diary</Button>
-        <Button type="button" secondary onClick={handleCancelBtn}>
+        <Button type="button" secondary onClick={handleCloseAddModal}>
           Cancel
         </Button>
       </form>

@@ -5,9 +5,8 @@ import ProductsList from './ProductsList';
 import { ProductsSection } from './Products.styled';
 import TitlePage from 'components/TitlePage';
 import { useSelector } from 'react-redux';
-import { selectIsModalOpen } from '../../redux/global/globalSlice';
 import AddProductForm from './AddProductForm';
-import { selectIsProductSuccesAdded } from '../../redux/products/productSlice';
+import { selectIsProductSuccesAdded, selectProductToAdd } from '../../redux/products/productSlice';
 import AddProductSuccess from './AddProductSuccess';
 // import { fetchCategories, fetchProducts} from '../../redux/products/productOperations';
 
@@ -22,13 +21,13 @@ const Products = () => {
   //   dispatch(fetchProducts());
   // }, [dispatch]);
 
-  const isModalOpen = useSelector(selectIsModalOpen);
+  const isProductToAdd = useSelector(selectProductToAdd);
   const isProductSuccesAdded = useSelector(selectIsProductSuccesAdded);
 
   return (
     <main> 
-      {isModalOpen && isProductSuccesAdded && <AddProductSuccess/>}
-      {isModalOpen && <AddProductForm/>}
+      {isProductSuccesAdded && <AddProductSuccess/>}
+      {isProductToAdd && <AddProductForm/>}
       <ProductsSection>
         <TitlePage>Products</TitlePage>
         <ProductsFilters />
