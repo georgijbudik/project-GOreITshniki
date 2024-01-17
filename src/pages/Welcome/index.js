@@ -19,3 +19,13 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: 14px;
 `;
+
+export const BodyLine = styled.svg`
+position: absolute;
+left: -9px;
+top: 6px;
+`;
+
+export const BodyElementSpan = styled.span`
+position: relative;
+`
