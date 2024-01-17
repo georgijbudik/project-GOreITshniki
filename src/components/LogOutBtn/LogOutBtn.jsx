@@ -18,24 +18,7 @@ const LogOutBtn = ({ white, filled, onClose }) => {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    const promise = dispatch(logOut());
-    toast.promise(
-      promise,
-      {
-        success: 'You were successfully logged out!',
-        error: 'Something went wrong.',
-        loading: 'Logging you out...',
-      },
-      {
-        duration: 2000,
-        icon: '🏋️‍♀️',
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      }
-    );
+    dispatch(logOut());
     onClose?.();
     navigate('/');
   };
