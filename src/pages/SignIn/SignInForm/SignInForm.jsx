@@ -1,7 +1,15 @@
-import { Field, Formik, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/auth/authOperations';
+import * as yup from 'yup';
+import {
+  ContainerInput,
+  Error,
+  Forma,
+  Input,
+} from '../../SignUp/SignUpForm/SignUpForm.styled';
+import Button from 'components/Button';
+import AuthButton from 'pages/SignUp/SignAuthButton';
 
 const schema = yup.object().shape({
   email: yup
@@ -23,7 +31,6 @@ const SignInForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { email, password } = values;
     dispatch(logIn({ email, password }));
     resetForm();
@@ -36,18 +43,26 @@ const SignInForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
-          <Form autoComplete="off">
-            <Field type="email" name="email" placeholder="Email" />
-            {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-            <ErrorMessage name="email" component="div" />
-
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-
-            <button type="submit">Sign In</button>
-          </Form>
-        )}
+        <Forma autoComplete="off">
+          <ContainerInput>
+            <Input
+              type="email"
+              name="email"
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              required
+              placeholder="Email"
+            />
+            <Error name="email" component="div" />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              minLength="6"
+            />
+            <Error name="password" component="div" />
+          </ContainerInput>
+          <AuthButton type="submit">Sign In</AuthButton>
+        </Forma>
       </Formik>
     </>
   );
