@@ -26,7 +26,7 @@ const LogOutBtn = ({ filled, onClose }) => {
       },
       {
         duration: 2000,
-        icon: '🤠',
+        icon: '🏋️‍♀️',
         style: {
           borderRadius: '10px',
           background: '#333',
