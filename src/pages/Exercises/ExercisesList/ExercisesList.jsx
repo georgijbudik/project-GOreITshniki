@@ -52,13 +52,11 @@ const ExercisesList = () => {
     <SectionTemplate>
       <ButtonGoBack>
         <IconWrapperBack>
-          <svg width="16" height="16">
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-arrow'
-              }
-            ></use>
-          </svg>
+          <use
+            xlinkHref={
+              process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-arrow'
+            }
+          ></use>
         </IconWrapperBack>
         <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
       </ButtonGoBack>
