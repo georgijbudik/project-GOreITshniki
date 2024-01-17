@@ -27,6 +27,10 @@ const ProductsItem = ({ product }) => {
     dispatch(setProductToAdd(product))
   };
 
+  // TEMPORARY UNTIL SELECT FROM PROFILE IS READY
+  const userGroupBlood = Number('2');
+  const isProductNotAllowedForUser = product.groupBloodNotAllowed[userGroupBlood];
+
   return (
     <li>
       <Container>
@@ -36,8 +40,8 @@ const ProductsItem = ({ product }) => {
           </DietContainer>
           <RecomBtnContainer>
             <RecomContainer>
-              <Circle></Circle>
-              <RecomText>Recommended</RecomText>
+              <Circle $isNotAllowed={isProductNotAllowedForUser}></Circle>
+              {isProductNotAllowedForUser ? <RecomText>Not recommended</RecomText> : <RecomText>Recommended</RecomText>}
             </RecomContainer>
             <AddBtn type="button" onClick={handleAddBtn}>
               Add

@@ -37,7 +37,8 @@ export const Circle = styled.span`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: var(--green-colro);
+  background-color: ${({ $isNotAllowed }) =>
+    $isNotAllowed ? 'var(--red-color)' : 'var(--green-colro)'};
 `;
 
 export const RecomText = styled.p`
