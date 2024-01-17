@@ -21,9 +21,17 @@ i18n
           },
           logout: 'Logout',
           welcome: {
-            main_text: 'Transforming your body shape with Power Pulse',
+            main_text: {
+              part1: 'Transforming your',
+              part2: 'body',
+              part3: 'shape with Power Pulse',
+            },
             sign_in: 'Sign In',
             sign_up: 'Sign Up',
+          },
+          main_image: {
+            videos: 'Video tutorials',
+            calories: 'cal',
           },
         },
       },
@@ -37,9 +45,17 @@ i18n
           },
           logout: 'Вийти',
           welcome: {
-            main_text: 'Зміни своє тіло разом з Power Pulse',
+            main_text: {
+              part1: 'Зміни власне',
+              part2: 'тіло',
+              part3: 'разом із Power Pulse',
+            },
             sign_in: 'Увійти',
             sign_up: 'Зареєструватися',
+          },
+          main_image: {
+            videos: 'Відео туторіалів',
+            calories: 'ккал',
           },
         },
       },

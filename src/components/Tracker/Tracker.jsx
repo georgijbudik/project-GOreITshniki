@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   TrackerVideoStyled,
   TrackerCaloriesStyled,
@@ -13,6 +15,8 @@ import {
 } from './Tracker.styled';
 
 export const TrackerVideo = () => {
+  const { t } = useTranslation();
+
   return (
     <TrackerVideoContainer>
       <TrackerVideoPlayEl>
@@ -26,13 +30,15 @@ export const TrackerVideo = () => {
       </TrackerVideoPlayEl>
       <TrackerVideoTextContainer>
         <TrackerVideoStyled>350+</TrackerVideoStyled>
-        <TrackerVideoText>Video tutorial</TrackerVideoText>
+        <TrackerVideoText>{t('main_image.videos')}</TrackerVideoText>
       </TrackerVideoTextContainer>
     </TrackerVideoContainer>
   );
 };
 
 export const TrackerCalories = () => {
+  const { t } = useTranslation();
+
   return (
     <TrackerCaloriesContainer>
       <TrackerCaloriesIconEl>
@@ -45,7 +51,7 @@ export const TrackerCalories = () => {
         </TrackerCaloriesIcon>
       </TrackerCaloriesIconEl>
       <TrackerCaloriesStyled>
-        500<TrackerCaloriesText>cal</TrackerCaloriesText>
+        500<TrackerCaloriesText>{t('main_image.calories')}</TrackerCaloriesText>
       </TrackerCaloriesStyled>
     </TrackerCaloriesContainer>
   );
