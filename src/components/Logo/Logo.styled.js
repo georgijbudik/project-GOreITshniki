@@ -19,5 +19,5 @@ export const StyledLogoIcon = styled.svg`
 `;
 
 export const StyledLogoText = styled.svg`
-  stroke: var(--main-text-color);
+  fill: ${({ theme }) => theme.palette.text.primary};
 `;
