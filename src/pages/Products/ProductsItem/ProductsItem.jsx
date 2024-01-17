@@ -20,16 +20,20 @@ import {
 } from './ProductsItem.styled';
 
 const ProductsItem = ({ product }) => {
-
   const dispatch = useDispatch();
-
-  const handleAddBtn = () => {
-    dispatch(setProductToAdd(product))
-  };
 
   // TEMPORARY UNTIL SELECT FROM PROFILE IS READY
   const userGroupBlood = Number('2');
-  const isProductNotAllowedForUser = product.groupBloodNotAllowed[userGroupBlood];
+  const isProductNotAllowedForUser =
+    product.groupBloodNotAllowed[userGroupBlood];
+
+  const formatText = text => {
+    return text[0].toUpperCase() + text.slice(1);
+  };
+
+  const handleAddBtn = () => {
+    dispatch(setProductToAdd(product));
+  };
 
   return (
     <li>
@@ -41,7 +45,11 @@ const ProductsItem = ({ product }) => {
           <RecomBtnContainer>
             <RecomContainer>
               <Circle $isNotAllowed={isProductNotAllowedForUser}></Circle>
-              {isProductNotAllowedForUser ? <RecomText>Not recommended</RecomText> : <RecomText>Recommended</RecomText>}
+              {isProductNotAllowedForUser ? (
+                <RecomText>Not recommended</RecomText>
+              ) : (
+                <RecomText>Recommended</RecomText>
+              )}
             </RecomContainer>
             <AddBtn type="button" onClick={handleAddBtn}>
               Add
@@ -67,7 +75,7 @@ const ProductsItem = ({ product }) => {
               ></use>
             </svg>
           </TitleCircle>
-          <Title>{product.title}</Title>
+          <Title>{formatText(product.title)}</Title>
         </TitleContainer>
         <BottomContainer>
           <BottomText>
@@ -75,9 +83,7 @@ const ProductsItem = ({ product }) => {
           </BottomText>
           <BottomText>
             Category:{' '}
-            <BottomAmount>
-              {product.category[0].toUpperCase() + product.category.slice(1)}
-            </BottomAmount>
+            <BottomAmount>{formatText(product.category)}</BottomAmount>
           </BottomText>
           <BottomText>
             Weight: <BottomAmount>{product.weight}</BottomAmount>

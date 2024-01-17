@@ -37,6 +37,21 @@ const ProductsList = () => {
         4: false,
       },
     },
+    {
+      "_id": {
+        "$oid": "5d51694902b2373622ff5726"
+      },
+      "weight": 100,
+      "calories": 282,
+      "category": "dairy",
+      "title": "Cheese Artis for pan frying and grilling 45%",
+      "groupBloodNotAllowed": {
+        "1": true,
+        "2": true,
+        "3": false,
+        "4": false
+      }
+    }
   ];
 
   return (
