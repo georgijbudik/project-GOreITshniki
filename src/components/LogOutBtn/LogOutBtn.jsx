@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import toast from 'react-hot-toast';
 
@@ -12,6 +13,7 @@ import {
 import { logOut } from '../../redux/auth/authOperations';
 
 const LogOutBtn = ({ white, filled, onClose }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ const LogOutBtn = ({ white, filled, onClose }) => {
 
   return (
     <StyledLogOutBtn onClick={handleLogOut}>
-      <StyledLogOutBtnText $white={white}>Logout</StyledLogOutBtnText>
+      <StyledLogOutBtnText $white={white}>{t('logout')}</StyledLogOutBtnText>
       <StyledLogOutBtnIcon
         $filled={filled}
         width="20"
