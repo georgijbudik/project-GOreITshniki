@@ -197,6 +197,7 @@ export const StyledAuthButton = styled.button`
   }
 `;
 
+// password eye
 export const ContainerShowButton = styled.div`
 position:relative;
 `;
@@ -211,8 +212,11 @@ background-color: transparent;
 border: none
 `;
 
-export const SVG = styled.svg`
+export const ShowPassSVG = styled.svg`
+transition: stroke 2250ms cubic-bezier(0.4, 0, 0.2, 1), scale 250ms ease-in-out;;
+
 &:hover{
-  stroke:red;
+  stroke:#E6533C;
+  scale: 1.2;
 }
 `;

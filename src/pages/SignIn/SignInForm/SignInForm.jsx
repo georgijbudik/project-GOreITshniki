@@ -9,8 +9,9 @@ import {
   Forma,
   Input,
   ShowPassButton,
+  ShowPassSVG,
 } from '../../SignUp/SignUpForm/SignUpForm.styled';
-import AuthButton from 'pages/SignUp/SignAuthButton';
+import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
 import { useState } from 'react';
 // import toast from 'react-hot-toast';
 
@@ -82,17 +83,17 @@ const SignInForm = () => {
             <ContainerShowButton> 
         <ShowPassButton type="button" onClick={() =>
                                             setShowPassword(showPassword => !showPassword)
-                                          }>{showPassword ?         <svg  width="24" height="24">
+                                          }>{showPassword ?         <ShowPassSVG  width="24" height="24">
                                           <use xlinkHref={
                                                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
                                               }></use>
-                                        </svg>
+                                        </ShowPassSVG>
                                                          : 
-                                                                                    <svg  width="24" height="24">
+                                                                                    <ShowPassSVG  width="24" height="24">
                                           <use xlinkHref={
                                                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
                                               }></use>
-                                        </svg>
+                                        </ShowPassSVG>
                                           }</ShowPassButton>
                           
                                                 <Input
