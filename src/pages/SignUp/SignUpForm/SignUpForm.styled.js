@@ -86,6 +86,8 @@ export const Forma = styled(Form)`
 `;
 
 export const ContainerInput = styled.div`
+width:100%;
+position:relative;
   margin-bottom: 28px;
   @media screen and (min-width: 768px) {
     margin-bottom: 64px;
@@ -98,7 +100,7 @@ export const Input = styled(Field)`
   width: 100%;
   height: 46px;
   opacity: 0.3;
-  padding: 0 14px;
+  padding: 0 0 0 14px;
   margin-bottom: 18px;
   background-color: transparent;
   border: 1px solid white;
@@ -193,4 +195,18 @@ export const StyledAuthButton = styled.button`
     padding: ${({ $paddingY, $paddingX }) =>
       `${$paddingY * (4 / 3)}px ${$paddingX * (3 / 2)}px`};
   }
+`;
+
+export const ContainerShowButton = styled.div`
+position:relative;
+`;
+
+export const ShowPassButton = styled.button`
+z-index:9;
+position:absolute;
+top: 40%;
+left: 95%;
+transform: translate(-50%, -50%);
+background-color: transparent;
+border: none
 `;

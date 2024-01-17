@@ -4,13 +4,16 @@ import { register } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
+  ContainerShowButton,
   Error,
   Forma,
   Input,
-  StyledAuthButton,
+  ShowPassButton,
 } from './SignUpForm.styled';
-import Button from 'components/Button';
 import AuthButton from '../SignAuthButton';
+import { useState } from 'react';
+import { StyledLogOutBtnIcon } from 'components/LogOutBtn/LogOutBtn.styled';
+// import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required('Name is required'),
@@ -31,11 +34,30 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
-    //dispatch(register({ name, email, password }));
+    dispatch(register({ name, email, password }));
+    // const promise = dispatch(register({ name, email, password }));
+    // toast.promise(
+    //   promise,
+    //   {
+    //     success: `${name}, you were successfully registrated`,
+    //     error: 'Something went wrong. Try again...',
+    //     loading: 'Registration...',
+    //   },
+    //   {
+    //     duration: 2000,
+    //     icon: '🏋️‍♀️',
+    //     style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   }
+    // );
     resetForm();
   };
 
@@ -58,15 +80,34 @@ const SignUpForm = () => {
               required
             />
             <Error name="email" component="div" />
-            <Input
-              type="password"
+        <ContainerShowButton> 
+        <ShowPassButton id="pass" type="button" onClick={() =>
+                                            setShowPassword(showPassword => !showPassword)
+                                          }>{showPassword ?         <svg  width="24" height="24">
+                                          <use xlinkHref={
+                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
+                                              }></use>
+                                        </svg>
+                                                         : 
+                                                                                    <svg  width="24" height="24">
+                                          <use xlinkHref={
+                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
+                                              }></use>
+                                        </svg>
+                                          }</ShowPassButton>
+                          
+                                                <Input
+             type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Password"
               minLength="6"
             />
+              </ContainerShowButton>
             <Error name="password" component="div" />
+            
+           
           </ContainerInput>
-          <AuthButton type="submit">Sign Up</AuthButton>
+          <AuthButton >Sign Up</AuthButton>
         </Forma>
       </Formik>
     </>
