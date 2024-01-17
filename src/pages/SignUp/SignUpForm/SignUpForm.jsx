@@ -9,12 +9,12 @@ import {
   Error,
   Forma,
   Input,
-  SVG,
+  ShowPassSVG,
   ShowPassButton,
 } from './SignUpForm.styled';
 // StyledAuthButton,
 // import Button from 'components/Button';
-import AuthButton from '../SignAuthButton';
+import AuthButton from './AuthButton';
 import { useDispatch } from 'react-redux';
 import { register } from '../../../redux/auth/authOperations';
 // import toast from 'react-hot-toast';
@@ -90,23 +90,23 @@ const SignUpForm = () => {
                 onClick={() => setShowPassword(showPassword => !showPassword)}
               >
                 {showPassword ? (
-                  <SVG width="24" height="24">
+                  <ShowPassSVG width="24" height="24">
                     <use
                       xlinkHref={
                         process.env.PUBLIC_URL +
                         '/images/sprite/sprite.svg#icon-visible'
                       }
                     ></use>
-                  </SVG>
+                  </ShowPassSVG>
                 ) : (
-                  <SVG width="24" height="24">
+                  <ShowPassSVG width="24" height="24">
                     <use
                       xlinkHref={
                         process.env.PUBLIC_URL +
                         '/images/sprite/sprite.svg#icon-unvisible'
                       }
                     ></use>
-                  </SVG>
+                  </ShowPassSVG>
                 )}
               </ShowPassButton>
 
