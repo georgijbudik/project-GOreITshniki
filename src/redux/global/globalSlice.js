@@ -26,8 +26,8 @@ const globalSlice = createSlice({
 
 export const { setIsLoading, setIsModalOpen, setTheme } = globalSlice.actions;
 
-export const selectIsModalOpen = state => state.globalReducer.isModalOpen;
-export const selectIsLoading = state => state.globalReducer.isLoading;
-export const selectTheme = state => state.globalReducer.theme;
+export const selectIsModalOpen = state => state.global.isModalOpen;
+export const selectIsLoading = state => state.global.isLoading;
+export const selectTheme = state => state.global.theme;
 
 export const globalReducer = globalSlice.reducer;

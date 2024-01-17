@@ -20,6 +20,15 @@ const getDesignTokens = mode => ({
             default: '#040404',
           },
         }),
+    border: {
+      ...(mode === 'light'
+        ? {
+            primary: 'rgba(110, 110, 110, 0.32)',
+          }
+        : {
+            primary: 'rgba(239, 237, 232, 0.2)',
+          }),
+    },
     text: {
       ...(mode === 'light'
         ? {

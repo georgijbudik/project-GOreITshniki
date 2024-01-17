@@ -11,7 +11,7 @@ import {
 
 import { logOut } from '../../redux/auth/authOperations';
 
-const LogOutBtn = ({ filled, onClose }) => {
+const LogOutBtn = ({ white, filled, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const LogOutBtn = ({ filled, onClose }) => {
 
   return (
     <StyledLogOutBtn onClick={handleLogOut}>
-      <StyledLogOutBtnText>Logout</StyledLogOutBtnText>
+      <StyledLogOutBtnText $white={white}>Logout</StyledLogOutBtnText>
       <StyledLogOutBtnIcon
         $filled={filled}
         width="20"
