@@ -1,5 +1,19 @@
-import { Field, Formik, Form, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
+import {
+  ContainerInput,
+  ContainerShowButton,
+  Error,
+  Forma,
+  Input,
+  ShowPassButton,
+  ShowPassSVG,
+} from '../../SignUp/SignUpForm/SignUpForm.styled';
+import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
+import { useState } from 'react';
+// import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
   email: yup
@@ -18,8 +32,34 @@ const initialValues = {
 };
 
 const SignInForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { email, password } = values;
+    dispatch(logIn({ email, password }));
+    // const promise = dispatch(logIn({ email, password }));
+    // toast.promise(
+    //   promise,
+    //   {
+    //     success: `${email}, you were successfully login`,
+    //     error: 'Something went wrong. Try again...',
+    //     loading: 'Logining...',
+    //   },
+    //   {
+    //     duration: 2000,
+    //     icon: '🏋️‍♀️',
+    //     style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   }
+    // );
+    // toast.success(`You are registered 🤗`, {
+    //   duration: 3000,
+    //   position: 'top-right',
+    // });
     resetForm();
   };
 
@@ -30,18 +70,43 @@ const SignInForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
-          <Form autoComplete="off">
-            <Field type="email" name="email" placeholder="Email" />
-            {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-            <ErrorMessage name="email" component="div" />
-
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-
-            <button type="submit">Sign In</button>
-          </Form>
-        )}
+        <Forma autoComplete="off">
+          <ContainerInput>
+            <Input
+              type="email"
+              name="email"
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              required
+              placeholder="Email"
+            />
+            <Error name="email" component="div" />
+            <ContainerShowButton> 
+        <ShowPassButton type="button" onClick={() =>
+                                            setShowPassword(showPassword => !showPassword)
+                                          }>{showPassword ?         <ShowPassSVG  width="24" height="24">
+                                          <use xlinkHref={
+                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
+                                              }></use>
+                                        </ShowPassSVG>
+                                                         : 
+                                                                                    <ShowPassSVG  width="24" height="24">
+                                          <use xlinkHref={
+                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
+                                              }></use>
+                                        </ShowPassSVG>
+                                          }</ShowPassButton>
+                          
+                                                <Input
+             type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              minLength="6"
+            />
+              </ContainerShowButton>
+            <Error name="password" component="div" />
+          </ContainerInput>
+          <AuthButton type="submit">Sign In</AuthButton>
+        </Forma>
       </Formik>
     </>
   );
