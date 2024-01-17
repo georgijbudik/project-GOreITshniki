@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import toast from 'react-hot-toast';
 
@@ -8,39 +9,23 @@ import {
   StyledLogOutBtnIcon,
   StyledLogOutBtnText,
 } from './LogOutBtn.styled';
-import { selectIsLoggedin } from '../../redux/auth/authSelectors';
+
 import { logOut } from '../../redux/auth/authOperations';
 
-const LogOutBtn = ({ filled, onClose }) => {
+const LogOutBtn = ({ white, filled, onClose }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    const promise = dispatch(logOut());
-    toast.promise(
-      promise,
-      {
-        success: 'You were successfully logged out!',
-        error: 'Something went wrong.',
-        loading: 'Logging you out...',
-      },
-      {
-        duration: 2000,
-        icon: '🤠',
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      }
-    );
+    dispatch(logOut());
     onClose?.();
     navigate('/');
   };
 
   return (
     <StyledLogOutBtn onClick={handleLogOut}>
-      <StyledLogOutBtnText>Logout</StyledLogOutBtnText>
+      <StyledLogOutBtnText $white={white}>{t('logout')}</StyledLogOutBtnText>
       <StyledLogOutBtnIcon
         $filled={filled}
         width="20"

@@ -20,10 +20,18 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
+
+const globalPersistConfig = {
+  key: 'global',
+  version: 1,
+  storage,
+  whitelist: ['theme'],
+};
+
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    globalReducer,
+    global: persistReducer(globalPersistConfig, globalReducer),
     productReducer,
   },
   middleware: getDefaultMiddleware =>

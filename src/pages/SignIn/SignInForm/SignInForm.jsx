@@ -4,12 +4,15 @@ import { logIn } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
+  ContainerShowButton,
   Error,
   Forma,
   Input,
+  ShowPassButton,
+  ShowPassSVG,
 } from '../../SignUp/SignUpForm/SignUpForm.styled';
-import Button from 'components/Button';
-import AuthButton from 'pages/SignUp/SignAuthButton';
+import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
+import { useState } from 'react';
 
 const schema = yup.object().shape({
   email: yup
@@ -28,6 +31,7 @@ const initialValues = {
 };
 
 const SignInForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -53,12 +57,39 @@ const SignInForm = () => {
               placeholder="Email"
             />
             <Error name="email" component="div" />
-            <Input
-              type="password"
-              name="password"
-              placeholder="Password"
-              minLength="6"
-            />
+            <ContainerShowButton>
+              <ShowPassButton
+                type="button"
+                onClick={() => setShowPassword(showPassword => !showPassword)}
+              >
+                {showPassword ? (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-visible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                ) : (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-unvisible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                )}
+              </ShowPassButton>
+
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                minLength="6"
+              />
+            </ContainerShowButton>
             <Error name="password" component="div" />
           </ContainerInput>
           <AuthButton type="submit">Sign In</AuthButton>

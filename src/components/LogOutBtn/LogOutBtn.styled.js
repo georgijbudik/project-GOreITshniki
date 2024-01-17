@@ -9,10 +9,23 @@ export const StyledLogOutBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media screen and (min-width: 1440px) {
+    &:hover {
+      & > span {
+        color: var(--accent-color);
+      }
+    }
+  }
 `;
 
 export const StyledLogOutBtnText = styled.span`
-  color: var(--main-text-color);
+  color: ${({ theme, $white }) => {
+    if ($white) {
+      return 'var(--main-text-color)';
+    }
+    return theme.palette.text.primary;
+  }};
   font-size: 14px;
   line-height: 128.571%;
 
@@ -21,12 +34,6 @@ export const StyledLogOutBtnText = styled.span`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 150%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    &:hover {
-      color: var(--accent-color);
-    }
   }
 `;
 
