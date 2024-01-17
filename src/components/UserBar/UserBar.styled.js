@@ -27,7 +27,11 @@ export const StyledUserBarSettingButton = styled.button`
 export const StyledUserBarSettingsIcon = styled.svg`
   height: 26px;
   width: 26px;
-  stroke: rgba(239, 237, 232, 0.3);
+  stroke: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.3)'
+      : 'rgba(39, 37, 32, 0.6)';
+  }};
   transition: var(--transition);
 
   &:hover {
@@ -48,14 +52,21 @@ export const StyledUserBarSettingsIcon = styled.svg`
 export const StyledUserBarAvatarWrapper = styled.div`
   position: relative;
   display: inline-block;
+  line-height: 0;
 `;
 
 export const StyledUserBarAvatarBackgroundIcon = styled.svg`
   width: 37px;
   height: 37px;
-  fill: rgba(48, 48, 48, 0.3);
+
   stroke-width: 1px;
   stroke: var(--accent-color);
+
+  fill: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'rgba(48, 48, 48, 0.3)'
+      : 'rgba(39, 37, 32, 0.2)';
+  }};
 
   @media screen and (min-width: 768px) {
     width: 46px;
@@ -67,10 +78,15 @@ export const StyledUserBarAvatarIcon = styled.svg`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
   width: 21px;
   height: 21px;
-  fill: rgba(239, 237, 232, 0.1);
+
+  fill: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.1)'
+      : 'rgba(39, 37, 32, 0.4)';
+  }};
 
   @media screen and (min-width: 768px) {
     width: 24px;

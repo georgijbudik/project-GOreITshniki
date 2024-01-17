@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  color: var(--main-text-color);
+  color: ${({ theme }) => theme.palette.text.primary};
   transition: var(--transition);
 
   padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
@@ -14,10 +14,18 @@ export const StyledButton = styled.button`
   border: none;
   background-color: ${({ $secondary }) =>
     $secondary ? 'transparent' : 'var(--accent-color)'};
-  border: ${({ $secondary }) =>
-    $secondary
-      ? '1px solid rgba(239, 237, 232, 0.30);'
-      : '1px solid var(--accent-color)'};
+
+  border: ${({ $secondary, theme }) => {
+    if ($secondary) {
+      if (theme.palette.mode === 'light') {
+        return '1px solid rgba(39, 37, 32, 0.6)';
+      } else {
+        return '1px solid rgba(239, 237, 232, 0.30)';
+      }
+    } else {
+      return '1px solid var(--accent-color)';
+    }
+  }};
 
   font-size: 16px;
   font-weight: 500;

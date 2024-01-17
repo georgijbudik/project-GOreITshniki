@@ -20,7 +20,9 @@ export const StyledLogOutBtn = styled.button`
 `;
 
 export const StyledLogOutBtnText = styled.span`
-  color: var(--main-text-color);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
   font-size: 14px;
   line-height: 128.571%;
 
