@@ -14,20 +14,42 @@ import {
   SvgExclamationIcon,
   LogOutButton,
   SvgLogoutIcon,
+  AddProfilePicCross,
+  AddProfilePicBackground,
+  ProfilePicContainer,
+  AddAvatarButton
 } from './UserCard.styled';
 
 const UserCard = () => {
   return (
     <Container>
-      <ProfileSettings>Profile Settings</ProfileSettings>
+      <ProfileSettings className='profile-desktop-hidden'>Profile Settings</ProfileSettings>
       <UserInfo>
-        <UserAvatar width="50" height="50" fill="rgba(239, 237, 232, 0.1)">
-          <use
-            xlinkHref={
-              process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
-            }
-          ></use>
-        </UserAvatar>
+        <ProfilePicContainer>
+          <AddAvatarButton>
+            <AddProfilePicBackground>
+              <use stroke='#e6533c' fill='#e6533c' xlinkHref={
+                process.env.PUBLIC_URL +
+                '/images/sprite/sprite.svg#icon-add-avatar'
+              } /> </AddProfilePicBackground>
+            <AddProfilePicCross >
+              <use stroke='#efede8' width="15" height="15" xlinkHref={
+                process.env.PUBLIC_URL +
+                '/images/sprite/sprite.svg#icon-cross'
+              } /></AddProfilePicCross>
+
+
+          </AddAvatarButton>
+
+          <UserAvatar fill="rgba(239, 237, 232, 0.1)">
+            <use
+              xlinkHref={
+                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
+              }
+            ></use>
+          </UserAvatar>
+        </ProfilePicContainer>
+
         <UserName>Anna Rybachok</UserName>
         <UserRole>User</UserRole>
         <DailyContainer>

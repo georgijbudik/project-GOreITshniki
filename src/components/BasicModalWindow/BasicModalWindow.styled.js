@@ -17,15 +17,15 @@ export const StyledModal = styled.div`
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: #10100f;
-  padding: 48px 24px;
   color: var(--main-text-color);
   position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 
-  @media screen and (min-width: 768px) {
-    padding: 48px 32px;
+  @media screen and (min-width: 1440px) {
+    max-height: 80vh;
   }
 `;
-
 export const StyledModalCloseButton = styled.button`
   padding: 0;
   line-height: 0;

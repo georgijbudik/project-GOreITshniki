@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router';
-import SharedLayout from 'pages/Shared/SharedLayout';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../redux/auth/authOperations';
 import Welcome from 'pages/Welcome/Welcome';
 import SignUp from 'pages/SignUp/SignUp';
 import SignIn from 'pages/SignIn/SignIn';
@@ -10,8 +12,15 @@ import Exercises from 'pages/Exercises/Exercises';
 import ExercisesSubcategoriesList from 'pages/Exercises/ExercisesSubcategoriesList';
 import ExercisesList from 'pages/Exercises/ExercisesList';
 import Error from 'pages/Error/Error';
+import SharedLayout from 'pages/Shared/SharedLayout';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>

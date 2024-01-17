@@ -1,13 +1,15 @@
-import React from 'react';
-import ExercisesCategories from './ExercisesCategories';
 import { Outlet } from 'react-router';
+
+import SectionTemplate from './SectionTemplate';
+import ExercisesCategories from './ExercisesCategories';
 
 const Exercises = () => {
   return (
-    <div>
+    <SectionTemplate>
       <ExercisesCategories />
+      {/* <m_o_d_a_l /> */}
       <Outlet />
-    </div>
+    </SectionTemplate>
   );
 };
 

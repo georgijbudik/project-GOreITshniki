@@ -5,11 +5,11 @@ import DayDashboard from './DayDashboard';
 import DaySwitch from './DaySwitch';
 import DayProducts from './DayProducts';
 import DayExercises from './DayExercises';
-import { PageTitle, DaySwitchRight } from './Diary.styled';
+import { PageTitle, DaySwitchRight, Wrap } from './Diary.styled';
 
 const Diary = () => {
   return (
-    <>
+    <Wrap>
       <PageTitle>
         <TitlePage>Diary</TitlePage>
         <DaySwitchRight>
@@ -19,7 +19,7 @@ const Diary = () => {
       <DayDashboard>DayDashboard</DayDashboard>
       <DayProducts>DayProducts</DayProducts>
       <DayExercises>DayExercises</DayExercises>
-    </>
+    </Wrap>
   );
 };
 

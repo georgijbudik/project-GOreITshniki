@@ -1,18 +1,26 @@
-import Header from 'components/Header';
 import MainContainer from 'components/MainContainer';
-import UserNav from '../../../components/UserNav';
 import { Outlet } from 'react-router';
+import { Header } from 'components/Header/Header';
+
+import { GlobalStyles } from '../GlobalStyles.styled';
+
+import { useSelector } from 'react-redux';
+import { selectIsModalOpen } from '../../../redux/global/globalSlice';
 
 const SharedLayout = () => {
+  const isModalOpen = useSelector(selectIsModalOpen);
+
   return (
-    <MainContainer>
-      <Header>
-        <UserNav></UserNav>
-      </Header>
-      <main>
-        <Outlet />
-      </main>
-    </MainContainer>
+    <>
+      <GlobalStyles $isModalOpen={isModalOpen} />
+      <MainContainer>
+        <Header />
+
+        <main>
+          <Outlet />
+        </main>
+      </MainContainer>
+    </>
   );
 };
 
