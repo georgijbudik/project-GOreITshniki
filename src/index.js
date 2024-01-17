@@ -8,6 +8,7 @@ import { App } from 'components/App';
 import store, { persistor } from './redux/store';
 import { Toaster } from 'react-hot-toast';
 import AppThemeProvider from 'providers/ThemeProvider';
+import 'configs/i18n';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
