@@ -5,7 +5,7 @@ function SectionTemplate({ children }) {
   const location = useLocation();
 
   return (
-    <Section pathname={location.pathname}>
+    <Section $pathname={location.pathname}>
       <Container>{children}</Container>
     </Section>
   );
