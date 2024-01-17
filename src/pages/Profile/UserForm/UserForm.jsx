@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 
-import "react-datepicker/dist/react-datepicker.css";
-import "./datepicker.css";
-import { ProfileSettings } from "../UserCard/UserCard.styled";
-import Button from '../../../components/Button';
+import 'react-datepicker/dist/react-datepicker.css';
+import './datepicker.css';
+import { ProfileSettings } from '../UserCard/UserCard.styled';
 import {
   Container,
   FieldName,
@@ -20,16 +19,17 @@ import {
   RadioContainer,
   ActivityContainer,
   NameEmailInput,
-  SaveButton
+  SaveButton,
 } from './UserForm.styled';
 
 const UserForm = () => {
-
   const [startDate, setStartDate] = useState(new Date());
 
   return (
     <Container>
-      <ProfileSettings className='profile-desktop-visible'>Profile Settings</ProfileSettings>
+      <ProfileSettings className="profile-desktop-visible">
+        Profile Settings
+      </ProfileSettings>
 
       <NameEmailInput>
         <FieldContainer>
@@ -39,7 +39,8 @@ const UserForm = () => {
         <FieldContainer>
           <FieldName>Email</FieldName>
           <MainInput type="email" placeholder="annarybachok@gmail.com" />
-        </FieldContainer></NameEmailInput>
+        </FieldContainer>
+      </NameEmailInput>
       <SecondaryInputContainer>
         <FieldContainer>
           <FieldName>Height</FieldName>
@@ -51,11 +52,18 @@ const UserForm = () => {
         </FieldContainer>
         <FieldContainer>
           <FieldName>Desired Weight</FieldName>
-          <SecondaryInput className='desired-weight' type="number" placeholder="0" />
+          <SecondaryInput
+            className="desired-weight"
+            type="number"
+            placeholder="0"
+          />
         </FieldContainer>
         <FieldContainer>
           <FieldName>Date of birth</FieldName>
-          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+          />
         </FieldContainer>
       </SecondaryInputContainer>
 
@@ -65,19 +73,27 @@ const UserForm = () => {
           <BloodContainer>
             <RadioContainer>
               <Radio type="radio" id="blood_1" name="blood" value={1} />
-              <BloodSexContainerLabel htmlFor="blood_1">1</BloodSexContainerLabel>
+              <BloodSexContainerLabel htmlFor="blood_1">
+                1
+              </BloodSexContainerLabel>
             </RadioContainer>
             <RadioContainer>
               <Radio type="radio" id="blood_2" name="blood" value={2} />
-              <BloodSexContainerLabel htmlFor="blood_2">2</BloodSexContainerLabel>
+              <BloodSexContainerLabel htmlFor="blood_2">
+                2
+              </BloodSexContainerLabel>
             </RadioContainer>
             <RadioContainer>
               <Radio type="radio" id="blood_3" name="blood" value={3} />
-              <BloodSexContainerLabel htmlFor="blood_3">3</BloodSexContainerLabel>
+              <BloodSexContainerLabel htmlFor="blood_3">
+                3
+              </BloodSexContainerLabel>
             </RadioContainer>
             <RadioContainer>
               <Radio type="radio" id="blood_4" name="blood" value={4} />
-              <BloodSexContainerLabel htmlFor="blood_4">4</BloodSexContainerLabel>
+              <BloodSexContainerLabel htmlFor="blood_4">
+                4
+              </BloodSexContainerLabel>
             </RadioContainer>
           </BloodContainer>
         </div>
@@ -85,7 +101,9 @@ const UserForm = () => {
         <SexContainer>
           <RadioContainer>
             <Radio type="radio" id="sex_male" name="sex" value="male" />
-            <BloodSexContainerLabel htmlFor="sex_male">Male</BloodSexContainerLabel>
+            <BloodSexContainerLabel htmlFor="sex_male">
+              Male
+            </BloodSexContainerLabel>
           </RadioContainer>
           <RadioContainer>
             <Radio type="radio" id="sex_female" name="sex" value="female" />
@@ -129,9 +147,7 @@ const UserForm = () => {
         </RadioContainer>
       </ActivityContainer>
 
-      <SaveButton className='save-button'>Save</SaveButton>
-
-
+      <SaveButton className="save-button">Save</SaveButton>
     </Container>
   );
 };
