@@ -11,11 +11,11 @@ export const Section = styled.section`
     background-position: right bottom;
     /* background-position-y: calc(100% + 50px); */
     background-size: contain;
-    // background-image: check notes;
+    // background-image: to be added;
 
     @media only screen and (min-resolution: 192dpi),
       only screen and (min-resolution: 2dppx) {
-      // background-image: check notes@2;
+      // background-image: to be added@2;
     }
   }
 `;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
+// import { register } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
@@ -12,6 +12,8 @@ import {
   SVG,
   ShowPassButton,
 } from './SignUpForm.styled';
+  // StyledAuthButton,
+// import Button from 'components/Button';
 import AuthButton from '../SignAuthButton';
 // import toast from 'react-hot-toast';
 
@@ -34,6 +36,7 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
