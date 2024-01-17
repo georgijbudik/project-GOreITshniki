@@ -1,16 +1,23 @@
+import { useState } from 'react';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
+// import { register } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
+  ContainerShowButton,
   Error,
   Forma,
   Input,
-  StyledAuthButton,
+  SVG,
+  ShowPassButton,
 } from './SignUpForm.styled';
-import Button from 'components/Button';
+// StyledAuthButton,
+// import Button from 'components/Button';
 import AuthButton from '../SignAuthButton';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../redux/auth/authOperations';
+// import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required('Name is required'),
@@ -31,11 +38,30 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
-    //dispatch(register({ name, email, password }));
+    dispatch(register({ name, email, password }));
+    // const promise = dispatch(register({ name, email, password }));
+    // toast.promise(
+    //   promise,
+    //   {
+    //     success: `${name}, you were successfully registrated`,
+    //     error: 'Something went wrong. Try again...',
+    //     loading: 'Registration...',
+    //   },
+    //   {
+    //     duration: 2000,
+    //     icon: '🏋️‍♀️',
+    //     style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   }
+    // );
     resetForm();
   };
 
@@ -58,15 +84,42 @@ const SignUpForm = () => {
               required
             />
             <Error name="email" component="div" />
-            <Input
-              type="password"
-              name="password"
-              placeholder="Password"
-              minLength="6"
-            />
+            <ContainerShowButton>
+              <ShowPassButton
+                type="button"
+                onClick={() => setShowPassword(showPassword => !showPassword)}
+              >
+                {showPassword ? (
+                  <SVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-visible'
+                      }
+                    ></use>
+                  </SVG>
+                ) : (
+                  <SVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-unvisible'
+                      }
+                    ></use>
+                  </SVG>
+                )}
+              </ShowPassButton>
+
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                minLength="6"
+              />
+            </ContainerShowButton>
             <Error name="password" component="div" />
           </ContainerInput>
-          <AuthButton type="submit">Sign Up</AuthButton>
+          <AuthButton>Sign Up</AuthButton>
         </Forma>
       </Formik>
     </>

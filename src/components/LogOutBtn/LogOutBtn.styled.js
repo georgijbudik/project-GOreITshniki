@@ -9,6 +9,14 @@ export const StyledLogOutBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media screen and (min-width: 1440px) {
+    &:hover {
+      & > span {
+        color: var(--accent-color);
+      }
+    }
+  }
 `;
 
 export const StyledLogOutBtnText = styled.span`
@@ -21,12 +29,6 @@ export const StyledLogOutBtnText = styled.span`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 150%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    &:hover {
-      color: var(--accent-color);
-    }
   }
 `;
 

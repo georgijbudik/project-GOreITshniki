@@ -1,10 +1,3 @@
-// BASE_URL=http://localhost:3001
-// /api/users
-// /register
-// /login
-// /current
-// /logout
-
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import toast from 'react-hot-toast';
