@@ -6,7 +6,7 @@ import {
   BodyLine,
 } from './index';
 import { useNavigate } from 'react-router-dom';
-import { TrackerCalories, TrackerVideo } from './Tracker';
+import { TrackerCalories, TrackerVideo } from '../../components/Tracker/Tracker';
 
 import Button from 'components/Button';
 
@@ -16,9 +16,9 @@ const Welcome = () => {
   return (
     <WelcomePageContainer>
       <HeroText>
-        Transforming your
+        Transforming your{' '}
         <BodyElementSpan>
-          body
+          body{' '}
           <BodyLine width="98" height="35" stroke="#E6533C">
             <use
               xlinkHref={
@@ -26,7 +26,7 @@ const Welcome = () => {
               }
             ></use>
           </BodyLine>
-        </BodyElementSpan>
+        </BodyElementSpan>{' '}
         shape with Power Pulse
       </HeroText>
       <ButtonContainer>
