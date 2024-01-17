@@ -1,15 +1,15 @@
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
+// import { register } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
   Error,
   Forma,
   Input,
-  StyledAuthButton,
+  // StyledAuthButton,
 } from './SignUpForm.styled';
-import Button from 'components/Button';
+// import Button from 'components/Button';
 import AuthButton from '../SignAuthButton';
 
 const schema = yup.object().shape({
@@ -31,10 +31,10 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    const { name, email, password } = values;
+    // const { name, email, password } = values;
     //dispatch(register({ name, email, password }));
     resetForm();
   };
