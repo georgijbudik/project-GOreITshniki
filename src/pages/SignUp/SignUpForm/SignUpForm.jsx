@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../redux/auth/authOperations';
 import { Formik } from 'formik';
-// import { useDispatch } from 'react-redux';
-// import { register } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
   ContainerInput,
@@ -12,12 +12,7 @@ import {
   ShowPassSVG,
   ShowPassButton,
 } from './SignUpForm.styled';
-// StyledAuthButton,
-// import Button from 'components/Button';
 import AuthButton from './AuthButton';
-import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/authOperations';
-// import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required('Name is required'),
@@ -44,24 +39,6 @@ const SignUpForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
     dispatch(register({ name, email, password }));
-    // const promise = dispatch(register({ name, email, password }));
-    // toast.promise(
-    //   promise,
-    //   {
-    //     success: `${name}, you were successfully registrated`,
-    //     error: 'Something went wrong. Try again...',
-    //     loading: 'Registration...',
-    //   },
-    //   {
-    //     duration: 2000,
-    //     icon: '🏋️‍♀️',
-    //     style: {
-    //       borderRadius: '10px',
-    //       background: '#333',
-    //       color: '#fff',
-    //     },
-    //   }
-    // );
     resetForm();
   };
 
