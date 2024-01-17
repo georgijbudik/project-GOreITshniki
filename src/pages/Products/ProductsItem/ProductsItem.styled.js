@@ -9,6 +9,15 @@ export const Container = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
+
+  @media screen and (min-width: 375px) {
+    min-width: 0x;
+    width: 335px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 405px;
+  }
 `;
 
 export const DietContainer = styled.div`

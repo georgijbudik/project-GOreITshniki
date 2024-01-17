@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   @media screen and (min-width: 1440px) {
+    height: calc(100vh - 90px);
     background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 70.79%);
     background-image: ${() =>
       `url(${
         process.env.PUBLIC_URL + '/images/desktop/lg-products-image.jpg'
       })`};
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: right;
     background-size: auto 100%;
   }
 
@@ -21,7 +22,6 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledSection = styled.section`
-  box-sizing: border-box;
   padding: 40px 0 80px 0;
   color: var(--main-text-color);
 
@@ -32,5 +32,12 @@ export const StyledSection = styled.section`
   @media screen and (min-width: 1440px) {
     padding: 0 96px;
     padding: 72px 0 81px 0;
+  }
+`;
+
+export const StyledContainer = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: space-between;
   }
 `;

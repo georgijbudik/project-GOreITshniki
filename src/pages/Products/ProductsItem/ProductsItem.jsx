@@ -37,7 +37,7 @@ const ProductsItem = ({ product }) => {
 
   return (
     <li>
-      <Container>
+    <Container>
         <TopContainer>
           <DietContainer>
             <DietText>DIET</DietText>
@@ -90,7 +90,7 @@ const ProductsItem = ({ product }) => {
           </BottomText>
         </BottomContainer>
       </Container>
-    </li>
+      </li>
   );
 };
 

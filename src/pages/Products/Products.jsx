@@ -15,7 +15,7 @@ import {
 } from '../../redux/products/productSlice';
 // import { fetchCategories, fetchProducts} from '../../redux/products/productOperations';
 
-import { StyledWrapper, StyledSection } from './Products.styled';
+import { StyledWrapper, StyledSection, StyledContainer } from './Products.styled';
 
 const Products = () => {
   // const dispatch = useDispatch();
@@ -39,9 +39,11 @@ const Products = () => {
       {isProductToAdd && <AddProductForm />}
       <StyledWrapper>
         <StyledSection>
-          <TitlePage>Products</TitlePage>
-        <ProductsFilters />
-        <ProductsList />
+          <StyledContainer>
+            <TitlePage>Products</TitlePage>
+            <ProductsFilters />
+          </StyledContainer>
+          <ProductsList />
         </StyledSection>
       </StyledWrapper>
     </main>
