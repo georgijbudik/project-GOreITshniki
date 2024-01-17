@@ -12,9 +12,11 @@ import {
   SVG,
   ShowPassButton,
 } from './SignUpForm.styled';
-  // StyledAuthButton,
+// StyledAuthButton,
 // import Button from 'components/Button';
 import AuthButton from '../SignAuthButton';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../redux/auth/authOperations';
 // import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
@@ -36,7 +38,6 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
@@ -83,34 +84,42 @@ const SignUpForm = () => {
               required
             />
             <Error name="email" component="div" />
-        <ContainerShowButton> 
-        <ShowPassButton type="button" onClick={() =>
-                                            setShowPassword(showPassword => !showPassword)
-                                          }>{showPassword ?         <SVG  width="24" height="24">
-                                          <use xlinkHref={
-                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
-                                              }></use>
-                                        </SVG>
-                                                         : 
-                                                                                    <SVG  width="24" height="24">
-                                          <use xlinkHref={
-                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
-                                              }></use>
-                                        </SVG>
-                                          }</ShowPassButton>
-                          
-                                                <Input
-             type={showPassword ? 'text' : 'password'}
-              name="password"
-              placeholder="Password"
-              minLength="6"
-            />
-              </ContainerShowButton>
+            <ContainerShowButton>
+              <ShowPassButton
+                type="button"
+                onClick={() => setShowPassword(showPassword => !showPassword)}
+              >
+                {showPassword ? (
+                  <SVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-visible'
+                      }
+                    ></use>
+                  </SVG>
+                ) : (
+                  <SVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-unvisible'
+                      }
+                    ></use>
+                  </SVG>
+                )}
+              </ShowPassButton>
+
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                minLength="6"
+              />
+            </ContainerShowButton>
             <Error name="password" component="div" />
-            
-           
           </ContainerInput>
-          <AuthButton >Sign Up</AuthButton>
+          <AuthButton>Sign Up</AuthButton>
         </Forma>
       </Formik>
     </>
