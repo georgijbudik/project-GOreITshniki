@@ -6,7 +6,7 @@ export const StyledAddExerciseFormWrapper = styled.div`
   @media screen and (min-width: 768px) {
     padding: 48px 32px;
     display: flex;
-    height: 456px;
+    /* height: 456px; */
     gap: 16px;
   }
 
@@ -45,7 +45,9 @@ export const StyledAddExerciseFormTimerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-bottom: 40px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const StyledAddExerciseFormTimer = styled.div`
@@ -129,6 +131,10 @@ export const StyledAddExerciseFormInfoItem = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
 
   & > span {
     color: rgba(239, 237, 232, 0.4);

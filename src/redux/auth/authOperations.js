@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -20,8 +21,24 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/api/users/register ', credentials);
+      toast.success(`Congratulation! You were successfully registrated`, {
+        duration: 2000,
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       return res.data;
     } catch (error) {
+      toast.error(`Something went wrong. Try again...`, {
+        duration: 3000,
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -36,12 +53,25 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('api/users/login', credentials);
       setAuthHeader(res.data.token);
-      // toast.success(`You Are Welcome, ${res.data.user.email}`, {
-      //   duration: 2000,
-      //   position: 'top-right',
-      // });
+      // console.log('first', res.data);
+      toast.success(`You were successfully login`, {
+        duration: 2000,
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       return res.data;
     } catch (error) {
+      toast.error(`Something went wrong. ${error.message}. Try again...`, {
+        duration: 3000,
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,7 +81,23 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await axios.post('api/users/logout');
     clearAuthHeader();
+    toast.success(`You were successfully logout`, {
+      duration: 2000,
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
   } catch (error) {
+    toast.error(`Something went wrong. Try another time..`, {
+      duration: 3000,
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
     return thunkAPI.rejectWithValue(error.message);
   }
 });

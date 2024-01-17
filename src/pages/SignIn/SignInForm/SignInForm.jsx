@@ -13,7 +13,6 @@ import {
 } from '../../SignUp/SignUpForm/SignUpForm.styled';
 import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
 import { useState } from 'react';
-// import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
   email: yup
@@ -38,28 +37,6 @@ const SignInForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     const { email, password } = values;
     dispatch(logIn({ email, password }));
-    // const promise = dispatch(logIn({ email, password }));
-    // toast.promise(
-    //   promise,
-    //   {
-    //     success: `${email}, you were successfully login`,
-    //     error: 'Something went wrong. Try again...',
-    //     loading: 'Logining...',
-    //   },
-    //   {
-    //     duration: 2000,
-    //     icon: '🏋️‍♀️',
-    //     style: {
-    //       borderRadius: '10px',
-    //       background: '#333',
-    //       color: '#fff',
-    //     },
-    //   }
-    // );
-    // toast.success(`You are registered 🤗`, {
-    //   duration: 3000,
-    //   position: 'top-right',
-    // });
     resetForm();
   };
 
@@ -80,29 +57,39 @@ const SignInForm = () => {
               placeholder="Email"
             />
             <Error name="email" component="div" />
-            <ContainerShowButton> 
-        <ShowPassButton type="button" onClick={() =>
-                                            setShowPassword(showPassword => !showPassword)
-                                          }>{showPassword ?         <ShowPassSVG  width="24" height="24">
-                                          <use xlinkHref={
-                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
-                                              }></use>
-                                        </ShowPassSVG>
-                                                         : 
-                                                                                    <ShowPassSVG  width="24" height="24">
-                                          <use xlinkHref={
-                                                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
-                                              }></use>
-                                        </ShowPassSVG>
-                                          }</ShowPassButton>
-                          
-                                                <Input
-             type={showPassword ? 'text' : 'password'}
-              name="password"
-              placeholder="Password"
-              minLength="6"
-            />
-              </ContainerShowButton>
+            <ContainerShowButton>
+              <ShowPassButton
+                type="button"
+                onClick={() => setShowPassword(showPassword => !showPassword)}
+              >
+                {showPassword ? (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-visible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                ) : (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-unvisible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                )}
+              </ShowPassButton>
+
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+                minLength="6"
+              />
+            </ContainerShowButton>
             <Error name="password" component="div" />
           </ContainerInput>
           <AuthButton type="submit">Sign In</AuthButton>

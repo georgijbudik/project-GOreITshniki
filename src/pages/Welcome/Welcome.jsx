@@ -7,18 +7,20 @@ import {
 } from './index';
 import { useNavigate } from 'react-router-dom';
 import { TrackerCalories, TrackerVideo } from '../../components/Tracker/Tracker';
+import { useTranslation } from 'react-i18next';
 
 import Button from 'components/Button';
 
 const Welcome = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     <WelcomePageContainer>
       <HeroText>
-        Transforming your{' '}
+        Transforming your
         <BodyElementSpan>
-          body{' '}
+          body
           <BodyLine width="98" height="35" stroke="#E6533C">
             <use
               xlinkHref={
@@ -26,13 +28,19 @@ const Welcome = () => {
               }
             ></use>
           </BodyLine>
-        </BodyElementSpan>{' '}
+        </BodyElementSpan>
         shape with Power Pulse
       </HeroText>
       <ButtonContainer>
         <Button onClick={() => navigate('/signup')}>Sign Up </Button>
         <Button secondary onClick={() => navigate('/signin')}>
           Sign In
+      <ButtonContainer>
+        <Button onClick={() => navigate('/signup')}>
+          {t('welcome.sign_up')}
+        </Button>
+        <Button secondary="black" onClick={() => navigate('/signin')}>
+          {t('welcome.sign_in')}
         </Button>
       </ButtonContainer>
       <TrackerVideo />
