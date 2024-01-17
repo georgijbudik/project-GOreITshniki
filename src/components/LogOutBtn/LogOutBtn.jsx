@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import toast from 'react-hot-toast';
-
 import {
   StyledLogOutBtn,
   StyledLogOutBtnIcon,
