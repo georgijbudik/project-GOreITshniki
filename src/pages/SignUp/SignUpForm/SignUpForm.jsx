@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../../redux/auth/authOperations';
@@ -11,8 +12,6 @@ import {
   ShowPassButton,
 } from './SignUpForm.styled';
 import AuthButton from '../SignAuthButton';
-import { useState } from 'react';
-import { StyledLogOutBtnIcon } from 'components/LogOutBtn/LogOutBtn.styled';
 // import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
@@ -81,7 +80,7 @@ const SignUpForm = () => {
             />
             <Error name="email" component="div" />
         <ContainerShowButton> 
-        <ShowPassButton id="pass" type="button" onClick={() =>
+        <ShowPassButton type="button" onClick={() =>
                                             setShowPassword(showPassword => !showPassword)
                                           }>{showPassword ?         <svg  width="24" height="24">
                                           <use xlinkHref={
