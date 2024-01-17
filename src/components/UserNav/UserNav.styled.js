@@ -127,5 +127,10 @@ export const StyledUserNavButton = styled(StyledButton)`
   font-size: 16px;
   line-height: 150%;
 
+  &:hover:not(:disabled) {
+    background-color: ${({ $secondary }) =>
+      $secondary ? 'transparent' : 'var(--accent-color)'};
+  }
+
   border: ${({ $active }) => $active && '1px solid var(--main-text-color)'};
 `;

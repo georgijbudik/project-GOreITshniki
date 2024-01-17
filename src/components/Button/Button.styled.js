@@ -11,10 +11,13 @@ export const StyledButton = styled.button`
   padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
 
   border-radius: 12px;
+  border: none;
   background-color: ${({ $secondary }) =>
     $secondary ? 'transparent' : 'var(--accent-color)'};
   border: ${({ $secondary }) =>
-    $secondary ? '1px solid rgba(239, 237, 232, 0.30);' : 'none'};
+    $secondary
+      ? '1px solid rgba(239, 237, 232, 0.30);'
+      : '1px solid var(--accent-color)'};
 
   font-size: 16px;
   font-weight: 500;
@@ -28,7 +31,9 @@ export const StyledButton = styled.button`
       $secondary ? 'transparent' : 'var(--icon-color)'};
 
     border: ${({ $secondary }) =>
-      $secondary ? `1px solid var(--accent-color)` : 'none'};
+      $secondary
+        ? `1px solid var(--accent-color)`
+        : '1px solid var(--accent-color)'};
   }
 
   &:disabled {
@@ -40,7 +45,9 @@ export const StyledButton = styled.button`
         $secondary ? 'transparent' : 'var(--accent-color)'};
 
       border: ${({ $secondary }) =>
-        $secondary ? '1px solid rgba(239, 237, 232, 0.30);' : 'none'};
+        $secondary
+          ? '1px solid rgba(239, 237, 232, 0.30);'
+          : '1px solid var(--accent-color)'};
     }
   }
 
