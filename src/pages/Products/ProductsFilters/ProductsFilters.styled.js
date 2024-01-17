@@ -1,82 +1,124 @@
 import styled from 'styled-components';
 
-export const SearchInput = styled.input`
- padding: 14px;
-  min-width: 240px;
+export const StyledForm = styled.form`
+  margin-top: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 0;
+  }
+`;
+
+export const StyledSearchContainer = styled.div`
   box-sizing: border-box;
-  border-radius: 12px;
-  border: none;
-  background: transparent;
-  color: var(--main-text-color);
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.3;
-  outline: none;
-`;
-
-export const SearchBtn = styled.button`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  min-width: 26px;
-  min-height: 46px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
-export const SearchContainer = styled.div`
- margin-top: 40px;
- padding-right: 6px;
+  padding-right: 6px;
   min-width: 300px;
-  min-height: 46px;
+  height: 46px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
+
+  @media screen and (min-width: 768px) {
+    min-width: 0;
+    width: 236px;
+    height: 52px;
+  }
 `;
 
-export const SearchBtns = styled.div`
+export const StyledSearchInput = styled.input`
+  box-sizing: border-box;
+  padding: 14px;
+  min-width: 240px;
+  height: 46px;
+  border: none;
+  background: transparent;
+  color: var(--main-text-color);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+
+  @media screen and (min-width: 768px) {
+    min-width: 0;
+    width: 164px;
+    height: 52px;
+  }
+`;
+
+export const StyledSearchBtn = styled.button`
+  margin: 0;
+  padding: 0;
+  width: 26px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    height: 52px;
+  }
+`;
+
+export const StyledBtnsContainer = styled.div`
   display: flex;
 `;
 
-export const SelectContainer = styled.div`
+export const StyledSelectContainer = styled.div`
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    gap: 16px;
+  }
 `;
 
-export const CategorySelect = styled.select`
+export const StyledCategorySelect = styled.select`
   padding: 14px;
- width: 146px;
-  min-height: 46px;
-  box-sizing: border-box;
+  width: 146px;
+  height: 46px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.5;
   outline: none;
+
+  @media screen and (min-width: 768px) {
+    width: 192px;
+    height: 52px;
+  }
 `;
 
-export const RecommendSelect = styled.select`
+export const StyledRecommendSelect = styled.select`
   padding: 14px;
- width: 173px;
-  min-height: 46px;
-  box-sizing: border-box;
+  width: 173px;
+  height: 46px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.5;
   outline: none;
+
+  @media screen and (min-width: 768px) {
+    width: 204px;
+    height: 52px;
+  }
 `;
