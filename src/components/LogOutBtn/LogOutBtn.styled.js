@@ -20,7 +20,10 @@ export const StyledLogOutBtn = styled.button`
 `;
 
 export const StyledLogOutBtnText = styled.span`
-  color: ${({ theme }) => {
+  color: ${({ theme, $white }) => {
+    if ($white) {
+      return 'var(--main-text-color)';
+    }
     return theme.palette.text.primary;
   }};
   font-size: 14px;

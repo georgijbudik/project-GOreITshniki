@@ -17,11 +17,7 @@ export const StyledButton = styled.button`
 
   border: ${({ $secondary, theme }) => {
     if ($secondary) {
-      if (theme.palette.mode === 'light') {
-        return '1px solid rgba(39, 37, 32, 0.6)';
-      } else {
-        return '1px solid rgba(239, 237, 232, 0.30)';
-      }
+      return `1px solid ${theme.palette.border.primary}`;
     } else {
       return '1px solid var(--accent-color)';
     }
@@ -41,7 +37,7 @@ export const StyledButton = styled.button`
     border: ${({ $secondary }) =>
       $secondary
         ? `1px solid var(--accent-color)`
-        : '1px solid var(--accent-color)'};
+        : '1px solid var(--icon-color)'};
   }
 
   &:disabled {
