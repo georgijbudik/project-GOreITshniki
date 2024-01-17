@@ -9,6 +9,7 @@ import {
   Error,
   Forma,
   Input,
+  SVG,
   ShowPassButton,
 } from './SignUpForm.styled';
 import AuthButton from '../SignAuthButton';
@@ -82,17 +83,17 @@ const SignUpForm = () => {
         <ContainerShowButton> 
         <ShowPassButton type="button" onClick={() =>
                                             setShowPassword(showPassword => !showPassword)
-                                          }>{showPassword ?         <svg  width="24" height="24">
+                                          }>{showPassword ?         <SVG  width="24" height="24">
                                           <use xlinkHref={
                                                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-visible'
                                               }></use>
-                                        </svg>
+                                        </SVG>
                                                          : 
-                                                                                    <svg  width="24" height="24">
+                                                                                    <SVG  width="24" height="24">
                                           <use xlinkHref={
                                                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-unvisible'
                                               }></use>
-                                        </svg>
+                                        </SVG>
                                           }</ShowPassButton>
                           
                                                 <Input

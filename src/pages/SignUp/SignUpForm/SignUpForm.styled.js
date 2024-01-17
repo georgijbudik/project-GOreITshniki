@@ -210,3 +210,9 @@ transform: translate(-50%, -50%);
 background-color: transparent;
 border: none
 `;
+
+export const SVG = styled.svg`
+&:hover{
+  stroke:red;
+}
+`;
