@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { setLanguage } from '../../redux/global/globalSlice';
+import { setLanguage, setTheme } from '../../redux/global/globalSlice';
 import { logOut } from '../../redux/auth/authOperations';
 
 // import Avatar from '@mui/material/Avatar';
@@ -10,6 +10,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import ListItemIcon from '@mui/material/ListItemIcon';
+import ContrastIcon from '@mui/icons-material/Contrast';
 import { Logout, Settings } from '@mui/icons-material';
 
 import {
@@ -25,8 +26,10 @@ const UserSettings = () => {
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElLanguage, setAnchorElLanguage] = useState(null);
+  const [anchorElTheme, setAnchorElTheme] = useState(null);
 
   const handleOpenUserMenu = event => {
+    document.activeElement.blur();
     setAnchorElUser(event.currentTarget);
   };
 
@@ -42,10 +45,24 @@ const UserSettings = () => {
     setAnchorElLanguage(null);
   };
 
+  const handleOpenThemeMenu = event => {
+    setAnchorElTheme(event.currentTarget);
+  };
+
+  const handleCloseThemeMenu = () => {
+    setAnchorElTheme(null);
+  };
+
   const handleChangeLanguage = language => {
     i18n.changeLanguage(language);
     dispatch(setLanguage(language));
     handleCloseLanguageMenu();
+    handleCloseUserMenu();
+  };
+
+  const handleChangeTheme = theme => {
+    dispatch(setTheme(theme));
+    handleCloseThemeMenu();
     handleCloseUserMenu();
   };
 
@@ -94,6 +111,35 @@ const UserSettings = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
+        <MenuItem onClick={handleOpenThemeMenu}>
+          <ListItemIcon>
+            <ContrastIcon fontSize="small" />
+          </ListItemIcon>
+          {t('user_settings.themes.theme')}
+        </MenuItem>
+        <Menu
+          id="menu-theme"
+          anchorEl={anchorElTheme}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={Boolean(anchorElTheme)}
+          onClose={handleCloseThemeMenu}
+        >
+          <MenuItem onClick={() => handleChangeTheme('dark')}>
+            {t('user_settings.themes.dark')}
+          </MenuItem>
+          <MenuItem onClick={() => handleChangeTheme('light')}>
+            {t('user_settings.themes.light')}
+          </MenuItem>
+        </Menu>
+
         <MenuItem onClick={handleOpenLanguageMenu}>
           <ListItemIcon>
             <Settings fontSize="small" />
@@ -125,6 +171,7 @@ const UserSettings = () => {
             {t('user_settings.languages.spanish')}
           </MenuItem>
         </Menu>
+
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
