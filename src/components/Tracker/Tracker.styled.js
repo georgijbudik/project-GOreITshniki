@@ -18,6 +18,7 @@ color: #efede8;
 `
 
 export const TrackerVideoContainer = styled.div`
+z-index:999;
 width: 146px;
 height: 66px;
 flex-shrink: 0;

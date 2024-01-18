@@ -1,7 +1,7 @@
 import { StyledWelcomeImageWrapper } from './WelcomeImage.styled';
 
 const WelcomeImage = () => {
-  return <StyledWelcomeImageWrapper />;
+  return <StyledWelcomeImageWrapper/>;
 };
 
 export default WelcomeImage;
