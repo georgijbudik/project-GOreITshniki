@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { register } from '../../../redux/auth/authOperations';
+import { register } from '../../../../redux/auth/authOperations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import {
@@ -14,7 +14,7 @@ import {
   ShowPassSVG,
   ShowPassButton,
 } from './SignUpForm.styled';
-import AuthButton from './AuthButton';
+import AuthButton from '../AuthButton/AuthButton';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required('Name is required'),

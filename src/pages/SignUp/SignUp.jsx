@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import SignUpForm from './SignUpForm';
+import SignUpForm from './SignUpForm/SignUpForm';
 import {
   Heading,
   Info,
   Container,
   InfoLink,
   StyledLink,
-} from './SignUpForm/SignUpForm.styled';
+} from './SignUpForm/SignUpForm/SignUpForm.styled';
 import MainImage from './SignUpForm/MainImage';
-import { TrackerCalories, TrackerVideo } from 'components/Tracker/Tracker';
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -23,9 +22,7 @@ const SignUp = () => {
         {t('sign_up.have_account')}{' '}
         <StyledLink to="/signin">{t('sign_up.sign_in_link')}</StyledLink>
       </InfoLink>
-      <TrackerVideo/>
-     <TrackerCalories/>
-     </Container>
+    </Container>
   );
 };
 

@@ -6,13 +6,14 @@ import {
   BodyLine,
 } from './index';
 import { useNavigate } from 'react-router-dom';
-import {
-  TrackerCalories,
-  TrackerVideo,
-} from '../../components/Tracker/Tracker';
+// import {
+//   TrackerCalories,
+//   TrackerVideo,
+// } from '../../components/Tracker/Tracker';
 import { useTranslation } from 'react-i18next';
 
 import Button from 'components/Button';
+import MainImage from 'pages/SignUp/SignUpForm/MainImage';
 
 const Welcome = () => {
   const { t } = useTranslation();
@@ -20,6 +21,7 @@ const Welcome = () => {
 
   return (
     <WelcomePageContainer>
+      <MainImage />
       <HeroText>
         {t('welcome.main_text.part1')}{' '}
         <BodyElementSpan>
@@ -42,8 +44,6 @@ const Welcome = () => {
           {t('welcome.sign_in')}
         </Button>
       </ButtonContainer>
-      <TrackerVideo />
-      <TrackerCalories />
     </WelcomePageContainer>
   );
 };
