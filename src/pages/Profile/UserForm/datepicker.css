@@ -10,6 +10,7 @@
   width: 161px;
 
   @media screen and (min-width: 768px) {
+    margin-top: 8px;
     width: 187px;
   }
 
@@ -82,4 +83,9 @@
 
 .react-datepicker__day--keyboard-selected {
   background-color: unset;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
 }
