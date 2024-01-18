@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import SignUpForm from './SignUpForm';
 import {
   Heading,
@@ -8,16 +9,16 @@ import {
 } from './SignUpForm/SignUpForm.styled';
 
 const SignUp = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
-      <Heading>Sign Up</Heading>
-      <Info>
-        Thank you for your interest in our platform. To complete the
-        registration process, please provide us with the following information.
-      </Info>
+      <Heading>{t('sign_up.title')}</Heading>
+      <Info>{t('sign_up.description')}</Info>
       <SignUpForm />
       <InfoLink>
-        Already have an account? <StyledLink to="/signin">Sign In</StyledLink>
+        {t('sign_up.have_account')}{' '}
+        <StyledLink to="/signin">{t('sign_up.sign_in_link')}</StyledLink>
       </InfoLink>
     </Container>
   );

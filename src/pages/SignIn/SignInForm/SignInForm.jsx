@@ -1,5 +1,7 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { logIn } from '../../../redux/auth/authOperations';
 import * as yup from 'yup';
 import {
@@ -31,6 +33,7 @@ const initialValues = {
 };
 
 const SignInForm = () => {
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
@@ -54,7 +57,7 @@ const SignInForm = () => {
               name="email"
               pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               required
-              placeholder="Email"
+              placeholder={t('sign_in.email')}
             />
             <Error name="email" component="div" />
             <ContainerShowButton>
@@ -86,13 +89,13 @@ const SignInForm = () => {
               <Input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                placeholder="Password"
+                placeholder={t('sign_in.password')}
                 minLength="6"
               />
             </ContainerShowButton>
             <Error name="password" component="div" />
           </ContainerInput>
-          <AuthButton type="submit">Sign In</AuthButton>
+          <AuthButton type="submit">{t('sign_in.button')}</AuthButton>
         </Forma>
       </Formik>
     </>

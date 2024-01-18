@@ -25,7 +25,7 @@ const globalPersistConfig = {
   key: 'global',
   version: 1,
   storage,
-  whitelist: ['theme'],
+  whitelist: ['theme', 'language'],
 };
 
 const store = configureStore({
