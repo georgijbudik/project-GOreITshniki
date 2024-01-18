@@ -1,6 +1,5 @@
-import React from 'react';
-// import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TitlePage from 'components/TitlePage';
 import Loader from 'components/Loader';
@@ -9,24 +8,44 @@ import ProductsList from './ProductsList';
 import AddProductForm from './AddProductForm';
 import AddProductSuccess from './AddProductSuccess';
 import {
+  selectCategoryFromFilter,
   selectIsLoading,
   selectIsProductSuccesAdded,
   selectProductToAdd,
+  selectRecommendationFromFilter,
+  selectSearchFromFilter,
 } from '../../redux/products/productSlice';
-// import { fetchCategories, fetchProducts} from '../../redux/products/productOperations';
+import {
+  fetchCategories,
+  fetchProducts,
+} from '../../redux/products/productOperations';
 
-import { StyledWrapper, StyledSection, StyledContainer } from './Products.styled';
+import {
+  StyledWrapper,
+  StyledSection,
+  StyledContainer,
+} from './Products.styled';
 
 const Products = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchCategories());
-  // }, [dispatch]);
+  const search = useSelector(selectSearchFromFilter);
+  const category = useSelector(selectCategoryFromFilter);
+  const recommendation = useSelector(selectRecommendationFromFilter);
 
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      fetchProducts({
+        search,
+        category,
+        recommendation,
+      })
+    );
+  }, [dispatch, search, category, recommendation]);
 
   const isProductToAdd = useSelector(selectProductToAdd);
   const isProductSuccesAdded = useSelector(selectIsProductSuccesAdded);
