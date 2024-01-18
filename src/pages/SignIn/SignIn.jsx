@@ -1,19 +1,27 @@
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import SignInForm from './SignInForm';
-import { Heading, Info } from './SignInForm/SignInForm.styled';
+import {
+  Heading,
+  Info,
+  Container,
+  InfoLink,
+  StyledLink,
+} from '../SignUp/SignUpForm/SignUpForm.styled';
 
 const SignIn = () => {
+  const { t } = useTranslation();
+
   return (
-    <>
-      <Heading>Sign In</Heading>
-      <Info>
-        Welcome! Please enter your credentials to login to the platform:
-      </Info>
+    <Container>
+      <Heading>{t('sign_in.title')}</Heading>
+      <Info>{t('sign_in.description')}</Info>
       <SignInForm />
-      <Info>
-        Don’t have an account? <Link to="/signup">Sign Up</Link>
-      </Info>
-    </>
+      <InfoLink>
+        {t('sign_in.dont_have_account')}{' '}
+        <StyledLink to="/signup">{t('sign_in.sign_up_link')}</StyledLink>
+      </InfoLink>
+    </Container>
   );
 };
 

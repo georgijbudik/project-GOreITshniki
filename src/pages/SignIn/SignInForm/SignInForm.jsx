@@ -1,7 +1,20 @@
-import { Field, Formik, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { logIn } from '../../../redux/auth/authOperations';
+import * as yup from 'yup';
+import {
+  ContainerInput,
+  ContainerShowButton,
+  Error,
+  Forma,
+  Input,
+  ShowPassButton,
+  ShowPassSVG,
+} from '../../SignUp/SignUpForm/SignUpForm.styled';
+import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
+import { useState } from 'react';
 
 const schema = yup.object().shape({
   email: yup
@@ -20,10 +33,11 @@ const initialValues = {
 };
 
 const SignInForm = () => {
+  const { t } = useTranslation();
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { email, password } = values;
     dispatch(logIn({ email, password }));
     resetForm();
@@ -36,18 +50,53 @@ const SignInForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
-          <Form autoComplete="off">
-            <Field type="email" name="email" placeholder="Email" />
-            {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
-            <ErrorMessage name="email" component="div" />
+        <Forma autoComplete="off">
+          <ContainerInput>
+            <Input
+              type="email"
+              name="email"
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              required
+              placeholder={t('sign_in.email')}
+            />
+            <Error name="email" component="div" />
+            <ContainerShowButton>
+              <ShowPassButton
+                type="button"
+                onClick={() => setShowPassword(showPassword => !showPassword)}
+              >
+                {showPassword ? (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-visible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                ) : (
+                  <ShowPassSVG width="24" height="24">
+                    <use
+                      xlinkHref={
+                        process.env.PUBLIC_URL +
+                        '/images/sprite/sprite.svg#icon-unvisible'
+                      }
+                    ></use>
+                  </ShowPassSVG>
+                )}
+              </ShowPassButton>
 
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-
-            <button type="submit">Sign In</button>
-          </Form>
-        )}
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder={t('sign_in.password')}
+                minLength="6"
+              />
+            </ContainerShowButton>
+            <Error name="password" component="div" />
+          </ContainerInput>
+          <AuthButton type="submit">{t('sign_in.button')}</AuthButton>
+        </Forma>
       </Formik>
     </>
   );

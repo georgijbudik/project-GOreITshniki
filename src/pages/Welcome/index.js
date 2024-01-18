@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const HeroText = styled.h1`
   color: #efede8;
-  font-size: 38px;
+  font-size: 70px;
   font-weight: 500;
-  line-height: 40px; /* 105.263% */
+  line-height: calc(78/70)
   letter-spacing: 0.38px;
   margin: 0;
   padding-bottom: 40px;
@@ -19,3 +19,13 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: 14px;
 `;
+
+export const BodyLine = styled.svg`
+position: absolute;
+left: -9px;
+top: 6px;
+`;
+
+export const BodyElementSpan = styled.span`
+position: relative;
+`

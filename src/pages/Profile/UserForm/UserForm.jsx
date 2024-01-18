@@ -1,12 +1,13 @@
+
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-
 import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
 import { ProfileSettings } from "../UserCard/UserCard.styled";
+
 import {
   Container,
   FieldName,
@@ -22,7 +23,7 @@ import {
   RadioContainer,
   ActivityContainer,
   NameEmailInput,
-  SaveButton
+  SaveButton,
 } from './UserForm.styled';
 
 const initialValues = {
@@ -47,7 +48,6 @@ const schema = yup.object().shape({
 });
 
 const UserForm = () => {
-
   const [startDate, setStartDate] = useState(new Date());
 
   const dispatch = useDispatch();
@@ -138,10 +138,9 @@ const UserForm = () => {
               <label htmlFor="sex_female">
                 Female
               </label>
-            </RadioContainer>
-          </SexContainer>
-        </BloodSexContainer>
-        <ActivityContainer onChange={formik.handleChange} value={formik.values.activity}>
+        </SexContainer>
+      </BloodSexContainer>
+     <ActivityContainer onChange={formik.handleChange} value={formik.values.activity}>
           <RadioContainer>
             <input type="radio" id="no_activity" name="activity" value="1" />
             <label htmlFor="no_activity">
@@ -176,9 +175,9 @@ const UserForm = () => {
         </ActivityContainer>
 
         <SaveButton type="submit" className='save-button'>Save</SaveButton>
-      </Container>
-    </form>
-  )
-}
+    </Container>
+</form>
+  );
+};
 
 export default UserForm;

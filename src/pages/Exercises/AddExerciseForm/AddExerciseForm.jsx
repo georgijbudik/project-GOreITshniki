@@ -45,12 +45,12 @@ const renderTime = ({ remainingTime }) => {
   return <StyledAddExerciseFormTime>{timeString}</StyledAddExerciseFormTime>;
 };
 
-const AddExerciseForm = ({ exercise }) => {
+const AddExerciseForm = ({ onClose, exercise }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
 
   return (
-    <BasicModalWindow>
+    <BasicModalWindow onClose={onClose}>
       <StyledAddExerciseFormWrapper>
         <div>
           <StyledAddExerciseFormGifWrapper>
