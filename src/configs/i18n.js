@@ -15,6 +15,11 @@ i18n
       en: {
         translation: {
           user_settings: {
+            themes: {
+              theme: 'Theme',
+              dark: 'Dark',
+              light: 'Light',
+            },
             language: 'Language',
             languages: {
               english: 'English',
@@ -68,6 +73,11 @@ i18n
       uk: {
         translation: {
           user_settings: {
+            themes: {
+              theme: 'Тема',
+              dark: 'Темна',
+              light: 'Світла',
+            },
             language: 'Мова',
             languages: {
               english: 'Англійська',
@@ -121,7 +131,12 @@ i18n
       es: {
         translation: {
           user_settings: {
-            language: 'Language',
+            themes: {
+              theme: 'Tema',
+              dark: 'Oscuro',
+              light: 'Claro',
+            },
+            language: 'Idioma',
             languages: {
               english: 'Inglés',
               ukrainian: 'Ucraniano',

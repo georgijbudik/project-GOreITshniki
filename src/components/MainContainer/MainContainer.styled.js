@@ -7,7 +7,7 @@ export const Container = styled.div`
   padding: 0 20px;
 
   /*  Временно - убрать после добавления в main*/
-  background-color: #040404;
+  /* background-color: #040404; */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
