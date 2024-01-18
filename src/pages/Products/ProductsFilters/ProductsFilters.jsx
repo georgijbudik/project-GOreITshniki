@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-// import { selectCategories } from "../../../redux/products/productSlice";
+import { selectCategories } from '../../../redux/products/productSlice';
 import {
   StyledCategorySelect,
   StyledRecommendSelect,
@@ -16,47 +15,16 @@ import {
 } from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
-  // TEMPORARY
-  const data = [
-    'alcoholic drinks',
-    'berries',
-    'cereals',
-    'dairy',
-    'dried fruits',
-    'eggs',
-    'fish',
-    'flour',
-    'fruits',
-    'meat',
-    'mushrooms',
-    'nuts',
-    'oils and fats',
-    'poppy',
-    'sausage',
-    'seeds',
-    'sesame',
-    'soft drinks',
-    'vegetables and herbs',
-  ];
-  // TEMPORARY
-
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('categories');
-  const [recommendation, setRecommendetion] = useState('all');
+  const [category, setCategory] = useState('');
+  const [recommendation, setRecommendation] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts({search, category, recommendation}))
-  // }, [dispatch, search, category, recommendation]);
-
-  // const data = useSelector(selectCategories);
-  const categories = ['categories', ...data];
+  const categories = useSelector(selectCategories);
 
   const searchFromParams = searchParams.get('search') ?? '';
-  const categoryFromParams = searchParams.get('category') ?? 'categories';
-  const recommendationFromParams = searchParams.get('recommendation') ?? 'all';
+  const categoryFromParams = searchParams.get('category') ?? '';
+  const recommendationFromParams = searchParams.get('recommendation') ?? '';
 
   useEffect(() => {
     setSearch(searchFromParams);
@@ -67,7 +35,7 @@ const ProductsFilters = () => {
   }, [categoryFromParams]);
 
   useEffect(() => {
-    setRecommendetion(recommendationFromParams);
+    setRecommendation(recommendationFromParams);
   }, [recommendationFromParams]);
 
   const handleSearchOnChange = e => {
@@ -151,9 +119,9 @@ const ProductsFilters = () => {
             onChange={handleCategorySelect}
             value={category}
           >
-            {categories.map(category => (
-              <option key={category} value={category}>
-                {category[0].toUpperCase() + category.slice(1)}
+            {categories.map(item => (
+              <option key={item._id} value={item.category}>
+                {item.category[0].toUpperCase() + item.category.slice(1)}
               </option>
             ))}
           </StyledCategorySelect>

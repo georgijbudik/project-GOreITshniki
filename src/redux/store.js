@@ -32,7 +32,7 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     global: persistReducer(globalPersistConfig, globalReducer),
-    productReducer,
+    products:  productReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
