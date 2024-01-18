@@ -5,8 +5,7 @@ export const ChaptersWrapper = styled.ul`
   display: flex;
   padding-left: 0;
   gap: 28px;
-  //   margin-top: 20px;
-  margin-top: 0;
+  margin-top: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
