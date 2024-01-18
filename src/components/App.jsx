@@ -17,6 +17,8 @@ import BodyParts from 'pages/Exercises/BodyParts';
 import Muscles from 'pages/Exercises/Muscles';
 import Equipment from 'pages/Exercises/Equipment';
 
+import RestrictedRoute from 'routes/RestrictedRoute';
+
 export const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -33,8 +35,22 @@ export const App = () => {
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Welcome />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="signin" element={<SignIn />} />
+        <Route
+          path="signup"
+          element={
+            <RestrictedRoute>
+              <SignUp />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="signin"
+          element={
+            <RestrictedRoute>
+              <SignIn />
+            </RestrictedRoute>
+          }
+        />
         <Route path="profile" element={<Profile />} />
         <Route path="diary" element={<Diary />} />
         <Route path="products" element={<Products />} />
