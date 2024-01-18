@@ -73,6 +73,7 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/diary');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
                   {t('header.diary')}
@@ -83,6 +84,7 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/products');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
                   {t('header.products')}
@@ -93,6 +95,7 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/exercises');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
                   {t('header.exercises')}
