@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  // background-color: #040404;
   margin: 0 auto;
   width: 100%;
   height: 100vh;
@@ -24,15 +23,15 @@ export const Container = styled.div`
   max-width: 375px;
   margin: 0 auto;
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
   padding-top: 40px;
   height: 100vh;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    // padding-left: 32px;
+    // padding-right: 32px;
     padding-top: 72px;
   }
 
