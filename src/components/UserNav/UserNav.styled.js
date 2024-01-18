@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { StyledButton } from 'components/Button/Button.styled';
 
 export const StyledUserNav = styled.nav`
+z-index:20;
   line-height: 0;
-
-  @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1440px) {
     order: 1;
   }
 `;
