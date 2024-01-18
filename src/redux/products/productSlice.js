@@ -5,9 +5,6 @@ import { fetchCategories, fetchProducts } from './productOperations';
 const productInitialState = {
   categories: [],
   products: [],
-  searchFromFilter: '',
-  categoryFromFilter: '',
-  recommendationFromFilter: '',
   productToAdd: null,
   caloriesByUser: null,
   isProductSuccesAdded: false,
@@ -29,15 +26,6 @@ const productSlice = createSlice({
   name: 'product',
   initialState: productInitialState,
   reducers: {
-    setSearchFromFilter(state, action) {
-      state.searchFromFilter = action.payload;
-    },
-    setCategoryFromFilter(state, action) {
-      state.categoryFromFilter = action.payload;
-    },
-    setRecommendationFromFilter(state, action) {
-      state.recommendationFromFilter = action.payload;
-    },
     setProductToAdd(state, action) {
       state.productToAdd = action.payload;
     },
@@ -78,11 +66,6 @@ const productSlice = createSlice({
 
 export const selectCategories = state => state.products.categories;
 export const selectProducts = state => state.products.products;
-export const selectSearchFromFilter = state => state.products.searchFromFilter;
-export const selectCategoryFromFilter = state =>
-  state.products.categoryFromFilter;
-export const selectRecommendationFromFilter = state =>
-  state.products.recommendationFromFilter;
 export const selectProductToAdd = state => state.products.productToAdd;
 export const selectCaloriesByUser = state => state.products.caloriesByUser;
 export const selectIsProductSuccesAdded = state =>
@@ -90,13 +73,7 @@ export const selectIsProductSuccesAdded = state =>
 export const selectIsLoading = state => state.products.isLoading;
 export const selectError = state => state.products.error;
 
-export const {
-  setSearchFromFilter,
-  setCategoryFromFilter,
-  setRecommendationFromFilter,
-  setProductToAdd,
-  setCaloriesByUser,
-  setIsProductSuccesAdded,
-} = productSlice.actions;
+export const { setProductToAdd, setCaloriesByUser, setIsProductSuccesAdded } =
+  productSlice.actions;
 
 export const productReducer = productSlice.reducer;

@@ -1,16 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import {
-  selectCategories,
-  selectCategoryFromFilter,
-  selectRecommendationFromFilter,
-  selectSearchFromFilter,
-  setCategoryFromFilter,
-  setRecommendationFromFilter,
-  setSearchFromFilter,
-} from '../../../redux/products/productSlice';
+import { selectCategories } from '../../../redux/products/productSlice';
 import {
   StyledCategorySelect,
   StyledRecommendSelect,
@@ -23,34 +15,31 @@ import {
 } from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
-  const [valueInput, setValueInput] = useState('');
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const [recommendation, setRecommendation] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const dispatch = useDispatch();
-
   const categories = useSelector(selectCategories);
-  const search = useSelector(selectSearchFromFilter);
-  const category = useSelector(selectCategoryFromFilter);
-  const recommendation = useSelector(selectRecommendationFromFilter);
 
   const searchFromParams = searchParams.get('search') ?? '';
   const categoryFromParams = searchParams.get('category') ?? '';
   const recommendationFromParams = searchParams.get('recommendation') ?? '';
 
   useEffect(() => {
-    dispatch(setSearchFromFilter(searchFromParams));
-  }, [dispatch, searchFromParams]);
+    setSearch(searchFromParams);
+  }, [searchFromParams]);
 
   useEffect(() => {
-    dispatch(setCategoryFromFilter(categoryFromParams));
-  }, [dispatch, categoryFromParams]);
+    setCategory(categoryFromParams);
+  }, [categoryFromParams]);
 
   useEffect(() => {
-    dispatch(setRecommendationFromFilter(recommendationFromParams));
-  }, [dispatch, recommendationFromParams]);
+    setRecommendation(recommendationFromParams);
+  }, [recommendationFromParams]);
 
   const handleSearchOnChange = e => {
-    setValueInput(e.currentTarget.value);
+    setSearch(e.currentTarget.value);
   };
 
   const handleSearchSubmit = e => {
@@ -84,8 +73,7 @@ const ProductsFilters = () => {
       category: categoryFromParams,
       recommendation: recommendationFromParams,
     });
-    dispatch(setSearchFromFilter(''));
-    setValueInput('');
+    setSearch('');
   };
 
   return (
@@ -97,7 +85,7 @@ const ProductsFilters = () => {
             name="search"
             placeholder="Search"
             onChange={handleSearchOnChange}
-            value={valueInput}
+            value={search}
           />
         </label>
         <StyledBtnsContainer>
