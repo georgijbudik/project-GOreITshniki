@@ -34,3 +34,17 @@ export const StyledHeaderUserMenu = styled.div`
     gap: 32px;
   }
 `;
+
+export const StyledHeaderLogoMenu = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 32px;
+  }
+`;
