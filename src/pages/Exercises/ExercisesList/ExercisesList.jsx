@@ -115,65 +115,6 @@
 
 // export default ExercisesList;
 //*=================================================================
-// const ExercisesList = () => {
-//   return <div>ExercisesList</div>;
-// };
-// export default ExercisesList;
-
-//*=================================================================
-
-// // TEMPORARY
-// const exeList = [
-//   {
-//     _id: {
-//       $oid: '64f2458d6f67bc34bae4f906',
-//     },
-//     bodyPart: 'upper arms',
-//     equipment: 'dumbbell',
-//     gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0322.gif',
-//     name: 'dumbbell incline inner biceps curl',
-//     target: 'biceps',
-//     burnedCalories: 317,
-//     time: 3,
-//   },
-//   {
-//     _id: {
-//       $oid: '64f2458d6f67bc34bae4f973',
-//     },
-//     bodyPart: 'chest',
-//     equipment: 'dumbbell',
-//     gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0433.gif',
-//     name: 'dumbbell straight arm pullover',
-//     target: 'pectorals',
-//     burnedCalories: 262,
-//     time: 3,
-//   },
-//   {
-//     _id: {
-//       $oid: '64f2458d6f67bc34bae4f836',
-//     },
-//     bodyPart: 'upper legs',
-//     equipment: 'barbell',
-//     gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0074.gif',
-//     name: 'barbell rack pull',
-//     target: 'glutes',
-//     burnedCalories: 340,
-//     time: 3,
-//   },
-//   {
-//     _id: {
-//       $oid: '64f2458d6f67bc34bae4f9a9',
-//     },
-//     bodyPart: 'shoulders',
-//     equipment: 'kettlebell',
-//     gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0520.gif',
-//     name: 'kettlebell alternating press',
-//     target: 'delts',
-//     burnedCalories: 119,
-//     time: 3,
-//   },
-// ];
-// // TEMPORARY
 
 // import { useEffect, useRef } from 'react';
 import { useRef } from 'react';
@@ -246,6 +187,18 @@ const exeList = [
     burnedCalories: 119,
     time: 3,
   },
+  {
+    _id: {
+      $oid: '64f2458d6f67bc34bae4f973',
+    },
+    bodyPart: 'chest',
+    equipment: 'dumbbell',
+    gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0433.gif',
+    name: 'dumbbell straight arm pullover',
+    target: 'pectorals',
+    burnedCalories: 262,
+    time: 3,
+  },
 ];
 // TEMPORARY
 
@@ -260,13 +213,13 @@ const ExercisesList = () => {
   const backLinkEquipment = useRef(
     location.state?.from ?? '/exercises/equipment'
   );
-  // Replace exeFilter with exeList
+  // Replaced exeFilter with exeList
   const exeFilter = { data: exeList };
 
   const params = useParams();
   const current = params.id;
 
-  // Remove the useEffect block that fetches data and use exeList directly
+  // Removed useEffect block
 
   const ucFirst = str => {
     if (!str) return str;

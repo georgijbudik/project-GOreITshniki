@@ -23,7 +23,10 @@ export const WrapperExercises = styled.ul`
     }
     &::-webkit-scrollbar-thumb {
       width: 8px;
-      height: 114px;
+      // height: 114px;
+      height: 153px;
+      flex-shrink: 0;
+
       background: rgba(239, 137, 100, 1);
       border-radius: 12px;
     }

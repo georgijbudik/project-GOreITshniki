@@ -11,10 +11,14 @@ export const Section = styled.section`
     /* background-position-y: calc(100% + 50px); */
     background-size: contain;
     // background-image: to be added;
+    background-image: url('${process.env
+      .PUBLIC_URL}/images/desktop/lg-welcome-image.jpg');
 
     @media only screen and (min-resolution: 192dpi),
       only screen and (min-resolution: 2dppx) {
       // background-image: to be added@2;
+      background-image: url('${process.env
+        .PUBLIC_URL}/images/desktop/lg-welcome-image@2x.jpg');
     }
   }
 `;
