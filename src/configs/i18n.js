@@ -14,10 +14,18 @@ i18n
     resources: {
       en: {
         translation: {
-          languages: {
-            english: 'English',
-            ukrainian: 'Ukrainian',
-            spanish: 'Spanish',
+          user_settings: {
+            themes: {
+              theme: 'Theme',
+              dark: 'Dark',
+              light: 'Light',
+            },
+            language: 'Language',
+            languages: {
+              english: 'English',
+              ukrainian: 'Ukrainian',
+              spanish: 'Spanish',
+            },
           },
           header: {
             diary: 'Diary',
@@ -64,10 +72,18 @@ i18n
 
       uk: {
         translation: {
-          languages: {
-            english: 'Англійська',
-            ukrainian: 'Українська',
-            spanish: 'Іспанська',
+          user_settings: {
+            themes: {
+              theme: 'Тема',
+              dark: 'Темна',
+              light: 'Світла',
+            },
+            language: 'Мова',
+            languages: {
+              english: 'Англійська',
+              ukrainian: 'Українська',
+              spanish: 'Іспанська',
+            },
           },
           header: {
             diary: 'Щоденник',
@@ -114,10 +130,18 @@ i18n
 
       es: {
         translation: {
-          languages: {
-            english: 'Inglés',
-            ukrainian: 'Ucraniano',
-            spanish: 'Español',
+          user_settings: {
+            themes: {
+              theme: 'Tema',
+              dark: 'Oscuro',
+              light: 'Claro',
+            },
+            language: 'Idioma',
+            languages: {
+              english: 'Inglés',
+              ukrainian: 'Ucraniano',
+              spanish: 'Español',
+            },
           },
           header: {
             diary: 'Diario',

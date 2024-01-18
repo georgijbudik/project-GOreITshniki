@@ -5,24 +5,18 @@ import Logo from 'components/Logo';
 import UserNav from 'components/UserNav';
 import UserBar from 'components/UserBar';
 // import ThemeToggle from 'components/ThemeToggle';
-import ToggleLanguage from 'components/ToggleLanguage/ToggleLanguage';
+
 // import { selectIsLoggedin } from '../../redux/auth/authSelectors';
 
-import {
-  StyledHeader,
-  StyledHeaderUserMenu,
-  StyledHeaderLogoMenu,
-} from './Header.styled';
+import { StyledHeader, StyledHeaderUserMenu } from './Header.styled';
 
 export function Header() {
   // const isLoggedIn = useSelector(selectIsLoggedin);
 
   return (
     <StyledHeader>
-      <StyledHeaderLogoMenu>
-        <Logo filled />
-        <ToggleLanguage />
-      </StyledHeaderLogoMenu>
+      <Logo filled />
+
       {/* <ThemeToggle /> */}
 
       <StyledHeaderUserMenu>

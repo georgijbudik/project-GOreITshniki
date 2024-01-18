@@ -47,7 +47,23 @@ export const FieldName = styled.p`
 `;
 
 export const FieldContainer = styled.div`
+  position: relative;
   margin-block-end: 14px;
+
+  svg {
+    position: absolute;
+    top: 32px;
+    left: 135.25px;
+    @media screen and (min-width: 768px) {
+      top: 42px;
+      left: 157.25px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      top: 43px;
+      left: 157.25px;
+    }
+  }
 `;
 
 export const MainInput = styled.input`
@@ -121,47 +137,55 @@ export const BloodContainer = styled.div`
   }
 `;
 
-export const BloodSexContainerLabel = styled.label`
-  color: var(--main-text-color);
-  font-size: 14px;
+// export const BloodSexContainerLabel = styled.label`
+//   color: var(--main-text-color);
+//   font-size: 14px;
 
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
-export const Radio = styled.input`
-  appearance: none;
-  width: 14px;
-  min-width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1.5px #636366 solid;
-  margin-right: 9px;
-  cursor: pointer;
-  &:checked {
-    border-color: var(--icon-color);
-    background-color: var(--icon-color);
-    box-shadow: 0px 0px 0px 2px black inset;
-  }
-  &:active {
-    border-color: orange;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    min-width: 24px;
-    height: 24px;
-
-    border: 2.5px #636366 solid;
-  }
-`;
+//   @media screen and (min-width: 768px) {
+//     font-size: 16px;
+//   }
+// `;
 
 export const RadioContainer = styled.label`
   display: flex;
   align-items: center;
   margin-right: 8px;
   margin-block-end: 8px;
+
+  label {
+    color: var(--main-text-color);
+    font-size: 14px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  input {
+    appearance: none;
+    width: 14px;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px #636366 solid;
+    margin-right: 9px;
+    cursor: pointer;
+    &:checked {
+      border-color: var(--icon-color);
+      background-color: var(--icon-color);
+      box-shadow: 0px 0px 0px 2px black inset;
+    }
+    &:active {
+      border-color: orange;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 24px;
+      min-width: 24px;
+      height: 24px;
+
+      border: 2.5px #636366 solid;
+    }
+  }
 
   @media screen and (min-width: 768px) {
     margin-block-end: 12px;
