@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   @media screen and (min-width: 1440px) {
+    margin-right: -96px;
     height: calc(100vh - 90px);
     background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 70.79%);
     background-image: ${() =>

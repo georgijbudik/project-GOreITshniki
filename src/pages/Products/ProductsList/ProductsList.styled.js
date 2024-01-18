@@ -8,7 +8,9 @@ export const StyledList = styled.ul`
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
-    /* height: 596px; */
+    /* height: calc(100vh - 208px); */
+    height: 596px;
+    overflow: auto;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -19,7 +21,8 @@ export const StyledList = styled.ul`
   @media screen and (min-width: 1440px) {
     margin-top: 28px;
     width: 850px;
-    /* height: 487px; */
+    /* height: calc(100vh - 313px); */
+    height: 487px;
   }
 `;
 
