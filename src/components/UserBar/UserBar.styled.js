@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledUserBar = styled.div`
-z-index:10;
   display: flex;
   align-items: center;
   gap: 14px;

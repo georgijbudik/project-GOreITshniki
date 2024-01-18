@@ -12,8 +12,8 @@ import {
   Input,
   ShowPassButton,
   ShowPassSVG,
-} from '../../SignUp/SignUpForm/SignUpForm.styled';
-import AuthButton from 'pages/SignUp/SignUpForm/AuthButton';
+} from '../../SignUp/SignUpForm/SignUpForm/SignUpForm.styled';
+import AuthButton from 'pages/SignUp/SignUpForm/AuthButton/AuthButton';
 import { useState } from 'react';
 
 const schema = yup.object().shape({

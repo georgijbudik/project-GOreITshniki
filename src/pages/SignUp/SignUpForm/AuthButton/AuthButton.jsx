@@ -1,4 +1,4 @@
-import { StyledAuthButton } from './SignUpForm.styled';
+import { StyledAuthButton } from '../SignUpForm/SignUpForm.styled';
 
 const AuthButton = ({
   children,

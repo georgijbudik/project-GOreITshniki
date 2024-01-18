@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledLogo = styled.button`
-z-index:20;
   padding: 0;
   line-height: 0;
   border: none;

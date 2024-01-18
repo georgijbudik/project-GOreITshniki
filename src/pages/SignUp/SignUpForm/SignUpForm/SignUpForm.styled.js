@@ -6,6 +6,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 90px 0px 35px 0px;
+  /* position: relative; */
+
   @media screen and (min-width: 768px) {
     width: 496px;
     padding: 150px 0px 0px 0px;
@@ -33,7 +35,7 @@ export const Info = styled.p`
   margin: 0;
   margin-bottom: 28px;
   line-height: calc(18 / 14);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   /* color: var(--main-text-color); */
   opacity: 0.3;
 
@@ -153,7 +155,7 @@ export const StyledAuthButton = styled.button`
     return theme.palette.text.primary;
   }};
   transition: var(--transition);
-  z-index: 10;
+  /* z-index: 10; */
 
   padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
 
@@ -207,7 +209,7 @@ export const ContainerShowButton = styled.div`
 `;
 
 export const ShowPassButton = styled.button`
-  z-index: 9;
+  z-index: 10;
   position: absolute;
   top: 40%;
   left: 95%;
@@ -223,77 +225,5 @@ export const ShowPassSVG = styled.svg`
   &:hover {
     stroke: #e6533c;
     scale: 1.2;
-  }
-`;
-
-//MainImage
-export const StyledMainImageWrapper = styled.div`
-  width: 446px;
-  height: 669px;
-  position: absolute;
-
-  background-image: linear-gradient(
-      168.14deg,
-      #040404 14.75%,
-      rgba(4, 4, 4, 0) 52.97%
-    ),
-    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-    ${() =>
-      `url(${process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image.jpg'})`};
-  background-repeat: no-repeat;
-  background-position: 57px 114px;
-  background-size: 300px auto;
-
-  @media screen and (max-width: 767px) and (min-resolution: 2dppx) {
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image@2x.jpg'
-      })`};
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    height: 100%;
-
-    background-position: 300px -58px;
-    background-size: 446px auto;
-
-    background-image: linear-gradient(
-        168.14deg,
-        #040404 14.75%,
-        rgba(4, 4, 4, 0) 52.97%
-      ),
-      linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-      ${() =>
-        `url(${
-          process.env.PUBLIC_URL + '/images/tablet/md-welcome-image.jpg'
-        })`};
-  }
-
-  @media screen and (min-width: 768px) and (min-resolution: 2dppx) {
-    background-image: ${() => {
-      return `url(${
-        process.env.PUBLIC_URL + '/images/tablet/md-welcome-image@2x.jpg'
-      })`;
-    }};
-  }
-
-  @media screen and (min-width: 1440px) {
-    // z-index:-1;
-    background-size: 670px;
-    background-position: 670px 0px;
-    margin-top: -150px;
-
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image.jpg'
-      })`};
-  }
-
-  @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image@2x.jpg'
-      })`};
   }
 `;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledLoaderWrapper = styled.div`
-  z-index: 999999;
   position: absolute;
   height: 100%;
   width: 100%;
