@@ -103,7 +103,7 @@ export const NameExes = styled.p`
 export const WrapperExercisesItem = styled.li`
   padding: 16px;
   width: 335px;
-  height: 141px;
+  /* height: 141px; */
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   @media screen and (min-width: 1440px) {

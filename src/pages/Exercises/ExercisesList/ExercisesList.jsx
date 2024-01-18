@@ -269,6 +269,7 @@ const ExercisesList = () => {
             burnedCalories,
             equipment,
             gifUrl,
+            time,
           }) => {
             return (
               <ExercisesItem
@@ -281,6 +282,7 @@ const ExercisesList = () => {
                 gifUrl={gifUrl}
                 burnedCalories={burnedCalories}
                 exeId={_id}
+                time={time}
               />
             );
           }

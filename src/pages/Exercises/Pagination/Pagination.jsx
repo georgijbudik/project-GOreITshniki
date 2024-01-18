@@ -7,19 +7,17 @@ const Pagination = ({ exePerPage, totalExe, paginate, currentPage }) => {
   }
 
   return (
-    <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-      <WrapperPaginate>
-        {pageNumbers.map(number => (
-          <div key={number}>
-            <SpanPagination
-              href="#"
-              onClick={() => paginate(number)}
-              isactive={number === currentPage ? 1 : 0}
-            />
-          </div>
-        ))}
-      </WrapperPaginate>
-    </div>
+    <WrapperPaginate>
+      {pageNumbers.map(number => (
+        <div key={number}>
+          <SpanPagination
+            href="#"
+            onClick={() => paginate(number)}
+            isactive={number === currentPage ? 1 : 0}
+          />
+        </div>
+      ))}
+    </WrapperPaginate>
   );
 };
 
