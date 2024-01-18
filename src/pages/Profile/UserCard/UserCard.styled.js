@@ -205,30 +205,38 @@ export const SvgLogoutIcon = styled.svg`
   stroke: var(--accent-color);
 `;
 
-export const AddAvatarButton = styled.button`
+export const AddAvatarButton = styled.input`
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+`;
+
+export const AddAvatarLabel = styled.label`
+  display: block;
+  cursor: pointer;
   width: 24px;
   height: 24px;
   position: absolute;
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
   left: 50%;
-  margin-left: -12px;
   top: 100%;
-  margin-top: -18px;
+  margin-left: -3.5%;
+  margin-top: -4.5%;
+
+  @media screen and (min-width: 768px) {
+    margin-left: -2.7%;
+    margin-top: -3.5%;
+  }
 
   @media screen and (min-width: 1440px) {
-    top: 100%;
-    margin-left: -35px;
-    margin-top: -75px;
+    margin-left: -3.5%;
+    margin-top: -4.5%;
   }
 `;
 
 export const AddProfilePicBackground = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 24px;
   height: 24px;
 
@@ -239,17 +247,26 @@ export const AddProfilePicBackground = styled.svg`
 `;
 
 export const AddProfilePicCross = styled.svg`
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 24px;
+  top: 100%;
+  left: 50%;
+  margin-left: -12.5px;
+  margin-top: -18px;
+
   transform: rotate(45deg);
-  margin-block-start: 238%;
-  margin-left: -356%;
-  stroke: #efede8;
+
+  @media screen and (min-width: 768px) {
+    margin-left: -12.3px;
+  }
 
   @media screen and (min-width: 1440px) {
-    width: 32px;
-    height: 32px;
-
-    margin-block-start: 238%;
-    margin-left: -356%;
+    top: 100%;
+    left: 50%;
+    margin-left: -8.2px;
+    margin-top: -13.5px;
   }
 `;
 
