@@ -8,8 +8,8 @@ export const DailyCalorieIntakeWrapper = styled.div`
 export const DailyCalorieIntake = styled.div`
   display: flex;
   flex-direction: column;
-  width: 129px;
-  height: 66px;
+  width: 157px;
+  height: 96px;
   padding: 14px;
   align-items: flex-start;
   /* gap: 32px; */
@@ -24,12 +24,17 @@ export const DailyCalorieIntake = styled.div`
 
 export const CellHeader = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const DashBoardElementPic = styled.svg`
   width: 20px;
   height: 20px;
-  padding-right: 8px;
+  margin: 0;
+  padding: 0;
+
+  margin-right: 8px;
+  fill: #ef8964;
 `;
 
 export const CelName = styled.p`
@@ -42,6 +47,21 @@ export const CelName = styled.p`
   font-weight: 400;
   line-height: 16px; /* 133.333% */
   margin: 0;
+  padding: 0;
+  width: 106px;
+`;
+
+export const CelNameBottom = styled.p`
+  color: rgba(239, 237, 232, 0.4);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+  margin: 0;
+  padding: 0;
+  width: 106px;
 `;
 
 export const CelValue = styled.p`
@@ -66,8 +86,8 @@ export const ProcessedDashboardDataWrapper = styled.div`
 export const ProcessedDashboardData = styled.div`
   display: flex;
   flex-direction: column;
-  width: 127px;
-  height: 66px;
+  width: 160px;
+  height: 96px;
   padding: 14px;
   align-items: flex-start;
   gap: 32px;
@@ -83,12 +103,16 @@ export const AttentionMessage = styled.div`
 export const AttentionPic = styled.svg`
   width: 24px;
   height: 24px;
-  padding-right: 8px;
+
+  & path {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const AttentionText = styled.p`
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 8px;
 
   width: 303px;
   height: 54px;
