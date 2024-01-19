@@ -10,6 +10,7 @@ import {
   AttentionText,
   AttentionPic,
   AttentionMessage,
+  CelNameBottom,
 } from './DayDashboard.styled';
 
 const DayDashboard = () => {
@@ -38,7 +39,7 @@ const DayDashboard = () => {
               <use
                 xlinkHref={
                   process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-dumbbell_OMG'
+                  '/images/sprite/sprite.svg#icon-dumbbell'
                 }
               />
             </DashBoardElementPic>
@@ -50,22 +51,62 @@ const DayDashboard = () => {
 
       <ProcessedDashboardDataWrapper>
         <ProcessedDashboardData>
-          <CelName> Сalories consumed</CelName>
+          <CellHeader>
+            <DashBoardElementPic>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-apple'
+                }
+              />
+            </DashBoardElementPic>
+            <CelNameBottom> Сalories consumed</CelNameBottom>
+          </CellHeader>
           <CelValue>0</CelValue>
         </ProcessedDashboardData>
         <ProcessedDashboardData>
-          <CelName>Сalories burned</CelName>
+          <CellHeader>
+            <DashBoardElementPic>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-calories-1_OMG'
+                }
+              />
+            </DashBoardElementPic>
+            <CelNameBottom>Сalories burned</CelNameBottom>
+          </CellHeader>
           <CelValue>0</CelValue>
         </ProcessedDashboardData>
       </ProcessedDashboardDataWrapper>
 
       <ProcessedDashboardDataWrapper>
         <ProcessedDashboardData>
-          <CelName>Calories remaining</CelName>
+          <CellHeader>
+            <DashBoardElementPic>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-apple'
+                }
+              />
+            </DashBoardElementPic>
+            <CelNameBottom>Calories remaining</CelNameBottom>
+          </CellHeader>
           <CelValue>1493</CelValue>
         </ProcessedDashboardData>
         <ProcessedDashboardData>
-          <CelName>Sports remaining</CelName>
+          <CellHeader>
+            <DashBoardElementPic>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-apple'
+                }
+              />
+            </DashBoardElementPic>
+            <CelNameBottom>Sports remaining</CelNameBottom>
+          </CellHeader>
           <CelValue>85 min</CelValue>
         </ProcessedDashboardData>
       </ProcessedDashboardDataWrapper>
