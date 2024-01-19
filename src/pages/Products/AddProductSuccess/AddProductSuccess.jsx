@@ -1,12 +1,22 @@
-import BasicModalWindow from 'components/BasicModalWindow';
-import Button from 'components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import BasicModalWindow from 'components/BasicModalWindow';
 import {
   selectCaloriesByUser,
   setCaloriesByUser,
   setIsProductSuccesAdded,
 } from '../../../redux/products/productSlice';
+import {
+  StyledContainer,
+  StyledImgContainer,
+  StyledNextBtn,
+  StyledToDiarySvg,
+  StyledTextAmount,
+  StyledTextCalories,
+  StyledTextWellDone,
+  StyledToDiaryBtn,
+} from './AddProductSuccess.styled';
 
 const AddProductSuccess = () => {
   const dispatch = useDispatch();
@@ -27,26 +37,44 @@ const AddProductSuccess = () => {
 
   return (
     <BasicModalWindow onClose={handleCloseSuccessModal}>
-      <div>
-        <img src="" alt="Avocado" />
-        <p>Well done</p>
-        <p>
-          Calories: <span>{caloriesByUser}</span>
-        </p>
-        <Button type="button" onClick={handleCloseSuccessModal}>
+      <StyledContainer>
+        <StyledImgContainer>
+          <img
+            srcset={
+              process.env.PUBLIC_URL +
+              '/images/mobile/productsSuccess-image@2x.png'
+            }
+            src={
+              process.env.PUBLIC_URL +
+              '/images/mobile/productsSuccess-image.png'
+            }
+            alt="Avocado"
+            width="123"
+            height="97"
+          />
+        </StyledImgContainer>
+        <StyledTextWellDone>Well done</StyledTextWellDone>
+        <StyledTextCalories>
+          Calories: <StyledTextAmount>{caloriesByUser}</StyledTextAmount>
+        </StyledTextCalories>
+        <StyledNextBtn type="button" onClick={handleCloseSuccessModal}>
           Next product
-        </Button>
-        <button type="button" onClick={handleToDiaryBtn}>
+        </StyledNextBtn>
+        <StyledToDiaryBtn type="button" onClick={handleToDiaryBtn}>
           To the diary
-          <svg width="16" height="16" stroke="var(--accent-color)">
+          <StyledToDiarySvg
+            width="16"
+            height="16"
+            stroke="rgba(239, 237, 232, 0.30)"
+          >
             <use
               href={
                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-add'
               }
             ></use>
-          </svg>
-        </button>
-      </div>
+          </StyledToDiarySvg>
+        </StyledToDiaryBtn>
+      </StyledContainer>
     </BasicModalWindow>
   );
 };

@@ -19,16 +19,16 @@ import {
   StyledAddExerciseFormInfoItem,
 } from './AddExerciseForm.styled';
 
-const mockExercise = {
-  _id: '64f2458d6f67bc34bae4f7f7',
-  bodyPart: 'chest',
-  equipment: 'leverage machine',
-  gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0009.gif',
-  name: 'assisted chest dip (kneeling)',
-  target: 'pectorals',
-  burnedCalories: 329,
-  time: 3,
-};
+// const mockExercise = {
+//   _id: '64f2458d6f67bc34bae4f7f7',
+//   bodyPart: 'chest',
+//   equipment: 'leverage machine',
+//   gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0009.gif',
+//   name: 'assisted chest dip (kneeling)',
+//   target: 'pectorals',
+//   burnedCalories: 329,
+//   time: 3,
+// };
 
 const formatDescription = text => {
   const shortenText = text.length > 12 ? text.slice(0, 12) + '...' : text;
@@ -45,7 +45,17 @@ const renderTime = ({ remainingTime }) => {
   return <StyledAddExerciseFormTime>{timeString}</StyledAddExerciseFormTime>;
 };
 
-const AddExerciseForm = ({ onClose, exercise }) => {
+const AddExerciseForm = ({
+  onClose,
+  exeId,
+  gifUrl,
+  name,
+  bodyPart,
+  target,
+  equipment,
+  burnedCalories: exeCalories,
+  time,
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
 
@@ -54,7 +64,7 @@ const AddExerciseForm = ({ onClose, exercise }) => {
       <StyledAddExerciseFormWrapper>
         <div>
           <StyledAddExerciseFormGifWrapper>
-            <StyledAddExerciseFormGif $gif={mockExercise.gifUrl} />
+            <StyledAddExerciseFormGif $gif={gifUrl} />
           </StyledAddExerciseFormGifWrapper>
 
           <StyledAddExerciseFormTimerWrapper>
@@ -66,7 +76,7 @@ const AddExerciseForm = ({ onClose, exercise }) => {
               <CountdownCircleTimer
                 isPlaying={isPlaying}
                 rotation="counterclockwise"
-                duration={mockExercise.time * 60}
+                duration={time * 60}
                 colors={'#e6533c'}
                 size={124}
                 strokeWidth={4}
@@ -75,8 +85,7 @@ const AddExerciseForm = ({ onClose, exercise }) => {
                 trailStrokeWidth={5}
                 onUpdate={remainingTime => {
                   const calories =
-                    (mockExercise.burnedCalories / (mockExercise.time * 60)) *
-                    (mockExercise.time * 60 - remainingTime);
+                    (exeCalories / (time * 60)) * (time * 60 - remainingTime);
 
                   setBurnedCalories(calories.toFixed());
                 }}
@@ -123,21 +132,21 @@ const AddExerciseForm = ({ onClose, exercise }) => {
           <StyledAddExerciseFormInfoList>
             <StyledAddExerciseFormInfoItem>
               <span>Name</span>
-              <p>{formatDescription(mockExercise.name)}</p>
+              <p>{formatDescription(name)}</p>
             </StyledAddExerciseFormInfoItem>
             <StyledAddExerciseFormInfoItem>
               <span>Target</span>
-              <p>{formatDescription(mockExercise.target)}</p>
+              <p>{formatDescription(target)}</p>
             </StyledAddExerciseFormInfoItem>
 
             <StyledAddExerciseFormInfoItem>
               <span>Body part</span>
-              <p>{formatDescription(mockExercise.bodyPart)}</p>
+              <p>{formatDescription(bodyPart)}</p>
             </StyledAddExerciseFormInfoItem>
 
             <StyledAddExerciseFormInfoItem>
               <span>Equipment</span>
-              <p>{formatDescription(mockExercise.equipment)}</p>
+              <p>{formatDescription(equipment)}</p>
             </StyledAddExerciseFormInfoItem>
           </StyledAddExerciseFormInfoList>
 

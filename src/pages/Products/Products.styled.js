@@ -30,7 +30,6 @@ export const StyledSection = styled.section`
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 0 96px;
     padding: 72px 0 81px 0;
   }
 `;

@@ -1,22 +1,23 @@
 import { useDispatch } from 'react-redux';
+
 import { setProductToAdd } from '../../../redux/products/productSlice';
 import {
-  Container,
-  DietText,
-  DietContainer,
-  RecomContainer,
-  Circle,
-  RecomText,
-  TopContainer,
-  RecomBtnContainer,
-  AddBtn,
-  AddSvg,
-  Title,
-  TitleCircle,
-  TitleContainer,
-  BottomContainer,
-  BottomText,
-  BottomAmount,
+  StyledContainer,
+  StyledDietText,
+  StyledDietContainer,
+  StyledRecomContainer,
+  StyledCircle,
+  StyledRecomText,
+  StyledTopContainer,
+  StyledTopRightContainer,
+  StyledAddBtn,
+  StyledAddSvg,
+  StyledTitle,
+  StyledTitleCircle,
+  StyledTitleContainer,
+  StyledBottomContainer,
+  StyledBottomText,
+  StyledBottomAmount,
 } from './ProductsItem.styled';
 
 const ProductsItem = ({ product }) => {
@@ -37,35 +38,37 @@ const ProductsItem = ({ product }) => {
 
   return (
     <li>
-    <Container>
-        <TopContainer>
-          <DietContainer>
-            <DietText>DIET</DietText>
-          </DietContainer>
-          <RecomBtnContainer>
-            <RecomContainer>
-              <Circle $isNotAllowed={isProductNotAllowedForUser}></Circle>
+      <StyledContainer>
+        <StyledTopContainer>
+          <StyledDietContainer>
+            <StyledDietText>DIET</StyledDietText>
+          </StyledDietContainer>
+          <StyledTopRightContainer>
+            <StyledRecomContainer>
+              <StyledCircle
+                $isNotAllowed={isProductNotAllowedForUser}
+              ></StyledCircle>
               {isProductNotAllowedForUser ? (
-                <RecomText>Not recommended</RecomText>
+                <StyledRecomText>Not recommended</StyledRecomText>
               ) : (
-                <RecomText>Recommended</RecomText>
+                <StyledRecomText>Recommended</StyledRecomText>
               )}
-            </RecomContainer>
-            <AddBtn type="button" onClick={handleAddBtn}>
+            </StyledRecomContainer>
+            <StyledAddBtn type="button" onClick={handleAddBtn}>
               Add
-              <AddSvg width="16" height="16" stroke="var(--accent-color)">
+              <StyledAddSvg width="16" height="16" stroke="var(--accent-color)">
                 <use
                   href={
                     process.env.PUBLIC_URL +
                     '/images/sprite/sprite.svg#icon-add'
                   }
                 ></use>
-              </AddSvg>
-            </AddBtn>
-          </RecomBtnContainer>
-        </TopContainer>
-        <TitleContainer>
-          <TitleCircle>
+              </StyledAddSvg>
+            </StyledAddBtn>
+          </StyledTopRightContainer>
+        </StyledTopContainer>
+        <StyledTitleContainer>
+          <StyledTitleCircle>
             <svg width="16" height="16" fill="var(--main-text-color)">
               <use
                 href={
@@ -74,23 +77,26 @@ const ProductsItem = ({ product }) => {
                 }
               ></use>
             </svg>
-          </TitleCircle>
-          <Title>{formatText(product.title)}</Title>
-        </TitleContainer>
-        <BottomContainer>
-          <BottomText>
-            Calories: <BottomAmount>{product.calories}</BottomAmount>
-          </BottomText>
-          <BottomText>
+          </StyledTitleCircle>
+          <StyledTitle>{formatText(product.title)}</StyledTitle>
+        </StyledTitleContainer>
+        <StyledBottomContainer>
+          <StyledBottomText>
+            Calories:{' '}
+            <StyledBottomAmount>{product.calories}</StyledBottomAmount>
+          </StyledBottomText>
+          <StyledBottomText>
             Category:{' '}
-            <BottomAmount>{formatText(product.category)}</BottomAmount>
-          </BottomText>
-          <BottomText>
-            Weight: <BottomAmount>{product.weight}</BottomAmount>
-          </BottomText>
-        </BottomContainer>
-      </Container>
-      </li>
+            <StyledBottomAmount>
+              {formatText(product.category)}
+            </StyledBottomAmount>
+          </StyledBottomText>
+          <StyledBottomText>
+            Weight: <StyledBottomAmount>{product.weight}</StyledBottomAmount>
+          </StyledBottomText>
+        </StyledBottomContainer>
+      </StyledContainer>
+    </li>
   );
 };
 

@@ -31,12 +31,16 @@ const ExercisesItem = ({
   equipment,
   burnedCalories,
   gifUrl,
+  time,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModalSuccess, setShowModalSuccess] = useState(false);
 
   const onClickStart = () => {
-    setIsModalOpen(prevState => !prevState);
+    setIsModalOpen(true);
+  };
+  const onClickEnd = () => {
+    setIsModalOpen(false);
   };
 
   const handleToggleSuccessModal = () => {
@@ -86,20 +90,18 @@ const ExercisesItem = ({
         </WrapperIndexes>
       </WrapperExercisesItem>
       {isModalOpen && (
-        <BasicModalWindow onClick={onClickStart}>
-          <AddExerciseForm
-            onClick={onClickStart}
-            // exeId={exeId}
-            exeId={_id}
-            gifUrl={gifUrl}
-            name={name}
-            bodyPart={NameBodyPart}
-            target={target}
-            equipment={equipment}
-            burnedCalories={burnedCalories}
-            onClickToggle={handleToggleSuccessModal}
-          />
-        </BasicModalWindow>
+        <AddExerciseForm
+          onClose={onClickEnd}
+          exeId={_id}
+          gifUrl={gifUrl}
+          name={name}
+          bodyPart={NameBodyPart}
+          target={target}
+          equipment={equipment}
+          burnedCalories={burnedCalories}
+          time={time}
+          onClickToggle={handleToggleSuccessModal}
+        />
       )}
       {showModalSuccess && (
         <BasicModalWindow onClick={handleToggleSuccessModal}>
