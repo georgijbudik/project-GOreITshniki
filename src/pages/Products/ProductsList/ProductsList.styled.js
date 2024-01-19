@@ -13,6 +13,7 @@ export const StyledList = styled.ul`
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
+    width: 704px;
     height: 660px;
     overflow: auto;
     flex-direction: row;
