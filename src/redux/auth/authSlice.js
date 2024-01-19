@@ -6,6 +6,15 @@ const initialState = {
     name: null,
     email: null,
     password: null,
+    // avatarURL: null,
+    // height: null,
+    // currentWeight: null,
+    // desiredWeight: null,
+    // birthday: null,
+    // blood: null,
+    // sex: null,
+    // calorie: null,
+    // levelActivity: null,
   },
   token: null,
   isLoggedIn: false,
@@ -19,7 +28,7 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(register.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      // state.token = action.payload.token;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
       state.token = action.payload.token;
     });

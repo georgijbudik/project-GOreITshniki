@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 //   TrackerVideo,
 // } from '../../components/Tracker/Tracker';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedin } from '../../redux/auth/authSelectors';
 
 import Button from 'components/Button';
 import MainImage from 'pages/SignUp/SignUpForm/MainImage';
@@ -18,6 +20,7 @@ import MainImage from 'pages/SignUp/SignUpForm/MainImage';
 const Welcome = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedin);
 
   return (
     <WelcomePageContainer>
@@ -36,14 +39,16 @@ const Welcome = () => {
         </BodyElementSpan>
         {t('welcome.main_text.part3')}{' '}
       </HeroText>
-      <ButtonContainer>
-        <Button onClick={() => navigate('/signup')}>
-          {t('welcome.sign_up')}
-        </Button>
-        <Button secondary="black" onClick={() => navigate('/signin')}>
-          {t('welcome.sign_in')}
-        </Button>
-      </ButtonContainer>
+      {!isLoggedIn && (
+        <ButtonContainer>
+          <Button onClick={() => navigate('/signup')}>
+            {t('welcome.sign_up')}
+          </Button>
+          <Button secondary="black" onClick={() => navigate('/signin')}>
+            {t('welcome.sign_in')}
+          </Button>
+        </ButtonContainer>
+      )}
     </WelcomePageContainer>
   );
 };
