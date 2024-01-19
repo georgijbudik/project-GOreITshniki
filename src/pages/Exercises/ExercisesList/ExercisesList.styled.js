@@ -6,7 +6,7 @@ export const DesktopBackgroundContainer = styled.div`
     /* width: 670px;
     height: 902px; */
     /* flex-shrink: 0; */
-    position: relative; /* Add position relative to allow absolute positioning */
+    position: relative; 
     overflow: visible;
     background-repeat: no-repeat;
     /* background-position: right 30%; */
@@ -25,7 +25,7 @@ export const DesktopBackgroundContainer = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: -1; /* Send it behind the content */
+      z-index: -1; 
       background-image: inherit;
       background-repeat: inherit;
       background-position: inherit;
@@ -56,7 +56,6 @@ export const WrapperExercises = styled.ul`
     }
     &::-webkit-scrollbar-thumb {
       width: 8px;
-      // height: 114px;
       height: 153px;
       flex-shrink: 0;
 
@@ -70,18 +69,23 @@ export const WrapperExercises = styled.ul`
   }
 `;
 
-export const NameExercises = styled.p`
+export const NameExercises = styled.h2`
   font-size: 32px;
   font-weight: 700;
-  padding-top: 14px;
+  line-height: 137.5%;
 `;
 
 export const ButtonGoBack = styled.button`
+  z-index: 2;
   width: 65px;
   display: flex;
   align-items: center;
   background: none;
   border: 0;
+
+  position: absolute;
+  top: 32px;
+  left: 0;
 `;
 
 export const LinkBtn = styled(Link)`
