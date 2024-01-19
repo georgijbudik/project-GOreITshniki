@@ -38,7 +38,7 @@ export const App = () => {
         <Route
           path="signup"
           element={
-            <RestrictedRoute>
+            <RestrictedRoute navigateTo="/signup">
               <SignUp />
             </RestrictedRoute>
           }
@@ -46,7 +46,7 @@ export const App = () => {
         <Route
           path="signin"
           element={
-            <RestrictedRoute>
+            <RestrictedRoute navigateTo="/signin">
               <SignIn />
             </RestrictedRoute>
           }
