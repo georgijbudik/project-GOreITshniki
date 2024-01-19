@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { selectCategories } from '../../../redux/products/productSlice';
 import {
   StyledCategorySelect,
+  StyledTextFilters,
   StyledRecommendSelect,
   StyledSearchBtn,
   StyledBtnsContainer,
@@ -78,6 +79,7 @@ const ProductsFilters = () => {
 
   return (
     <StyledForm onSubmit={handleSearchSubmit}>
+      <StyledTextFilters>Filters</StyledTextFilters>
       <StyledSearchContainer>
         <label>
           <StyledSearchInput

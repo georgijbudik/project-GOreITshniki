@@ -2,13 +2,20 @@ import styled from 'styled-components';
 
 export const StyledList = styled.ul`
   margin-top: 40px;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+
   @media screen and (min-width: 768px) {
     margin-top: 32px;
-    /* height: 596px; */
+    width: 704px;
+    height: 660px;
+    overflow: auto;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -19,7 +26,7 @@ export const StyledList = styled.ul`
   @media screen and (min-width: 1440px) {
     margin-top: 28px;
     width: 850px;
-    /* height: 487px; */
+    height: 487px;
   }
 `;
 
