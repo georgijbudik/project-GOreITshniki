@@ -1,6 +1,39 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const DesktopBackgroundContainer = styled.div`
+  @media screen and (min-width: 1440px) {
+    /* width: 670px;
+    height: 902px; */
+    /* flex-shrink: 0; */
+    position: relative; /* Add position relative to allow absolute positioning */
+    overflow: visible;
+    background-repeat: no-repeat;
+    /* background-position: right 30%; */
+    /* background-position: right bottom; */
+    background-position: calc(100% + 170px) calc(120% + 170px);
+    background-size: 46% auto; /* Adjust the values here */
+    /* background-position-y: calc(100% + 50px); */
+    /* background-size: contain; */
+    background-image: ${() => {
+      return `url('${process.env.PUBLIC_URL}/images/desktop/lg-welcome-image.jpg')`;
+    }};
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1; /* Send it behind the content */
+      background-image: inherit;
+      background-repeat: inherit;
+      background-position: inherit;
+      background-size: inherit;
+    }
+  }
+`;
+
 export const WrapperExercises = styled.ul`
   width: 335px;
   max-height: 726px;
