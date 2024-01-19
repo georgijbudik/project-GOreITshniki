@@ -3,7 +3,7 @@ import { selectToken } from '../redux/auth/authSelectors';
 
 import { Navigate } from 'react-router-dom';
 
-const RestrictedRoute = ({ children, navigateTo = '/diary' }) => {
+const RestrictedRoute = ({ children, navigateTo }) => {
   const token = useSelector(selectToken);
 
   if (token) {
