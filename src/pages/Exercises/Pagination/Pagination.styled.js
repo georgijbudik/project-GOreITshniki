@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const WrapperPaginate = styled.div`
   display: flex;
+  justify-content: center;
   gap: 8px;
   padding-top: 40px;
   padding-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  width: 6em;
+  /* width: 6em; */
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;

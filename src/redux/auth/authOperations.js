@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
+import toast from 'react-hot-toast';
 
 // axios.defaults.baseURL = 'http://localhost:3001';
 axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
@@ -21,7 +23,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('users/register', credentials);
-      console.log('first', res.data);
       toastSuccess(
         'Congratulation! You were successfully registrated',
         res.data.name
@@ -48,7 +49,8 @@ export const logIn = createAsyncThunk(
     } catch (error) {
       toastError(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data.message);
-    }
+      // console.log('first', res.data);
+    } 
   }
 );
 
