@@ -17,7 +17,8 @@ import {
   AddProfilePicCross,
   AddProfilePicBackground,
   ProfilePicContainer,
-  AddAvatarButton
+  AddAvatarButton,
+  AddAvatarLabel
 } from './UserCard.styled';
 
 const UserCard = () => {
@@ -26,7 +27,8 @@ const UserCard = () => {
       <ProfileSettings className='profile-desktop-hidden'>Profile Settings</ProfileSettings>
       <UserInfo>
         <ProfilePicContainer>
-          <AddAvatarButton>
+          <AddAvatarLabel htmlFor="add-avatar-button">
+            <AddAvatarButton id="add-avatar-button" className='add-avatar-button' type="file" />
             <AddProfilePicBackground>
               <use stroke='#e6533c' fill='#e6533c' xlinkHref={
                 process.env.PUBLIC_URL +
@@ -37,10 +39,7 @@ const UserCard = () => {
                 process.env.PUBLIC_URL +
                 '/images/sprite/sprite.svg#icon-cross'
               } /></AddProfilePicCross>
-
-
-          </AddAvatarButton>
-
+          </AddAvatarLabel>
           <UserAvatar fill="rgba(239, 237, 232, 0.1)">
             <use
               xlinkHref={

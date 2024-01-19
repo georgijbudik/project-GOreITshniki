@@ -3,7 +3,6 @@ import { StyledButton } from 'components/Button/Button.styled';
 
 export const StyledUserNav = styled.nav`
   line-height: 0;
-
   @media screen and (min-width: 1440px) {
     order: 1;
   }
@@ -34,7 +33,6 @@ export const StyledUserNavBurgerIcon = styled.svg`
 `;
 
 export const StyledUserNavMobileNavModalOverlay = styled.div`
-  z-index: 9999999;
   position: fixed;
   top: 0;
   left: 0;
@@ -127,5 +125,21 @@ export const StyledUserNavButton = styled(StyledButton)`
   font-size: 16px;
   line-height: 150%;
 
-  border: ${({ $active }) => $active && '1px solid var(--main-text-color)'};
+  @media screen and (max-width: 1439px) {
+    color: var(--main-text-color);
+    border: ${({ $active }) =>
+      $active
+        ? '1px solid var(--main-text-color)'
+        : '1px solid rgba(239, 237, 232, 0.2)'};
+  }
+
+  &:hover:not(:disabled) {
+    background-color: ${({ $secondary }) =>
+      $secondary ? 'transparent' : 'var(--accent-color)'};
+
+    border: ${({ $secondary }) =>
+      $secondary
+        ? `1px solid var(--accent-color)`
+        : '1px solid var(--accent-color)'};
+  }
 `;

@@ -1,59 +1,30 @@
-// import { useSelector } from "react-redux";
-// import { selectCategories } from "../../../redux/products/productSlice";
 import { useEffect, useState } from 'react';
-import {
-  CategorySelect,
-  RecommendSelect,
-  SearchBtn,
-  SearchBtns,
-  SearchContainer,
-  SearchInput,
-  SelectContainer,
-} from './ProductsFilters.styled';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
+
+import { selectCategories } from '../../../redux/products/productSlice';
+import {
+  StyledCategorySelect,
+  StyledRecommendSelect,
+  StyledSearchBtn,
+  StyledBtnsContainer,
+  StyledSearchContainer,
+  StyledSearchInput,
+  StyledSelectContainer,
+  StyledForm,
+} from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
-  const data = [
-    'alcoholic drinks',
-    'berries',
-    'cereals',
-    'dairy',
-    'dried fruits',
-    'eggs',
-    'fish',
-    'flour',
-    'fruits',
-    'meat',
-    'mushrooms',
-    'nuts',
-    'oils and fats',
-    'poppy',
-    'sausage',
-    'seeds',
-    'sesame',
-    'soft drinks',
-    'vegetables and herbs',
-  ];
-
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('categories');
-  const [recommendation, setRecommendetion] = useState('all');
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts({search, category, recommendation}))
-  // }, [dispatch, search, category, recommendation]);
-
+  const [category, setCategory] = useState('');
+  const [recommendation, setRecommendation] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const data = useSelector(selectCategories);
-  const categories = ['categories', ...data];
+  const categories = useSelector(selectCategories);
 
   const searchFromParams = searchParams.get('search') ?? '';
-  const categoryFromParams = searchParams.get('category') ?? 'categories';
-  const recommendationFromParams = searchParams.get('recommendation') ?? 'all';
+  const categoryFromParams = searchParams.get('category') ?? '';
+  const recommendationFromParams = searchParams.get('recommendation') ?? '';
 
   useEffect(() => {
     setSearch(searchFromParams);
@@ -64,7 +35,7 @@ const ProductsFilters = () => {
   }, [categoryFromParams]);
 
   useEffect(() => {
-    setRecommendetion(recommendationFromParams);
+    setRecommendation(recommendationFromParams);
   }, [recommendationFromParams]);
 
   const handleSearchOnChange = e => {
@@ -106,10 +77,10 @@ const ProductsFilters = () => {
   };
 
   return (
-    <form onSubmit={handleSearchSubmit}>
-      <SearchContainer>
+    <StyledForm onSubmit={handleSearchSubmit}>
+      <StyledSearchContainer>
         <label>
-          <SearchInput
+          <StyledSearchInput
             type="text"
             name="search"
             placeholder="Search"
@@ -117,9 +88,9 @@ const ProductsFilters = () => {
             value={search}
           />
         </label>
-        <SearchBtns>
+        <StyledBtnsContainer>
           {search && (
-            <SearchBtn type="button" onClick={handleSearchDeleteClick}>
+            <StyledSearchBtn type="button" onClick={handleSearchDeleteClick}>
               <svg width="18" height="18" stroke="var(--accent-color)">
                 <use
                   href={
@@ -128,9 +99,9 @@ const ProductsFilters = () => {
                   }
                 ></use>
               </svg>
-            </SearchBtn>
+            </StyledSearchBtn>
           )}
-          <SearchBtn type="submit">
+          <StyledSearchBtn type="submit">
             <svg width="18" height="18" fill="var(--main-text-color)">
               <use
                 href={
@@ -139,31 +110,34 @@ const ProductsFilters = () => {
                 }
               ></use>
             </svg>
-          </SearchBtn>
-        </SearchBtns>
-      </SearchContainer>
-      <SelectContainer>
+          </StyledSearchBtn>
+        </StyledBtnsContainer>
+      </StyledSearchContainer>
+      <StyledSelectContainer>
         <label>
-          <CategorySelect onChange={handleCategorySelect} value={category}>
-            {categories.map(category => (
-              <option key={category} value={category}>
-                {category[0].toUpperCase() + category.slice(1)}
+          <StyledCategorySelect
+            onChange={handleCategorySelect}
+            value={category}
+          >
+            {categories.map(item => (
+              <option key={item._id} value={item.category}>
+                {item.category[0].toUpperCase() + item.category.slice(1)}
               </option>
             ))}
-          </CategorySelect>
+          </StyledCategorySelect>
         </label>
         <label>
-          <RecommendSelect
+          <StyledRecommendSelect
             onChange={handleRecommendationSelect}
             value={recommendation}
           >
             <option value="all">All</option>
             <option value="recommended">Recommended</option>
             <option value="not recommended">Not recommended</option>
-          </RecommendSelect>
+          </StyledRecommendSelect>
         </label>
-      </SelectContainer>
-    </form>
+      </StyledSelectContainer>
+    </StyledForm>
   );
 };
 

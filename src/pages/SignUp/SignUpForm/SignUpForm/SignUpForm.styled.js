@@ -4,16 +4,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
+  height: 100%;
   padding: 90px 0px 35px 0px;
+  /* position: relative; */
 
   @media screen and (min-width: 768px) {
     width: 496px;
-    padding-top: 140px;
-    padding-bottom: 39px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding-top: 150px;
+    padding: 150px 0px 0px 0px;
   }
 `;
 
@@ -23,7 +20,7 @@ export const Heading = styled.h1`
   margin: 0 0 14px 0;
   line-height: calc(28 / 24);
   letter-spacing: 0.02em;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
@@ -38,8 +35,8 @@ export const Info = styled.p`
   margin: 0;
   margin-bottom: 28px;
   line-height: calc(18 / 14);
-  letter-spacing: 0.02em;
-  color: var(--main-text-color);
+  letter-spacing: -0.02em;
+  /* color: var(--main-text-color); */
   opacity: 0.3;
 
   @media screen and (min-width: 768px) {
@@ -56,7 +53,7 @@ export const InfoLink = styled.p`
   margin-top: 12px;
   line-height: calc(18 / 12);
   letter-spacing: 0.02em;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   opacity: 0.6;
 `;
 
@@ -65,7 +62,9 @@ export const StyledLink = styled(Link)`
   font-size: 12px;
   line-height: calc(18 / 12);
   letter-spacing: 0.02em;
-  color: var(--main-text-color);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
 `;
 
 // Forma CSS
@@ -86,6 +85,8 @@ export const Forma = styled(Form)`
 `;
 
 export const ContainerInput = styled.div`
+  width: 100%;
+  position: relative;
   margin-bottom: 28px;
   @media screen and (min-width: 768px) {
     margin-bottom: 64px;
@@ -94,18 +95,22 @@ export const ContainerInput = styled.div`
 
 export const Input = styled(Field)`
   font-size: 16px;
-  color: var(--main-text-color);
+  color: ${({ theme }) => theme.palette.text.primary};
   width: 100%;
   height: 46px;
   opacity: 0.3;
-  padding: 0 14px;
+  padding: 0 0 0 14px;
   margin-bottom: 18px;
   background-color: transparent;
-  border: 1px solid white;
+  border: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? '1px solid white'
+      : '1px solid black';
+  }};
   border-radius: 12px;
   outline: none;
   &::placeholder {
-    color: var(--main-text-color);
+    color: ${({ theme }) => theme.palette.text.primary};
     font-weight: 400;
     font-size: 16px;
     line-height: calc(18 / 14);
@@ -146,8 +151,11 @@ export const StyledAuthButton = styled.button`
   align-items: center;
   width: 140px;
   height: 42px;
-  color: var(--main-text-color);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
   transition: var(--transition);
+  /* z-index: 10; */
 
   padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
 
@@ -192,5 +200,30 @@ export const StyledAuthButton = styled.button`
 
     padding: ${({ $paddingY, $paddingX }) =>
       `${$paddingY * (4 / 3)}px ${$paddingX * (3 / 2)}px`};
+  }
+`;
+
+// password eye
+export const ContainerShowButton = styled.div`
+  position: relative;
+`;
+
+export const ShowPassButton = styled.button`
+  z-index: 10;
+  position: absolute;
+  top: 40%;
+  left: 95%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: none;
+`;
+
+export const ShowPassSVG = styled.svg`
+  transition: stroke 2250ms cubic-bezier(0.4, 0, 0.2, 1),
+    scale 250ms ease-in-out;
+
+  &:hover {
+    stroke: #e6533c;
+    scale: 1.2;
   }
 `;

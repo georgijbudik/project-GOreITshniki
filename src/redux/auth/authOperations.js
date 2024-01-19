@@ -1,15 +1,10 @@
-// BASE_URL=http://localhost:3001
-// /api/users
-// /register
-// /login
-// /current
-// /logout
-
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
+import { toastStyles } from 'utils/toastStyles';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -27,8 +22,13 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/api/users/register ', credentials);
+      toast.success(
+        `Congratulation! You were successfully registrated`,
+        toastStyles
+      );
       return res.data;
     } catch (error) {
+      toast.error(`Something went wrong. Try again...`, toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -43,12 +43,14 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('api/users/login', credentials);
       setAuthHeader(res.data.token);
-      // toast.success(`You Are Welcome, ${res.data.user.email}`, {
-      //   duration: 2000,
-      //   position: 'top-right',
-      // });
+      // console.log('first', res.data);
+      toast.success(`You were successfully login`, toastStyles);
       return res.data;
     } catch (error) {
+      toast.error(
+        `Something went wrong. ${error.message}. Try again...`,
+        toastStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -58,7 +60,9 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await axios.post('api/users/logout');
     clearAuthHeader();
+    toast.success(`You were successfully logout`, toastStyles);
   } catch (error) {
+    toast.error(`Something went wrong. Try another time..`, toastStyles);
     return thunkAPI.rejectWithValue(error.message);
   }
 });

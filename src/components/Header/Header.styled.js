@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   width: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
+
+  padding-top: ${({ $isLoggedIn }) => ($isLoggedIn ? '12px' : '24px')};
+  padding-bottom: ${({ $isLoggedIn }) => ($isLoggedIn ? '12px' : '24px')};
+
   background-color: transparent;
 
   display: flex;
@@ -11,13 +13,8 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding-top: 19px;
-    padding-bottom: 19px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: ${({ $isLoggedIn }) => ($isLoggedIn ? '20px' : '32px')};
+    padding-bottom: ${({ $isLoggedIn }) => ($isLoggedIn ? '20px' : '32px')};
   }
 `;
 

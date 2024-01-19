@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import SignInForm from './SignInForm';
 import {
   Heading,
@@ -5,18 +7,21 @@ import {
   Container,
   InfoLink,
   StyledLink,
-} from '../SignUp/SignUpForm/SignUpForm.styled';
+} from '../SignUp/SignUpForm/SignUpForm/SignUpForm.styled';
+import MainImage from 'pages/SignUp/SignUpForm/MainImage/MainImage';
 
 const SignIn = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
-      <Heading>Sign In</Heading>
-      <Info>
-        Welcome! Please enter your credentials to login to the platform:
-      </Info>
+      <MainImage />
+      <Heading>{t('sign_in.title')}</Heading>
+      <Info>{t('sign_in.description')}</Info>
       <SignInForm />
       <InfoLink>
-        Don’t have an account? <StyledLink to="/signup">Sign Up</StyledLink>
+        {t('sign_in.dont_have_account')}{' '}
+        <StyledLink to="/signup">{t('sign_in.sign_up_link')}</StyledLink>
       </InfoLink>
     </Container>
   );

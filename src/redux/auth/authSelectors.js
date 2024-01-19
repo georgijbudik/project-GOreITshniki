@@ -4,4 +4,6 @@ export const selectIsLoggedin = state => state.auth.isLoggedIn;
 
 export const selectIsFetching = state => state.auth.isFetching;
 
+export const selectToken = state => state.auth.token;
+
 export const selectError = state => state.auth.error;

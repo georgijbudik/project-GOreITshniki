@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import LogOutBtn from 'components/LogOutBtn';
 
@@ -23,6 +24,7 @@ import {
 } from './UserNav.styled';
 
 const UserNav = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navigate = useNavigate();
@@ -71,9 +73,10 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/diary');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
-                  Dairy
+                  {t('header.diary')}
                 </StyledUserNavButton>
                 <StyledUserNavButton
                   $secondary={true}
@@ -81,9 +84,10 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/products');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
-                  Products
+                  {t('header.products')}
                 </StyledUserNavButton>
                 <StyledUserNavButton
                   $secondary={true}
@@ -91,14 +95,16 @@ const UserNav = () => {
                   onClick={() => {
                     handlePageChange('/exercises');
                     setIsNavOpen(false);
+                    dispatch(setIsModalOpen(false));
                   }}
                 >
-                  Exercises
+                  {t('header.exercises')}
                 </StyledUserNavButton>
               </StyledUserNavMobileNavContent>
 
               <StyledUserNavMobileNavLogoOutBtnWrapper>
                 <LogOutBtn
+                  white
                   onClose={() => {
                     setIsNavOpen(false);
                     dispatch(setIsModalOpen(false));
@@ -130,19 +136,19 @@ const UserNav = () => {
           $secondary={pathname !== '/diary'}
           onClick={() => handlePageChange('/diary')}
         >
-          Diary
+          {t('header.diary')}
         </StyledUserNavButton>
         <StyledUserNavButton
           $secondary={pathname !== '/products'}
           onClick={() => handlePageChange('/products')}
         >
-          Products
+          {t('header.products')}
         </StyledUserNavButton>
         <StyledUserNavButton
           $secondary={pathname !== '/exercises'}
           onClick={() => handlePageChange('/exercises')}
         >
-          Exercises
+          {t('header.exercises')}
         </StyledUserNavButton>
       </StyledUserNavButtonList>
     </StyledUserNav>
