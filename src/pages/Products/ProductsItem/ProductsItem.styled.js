@@ -4,7 +4,7 @@ export const StyledContainer = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   padding: 16px;
-  min-width: 320px;
+  min-width: 280px;
   height: 141px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -139,7 +139,11 @@ export const StyledTitle = styled.h2`
 export const StyledBottomContainer = styled.div`
   margin-top: 8px;
   display: flex;
-  gap: 16px;
+  gap: 12px;
+
+  @media screen and (min-width: 375px) {
+    gap: 16px;
+  }
 `;
 
 export const StyledBottomText = styled.p`
