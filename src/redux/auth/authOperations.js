@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
+import { toastStyles } from 'utils/toastStyles';
 
 // axios.defaults.baseURL = 'http://localhost:3001';
 axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com';
@@ -21,24 +22,13 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/api/users/register ', credentials);
-      toast.success(`Congratulation! You were successfully registrated`, {
-        duration: 2000,
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.success(
+        `Congratulation! You were successfully registrated`,
+        toastStyles
+      );
       return res.data;
     } catch (error) {
-      toast.error(`Something went wrong. Try again...`, {
-        duration: 3000,
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.error(`Something went wrong. Try again...`, toastStyles);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -54,24 +44,13 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('api/users/login', credentials);
       setAuthHeader(res.data.token);
       // console.log('first', res.data);
-      toast.success(`You were successfully login`, {
-        duration: 2000,
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.success(`You were successfully login`, toastStyles);
       return res.data;
     } catch (error) {
-      toast.error(`Something went wrong. ${error.message}. Try again...`, {
-        duration: 3000,
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.error(
+        `Something went wrong. ${error.message}. Try again...`,
+        toastStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -81,23 +60,9 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await axios.post('api/users/logout');
     clearAuthHeader();
-    toast.success(`You were successfully logout`, {
-      duration: 2000,
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
-    });
+    toast.success(`You were successfully logout`, toastStyles);
   } catch (error) {
-    toast.error(`Something went wrong. Try another time..`, {
-      duration: 3000,
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
-    });
+    toast.error(`Something went wrong. Try another time..`, toastStyles);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
