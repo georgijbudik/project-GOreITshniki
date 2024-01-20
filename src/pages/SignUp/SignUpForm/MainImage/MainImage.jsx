@@ -8,6 +8,7 @@ const MainImage = () => {
   return (
     <>
       <StyledMainImageWrapper />
+
       <ContainerStatisticsInfo>
         <TrackerVideo />
         <TrackerCalories />

@@ -12,6 +12,14 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  border-bottom: ${({ $isLoggedIn }) => {
+    if ($isLoggedIn) {
+      return '1px solid rgba(239, 237, 232, 0.2)';
+    } else {
+      return 'none';
+    }
+  }};
+
   @media screen and (min-width: 768px) {
     padding-top: ${({ $isLoggedIn }) => ($isLoggedIn ? '20px' : '32px')};
     padding-bottom: ${({ $isLoggedIn }) => ($isLoggedIn ? '20px' : '32px')};

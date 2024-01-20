@@ -1,43 +1,34 @@
 import styled from 'styled-components';
 
 export const StyledMainImageWrapper = styled.div`
-  width: 446px;
-  height: 669px;
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  position: fixed;
   z-index: -1;
 
   /* background: linear-gradient(89deg, #040404 91.1%, rgba(4, 4, 4, 0) 90.79%); */
-  background-image: linear-gradient(
+  /* linear-gradient(
       168.14deg,
       #040404 14.75%,
       rgba(4, 4, 4, 0) 52.97%
     ),
-    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-    ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image@2x.jpg'
-      })`};
+    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%), */
+  background-image: ${() =>
+    `url(${
+      process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image@2x.jpg'
+    })`};
   background-repeat: no-repeat;
-  background-position: 57px 114px;
-  background-size: 298px auto;
+  background-size: contain;
+  background-position: right bottom;
+  bottom: 0;
+  right: 0;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
-    height: 1005px;
-
-    background-position: 300px -58px;
-    background-size: 437px auto;
-
-    background-image: linear-gradient(
-        168.14deg,
-        #040404 14.75%,
-        rgba(4, 4, 4, 0) 52.97%
-      ),
-      linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-      ${() =>
-        `url(${
-          process.env.PUBLIC_URL + '/images/tablet/md-welcome-image.jpg'
-        })`};
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-position: right bottom;
+    background-size: contain;
   }
 
   @media screen and (min-width: 768px) and (min-resolution: 2dppx) {
@@ -49,9 +40,11 @@ export const StyledMainImageWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    background-size: 670px auto;
-    background-position: 674px 0px;
-    top: 0px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-position: right bottom;
+    background-size: contain;
 
     background-image: ${() =>
       `url(${

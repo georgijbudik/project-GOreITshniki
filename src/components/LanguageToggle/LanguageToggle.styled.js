@@ -3,7 +3,11 @@ import styled from 'styled-components';
 export const StyledLanguageToggleList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    gap: 12px;
+  }
 `;
 
 export const StyledLanguageToggleListItem = styled.li`
@@ -29,5 +33,9 @@ export const StyledLanguageToggleListButton = styled.button`
   color: ${({ $active }) =>
     $active ? 'var(--accent-color)' : 'var(--main-text-color)'};
 
-  font-size: 14px;
+  font-size: 12px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
