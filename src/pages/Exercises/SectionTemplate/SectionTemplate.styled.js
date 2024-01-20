@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
+  position: relative;
+
   margin: 0 auto;
   width: 100%;
   height: 100vh;

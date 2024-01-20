@@ -4,13 +4,22 @@ import {
   NotFoundMessage,
 } from './DayProducts.styled';
 
+import { useNavigate } from 'react-router-dom';
+
 const DayProducts = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <CellProductsHeader>
         <div>Products</div>
         <div>
-          <a href="http://www.google.com">Add product</a>
+          <button
+            onClick={() => {
+              navigate('/products');
+            }}
+          >
+            Add product
+          </button>
           <svg>
             <use
               xlinkHref={

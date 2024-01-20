@@ -94,7 +94,9 @@ export const ContainerInput = styled.div`
 `;
 
 export const Input = styled(Field)`
-  font-size: 16px;
+  font-size: 18px;
+  line-height: calc(24 / 18);
+  /* color: #efede8; */
   color: ${({ theme }) => theme.palette.text.primary};
   width: 100%;
   height: 46px;
@@ -104,8 +106,8 @@ export const Input = styled(Field)`
   background-color: transparent;
   border: ${({ theme }) => {
     return theme.palette.mode === 'dark'
-      ? '1px solid white'
-      : '1px solid black';
+      ? '2px solid white'
+      : '2px solid black';
   }};
   border-radius: 12px;
   outline: none;
@@ -113,7 +115,7 @@ export const Input = styled(Field)`
     color: ${({ theme }) => theme.palette.text.primary};
     font-weight: 400;
     font-size: 16px;
-    line-height: calc(18 / 14);
+    line-height: calc(18 / 16);
     letter-spacing: 0.02em;
     opacity: 0.6;
   }
