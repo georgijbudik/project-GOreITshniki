@@ -63,8 +63,8 @@ const Products = () => {
   return (
     <main>
       {isLoading && <Loader />}
-      {isProductSuccesAdded && <AddProductSuccess />}
       {isProductToAdd && <AddProductForm />}
+      {isProductSuccesAdded && <AddProductSuccess />}
       <StyledWrapper>
         <StyledSection>
           <StyledContainer>

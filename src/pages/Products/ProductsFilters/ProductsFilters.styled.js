@@ -60,15 +60,17 @@ export const StyledSearchInput = styled.input`
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.3;
   outline: none;
 
   @media screen and (min-width: 768px) {
     min-width: 0;
     width: 164px;
     height: 52px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 `;
 
@@ -103,7 +105,7 @@ export const StyledSelectContainer = styled.div`
 `;
 
 export const StyledCategorySelect = styled.select`
-  padding: 14px;
+  padding: 12px;
   width: 150px;
   height: 46px;
   border-radius: 12px;
@@ -111,9 +113,9 @@ export const StyledCategorySelect = styled.select`
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.3;
 
   @media screen and (min-width: 375px) {
     width: 146px;
@@ -122,11 +124,13 @@ export const StyledCategorySelect = styled.select`
   @media screen and (min-width: 768px) {
     width: 192px;
     height: 52px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 `;
 
 export const StyledRecommendSelect = styled.select`
-  padding: 14px;
+  padding: 12px;
   width: 130px;
   height: 46px;
   border-radius: 12px;
@@ -134,9 +138,9 @@ export const StyledRecommendSelect = styled.select`
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.3;
   outline: none;
 
   @media screen and (min-width: 375px) {
@@ -146,5 +150,7 @@ export const StyledRecommendSelect = styled.select`
   @media screen and (min-width: 768px) {
     width: 204px;
     height: 52px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 `;
