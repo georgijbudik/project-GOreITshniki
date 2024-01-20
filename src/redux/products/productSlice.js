@@ -5,6 +5,7 @@ import { fetchCategories, fetchProducts } from './productOperations';
 const productInitialState = {
   categories: [],
   products: [],
+  page: 1,
   productToAdd: null,
   caloriesByUser: null,
   isProductSuccesAdded: false,
@@ -26,6 +27,9 @@ const productSlice = createSlice({
   name: 'product',
   initialState: productInitialState,
   reducers: {
+    setPage(state, action) {
+      state.page = action.payload;
+    },
     setProductToAdd(state, action) {
       state.productToAdd = action.payload;
     },
@@ -47,7 +51,17 @@ const productSlice = createSlice({
       .addCase(fetchCategories.rejected, handleRejected)
 
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.products = action.payload;
+        if (state.page === 1) {
+          state.products = action.payload;
+          state.page = state.page + 1;
+        } else if (action.payload.length > 0) {
+          state.products = [...state.products, ...action.payload];
+          state.page = state.page + 1;
+        } else {
+          state.isLoading = false;
+          state.error = null;
+          return;
+        }
         state.isLoading = false;
         state.error = null;
       })
@@ -66,6 +80,7 @@ const productSlice = createSlice({
 
 export const selectCategories = state => state.products.categories;
 export const selectProducts = state => state.products.products;
+export const selectPage = state => state.products.page;
 export const selectProductToAdd = state => state.products.productToAdd;
 export const selectCaloriesByUser = state => state.products.caloriesByUser;
 export const selectIsProductSuccesAdded = state =>
@@ -73,7 +88,11 @@ export const selectIsProductSuccesAdded = state =>
 export const selectIsLoading = state => state.products.isLoading;
 export const selectError = state => state.products.error;
 
-export const { setProductToAdd, setCaloriesByUser, setIsProductSuccesAdded } =
-  productSlice.actions;
+export const {
+  setPage,
+  setProductToAdd,
+  setCaloriesByUser,
+  setIsProductSuccesAdded,
+} = productSlice.actions;
 
 export const productReducer = productSlice.reducer;

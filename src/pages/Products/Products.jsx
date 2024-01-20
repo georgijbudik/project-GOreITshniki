@@ -12,6 +12,7 @@ import {
   selectIsLoading,
   selectIsProductSuccesAdded,
   selectProductToAdd,
+  setPage,
 } from '../../redux/products/productSlice';
 import {
   fetchCategories,
@@ -38,11 +39,14 @@ const Products = () => {
   const recommendationFromParams = searchParams.get('recommendation') ?? '';
 
   useEffect(() => {
+    dispatch(setPage(1));
     dispatch(
       fetchProducts({
         search: searchFromParams,
         category: categoryFromParams,
         recommendation: recommendationFromParams,
+        page: 1,
+        limit: 10,
       })
     );
   }, [
