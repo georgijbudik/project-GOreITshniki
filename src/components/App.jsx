@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate, useLocation } from 'react-router';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { refreshUser } from '../redux/auth/authOperations';
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { refreshUser } from '../redux/auth/authOperations';
 
 import Welcome from 'pages/Welcome/Welcome';
 import SignUp from 'pages/SignUp/SignUp';
@@ -17,15 +17,15 @@ import BodyParts from 'pages/Exercises/BodyParts';
 import Muscles from 'pages/Exercises/Muscles';
 import Equipment from 'pages/Exercises/Equipment';
 
-import RestrictedRoute from 'routes/RestrictedRoute';
+import PublicRoute from 'routes/PublicRoute';
 
 export const App = () => {
   const location = useLocation();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
 
   if (location.pathname === '/exercises') {
     return <Navigate to="/exercises/bodyparts" />;
@@ -34,21 +34,28 @@ export const App = () => {
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Welcome />} />
+        <Route
+          index
+          element={
+            <PublicRoute>
+              <Welcome />
+            </PublicRoute>
+          }
+        />
         <Route
           path="signup"
           element={
-            <RestrictedRoute>
+            <PublicRoute restricted>
               <SignUp />
-            </RestrictedRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="signin"
           element={
-            <RestrictedRoute>
+            <PublicRoute restricted>
               <SignIn />
-            </RestrictedRoute>
+            </PublicRoute>
           }
         />
         <Route path="profile" element={<Profile />} />

@@ -26,32 +26,48 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
+    builder.addCase(register.pending, (state, action) => {
+      state.isFetching = true;
+    });
     builder.addCase(register.fulfilled, (state, action) => {
-      state.user = action.payload.user;
+      state.user.name = action.payload.name;
+      state.user.email = action.payload.email;
+
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.token = action.payload.token;
+      state.isFetching = false;
     });
     builder.addCase(register.rejected, (state, action) => {
       state.error = action.payload;
+      state.isFetching = false;
     });
 
+    builder.addCase(logIn.pending, (state, action) => {
+      state.isFetching = true;
+    });
     builder.addCase(logIn.fulfilled, (state, action) => {
-      state.user = action.payload.user;
+      // state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isFetching = false;
     });
     builder.addCase(logIn.rejected, (state, action) => {
       state.error = action.payload;
+      state.isFetching = false;
     });
 
+    builder.addCase(logOut.pending, (state, action) => {
+      state.isFetching = true;
+    });
     builder.addCase(logOut.fulfilled, (state, action) => {
       state.user = { name: null, email: null, password: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.isFetching = false;
     });
     builder.addCase(logOut.rejected, (state, action) => {
       state.error = action.payload;
+      state.isFetching = false;
     });
 
     builder.addCase(refreshUser.pending, (state, action) => {
