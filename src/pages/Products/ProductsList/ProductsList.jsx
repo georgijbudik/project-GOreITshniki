@@ -1,7 +1,13 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
+import { fetchProducts } from '../../../redux/products/productOperations';
 import ProductsItem from '../ProductsItem';
-import { selectProducts } from '../../../redux/products/productSlice';
+import {
+  selectPage,
+  selectProducts,
+} from '../../../redux/products/productSlice';
 import {
   StyledList,
   StyledContainerNoResults,
@@ -13,6 +19,57 @@ import {
 
 const ProductsList = () => {
   const products = useSelector(selectProducts);
+
+  const page = useSelector(selectPage);
+
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
+  const elementRef = useRef(null);
+
+  const searchFromParams = searchParams.get('search') ?? '';
+  const categoryFromParams = searchParams.get('category') ?? '';
+  const recommendationFromParams = searchParams.get('recommendation') ?? '';
+
+  const fetchMoreProducts = useCallback(async () => {
+    dispatch(
+      fetchProducts({
+        search: searchFromParams,
+        category: categoryFromParams,
+        recommendation: recommendationFromParams,
+        page: page,
+        limit: 10,
+      })
+    );
+  }, [
+    dispatch,
+    searchFromParams,
+    categoryFromParams,
+    recommendationFromParams,
+    page,
+  ]);
+
+  useEffect(() => {
+    const onIntersection = entries => {
+      if (entries[0].isIntersecting) {
+        fetchMoreProducts();
+      }
+    };
+    const options = {
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+    const observer = new IntersectionObserver(onIntersection, options);
+    if (observer && elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [products, fetchMoreProducts]);
+
   return (
     <>
       {products.length === 0 && (
@@ -37,6 +94,7 @@ const ProductsList = () => {
               <ProductsItem key={product._id} product={product} />
             ))}
           </StyledList>
+          <div ref={elementRef}></div>
         </StyledContainer>
       )}
     </>
