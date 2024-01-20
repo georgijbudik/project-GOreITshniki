@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeroText = styled.h1`
-  color: #efede8;
+  /* color: #efede8; */
   font-size: 38px;
   font-weight: 500;
   line-height: calc(40 / 38);

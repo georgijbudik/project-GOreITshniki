@@ -152,7 +152,7 @@ i18n
           welcome: {
             main_text: {
               part1: 'Transformando tu',
-              part2: 'cuerpo',
+              part2: 'masa',
               part3: 'con Power Pulse',
             },
             sign_in: 'Iniciar',
