@@ -4,6 +4,8 @@ export const selectIsLoggedin = state => state.auth.isLoggedIn;
 
 export const selectUserInfo = state => state.auth.user;
 
+export const selectUserBlood = state => state.auth.user.blood;
+
 export const selectIsFetching = state => state.auth.isFetching;
 
 export const selectToken = state => state.auth.token;
