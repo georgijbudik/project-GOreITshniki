@@ -10,12 +10,15 @@
 //   LinkBtn,
 //   IconWrapperBack,
 //   WrapperNav,
+//   DesktopBackgroundContainer,
 // } from './ExercisesList.styled';
 // import { ChaptersWrapper, LinkStyled } from '../Exercises.styled';
 
 // import ExercisesItem from '../ExercisesItem';
 // import SectionTemplate from '../SectionTemplate';
 // import ChapterTemplate from '../ChapterTemplate';
+
+// import Loader from '../../../components/Loader';
 
 // const ExercisesList = () => {
 //   const dispatch = useDispatch();
@@ -28,7 +31,8 @@
 //   const backLinkEquipment = useRef(
 //     location.state?.from ?? '/exercises/equipment'
 //   );
-//   const { exeFilter } = useSelector(state => state.exercises);
+//   // const { exeFilter } = useSelector(state => state.exercises);
+//   const { exeFilter, isLoading } = useSelector(state => state.exercises);
 
 //   const params = useParams();
 //   const current = params.id;
@@ -50,65 +54,70 @@
 
 //   return (
 //     <SectionTemplate>
-// <ButtonGoBack>
-//   <IconWrapperBack>
-//     <use
-//       xlinkHref={
-//         process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-arrow'
-//       }
-//     ></use>
-//   </IconWrapperBack>
-//   <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
-// </ButtonGoBack>
-// <WrapperNav>
-//   <NameExercises>{ucFirst(current)}</NameExercises>
+//       <ButtonGoBack>
+//         <IconWrapperBack>
+//           <use
+//             xlinkHref={
+//               process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-arrow'
+//             }
+//           ></use>
+//         </IconWrapperBack>
+//         <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
+//       </ButtonGoBack>
+//       <DesktopBackgroundContainer>
+//         <WrapperNav>
+//           {isLoading && <Loader />}
+//           <NameExercises>{ucFirst(current)}</NameExercises>
 
-//   <ChaptersWrapper>
-//     <li>
-//       <LinkStyled to={backLinkBodyparts.current}>
-//         <ChapterTemplate>Body parts</ChapterTemplate>
-//       </LinkStyled>
-//     </li>
-//     <li>
-//       <LinkStyled to={backLinkMuscles.current}>
-//         <ChapterTemplate>Muscles</ChapterTemplate>
-//       </LinkStyled>
-//     </li>
-//     <li>
-//       <LinkStyled to={backLinkEquipment.current}>
-//         <ChapterTemplate>Equipment</ChapterTemplate>
-//       </LinkStyled>
-//     </li>
-//   </ChaptersWrapper>
-// </WrapperNav>
+//           <ChaptersWrapper>
+//             <li>
+//               <LinkStyled to={backLinkBodyparts.current}>
+//                 <ChapterTemplate>Body parts</ChapterTemplate>
+//               </LinkStyled>
+//             </li>
+//             <li>
+//               <LinkStyled to={backLinkMuscles.current}>
+//                 <ChapterTemplate>Muscles</ChapterTemplate>
+//               </LinkStyled>
+//             </li>
+//             <li>
+//               <LinkStyled to={backLinkEquipment.current}>
+//                 <ChapterTemplate>Equipment</ChapterTemplate>
+//               </LinkStyled>
+//             </li>
+//           </ChaptersWrapper>
+//         </WrapperNav>
 
-//       <WrapperExercises>
-//         {exeFilter.data?.map(
-//           ({
-//             bodyPart,
-//             name,
-//             target,
-//             _id,
-//             burnedCalories,
-//             equipment,
-//             gifUrl,
-//           }) => {
-//             return (
-//               <ExercisesItem
-//                 key={_id}
-//                 calories={burnedCalories}
-//                 target={ucFirst(target)}
-//                 NameBodyPart={ucFirst(bodyPart)}
-//                 name={ucFirst(name)}
-//                 equipment={equipment}
-//                 gifUrl={gifUrl}
-//                 burnedCalories={burnedCalories}
-//                 exeId={_id}
-//               />
-//             );
-//           }
-//         )}
-//       </WrapperExercises>
+//         <WrapperExercises>
+//           {exeFilter.data?.map(
+//             ({
+//               bodyPart,
+//               name,
+//               target,
+//               _id,
+//               burnedCalories,
+//               equipment,
+//               gifUrl,
+//               time,
+//             }) => {
+//               return (
+//                 <ExercisesItem
+//                   key={_id}
+//                   calories={burnedCalories}
+//                   target={ucFirst(target)}
+//                   NameBodyPart={ucFirst(bodyPart)}
+//                   name={ucFirst(name)}
+//                   equipment={equipment}
+//                   gifUrl={gifUrl}
+//                   burnedCalories={burnedCalories}
+//                   exeId={_id}
+//                   time={time}
+//                 />
+//               );
+//             }
+//           )}
+//         </WrapperExercises>
+//       </DesktopBackgroundContainer>
 //     </SectionTemplate>
 //   );
 // };
@@ -116,11 +125,13 @@
 // export default ExercisesList;
 //*=================================================================
 
-// import { useEffect, useRef } from 'react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+// import { useRef } from 'react';
 
 import { useLocation } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import { useParams } from 'react-router-dom';
 
 import {
@@ -132,6 +143,8 @@ import {
   WrapperNav,
   DesktopBackgroundContainer,
 } from './ExercisesList.styled';
+import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
+
 import { ChaptersWrapper, LinkStyled } from '../Exercises.styled';
 
 import ExercisesItem from '../ExercisesItem';
@@ -204,7 +217,7 @@ const exeList = [
 // TEMPORARY
 
 const ExercisesList = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/exercises');
   const backLinkBodyparts = useRef(
@@ -214,6 +227,17 @@ const ExercisesList = () => {
   const backLinkEquipment = useRef(
     location.state?.from ?? '/exercises/equipment'
   );
+  // const type = location.pathname.split('/exercises/')[1];
+  const [type, name] = location.pathname.split('/exercises/')[1].split('/');
+  // console.log('type', type);
+  // console.log('filters', filters);
+
+  useEffect(() => {
+    const filters = { type, name };
+
+    dispatch(getExercisesFilter(filters));
+  }, [dispatch, name, type]);
+
   // Replaced exeFilter with exeList
   const exeFilter = { data: exeList };
 

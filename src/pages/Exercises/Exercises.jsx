@@ -1,9 +1,26 @@
+import { useDispatch } from 'react-redux';
+// import { refreshUser } from '../../redux/auth/authOperations';
+import { useEffect } from 'react';
+import { getExercisesByType } from '../../redux/exercises/exerciseOperations';
+import { useLocation } from 'react-router-dom';
+
 import { Outlet } from 'react-router';
 
 import SectionTemplate from './SectionTemplate';
 import ExercisesCategories from './ExercisesCategories';
 
 const Exercises = () => {
+  const dispatch = useDispatch();
+
+  const { pathname } = useLocation();
+
+  const type = pathname.split('/exercises/')[1];
+  // console.log('type', type);
+
+  useEffect(() => {
+    dispatch(getExercisesByType(type));
+  }, [dispatch, type]);
+
   return (
     <SectionTemplate>
       <ExercisesCategories />
