@@ -20,7 +20,7 @@ export const TrackerVideo = () => {
   return (
     <TrackerVideoContainer>
       <TrackerVideoPlayEl>
-        <TrackerVideoIcon width="12" height="12" stroke="#EFEDE8">
+        <TrackerVideoIcon>
           <use
             xlinkHref={
               process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-polygon'
@@ -42,7 +42,7 @@ export const TrackerCalories = () => {
   return (
     <TrackerCaloriesContainer>
       <TrackerCaloriesIconEl>
-        <TrackerCaloriesIcon width="12" height="12" stroke="#EFEDE8">
+        <TrackerCaloriesIcon>
           <use
             xlinkHref={
               process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-human'
