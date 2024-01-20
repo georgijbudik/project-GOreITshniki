@@ -15,8 +15,8 @@ const LogOutBtn = ({ white, filled, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    dispatch(logOut());
+  const handleLogOut = async () => {
+    await dispatch(logOut());
     onClose?.();
     navigate('/');
   };
