@@ -16,7 +16,7 @@ export const getExercises = createAsyncThunk(
 );
 
 export const getExercisesBodyparts = createAsyncThunk(
-  'exercises/fetchBodyParts',
+  'exercises/getExercisesBodyparts',
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/exercises/bodyparts');
@@ -28,7 +28,7 @@ export const getExercisesBodyparts = createAsyncThunk(
 );
 
 export const getExercisesMuscles = createAsyncThunk(
-  'exercises/fetchMuscules',
+  'exercises/getExercisesMuscles',
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/exercises/muscules');
@@ -40,7 +40,7 @@ export const getExercisesMuscles = createAsyncThunk(
 );
 
 export const getExercisesEquipment = createAsyncThunk(
-  'exercises/fetchEquipment',
+  'exercises/getExercisesEquipment',
   async (_, thunkAPI) => {
     try {
       const res = await axios.get('/exercises/equipments');
