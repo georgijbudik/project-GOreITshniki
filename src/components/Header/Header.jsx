@@ -7,6 +7,8 @@ import {
 import Logo from 'components/Logo';
 import UserNav from 'components/UserNav';
 import UserBar from 'components/UserBar';
+import LanguageToggle from 'components/LanguageToggle';
+import ThemeToggle from 'components/ThemeToggle';
 
 import { StyledHeader, StyledHeaderUserMenu } from './Header.styled';
 
@@ -25,10 +27,15 @@ export function Header() {
         </StyledHeaderUserMenu>
       )} */}
 
-      {isLoggedIn && (
+      {isLoggedIn ? (
         <StyledHeaderUserMenu>
           <UserBar />
           <UserNav />
+        </StyledHeaderUserMenu>
+      ) : (
+        <StyledHeaderUserMenu>
+          <LanguageToggle />
+          <ThemeToggle />
         </StyledHeaderUserMenu>
       )}
     </StyledHeader>
