@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerItem = styled.div`
+export const ContHover = styled.div`
   position: relative;
   width: 335px;
   height: 206px;
@@ -20,6 +20,7 @@ export const Img = styled.img`
   opacity: 0.3;
   border-radius: 12px;
   object-fit: cover;
+  transition: var(--transition);
   @media screen and (min-width: 768px) {
     width: 224px;
   }
@@ -27,7 +28,11 @@ export const Img = styled.img`
     width: 237px;
   }
 `;
-
+export const ContainerItem = styled.div`
+  &:hover ${Img} {
+    opacity: 0.5;
+  }
+`;
 export const TextItem = styled.div`
   position: absolute;
   top: 50%;
@@ -38,16 +43,22 @@ export const TextItem = styled.div`
 
 export const NameImg = styled.p`
   margin-bottom: 2px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
+  line-height: 1.2;
   color: rgba(239, 237, 232, 1);
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const NameCategory = styled.p`
   margin: 0;
   font-size: 12px;
   font-weight: 400;
+  line-height: 1.33;
   color: rgba(239, 237, 232, 0.4);
   text-align: center;
 `;

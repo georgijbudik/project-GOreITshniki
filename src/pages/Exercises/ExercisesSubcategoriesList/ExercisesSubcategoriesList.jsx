@@ -1,9 +1,3 @@
-// const ExercisesSubcategoriesList = () => {
-//   return <div>ExercisesSubcategoriesList</div>;
-// };
-
-// export default ExercisesSubcategoriesList;
-//*=========
 import { WrapperStyled } from './ExercisesSubcategoriesList.styled';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem';
 
