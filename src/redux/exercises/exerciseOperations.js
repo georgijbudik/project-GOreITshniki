@@ -5,10 +5,22 @@ export const getExercises = createAsyncThunk(
   'exercises/getExercises',
   async (_, thunkAPI) => {
     try {
-      // const response = await axios.get('exercises/getExercises');
       const response = await axios.get('/exercises');
 
       return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getExercisesByType = createAsyncThunk(
+  'exercises/getExercisesBodyparts',
+  async (type, thunkAPI) => {
+    console.log('type', type);
+    try {
+      const res = await axios.get(`exercises/${type}`);
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -53,7 +65,7 @@ export const getExercisesEquipment = createAsyncThunk(
 
 //* ============================
 
-axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 export const getExercisesFilter = createAsyncThunk(
   'exercises/getExercisesFilter',
