@@ -8,11 +8,11 @@ import {
   StyledTextNoResults,
   StyledTextTryAgain,
   StyledTextNoResultsRed,
+  StyledContainer,
 } from './ProductsList.styled';
 
 const ProductsList = () => {
   const products = useSelector(selectProducts);
-
   return (
     <>
       {products.length === 0 && (
@@ -31,11 +31,13 @@ const ProductsList = () => {
         </StyledContainerNoResults>
       )}
       {products.length > 0 && (
-        <StyledList>
-          {products.map(product => (
-            <ProductsItem key={product._id} product={product} />
-          ))}
-        </StyledList>
+        <StyledContainer>
+          <StyledList>
+            {products.map(product => (
+              <ProductsItem key={product._id} product={product} />
+            ))}
+          </StyledList>
+        </StyledContainer>
       )}
     </>
   );

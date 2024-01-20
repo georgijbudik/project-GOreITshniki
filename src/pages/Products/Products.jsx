@@ -43,6 +43,8 @@ const Products = () => {
         search: searchFromParams,
         category: categoryFromParams,
         recommendation: recommendationFromParams,
+        page: 1,
+        limit: 10,
       })
     );
   }, [

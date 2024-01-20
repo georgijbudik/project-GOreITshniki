@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledList = styled.ul`
+export const StyledContainer = styled.div`
   margin-top: 40px;
   min-width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 
   @media screen and (min-width: 375px) {
     width: 335px;
@@ -16,17 +13,26 @@ export const StyledList = styled.ul`
     width: 704px;
     height: 660px;
     overflow: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    row-gap: 32px;
-    column-gap: 16px;
   }
 
   @media screen and (min-width: 1440px) {
     margin-top: 28px;
     width: 850px;
     height: 487px;
+  }
+`;
+
+export const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    row-gap: 32px;
+    column-gap: 16px;
   }
 `;
 
