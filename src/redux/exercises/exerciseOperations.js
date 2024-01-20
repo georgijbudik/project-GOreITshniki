@@ -71,12 +71,12 @@ export const getExercisesFilter = createAsyncThunk(
   'exercises/getExercisesFilter',
   async (paramsExe, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      axios.defaults.headers.common.Authorization = `Bearer ${persistedToken}`;
+      // const state = thunkAPI.getState();
+      // const persistedToken = state.auth.token;
+      // axios.defaults.headers.common.Authorization = `Bearer ${persistedToken}`;
 
       const response = await axios.get(
-        `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
+        `/exercises/${paramsExe.type}/${paramsExe.name}`
       );
       return response.data;
     } catch (e) {
@@ -85,6 +85,10 @@ export const getExercisesFilter = createAsyncThunk(
     }
   }
 );
+
+//*PAGINATION
+// `/exercises/${paramsExe.type}/${paramsExe.name}?page=${paramsExe.page}&limit=${paramsExe.limit}`;
+
 //* ============================
 
 // export const getExercisesBodyparts = createAsyncThunk(

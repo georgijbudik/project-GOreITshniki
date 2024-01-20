@@ -76,7 +76,14 @@ export const App = () => {
           <Route path="muscles" element={<Muscles />} />
           <Route path="equipment" element={<Equipment />} />
         </Route>
-        <Route path="/exercises/:filter/:id" element={<ExercisesList />} />
+        <Route
+          path="/exercises/:filter/:id"
+          element={
+            <PrivateRoute>
+              <ExercisesList />
+            </PrivateRoute>
+          }
+        />
       </Route>
       <Route path="*" element={<Error />} />
     </Routes>
