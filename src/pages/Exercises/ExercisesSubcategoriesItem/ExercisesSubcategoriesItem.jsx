@@ -1,26 +1,22 @@
-// const ExercisesSubcategoriesItem = () => {
-//   return <div>ExercisesSubcategoriesItem</div>;
-// };
-
-// export default ExercisesSubcategoriesItem;
-
-//*=========
 import {
   ContainerItem,
   Img,
   TextItem,
   NameImg,
   NameCategory,
+  ContHover,
 } from './ExercisesSubcategoriesItem.styled';
 
 const ExercisesSubcategoriesItem = ({ fig, nameImg, category }) => {
   return (
     <ContainerItem>
-      <Img src={fig} />
-      <TextItem>
-        <NameImg>{nameImg}</NameImg>
-        <NameCategory>{category}</NameCategory>
-      </TextItem>
+      <ContHover>
+        <Img src={fig} />
+        <TextItem>
+          <NameImg>{nameImg}</NameImg>
+          <NameCategory>{category}</NameCategory>
+        </TextItem>
+      </ContHover>
     </ContainerItem>
   );
 };

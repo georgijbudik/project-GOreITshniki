@@ -9,12 +9,10 @@ import {
   NameExes,
   WrapperExercisesItem,
   IconWrapper,
+  WrapperIcon,
   WrapperNameExes,
   WrapperStart,
   IconWrapperStart,
-  IndexesTextBody,
-  IndexesTextTarget,
-  IndexesValueBody,
   ExercisesTitle,
 } from './ExercisesItem.styled';
 import AddExerciseForm from '../AddExerciseForm';
@@ -65,13 +63,16 @@ const ExercisesItem = ({
           </WrapperStart>
         </HeaderIndexes>
         <WrapperNameExes>
-          <IconWrapper>
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-human'
-              }
-            ></use>
-          </IconWrapper>
+          <WrapperIcon>
+            <IconWrapper>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-human'
+                }
+              ></use>
+            </IconWrapper>
+          </WrapperIcon>
           <NameExes>{name}</NameExes>
         </WrapperNameExes>
         <WrapperIndexes>
@@ -80,12 +81,12 @@ const ExercisesItem = ({
             <IndexesValue>{calories}</IndexesValue>
           </Indexes>
           <Indexes>
-            <IndexesTextBody>Body part:</IndexesTextBody>
-            <IndexesValueBody>{NameBodyPart}</IndexesValueBody>
+            <IndexesText>Body part:</IndexesText>
+            <IndexesValue>{NameBodyPart}</IndexesValue>
           </Indexes>
           <Indexes>
-            <IndexesTextTarget>Target:</IndexesTextTarget>
-            <IndexesValueBody>{target}</IndexesValueBody>
+            <IndexesText>Target:</IndexesText>
+            <IndexesValue>{target}</IndexesValue>
           </Indexes>
         </WrapperIndexes>
       </WrapperExercisesItem>

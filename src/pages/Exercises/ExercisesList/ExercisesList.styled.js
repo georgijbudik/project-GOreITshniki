@@ -6,7 +6,7 @@ export const DesktopBackgroundContainer = styled.div`
     /* width: 670px;
     height: 902px; */
     /* flex-shrink: 0; */
-    position: relative; 
+    position: relative;
     overflow: visible;
     background-repeat: no-repeat;
     /* background-position: right 30%; */
@@ -25,7 +25,7 @@ export const DesktopBackgroundContainer = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: -1; 
+      z-index: -1;
       background-image: inherit;
       background-repeat: inherit;
       background-position: inherit;
@@ -36,7 +36,10 @@ export const DesktopBackgroundContainer = styled.div`
 
 export const WrapperExercises = styled.ul`
   width: 335px;
-  max-height: 726px;
+  /* max-height: 726px; */
+
+  /* width: 768px;
+  height: 1024px; */
 
   display: flex;
   gap: 16px;
@@ -47,7 +50,7 @@ export const WrapperExercises = styled.ul`
   @media screen and (min-width: 768px) {
     width: 710px;
     overflow-y: scroll;
-    max-height: 487px;
+    max-height: 1024px;
     &::-webkit-scrollbar {
       width: 8px;
       height: 2px;
