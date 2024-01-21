@@ -18,6 +18,7 @@ import Muscles from 'pages/Exercises/Muscles';
 import Equipment from 'pages/Exercises/Equipment';
 
 import PublicRoute from 'routes/PublicRoute';
+// import PrivateRoute from 'routes/PrivateRoute';
 
 export const App = () => {
   const location = useLocation();

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
-  width: 335px;
+  max-width: 335px;
   height: 335px;
 
   border-radius: 12px;

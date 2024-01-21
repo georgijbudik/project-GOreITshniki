@@ -1,3 +1,11 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDayInfo } from '../../../redux/diary/diaryOperations';
+import {
+  selectUserInfo,
+  selectIsFetching,
+} from '../../../redux/auth/authSelectors';
+
 import {
   DailyCalorieIntake,
   CellHeader,
@@ -7,6 +15,7 @@ import {
   DailyCalorieIntakeWrapper,
   ProcessedDashboardDataWrapper,
   ProcessedDashboardData,
+  ProcessedDashboardDataMarked,
   AttentionText,
   AttentionPic,
   AttentionMessage,
@@ -14,6 +23,27 @@ import {
 } from './DayDashboard.styled';
 
 const DayDashboard = () => {
+  const dispatch = useDispatch();
+  const userInfo = useSelector(selectUserInfo);
+  const isFetching = useSelector(selectIsFetching);
+
+  useEffect(() => {
+    dispatch(getDayInfo('01.01.2024'));
+  }, [dispatch]);
+
+  if (isFetching) {
+    // Обработка состояния загрузки
+    return <div>Loading...</div>;
+  }
+
+  // Теперь userInfo содержит данные пользователя
+
+  const totalCalories = userInfo.calories;
+  const caloriesConsumed = 2000;
+  const caloriesRemaining = totalCalories - caloriesConsumed;
+
+  const caloriesBurned = 1;
+
   return (
     <>
       <DailyCalorieIntakeWrapper>
@@ -30,7 +60,7 @@ const DayDashboard = () => {
 
             <CelName>Daily calorie intake</CelName>
           </CellHeader>
-          <CelValue>2200</CelValue>
+          <CelValue>{totalCalories}</CelValue>
         </DailyCalorieIntake>
 
         <DailyCalorieIntake>
@@ -48,7 +78,6 @@ const DayDashboard = () => {
           <CelValue>110 min</CelValue>
         </DailyCalorieIntake>
       </DailyCalorieIntakeWrapper>
-
       <ProcessedDashboardDataWrapper>
         <ProcessedDashboardData>
           <CellHeader>
@@ -62,7 +91,7 @@ const DayDashboard = () => {
             </DashBoardElementPic>
             <CelNameBottom> Сalories consumed</CelNameBottom>
           </CellHeader>
-          <CelValue>0</CelValue>
+          <CelValue>{caloriesConsumed}</CelValue>
         </ProcessedDashboardData>
         <ProcessedDashboardData>
           <CellHeader>
@@ -76,38 +105,38 @@ const DayDashboard = () => {
             </DashBoardElementPic>
             <CelNameBottom>Сalories burned</CelNameBottom>
           </CellHeader>
-          <CelValue>0</CelValue>
+          <CelValue>{caloriesBurned}</CelValue>
         </ProcessedDashboardData>
       </ProcessedDashboardDataWrapper>
-
       <ProcessedDashboardDataWrapper>
-        <ProcessedDashboardData>
+        <ProcessedDashboardDataMarked markering={caloriesRemaining}>
           <CellHeader>
             <DashBoardElementPic>
               <use
                 xlinkHref={
                   process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-apple'
+                  '/images/sprite/sprite.svg#icon-bubble'
                 }
               />
             </DashBoardElementPic>
             <CelNameBottom>Calories remaining</CelNameBottom>
           </CellHeader>
-          <CelValue>1493</CelValue>
-        </ProcessedDashboardData>
+          <CelValue>{caloriesRemaining}</CelValue>
+        </ProcessedDashboardDataMarked>
+
         <ProcessedDashboardData>
           <CellHeader>
             <DashBoardElementPic>
               <use
                 xlinkHref={
                   process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-apple'
+                  '/images/sprite/sprite.svg#icon-running-stick-figure-svgrepo-com_OMG'
                 }
               />
             </DashBoardElementPic>
             <CelNameBottom>Sports remaining</CelNameBottom>
           </CellHeader>
-          <CelValue>85 min</CelValue>
+          <CelValue>1 min</CelValue>
         </ProcessedDashboardData>
       </ProcessedDashboardDataWrapper>
       <AttentionMessage>

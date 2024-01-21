@@ -8,7 +8,7 @@ export const DailyCalorieIntakeWrapper = styled.div`
 export const DailyCalorieIntake = styled.div`
   display: flex;
   flex-direction: column;
-  width: 157px;
+  max-width: 157px;
   height: 96px;
   padding: 14px;
   align-items: flex-start;
@@ -86,13 +86,27 @@ export const ProcessedDashboardDataWrapper = styled.div`
 export const ProcessedDashboardData = styled.div`
   display: flex;
   flex-direction: column;
-  width: 160px;
+  max-width: 160px;
   height: 96px;
   padding: 14px;
   align-items: flex-start;
   gap: 32px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
+  /* border-color: ${props => (props.markering > 0 ? 'red' : 'green')}; */
+`;
+
+export const ProcessedDashboardDataMarked = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 160px;
+  height: 96px;
+  padding: 14px;
+  align-items: flex-start;
+  gap: 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  border-color: ${props => (props.markering > 0 ? 'red' : 'green')};
 `;
 
 export const AttentionMessage = styled.div`
@@ -123,4 +137,7 @@ export const AttentionText = styled.p`
   line-height: 18px;
   letter-spacing: 0px;
   text-align: left;
+`;
+export const Markered = styled.span`
+  background-color: ${props => (props.$markering === true ? 'green' : 'red')};
 `;
