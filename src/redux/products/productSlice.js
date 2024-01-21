@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCategories, fetchProducts } from './productOperations';
-//  addProduct
+import {
+  fetchCategories,
+  fetchProducts,
+  addProduct,
+} from './productOperations';
 
 const productInitialState = {
   categories: [],
@@ -66,15 +69,16 @@ const productSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchProducts.pending, handlePending)
-      .addCase(fetchProducts.rejected, handleRejected);
+      .addCase(fetchProducts.rejected, handleRejected)
 
-    // .addCase(addProduct.fulfilled, (state, action) => {
-    //   state.isProductSuccesAdded = true;
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addCase(addProduct.pending, handlePending)
-    // .addCase(addProduct.rejected, handleRejected);
+      .addCase(addProduct.fulfilled, state => {
+        state.productToAdd = null;
+        state.isProductSuccesAdded = true;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(addProduct.pending, handlePending)
+      .addCase(addProduct.rejected, handleRejected);
   },
 });
 

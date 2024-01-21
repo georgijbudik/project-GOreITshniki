@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { toastError } from '../../redux/helpers/toastCase';
+
 export const fetchCategories = createAsyncThunk(
   'product/fetchCategories',
   async (_, thunkAPI) => {
@@ -8,6 +10,7 @@ export const fetchCategories = createAsyncThunk(
       const response = await axios.get('products/categories');
       return response.data;
     } catch (error) {
+      toastError('Cannot find categories. Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -23,19 +26,25 @@ export const fetchProducts = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
+      toastError('Cannot find products. Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// export const addProduct = createAsyncThunk(
-//     'product/addProduct',
-//     async (dataFromForm, thunkAPI) => {
-//       try {
-//         const response = await axios.post('/diary', dataFromForm);
-//         return response;
-//       } catch (error) {
-//         return thunkAPI.rejectWithValue(error);
-//       }
-//     }
-//   );
+export const addProduct = createAsyncThunk(
+  'product/addProduct',
+  async (dataFromForm, thunkAPI) => {
+    const { productId, date, weight } = dataFromForm;
+    try {
+      const response = await axios.patch(`/diary/product/${productId}`, {
+        date,
+        weight,
+      });
+      return response;
+    } catch (error) {
+      toastError('Something went wrong. Try again!');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
