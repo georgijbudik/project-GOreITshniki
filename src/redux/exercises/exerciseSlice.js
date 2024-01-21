@@ -51,6 +51,10 @@ const exeSlice = createSlice({
         state.exeFilter = action.payload;
         state.isLoading = false;
       })
+      .addCase(getExercisesByType.pending, (state, action) => {
+        state.exercisesByType = [];
+        state.isLoading = true;
+      })
       .addCase(getExercisesByType.fulfilled, (state, action) => {
         state.exercisesByType = action.payload;
         state.isLoading = false;

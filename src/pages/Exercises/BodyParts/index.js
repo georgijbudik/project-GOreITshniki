@@ -1,1 +1,1 @@
-export { default } from './BodyParts';
+// export { default } from './BodyParts';

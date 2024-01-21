@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 
 export const DesktopBackgroundContainer = styled.div`
   @media screen and (min-width: 1440px) {
+    /* position: fixed;
+    bottom: 0;
+    right: 0; */
+
     /* width: 670px;
     height: 902px; */
     /* flex-shrink: 0; */
-    position: relative;
+    /* position: relative; */
     overflow: visible;
     background-repeat: no-repeat;
     /* background-position: right 30%; */
