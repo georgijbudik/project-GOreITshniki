@@ -1,23 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #040404;
-  min-width: 320px;
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
-  padding-top: 40px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding: 0 32px;
-    padding-top: 72px;
-  }
 
   @media screen and (min-width: 1440px) {
-    max-width: 435px;
-    min-width: 435px;
-    padding: 0 96px;
     padding-left: 49px;
     margin-block-start: 143px;
     border-left: 1px solid #efede833;
@@ -60,6 +45,13 @@ export const UserAvatar = styled.svg`
   border-radius: 50%;
   background-color: rgba(239, 237, 232, 0.1);
   padding: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 102px;
+    height: 102px;
+
+    padding: 24px;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 102px;
@@ -224,7 +216,7 @@ export const AddAvatarLabel = styled.label`
 
   @media screen and (min-width: 768px) {
     margin-left: -2.7%;
-    margin-top: -3.5%;
+    margin-top: -4.5%;
   }
 
   @media screen and (min-width: 1440px) {

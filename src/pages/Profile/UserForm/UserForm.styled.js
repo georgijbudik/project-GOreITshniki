@@ -2,27 +2,14 @@ import styled from 'styled-components';
 import Button from 'components/Button/Button';
 
 export const Container = styled.div`
-  background-color: #040404;
-  min-width: 320px;
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
-  padding-top: 40px;
-
   .profile-desktop-visible {
     display: none;
   }
 
-  @media screen and (min-width: 768px) {
-    margin-block-start: 38px;
-    max-width: 768px;
-    padding: 0 32px;
-  }
-
   @media screen and (min-width: 1440px) {
-    max-width: 696px;
-    min-width: 696px;
-    padding-left: 96px;
+    max-width: 760px;
+    min-width: 760px;
+    padding-right: 64px;
     .profile-desktop-visible {
       display: block;
     }
@@ -52,15 +39,15 @@ export const FieldContainer = styled.div`
 
   svg {
     position: absolute;
-    top: 32px;
+    top: 38px;
     left: 135.25px;
     @media screen and (min-width: 768px) {
-      top: 42px;
+      top: 50px;
       left: 157.25px;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 43px;
+      top: 50px;
       left: 157.25px;
     }
   }
@@ -119,12 +106,12 @@ export const SecondaryInputContainer = styled.div`
   }
 `;
 
-export const BloodSexContainer = styled.div`
+export const BloodSexContainer = styled.label`
   display: flex;
   margin-block-end: 32px;
 `;
 
-export const SexContainer = styled.div`
+export const SexContainer = styled.label`
   display: flex;
 `;
 
@@ -192,7 +179,8 @@ export const RadioContainer = styled.label`
   }
 `;
 
-export const ActivityContainer = styled.div`
+export const ActivityContainer = styled.label`
+  display:block;
   margin-right: 8px;
   margin-block-end: 40px;
 

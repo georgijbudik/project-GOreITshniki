@@ -46,6 +46,36 @@ i18n
             videos: 'Video tutorials',
             calories: 'cal',
           },
+          profile: {
+            user_form: {
+              settings: 'Profile Settings',
+              name: 'Name',
+              name_example: 'Anna Rybachok',
+              email: 'Email',
+              height: 'Height',
+              current_weight: 'Current Weight',
+              desired_weight: 'Desired Weight',
+              date_of_birth: 'Date of birth',
+              blood: 'Blood',
+              male: 'Male',
+              female: 'Female',
+              activity_1: 'Sedentary lifestyle (little or no physical activity)',
+              activity_2: 'Light activity (light exercises/sports 1-3 days per week)',
+              activity_3: 'Moderately active (moderate exercises/sports 3-5 days per week)',
+              activity_4: 'Very active (intense exercises/sports 6-7 days per week)',
+              activity_5: 'Extremely active (very strenuous exercises/sports and physical work)',
+              save:'Save',
+            },
+            user_card: {
+              profile_settings: 'Profile Settings',
+              user: 'User',
+              daily_calorie_intake:'Daily calorie intake',
+              daily_phisycal_activity: 'Daily phisical activity',
+              min: 'min',
+              exclamation: 'We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals.',
+            logout:'Logout'
+            }
+          },
           sign_up: {
             title: 'Sign Up',
             description:
@@ -104,6 +134,36 @@ i18n
             videos: 'Відео туторіалів',
             calories: 'ккал',
           },
+          profile: {
+            user_form: {
+              settings: 'Налаштування',
+              name: "Ім'я",
+              name_example: 'Анна Рибачок',
+              email: 'Пошта',
+              height: 'Зріст',
+              current_weight: 'Вага на зараз',
+              desired_weight: 'Очікувана вага',
+              date_of_birth: 'Дата народження',
+              blood: 'Група крові',
+              male: 'Чоловік',
+              female: 'Жінка',
+              activity_1: 'Сидячий спосіб життя (мала фізична активність або її відсутність)',
+              activity_2: 'Легка активність (легкі вправи/спорт 1-3 дні на тиждень)',
+              activity_3: 'Помірно активний (помірні вправи/спорт 3-5 днів на тиждень)',
+              activity_4: 'Дуже активний (інтенсивні вправи/спорт 6-7 днів на тиждень)',
+              activity_5: 'Надзвичайно активний (дуже виснажливі вправи/спорт і фізична робота)',
+              save:'Зберегти',
+            },
+            user_card: {
+              profile_settings: 'Налаштування',
+              user: 'Користувач',
+              daily_calorie_intake:'Добова норма споживання калорій',
+              daily_phisycal_activity: 'Щоденна фізична активність',
+              min: 'хв',
+              exclamation: 'Ми розуміємо, що кожна людина унікальна, тому весь підхід до дієти є відносним і адаптованим до вашого унікального тіла та цілей.',
+            logout:'Вихід'
+            }
+          },
           sign_up: {
             title: 'Реєстрація',
             description:
@@ -161,6 +221,36 @@ i18n
           main_image: {
             videos: 'Video tutoriales',
             calories: 'cal',
+          },
+          profile: {
+            user_form: {
+              settings: 'Configuración de perfil',
+              name: 'Nombre',
+              name_example: 'Anna Rybachok',
+              email: 'Correo electrónico',
+              height: 'Altura',
+              current_weight: 'Peso actual',
+              desired_weight: 'Peso deseado',
+              date_of_birth: 'Fecha de nacimiento',
+              blood: 'Sangre',
+              male: 'Masculino',
+              female: 'Femenina',
+              activity_1: 'Estilo de vida sedentario (poca o ninguna actividad física)',
+              activity_2: 'Actividad ligera (ejercicios/deportes ligeros 1-3 días por semana)',
+              activity_3: 'Moderadamente activo (ejercicios / deportes moderados 3-5 días a la semana)',
+              activity_4: 'Muy activo (ejercicios/deportes intensos 6-7 días por semana)',
+              activity_5: 'Extremadamente activo (ejercicios/deportes y trabajo físico muy extenuantes)',
+              save:'Ahorrar',
+            },
+            user_card: {
+              profile_settings: 'Configuración de perfil',
+              user: 'Usuario',
+              daily_calorie_intake:'Ingesta diaria de calorías',
+              daily_phisycal_activity: 'Actividad física diaria',
+              min: 'mín',
+              exclamation: 'Entendemos que cada persona es única, por lo que todo el enfoque de la dieta es relativo y se adapta a su cuerpo y sus objetivos únicos.',
+            logout:'Cerrar sesión'
+            }
           },
           sign_up: {
             title: 'Registrarse',
