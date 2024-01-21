@@ -19,6 +19,9 @@ import SharedLayout from 'pages/Shared/SharedLayout';
 import ExercisesSubcategoriesList from 'pages/Exercises/ExercisesSubcategoriesList';
 
 import PublicRoute from 'routes/PublicRoute';
+
+// import PrivateRoute from 'routes/PrivateRoute';
+
 import PrivateRoute from 'routes/PrivateRoute';
 // import PrivateRoute from '../routes/PrivateRoute';
 
