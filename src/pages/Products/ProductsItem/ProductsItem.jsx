@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setProductToAdd } from '../../../redux/products/productSlice';
+import { selectUserBlood } from '../../../redux/auth/authSelectors';
+
 import {
   StyledContainer,
   StyledDietText,
@@ -23,13 +25,16 @@ import {
 const ProductsItem = ({ product }) => {
   const dispatch = useDispatch();
 
-  // TEMPORARY UNTIL SELECT FROM PROFILE IS READY
-  const userGroupBlood = Number('2');
+  const userGroupBlood = useSelector(selectUserBlood);
   const isProductNotAllowedForUser =
     product.groupBloodNotAllowed[userGroupBlood];
 
   const formatText = text => {
     return text[0].toUpperCase() + text.slice(1);
+  };
+
+  const makeShortText = text => {
+    return text.length > 10 ? text.slice(0, 10) + '...' : text;
   };
 
   const handleAddBtn = () => {
@@ -88,7 +93,7 @@ const ProductsItem = ({ product }) => {
           <StyledBottomText>
             Category:{' '}
             <StyledBottomAmount>
-              {formatText(product.category)}
+              {formatText(makeShortText(product.category))}
             </StyledBottomAmount>
           </StyledBottomText>
           <StyledBottomText>

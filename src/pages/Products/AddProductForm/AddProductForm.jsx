@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 import BasicModalWindow from 'components/BasicModalWindow';
+import { addProduct } from '../../../redux/products/productOperations';
 import Button from 'components/Button';
 import {
-  selectError,
   selectProductToAdd,
   setCaloriesByUser,
-  setIsProductSuccesAdded,
   setProductToAdd,
 } from '../../../redux/products/productSlice';
 import {
@@ -27,7 +26,6 @@ const AddProductForm = () => {
   const dispatch = useDispatch();
 
   const productToAdd = useSelector(selectProductToAdd);
-  const error = useSelector(selectError);
 
   const handleChangeGrams = ({ target: { value } }) => {
     setGrams(Number(value));
@@ -37,28 +35,19 @@ const AddProductForm = () => {
     (productToAdd.calories * grams) / 100
   );
 
-  // const date = dayjs();
-  // const formattedDate = dayjs(date).format('DD/MM/YYYY');
-  // const productToAddToDiary = {
-  //   product: productToAdd._id.$oid,
-  //   date: formattedDate,
-  //   amount: grams,
-  //   calories: caloriesByUsersGrams,
-  // };
+  const date = dayjs();
+  const formattedDate = dayjs(date).format('DD.MM.YYYY');
+
+  const productToAddToDiary = {
+    productId:productToAdd._id,
+    date: formattedDate,
+    weight: grams
+  };
 
   const handleAddToDiaryBtn = e => {
     e.preventDefault();
-    // dispatch(addProduct(productToAddToDiary));
-    if (error) {
-      // notification
-      console.log('try again');
-      return;
-    }
-    dispatch(setProductToAdd(null));
+    dispatch(addProduct(productToAddToDiary));
     dispatch(setCaloriesByUser(caloriesByUsersGrams));
-    // TEMPORARY UNTIL POST IS READY
-    dispatch(setIsProductSuccesAdded(true));
-    // TEMPORARY UNTIL POST IS READY
   };
 
   const handleCloseAddModal = () => {

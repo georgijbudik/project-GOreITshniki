@@ -61,7 +61,7 @@
 import React, { useState } from 'react';
 import ExercisesSubcategoriesList from '../ExercisesSubcategoriesList';
 import Pagination from '../Pagination';
-import { WrapperPagination } from './BodyParts.styled';
+// import { WrapperPagination } from './BodyParts.styled';
 
 // TEMPORARY
 const exeFilters = [
@@ -200,14 +200,14 @@ const BodyParts = () => {
   return (
     <>
       <ExercisesSubcategoriesList arr={arrayPerPage()} />
-      <WrapperPagination>
-        <Pagination
-          exePerPage={perPage()}
-          paginate={paginate}
-          totalExe={allExersise}
-          currentPage={currentPage}
-        />
-      </WrapperPagination>
+      {/* <WrapperPagination> */}
+      <Pagination
+        exePerPage={perPage()}
+        paginate={paginate}
+        totalExe={allExersise}
+        currentPage={currentPage}
+      />
+      {/* </WrapperPagination> */}
     </>
   );
 };
