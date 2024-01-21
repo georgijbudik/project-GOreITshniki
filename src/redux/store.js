@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { globalReducer } from './global/globalSlice';
 import { authReducer } from './auth/authSlice';
 import { productReducer } from './products/productSlice';
+import { exeReducer } from './exercises/exerciseSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -32,7 +33,8 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     global: persistReducer(globalPersistConfig, globalReducer),
-    products:  productReducer,
+    products: productReducer,
+    exercises: exeReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
