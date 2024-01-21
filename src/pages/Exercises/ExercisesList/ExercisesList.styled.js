@@ -44,7 +44,7 @@ export const WrapperExercises = styled.ul`
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 48px;
   margin-bottom: 10px;
 
   @media screen and (min-width: 768px) {
@@ -73,9 +73,15 @@ export const WrapperExercises = styled.ul`
 `;
 
 export const NameExercises = styled.h2`
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 137.5%;
+  line-height: 116.667%;
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 137.5%;
+  }
 `;
 
 export const ButtonGoBack = styled.button`
@@ -87,8 +93,12 @@ export const ButtonGoBack = styled.button`
   border: 0;
 
   position: absolute;
-  top: 32px;
+  top: 10px;
   left: 0;
+
+  @media screen and (min-width: 768px) {
+    top: 32px;
+  }
 `;
 
 export const LinkBtn = styled(Link)`
@@ -111,7 +121,7 @@ export const IconWrapperBack = styled.svg`
 export const WrapperNav = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /* gap: 20px; */
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;

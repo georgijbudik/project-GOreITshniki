@@ -14,7 +14,7 @@ export const WrapperExercisesItem = styled.li`
 
   @media screen and (min-width: 1440px) {
     width: 405px;
-    height: 141px;
+    /* height: 141px; */
   }
 `;
 

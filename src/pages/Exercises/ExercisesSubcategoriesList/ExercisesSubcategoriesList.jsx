@@ -7,9 +7,12 @@ import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem';
 import Pagination from '../Pagination';
 
 import { NavLink } from 'react-router-dom';
+import Loader from 'components/Loader';
 
 const ExercisesSubcategoriesList = () => {
   const arr = useSelector(selectExercisesByType);
+  const { isLoading } = useSelector(state => state.exercises);
+  console.log('isLoading:', isLoading);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -38,6 +41,7 @@ const ExercisesSubcategoriesList = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <WrapperStyled>
         {arrayPerPage().map(({ name, imgURL, _id, filter }) => {
           return (

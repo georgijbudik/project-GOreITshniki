@@ -5,7 +5,7 @@ export const WrapperStyled = styled.div`
   flex-direction: column;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 48px;
   align-items: center;
   @media screen and (min-width: 768px) {
     flex-direction: row;

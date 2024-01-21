@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader';
+import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
 
 import {
   NameExercises,
@@ -12,8 +14,6 @@ import {
   WrapperNav,
   DesktopBackgroundContainer,
 } from './ExercisesList.styled';
-import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
-
 import { ChaptersWrapper, LinkStyled } from '../Exercises.styled';
 
 import ExercisesItem from '../ExercisesItem';
@@ -39,7 +39,7 @@ const ExercisesList = () => {
     dispatch(getExercisesFilter(filters));
   }, [dispatch, name, type]);
 
-  const { exeFilter } = useSelector(state => state.exercises);
+  const { exeFilter, isLoading } = useSelector(state => state.exercises);
 
   const params = useParams();
   const current = params.id;
@@ -63,6 +63,7 @@ const ExercisesList = () => {
       </ButtonGoBack>
       <DesktopBackgroundContainer>
         <WrapperNav>
+          {isLoading && <Loader />}
           <NameExercises>{ucFirst(current)}</NameExercises>
 
           <ChaptersWrapper>
