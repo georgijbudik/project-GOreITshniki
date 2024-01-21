@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getExercises,
+  getExercisesByType,
   getExercisesMuscles,
   getExercisesEquipment,
   getExercisesBodyparts,
@@ -11,9 +12,10 @@ const InitialState = {
   isLoading: false,
   error: null,
   array: [],
-  muscles: [],
-  bodyparts: [],
-  equipment: [],
+  exercisesByType: [],
+  // muscles: [],
+  // bodyparts: [],
+  // equipment: [],
   exeFilter: [],
 };
 
@@ -49,18 +51,22 @@ const exeSlice = createSlice({
         state.exeFilter = action.payload;
         state.isLoading = false;
       })
-      .addCase(getExercisesMuscles.fulfilled, (state, action) => {
-        state.muscles = action.payload;
+      .addCase(getExercisesByType.fulfilled, (state, action) => {
+        state.exercisesByType = action.payload;
         state.isLoading = false;
       })
-      .addCase(getExercisesEquipment.fulfilled, (state, action) => {
-        state.equipment = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
-        state.bodyparts = action.payload;
-        state.isLoading = false;
-      })
+      // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
+      //   state.muscles = action.payload;
+      //   state.isLoading = false;
+      // })
+      // .addCase(getExercisesEquipment.fulfilled, (state, action) => {
+      //   state.equipment = action.payload;
+      //   state.isLoading = false;
+      // })
+      // .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
+      //   state.bodyparts = action.payload;
+      //   state.isLoading = false;
+      // })
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });

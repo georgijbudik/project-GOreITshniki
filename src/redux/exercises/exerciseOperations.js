@@ -15,7 +15,7 @@ export const getExercises = createAsyncThunk(
 );
 
 export const getExercisesByType = createAsyncThunk(
-  'exercises/getExercisesBodyparts',
+  'exercises/getExercisesByType',
   async (type, thunkAPI) => {
     console.log('type', type);
     try {
