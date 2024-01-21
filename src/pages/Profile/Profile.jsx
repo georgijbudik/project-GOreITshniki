@@ -1,5 +1,5 @@
 import React from 'react';
-import './styled.css'
+import './styled.css';
 import UserCard from './UserCard';
 import UserForm from './UserForm';
 

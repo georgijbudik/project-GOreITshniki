@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 // import * as yup from 'yup';
 // import { useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
 
@@ -17,8 +18,6 @@ import {
   BloodSexContainer,
   BloodContainer,
   SexContainer,
-  // label,
-  // Radio,
   RadioContainer,
   ActivityContainer,
   NameEmailInput,
@@ -37,33 +36,26 @@ const initialValues = {
   activity: '',
 };
 
-// const schema = yup.object().shape({
-//   email: yup
-//     .string()
-//     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Is not in correct format'),
-//   name: yup.string().min(2, 'Name is too short - should be 2 chars minimum.'),
-// });
-
 const UserForm = () => {
+  const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
-
-  // const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
-      // const {
-      //   email,
-      //   name,
-      //   height,
-      //   currentWeight,
-      //   desiredWeight,
-      //   blood,
-      //   sex,
-      //   activity,
-      // } = values;
+      const {
+        // email,
+        // name,
+        // height,
+        // currentWeight,
+        // desiredWeight,
+        blood,
+        sex,
+        activity,
+      } = values;
       var dateOfBirth;
       const dateNow = new Date();
+      console.log(activity + ' ' + sex + ' ' + blood);
 
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
         dateOfBirth = startDate;
@@ -76,22 +68,22 @@ const UserForm = () => {
     <form onSubmit={formik.handleSubmit} autoComplete="off">
       <Container>
         <ProfileSettings className="profile-desktop-visible">
-          Profile Settings
+          {t('profile.user_form.settings')}{' '}
         </ProfileSettings>
         <NameEmailInput>
           <FieldContainer>
-            <FieldName>Name</FieldName>
+            <FieldName>{t('profile.user_form.name')} </FieldName>
             <MainInput
               type="text"
               name="name"
               required
-              placeholder="Anna Rybachok"
+              placeholder={t('profile.user_form.name_example')}
               onChange={formik.handleChange}
               value={formik.values.name}
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>Email</FieldName>
+            <FieldName>{t('profile.user_form.email')} </FieldName>
             <MainInput
               type="email"
               name="email"
@@ -104,7 +96,7 @@ const UserForm = () => {
         </NameEmailInput>
         <SecondaryInputContainer>
           <FieldContainer>
-            <FieldName>Height</FieldName>
+            <FieldName>{t('profile.user_form.height')} </FieldName>
             <SecondaryInput
               type="number"
               name="height"
@@ -117,7 +109,7 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>Current Weight</FieldName>
+            <FieldName>{t('profile.user_form.current_weight')} </FieldName>
             <SecondaryInput
               type="number"
               name="currentWeight"
@@ -130,7 +122,7 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>Desired Weight</FieldName>
+            <FieldName>{t('profile.user_form.desired_weight')} </FieldName>
             <SecondaryInput
               className="desired-weight"
               name="desiredWeight"
@@ -144,7 +136,7 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>Date of birth</FieldName>
+            <FieldName>{t('profile.user_form.date_of_birth')} </FieldName>
             <DatePicker
               selected={startDate}
               name="dateOfBirth"
@@ -165,31 +157,29 @@ const UserForm = () => {
           </FieldContainer>
         </SecondaryInputContainer>
 
-        <FieldName>Blood</FieldName>
+        <FieldName>{t('profile.user_form.blood')} </FieldName>
         <BloodSexContainer>
-          <div>
-            <BloodContainer
-              onChange={formik.handleChange}
-              value={formik.values.blood}
-            >
-              <RadioContainer>
-                <input type="radio" id="blood_1" name="blood" value="1" />
-                <label htmlFor="blood_1">1</label>
-              </RadioContainer>
-              <RadioContainer>
-                <input type="radio" id="blood_2" name="blood" value="2" />
-                <label htmlFor="blood_2">2</label>
-              </RadioContainer>
-              <RadioContainer>
-                <input type="radio" id="blood_3" name="blood" value="3" />
-                <label htmlFor="blood_3">3</label>
-              </RadioContainer>
-              <RadioContainer>
-                <input type="radio" id="blood_4" name="blood" value="4" />
-                <label htmlFor="blood_4">4</label>
-              </RadioContainer>
-            </BloodContainer>
-          </div>
+          <BloodContainer
+            onChange={formik.handleChange}
+            value={formik.values.blood}
+          >
+            <RadioContainer>
+              <input type="radio" id="blood_1" name="blood" value="1" />
+              <label htmlFor="blood_1">1</label>
+            </RadioContainer>
+            <RadioContainer>
+              <input type="radio" id="blood_2" name="blood" value="2" />
+              <label htmlFor="blood_2">2</label>
+            </RadioContainer>
+            <RadioContainer>
+              <input type="radio" id="blood_3" name="blood" value="3" />
+              <label htmlFor="blood_3">3</label>
+            </RadioContainer>
+            <RadioContainer>
+              <input type="radio" id="blood_4" name="blood" value="4" />
+              <label htmlFor="blood_4">4</label>
+            </RadioContainer>
+          </BloodContainer>
 
           <SexContainer
             onChange={formik.handleChange}
@@ -197,11 +187,13 @@ const UserForm = () => {
           >
             <RadioContainer>
               <input type="radio" id="sex_male" name="sex" value="male" />
-              <label htmlFor="sex_male">Male</label>
+              <label htmlFor="sex_male">{t('profile.user_form.male')} </label>
             </RadioContainer>
             <RadioContainer>
               <input type="radio" id="sex_female" name="sex" value="female" />
-              <label htmlFor="sex_female">Female</label>
+              <label htmlFor="sex_female">
+                {t('profile.user_form.female')}{' '}
+              </label>
             </RadioContainer>
           </SexContainer>
         </BloodSexContainer>
@@ -212,7 +204,7 @@ const UserForm = () => {
           <RadioContainer>
             <input type="radio" id="no_activity" name="activity" value="1" />
             <label htmlFor="no_activity">
-              Sedentary lifestyle (little or no physical activity)
+              {t('profile.user_form.activity_1')}
             </label>
           </RadioContainer>
 
@@ -224,7 +216,7 @@ const UserForm = () => {
               value="2"
             />
             <label htmlFor="little_activity">
-              Light activity (light exercises/sports 1-3 days per week)
+              {t('profile.user_form.activity_2')}
             </label>
           </RadioContainer>
           <RadioContainer>
@@ -235,13 +227,13 @@ const UserForm = () => {
               value="3"
             />
             <label htmlFor="normal_activity">
-              Moderately active (moderate exercises/sports 3-5 days per week)
+              {t('profile.user_form.activity_3')}
             </label>
           </RadioContainer>
           <RadioContainer>
             <input type="radio" id="very_activity" name="activity" value="4" />
             <label htmlFor="very_activity">
-              Very active (intense exercises/sports 6-7 days per week)
+              {t('profile.user_form.activity_4')}
             </label>
           </RadioContainer>
           <RadioContainer>
@@ -252,14 +244,13 @@ const UserForm = () => {
               value="5"
             />
             <label htmlFor="extreme_activity">
-              Extremely active (very strenuous exercises/sports and physical
-              work)
+              {t('profile.user_form.activity_5')}
             </label>
           </RadioContainer>
         </ActivityContainer>
 
         <SaveButton type="submit" className="save-button">
-          Save
+          {t('profile.user_form.save')}
         </SaveButton>
       </Container>
     </form>

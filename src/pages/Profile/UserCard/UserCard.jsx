@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 import {
   Container,
   ProfileSettings,
@@ -18,27 +20,56 @@ import {
   AddProfilePicBackground,
   ProfilePicContainer,
   AddAvatarButton,
-  AddAvatarLabel
+  AddAvatarLabel,
 } from './UserCard.styled';
 
 const UserCard = () => {
+  const { t } = useTranslation();
+  const [file, setFile] = useState();
+
+  const handleFileChange = e => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  console.log(file);
+
   return (
     <Container>
-      <ProfileSettings className='profile-desktop-hidden'>Profile Settings</ProfileSettings>
+      <ProfileSettings className="profile-desktop-hidden">
+        {t('profile.user_card.profile_settings')}
+      </ProfileSettings>
       <UserInfo>
         <ProfilePicContainer>
           <AddAvatarLabel htmlFor="add-avatar-button">
-            <AddAvatarButton id="add-avatar-button" className='add-avatar-button' type="file" />
+            <AddAvatarButton
+              id="add-avatar-button"
+              onChange={handleFileChange}
+              className="add-avatar-button"
+              type="file"
+            />
             <AddProfilePicBackground>
-              <use stroke='#e6533c' fill='#e6533c' xlinkHref={
-                process.env.PUBLIC_URL +
-                '/images/sprite/sprite.svg#icon-add-avatar'
-              } /> </AddProfilePicBackground>
-            <AddProfilePicCross >
-              <use stroke='#efede8' width="15" height="15" xlinkHref={
-                process.env.PUBLIC_URL +
-                '/images/sprite/sprite.svg#icon-cross'
-              } /></AddProfilePicCross>
+              <use
+                stroke="#e6533c"
+                fill="#e6533c"
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-add-avatar'
+                }
+              />{' '}
+            </AddProfilePicBackground>
+            <AddProfilePicCross>
+              <use
+                stroke="#efede8"
+                width="15"
+                height="15"
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-cross'
+                }
+              />
+            </AddProfilePicCross>
           </AddAvatarLabel>
           <UserAvatar fill="rgba(239, 237, 232, 0.1)">
             <use
@@ -50,7 +81,7 @@ const UserCard = () => {
         </ProfilePicContainer>
 
         <UserName>Anna Rybachok</UserName>
-        <UserRole>User</UserRole>
+        <UserRole>{t('profile.user_card.user')}</UserRole>
         <DailyContainer>
           <DailyCard>
             <DailyTitle>
@@ -62,7 +93,7 @@ const UserCard = () => {
                   }
                 ></use>
               </SvgDailyIcon>
-              Daily calorie intake
+              {t('profile.user_card.daily_calorie_intake')}
             </DailyTitle>
             <DailyResult>0</DailyResult>
           </DailyCard>
@@ -76,9 +107,9 @@ const UserCard = () => {
                   }
                 ></use>
               </SvgDailyIcon>
-              Daily phisical activity
+              {t('profile.user_card.daily_phisycal_activity')}
             </DailyTitle>
-            <DailyResult>0 min</DailyResult>
+            <DailyResult>0 {t('profile.user_card.min')}</DailyResult>
           </DailyCard>
         </DailyContainer>
         <DisclaimerContainer>
@@ -90,11 +121,10 @@ const UserCard = () => {
               }
             ></use>
           </SvgExclamationIcon>
-          We understand that each individual is unique, so the entire approach
-          to diet is relative and tailored to your unique body and goals.
+          {t('profile.user_card.exclamation')}
         </DisclaimerContainer>
         <LogOutButton>
-          Logout
+          {t('profile.user_card.logout')}
           <SvgLogoutIcon height="20" width="20">
             <use
               xlinkHref={
