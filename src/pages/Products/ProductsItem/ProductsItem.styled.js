@@ -130,7 +130,7 @@ export const StyledTitle = styled.h2`
   line-clamp: 1;
   -webkit-box-orient: vertical;
 
-  @media screen and (min-width: 375px) {
+  @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1.3;
   }
@@ -139,7 +139,7 @@ export const StyledTitle = styled.h2`
 export const StyledBottomContainer = styled.div`
   margin-top: 8px;
   display: flex;
-  gap: 12px;
+  gap: 6px;
 
   @media screen and (min-width: 375px) {
     gap: 16px;
@@ -147,9 +147,13 @@ export const StyledBottomContainer = styled.div`
 `;
 
 export const StyledBottomText = styled.p`
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   color: rgba(239, 237, 232, 0.4);
+
+  @media screen and (min-width: 375px) {
+    font-size: 12px;
+  }
 `;
 
 export const StyledBottomAmount = styled.span`

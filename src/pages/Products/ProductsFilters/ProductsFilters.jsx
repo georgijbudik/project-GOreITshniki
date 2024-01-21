@@ -3,16 +3,21 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
 import { selectCategories } from '../../../redux/products/productSlice';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import {
-  StyledCategorySelect,
   StyledTextFilters,
-  StyledRecommendSelect,
   StyledSearchBtn,
   StyledBtnsContainer,
   StyledSearchContainer,
   StyledSearchInput,
   StyledSelectContainer,
   StyledForm,
+  StyledRecommendContainer,
+  StyledCategoryContainer,
+  StyledEm,
+  StyledInput
 } from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
@@ -55,17 +60,19 @@ const ProductsFilters = () => {
   const handleCategorySelect = e => {
     setSearchParams({
       search: searchFromParams,
-      category: e.currentTarget.value,
+      category: e.target.value,
       recommendation: recommendationFromParams,
     });
+    setCategory(e.target.value);
   };
 
   const handleRecommendationSelect = e => {
     setSearchParams({
       search: searchFromParams,
       category: categoryFromParams,
-      recommendation: e.currentTarget.value,
+      recommendation: e.target.value,
     });
+    setRecommendation(e.target.value);
   };
 
   const handleSearchDeleteClick = () => {
@@ -116,28 +123,63 @@ const ProductsFilters = () => {
         </StyledBtnsContainer>
       </StyledSearchContainer>
       <StyledSelectContainer>
-        <label>
-          <StyledCategorySelect
-            onChange={handleCategorySelect}
-            value={category}
-          >
-            {categories.map(item => (
-              <option key={item._id} value={item.category}>
-                {item.category[0].toUpperCase() + item.category.slice(1)}
-              </option>
-            ))}
-          </StyledCategorySelect>
-        </label>
-        <label>
-          <StyledRecommendSelect
-            onChange={handleRecommendationSelect}
-            value={recommendation}
-          >
-            <option value="all">All</option>
-            <option value="recommended">Recommended</option>
-            <option value="not recommended">Not recommended</option>
-          </StyledRecommendSelect>
-        </label>
+        <StyledCategoryContainer>
+          <FormControl fullWidth variant="standard">
+            <Select
+              value={category}
+              onChange={handleCategorySelect}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              input={<StyledInput />}
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    height: '228px',
+                    m: '4px',
+                    borderRadius: '12px',
+                    bgcolor: '#1C1C1C',
+                  },
+                },
+              }}
+            >
+              <MenuItem value="">
+                <StyledEm>All categories</StyledEm>
+              </MenuItem>
+              {categories.map(item => (
+                <MenuItem key={item._id} value={item.category}>
+                  {item.category[0].toUpperCase() + item.category.slice(1)}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </StyledCategoryContainer>
+        <StyledRecommendContainer>
+          <FormControl fullWidth variant="standard">
+            <Select
+              value={recommendation}
+              onChange={handleRecommendationSelect}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+              input={<StyledInput />}
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    height: '160px',
+                    m: '4px',
+                    borderRadius: '12px',
+                    bgcolor: '#1C1C1C',
+                  },
+                },
+              }}
+            >
+              <MenuItem value="">
+                <StyledEm>All</StyledEm>
+              </MenuItem>
+              <MenuItem value={'recommended'}>Recommended</MenuItem>
+              <MenuItem value={'not recommended'}>Not recommended</MenuItem>
+            </Select>
+          </FormControl>
+        </StyledRecommendContainer>
       </StyledSelectContainer>
     </StyledForm>
   );

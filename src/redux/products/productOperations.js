@@ -10,7 +10,6 @@ export const fetchCategories = createAsyncThunk(
       const response = await axios.get('products/categories');
       return response.data;
     } catch (error) {
-      toastError('Cannot find categories. Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -26,7 +25,6 @@ export const fetchProducts = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      toastError('Cannot find products. Try again!');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
