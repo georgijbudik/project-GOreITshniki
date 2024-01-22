@@ -2,22 +2,30 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   @media screen and (min-width: 1440px) {
-    height: calc(100vh - 90px);
-    background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 70.79%);
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-products-image.jpg'
-      })`};
+    width: 100%;
+    height: calc(100% - 90px);
+    position: fixed;
+    z-index: -1;
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'light'
+        ? 'none'
+        : `url(${
+            process.env.PUBLIC_URL + '/images/desktop/lg-products-image.jpg'
+          })`};
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: auto 100%;
+    background-size: contain;
+    background-position: right bottom;
+    bottom: 0;
+    right: 0;
   }
 
   @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-products-image@2x.jpg'
-      })`};
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'light'
+        ? 'none'
+        : `url(${
+            process.env.PUBLIC_URL + '/images/desktop/lg-products-image@2x.jpg'
+          })`};
   }
 `;
 
