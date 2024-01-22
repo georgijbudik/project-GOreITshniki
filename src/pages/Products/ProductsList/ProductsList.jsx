@@ -77,7 +77,7 @@ const ProductsList = () => {
 
   return (
     <>
-      {products.length === 0 && (
+      {products && (products.length === 0 && (
         <StyledContainerNoResults>
           <StyledTextNoResults>
             <StyledTextNoResultsRed>
@@ -91,8 +91,8 @@ const ProductsList = () => {
             Try changing the search parameters.
           </StyledTextTryAgain>
         </StyledContainerNoResults>
-      )}
-      {products.length > 0 && (
+      ))}
+      {products && (products.length > 0 && (
         <StyledContainer>
           <StyledList>
             {products.map(product => (
@@ -101,7 +101,7 @@ const ProductsList = () => {
           </StyledList>
           <div ref={elementRef}></div>
         </StyledContainer>
-      )}
+      ))}
     </>
   );
 };
