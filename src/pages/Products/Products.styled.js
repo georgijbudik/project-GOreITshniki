@@ -31,7 +31,9 @@ export const StyledWrapper = styled.div`
 
 export const StyledSection = styled.section`
   padding: 40px 0 80px 0;
-  color: var(--main-text-color);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
 
   @media screen and (min-width: 768px) {
     padding: 72px 0 48px 0;
