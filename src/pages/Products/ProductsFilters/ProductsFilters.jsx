@@ -172,7 +172,7 @@ const ProductsFilters = () => {
               MenuProps={{
                 PaperProps: {
                   sx: {
-                    height: '120px',
+                    height: '160px',
                     mt: '4px',
                     borderRadius: '12px',
                     bgcolor: '#1C1C1C',

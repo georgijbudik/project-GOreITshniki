@@ -103,10 +103,6 @@ export const StyledTextGrams = styled.span`
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
   line-height: 1.5;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 64px;
-  }
 `;
 
 export const StyledTextCalories = styled.p`
