@@ -45,12 +45,7 @@ const initialValues = {
 const UserForm = () => {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
-  const currentUser = useSelector(selectUserInfo);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(refreshUser(), [currentUser]);
-  });
 
   const formik = useFormik({
     initialValues,
@@ -64,8 +59,9 @@ const UserForm = () => {
         sex,
         levelActivity,
       } = values;
+
       const dateNow = new Date();
-      console.log(dateNow);
+
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
         dispatch(
           updateUser({
@@ -76,7 +72,7 @@ const UserForm = () => {
             blood: Number(blood),
             sex: sex,
             levelActivity: Number(levelActivity),
-            birthday: dateNow,
+            birthday: startDate,
           })
         );
       }
