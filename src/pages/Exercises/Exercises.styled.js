@@ -29,12 +29,14 @@ export const DesktopWrapper = styled.div`
 export const LinkStyled = styled(NavLink)`
   position: relative;
   display: block;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
   // color: var(--border-color);
   text-decoration: none;
 
   &.active {
-    color: var(--main-text-color);
+    /* color: var(--main-text-color); */
 
     &::before {
       content: '';

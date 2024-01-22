@@ -11,5 +11,5 @@ export const StyledLoaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: rgba(4, 4, 4, 0.2);
+  /* background: rgba(4, 4, 4, 0.2); */
 `;

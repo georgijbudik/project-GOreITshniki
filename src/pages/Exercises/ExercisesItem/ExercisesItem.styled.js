@@ -5,7 +5,10 @@ export const WrapperExercisesItem = styled.li`
   width: 335px;
   max-height: 163px;
 
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
   border-radius: 12px;
 
   /* @media screen and (min-width: 768px) {
@@ -33,7 +36,7 @@ export const HeaderIndexes = styled.div`
 `;
 
 export const ExercisesTitle = styled.p`
-  color: #fff;
+  /* color: #fff; */
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -53,7 +56,12 @@ export const WrapperStart = styled.button`
 `;
 
 export const TextStart = styled.p`
-  color: rgba(230, 83, 60, 1);
+  color: var(--accent-color);
+
+  /* ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(230, 83, 60, 1)'
+      : 'rgba(100, 100, 100, 1'}; */
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -65,7 +73,7 @@ export const IconWrapperStart = styled.svg`
 `;
 
 export const NameExes = styled.p`
-  color: rgba(239, 237, 232, 1);
+  /* color: rgba(239, 237, 232, 1); */
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
@@ -106,7 +114,7 @@ export const WrapperIcon = styled.div`
 export const IconWrapper = styled.svg`
   width: 16px;
   height: 16px;
-  fill: var(--main-text-color);
+  fill: ${({ theme }) => theme.palette.text.primary};
 `;
 export const WrapperIndexes = styled.div`
   margin-top: 8px;
@@ -121,14 +129,20 @@ export const Indexes = styled.div`
 `;
 
 export const IndexesText = styled.p`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.4)'};
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
 `;
 
 export const IndexesValue = styled.p`
-  color: rgba(239, 237, 232, 1);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 1)'
+      : 'rgba(100, 100, 100, 1)'};
   font-size: 12px;
   font-weight: 400;
 `;
