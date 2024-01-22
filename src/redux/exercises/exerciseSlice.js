@@ -6,6 +6,7 @@ import {
   getExercisesEquipment,
   getExercisesBodyparts,
   getExercisesFilter,
+  addExerciseToDiary,
 } from './exerciseOperations';
 
 const InitialState = {
@@ -18,6 +19,7 @@ const InitialState = {
   // equipment: [],
   exeFilter: [],
   page: 1,
+  addSuccess: { isOpened: false, calories: 0, time: 0 },
 };
 
 const onPending = state => {
@@ -55,6 +57,10 @@ const exeSlice = createSlice({
     setPage: (state, action) => {
       setPage(state, action);
     },
+
+    closeModalSuccess: state => {
+      state.addSuccess.isOpened = false;
+    },
   },
   extraReducers: builder =>
     builder
@@ -80,6 +86,16 @@ const exeSlice = createSlice({
         state.exercisesByType = action.payload;
         state.isLoading = false;
       })
+      // .addCase(addExerciseToDiary.pending, state => {
+      //   state.isLoading = true;
+      // })
+      .addCase(addExerciseToDiary.fulfilled, (state, payload) => {
+        state.addSuccess.isOpened = true;
+        state.addSuccess.time = payload.meta.arg.time;
+        state.addSuccess.calories = payload.meta.arg.calories;
+
+        state.isLoading = false;
+      })
       // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
       //   state.muscles = action.payload;
       //   state.isLoading = false;
@@ -95,5 +111,7 @@ const exeSlice = createSlice({
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });
-export const { clearExeciseFilter, setPage } = exeSlice.actions;
+export const { clearExeciseFilter, setPage, closeModalSuccess } =
+  exeSlice.actions;
+
 export const exeReducer = exeSlice.reducer;
