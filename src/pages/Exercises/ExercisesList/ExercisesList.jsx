@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
+import AddExerciseSuccess from '../AddExerciseSuccess';
 
 import {
   NameExercises,
@@ -28,7 +29,9 @@ import {
 
 const ExercisesList = () => {
   const dispatch = useDispatch();
-  const { exeFilter, page, isLoading } = useSelector(state => state.exercises);
+  const { exeFilter, page, isLoading, addSuccess } = useSelector(
+    state => state.exercises
+  );
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/exercises');
   const backLinkBodyparts = useRef(
@@ -106,6 +109,12 @@ const ExercisesList = () => {
 
   return (
     <SectionTemplate>
+      {addSuccess.isOpened && (
+        <AddExerciseSuccess
+          calories={addSuccess.calories}
+          time={addSuccess.time}
+        />
+      )}
       <ButtonGoBack
         onClick={() => {
           dispatch(clearExeciseFilter());
@@ -154,20 +163,22 @@ const ExercisesList = () => {
             equipment,
             gifUrl,
             time,
-          }) => (
-            <ExercisesItem
-              key={_id}
-              calories={burnedCalories}
-              target={ucFirst(target)}
-              NameBodyPart={ucFirst(bodyPart)}
-              name={ucFirst(name)}
-              equipment={equipment}
-              gifUrl={gifUrl}
-              burnedCalories={burnedCalories}
-              exeId={_id}
-              time={time}
-            />
-          )
+          }) => {
+            return (
+              <ExercisesItem
+                key={_id}
+                calories={burnedCalories}
+                target={ucFirst(target)}
+                NameBodyPart={ucFirst(bodyPart)}
+                name={ucFirst(name)}
+                equipment={equipment}
+                gifUrl={gifUrl}
+                burnedCalories={burnedCalories}
+                exeId={_id}
+                time={time}
+              />
+            );
+          }
         )}
         {exeFilter.length > 0 && <div ref={intersectionRef}></div>}
       </WrapperExercises>

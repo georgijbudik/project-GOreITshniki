@@ -91,7 +91,7 @@ const UserNav = () => {
                 </StyledUserNavButton>
                 <StyledUserNavButton
                   $secondary={true}
-                  $active={pathname === '/exercises'}
+                  $active={pathname.includes('/exercises')}
                   onClick={() => {
                     handlePageChange('/exercises');
                     setIsNavOpen(false);
@@ -145,7 +145,7 @@ const UserNav = () => {
           {t('header.products')}
         </StyledUserNavButton>
         <StyledUserNavButton
-          $secondary={pathname !== '/exercises'}
+          $secondary={!pathname.includes('/exercises')}
           onClick={() => handlePageChange('/exercises')}
         >
           {t('header.exercises')}

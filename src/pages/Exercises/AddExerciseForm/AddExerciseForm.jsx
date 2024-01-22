@@ -1,4 +1,9 @@
+import dayjs from 'dayjs';
+
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addExerciseToDiary } from '../../../redux/exercises/exerciseOperations';
+
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 import BasicModalWindow from 'components/BasicModalWindow';
@@ -56,8 +61,23 @@ const AddExerciseForm = ({
   burnedCalories: exeCalories,
   time,
 }) => {
+  const dispatch = useDispatch();
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
+
+  const currentDate = dayjs();
+  const date = dayjs(currentDate).format('DD.MM.YYYY');
+
+  const handleAddToDiary = () => {
+    onClose();
+    const data = {
+      id: exeId,
+      date,
+      time,
+      calories: exeCalories,
+    };
+    dispatch(addExerciseToDiary(data));
+  };
 
   return (
     <BasicModalWindow onClose={onClose}>
@@ -150,7 +170,7 @@ const AddExerciseForm = ({
             </StyledAddExerciseFormInfoItem>
           </StyledAddExerciseFormInfoList>
 
-          <Button paddingX={32} paddingY={12}>
+          <Button paddingX={32} paddingY={12} onClick={handleAddToDiary}>
             Add to diary
           </Button>
         </StyledAddExerciseFormRightPartWrapper>

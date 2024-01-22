@@ -14,9 +14,14 @@ export const StyledModalOverlay = styled.div`
 
 export const StyledModal = styled.div`
   border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background: #10100f;
-  color: var(--main-text-color);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid var(--border-color)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
+
+  background: ${({ theme }) =>
+    theme.palette.mode === 'dark' ? '#10100f' : '#EFEFEF'};
+
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
@@ -36,7 +41,7 @@ export const StyledModalCloseButton = styled.button`
   top: 14px;
   right: 14px;
 
-  stroke: var(--main-text-color);
+  stroke: ${({ theme }) => theme.palette.text.primary};
 
   transition: var(--transition);
 

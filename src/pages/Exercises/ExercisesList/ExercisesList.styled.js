@@ -84,7 +84,7 @@ export const NameExercises = styled.h2`
 `;
 
 export const ButtonGoBack = styled.button`
-  z-index: 2;
+  z-index: 0;
   width: 65px;
   display: flex;
   align-items: center;
