@@ -17,6 +17,7 @@ const InitialState = {
   // bodyparts: [],
   // equipment: [],
   exeFilter: [],
+  page: 1,
 };
 
 const onPending = state => {
@@ -31,6 +32,7 @@ const onRejected = (state, { payload }) => {
 
 const arrOfActs = [
   getExercises,
+  getExercisesByType,
   getExercisesMuscles,
   getExercisesEquipment,
   getExercisesBodyparts,
@@ -38,9 +40,22 @@ const arrOfActs = [
 ];
 
 const addStatusToActs = status => arrOfActs.map(el => el[status]);
+
 const exeSlice = createSlice({
   name: 'exercises',
   initialState: InitialState,
+  reducers: {
+    clearExeciseFilter: state => {
+      state.exeFilter = [];
+      state.page = 1;
+    },
+    // setPage: state => {
+    //   state.page = state.page + 1;
+    // },
+    setPage: (state, action) => {
+      setPage(state, action);
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(getExercises.fulfilled, (state, action) => {
@@ -48,8 +63,14 @@ const exeSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getExercisesFilter.fulfilled, (state, action) => {
-        state.exeFilter = action.payload;
+        // if (state.page === 1) {
+        //   state.exeFilter = action.payload;
+        // } else if (action.payload.length > 0) {
+        state.exeFilter = [...state.exeFilter, ...action.payload];
+        // }
+        // state.page = state.page + 1;
         state.isLoading = false;
+        state.error = null;
       })
       .addCase(getExercisesByType.pending, (state, action) => {
         state.exercisesByType = [];
@@ -74,5 +95,5 @@ const exeSlice = createSlice({
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });
-
+export const { clearExeciseFilter, setPage } = exeSlice.actions;
 export const exeReducer = exeSlice.reducer;

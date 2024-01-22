@@ -68,8 +68,11 @@ export const getExercisesFilter = createAsyncThunk(
   async (paramsExe, thunkAPI) => {
     try {
       const response = await axios.get(
-        `/exercises/${paramsExe.type}/${paramsExe.name}`
+        `/exercises/${paramsExe.type}/${paramsExe.name}?page=${
+          paramsExe.page || 1
+        }&limit=${paramsExe.limit || 10}`
       );
+      console.log('API Response:', response.data);
       return response.data;
     } catch (e) {
       console.log(e.message);
@@ -77,8 +80,3 @@ export const getExercisesFilter = createAsyncThunk(
     }
   }
 );
-
-//*PAGINATION
-// `/exercises/${paramsExe.type}/${paramsExe.name}?page=${paramsExe.page}&limit=${paramsExe.limit}`;
-
-//* ============================
