@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   max-width: 335px;
   height: 335px;
 
@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
   padding-bottom: 40px;
   padding: 16px;
   color: white;
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
 `;
 
 export const CellExercisesHeader = styled.div`
@@ -20,7 +26,7 @@ export const CellExercisesHeader = styled.div`
   margin-bottom: 40px;
   & div {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 
     & button {
       width: 77px;
@@ -43,6 +49,10 @@ export const CellExercisesHeader = styled.div`
       height: 16px;
       margin-left: 8px;
     }
+    @media screen and (min-width: 768px) {
+      max-width: 704px;
+      /* height: 234px; */
+    }
   }
 `;
 
@@ -50,4 +60,10 @@ export const NotFoundMessage = styled.div`
   margin-top: 145px;
   justify-content: center;
   text-align: center;
+`;
+
+export const WrapElem = styled.div`
+  @media screen and (min-width: 768px) {
+    text-align: unset;
+  }
 `;

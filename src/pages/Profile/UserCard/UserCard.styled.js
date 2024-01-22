@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+@media screen and (min-width: 768px) {
+
+  }
 
   @media screen and (min-width: 1440px) {
     padding-left: 49px;
@@ -29,7 +32,12 @@ export const ProfileSettings = styled.h3`
   font-size: 24px;
   font-weight: 700;
   font-family: Roboto;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
+
+  @media screen and (min-width: 768px) {
+    margin-block-end: 38px;
+    margin-block-start: 72px;
+  }
 
   @media screen and (min-width: 1440px) {
     margin-block-end: 32px;
@@ -43,7 +51,13 @@ export const UserAvatar = styled.svg`
   height: 50px;
   border: 1px solid var(--accent-color);
   border-radius: 50%;
-  background-color: rgba(239, 237, 232, 0.1);
+  /* background-color:rgba(239, 237, 232, 0.1) ; */
+
+  background-color: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'rgba(48, 48, 48, 0.3)'
+      : 'rgba(39, 37, 32, 0.2)';
+  }};
   padding: 20px;
 
   @media screen and (min-width: 768px) {
@@ -63,7 +77,7 @@ export const UserAvatar = styled.svg`
 
 export const UserName = styled.p`
   margin-block-start: 31px;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   margin-block-end: 4px;
   font-weight: 400;
   font-size: 18px;
@@ -79,7 +93,7 @@ export const UserName = styled.p`
 
 export const UserRole = styled.p`
   margin-block-start: 0;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   opacity: 0.5;
   font-weight: 400;
   font-size: 14px;
@@ -147,7 +161,7 @@ export const DailyCard = styled.div`
 `;
 
 export const DisclaimerContainer = styled.div`
-  color: #efede833;
+  /* color: #efede833; */
   font-size: 13.5px;
   text-align: left;
   line-height: 1.3;
@@ -165,18 +179,23 @@ export const SvgExclamationIcon = styled.svg`
   padding: 5px;
   background-color: #efa082;
   margin-right: 8px;
-  max-width: 35px;
-  width: 35px;
+  max-width: 15px;
+  width: 40px;
 
   @media screen and (min-width: 768px) {
-    max-width: 30px;
+    max-width: 15px;
     width: 30px;
   }
 `;
 
+export const LogOutBtnWraper = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
 export const LogOutButton = styled.button`
   background: none;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   border: none;
   padding: 0;
   font-size: 14px;

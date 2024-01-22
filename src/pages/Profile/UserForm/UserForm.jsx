@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 // import * as yup from 'yup';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
+import { updateUser } from '../../../redux/profile/profileOperations';
+// import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 import {
   Container,
@@ -22,44 +24,61 @@ import {
   ActivityContainer,
   NameEmailInput,
   SaveButton,
+  StyledCalendarIcon,
 } from './UserForm.styled';
 
 const initialValues = {
-  email: '',
-  name: '',
-  height: '',
-  currentWeight: '',
-  desiredWeight: '',
-  dateOfBirth: '',
-  blood: '',
-  sex: '',
-  activity: '',
+  email: null,
+  name: null,
+  height: null,
+  currentWeight: null,
+  desiredWeight: null,
+  birthday: null,
+  blood: null,
+  sex: null,
+  levelActivity: null,
 };
 
 const UserForm = () => {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
       const {
-        // email,
-        // name,
-        // height,
-        // currentWeight,
-        // desiredWeight,
+        name,
+        height,
+        currentWeight,
+        desiredWeight,
         blood,
         sex,
-        activity,
+        levelActivity,
       } = values;
-      var dateOfBirth;
+
       const dateNow = new Date();
-      console.log(activity + ' ' + sex + ' ' + blood);
+
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
 
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
-        dateOfBirth = startDate;
-        console.log(dateOfBirth);
+        dispatch(
+          updateUser({
+            name: name,
+            height: Number(height),
+            currentWeight: Number(currentWeight),
+            desiredWeight: Number(desiredWeight),
+            blood: Number(blood),
+            sex: sex,
+            levelActivity: Number(levelActivity),
+            birthday: formatDate(startDate),
+          })
+        );
       }
     },
   });
@@ -71,7 +90,7 @@ const UserForm = () => {
           {t('profile.user_form.settings')}{' '}
         </ProfileSettings>
         <NameEmailInput>
-          <FieldContainer>
+          <FieldContainer className="nameEmail">
             <FieldName>{t('profile.user_form.name')} </FieldName>
             <MainInput
               type="text"
@@ -82,7 +101,7 @@ const UserForm = () => {
               value={formik.values.name}
             />
           </FieldContainer>
-          <FieldContainer>
+          <FieldContainer className="nameEmail">
             <FieldName>{t('profile.user_form.email')} </FieldName>
             <MainInput
               type="email"
@@ -143,17 +162,14 @@ const UserForm = () => {
               required
               onChange={date => setStartDate(date)}
             />
-            <svg>
+            <StyledCalendarIcon>
               <use
-                fill="#efede8"
-                width="15"
-                height="15"
                 xlinkHref={
                   process.env.PUBLIC_URL +
                   '/images/sprite/sprite.svg#icon-calender-outline'
                 }
               />
-            </svg>
+            </StyledCalendarIcon>
           </FieldContainer>
         </SecondaryInputContainer>
 
@@ -202,7 +218,12 @@ const UserForm = () => {
           value={formik.values.activity}
         >
           <RadioContainer>
-            <input type="radio" id="no_activity" name="activity" value="1" />
+            <input
+              type="radio"
+              id="no_activity"
+              name="levelActivity"
+              value="1"
+            />
             <label htmlFor="no_activity">
               {t('profile.user_form.activity_1')}
             </label>
@@ -212,7 +233,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="little_activity"
-              name="activity"
+              name="levelActivity"
               value="2"
             />
             <label htmlFor="little_activity">
@@ -223,7 +244,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="normal_activity"
-              name="activity"
+              name="levelActivity"
               value="3"
             />
             <label htmlFor="normal_activity">
@@ -231,7 +252,12 @@ const UserForm = () => {
             </label>
           </RadioContainer>
           <RadioContainer>
-            <input type="radio" id="very_activity" name="activity" value="4" />
+            <input
+              type="radio"
+              id="very_activity"
+              name="levelActivity"
+              value="4"
+            />
             <label htmlFor="very_activity">
               {t('profile.user_form.activity_4')}
             </label>
@@ -240,7 +266,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="extreme_activity"
-              name="activity"
+              name="levelActivity"
               value="5"
             />
             <label htmlFor="extreme_activity">

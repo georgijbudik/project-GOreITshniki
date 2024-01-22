@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Container,
   ProfileSettings,
@@ -14,26 +15,27 @@ import {
   SvgDailyIcon,
   DisclaimerContainer,
   SvgExclamationIcon,
-  LogOutButton,
-  SvgLogoutIcon,
+  LogOutBtnWraper,
   AddProfilePicCross,
   AddProfilePicBackground,
   ProfilePicContainer,
   AddAvatarButton,
   AddAvatarLabel,
 } from './UserCard.styled';
+import LogOutBtn from 'components/LogOutBtn';
+import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 const UserCard = () => {
   const { t } = useTranslation();
+  const currentUser = useSelector(selectUserInfo);
   const [file, setFile] = useState();
 
   const handleFileChange = e => {
     if (e.target.files) {
       setFile(e.target.files[0]);
+      console.log(file);
     }
   };
-
-  console.log(file);
 
   return (
     <Container>
@@ -46,6 +48,7 @@ const UserCard = () => {
             <AddAvatarButton
               id="add-avatar-button"
               onChange={handleFileChange}
+              accept="image/png, image/jpg"
               className="add-avatar-button"
               type="file"
             />
@@ -80,7 +83,7 @@ const UserCard = () => {
           </UserAvatar>
         </ProfilePicContainer>
 
-        <UserName>Anna Rybachok</UserName>
+        <UserName>{currentUser.name}</UserName>
         <UserRole>{t('profile.user_card.user')}</UserRole>
         <DailyContainer>
           <DailyCard>
@@ -95,7 +98,7 @@ const UserCard = () => {
               </SvgDailyIcon>
               {t('profile.user_card.daily_calorie_intake')}
             </DailyTitle>
-            <DailyResult>0</DailyResult>
+            <DailyResult>{currentUser.calories}</DailyResult>
           </DailyCard>
           <DailyCard>
             <DailyTitle>
@@ -123,17 +126,9 @@ const UserCard = () => {
           </SvgExclamationIcon>
           {t('profile.user_card.exclamation')}
         </DisclaimerContainer>
-        <LogOutButton>
-          {t('profile.user_card.logout')}
-          <SvgLogoutIcon height="20" width="20">
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL +
-                '/images/sprite/sprite.svg#icon-log-out'
-              }
-            ></use>
-          </SvgLogoutIcon>
-        </LogOutButton>
+        <LogOutBtnWraper>
+          <LogOutBtn filled />
+        </LogOutBtnWraper>
       </UserInfo>
     </Container>
   );

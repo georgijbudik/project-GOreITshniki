@@ -7,8 +7,10 @@ import {
 
 const productInitialState = {
   categories: [],
-  products: [],
+  products: null,
   page: 1,
+  limit: 10,
+  hasMore: true,
   productToAdd: null,
   caloriesByUser: null,
   isProductSuccesAdded: false,
@@ -54,16 +56,19 @@ const productSlice = createSlice({
       .addCase(fetchCategories.rejected, handleRejected)
 
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        if (state.page === 1) {
+        if (state.page === 1 && action.payload.length === state.limit) {
           state.products = action.payload;
           state.page = state.page + 1;
-        } else if (action.payload.length > 0) {
+          state.hasMore = true;
+        } else if (state.page === 1 && action.payload.length < state.limit) {
+          state.products = action.payload;
+          state.hasMore = false;
+        } else if (state.page > 1 && action.payload.length === state.limit) {
           state.products = [...state.products, ...action.payload];
           state.page = state.page + 1;
-        } else {
-          state.isLoading = false;
-          state.error = null;
-          return;
+        } else if (state.page > 1 && action.payload.length < state.limit) {
+          state.products = [...state.products, ...action.payload];
+          state.hasMore = false;
         }
         state.isLoading = false;
         state.error = null;
@@ -91,6 +96,7 @@ export const selectIsProductSuccesAdded = state =>
   state.products.isProductSuccesAdded;
 export const selectIsLoading = state => state.products.isLoading;
 export const selectError = state => state.products.error;
+export const selectHasMore = state => state.products.hasMore;
 
 export const {
   setPage,

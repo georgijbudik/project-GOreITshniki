@@ -3,12 +3,18 @@ import styled from 'styled-components';
 export const DailyCalorieIntakeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    /* width: 187px;
+    height: 116px; */
+    display: block;
+    justify-content: flex-start;
+  }
 `;
 
 export const DailyCalorieIntake = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 157px;
+  max-width: 160px;
   height: 96px;
   padding: 14px;
   align-items: flex-start;
@@ -20,6 +26,13 @@ export const DailyCalorieIntake = styled.div`
 
   background: #e6533c;
   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    width: 187px;
+    height: 116px;
+    display: block;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+  }
 `;
 
 export const CellHeader = styled.div`
@@ -81,6 +94,14 @@ export const ProcessedDashboardDataWrapper = styled.div`
   justify-content: space-between;
 
   margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    max-width: 187px;
+    height: 116px;
+    display: block;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding: 0 16px;
+  }
 `;
 
 export const ProcessedDashboardData = styled.div`
@@ -94,6 +115,14 @@ export const ProcessedDashboardData = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   /* border-color: ${props => (props.markering > 0 ? 'red' : 'green')}; */
+  @media screen and (min-width: 768px) {
+    display: flex;
+    max-width: 187px;
+    height: 116px;
+    display: block;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+  }
 `;
 
 export const ProcessedDashboardDataMarked = styled.div`
@@ -106,7 +135,16 @@ export const ProcessedDashboardDataMarked = styled.div`
   gap: 32px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
-  border-color: ${props => (props.markering > 0 ? 'red' : 'green')};
+  border-color: ${props => (props.$markering > 0 ? 'red' : 'green')};
+  @media screen and (min-width: 768px) {
+    max-width: 187;
+    width: 187px;
+    height: 116px;
+    display: block;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 0 0 16px;
+  }
 `;
 
 export const AttentionMessage = styled.div`
@@ -132,12 +170,28 @@ export const AttentionText = styled.p`
   height: 54px;
   color: #efede84d;
   font-family: Roboto;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 24px;
   letter-spacing: 0px;
   text-align: left;
+  @media screen and (min-width: 768px) {
+    width: 593px;
+    height: 48px;
+  }
 `;
 export const Markered = styled.span`
   background-color: ${props => (props.$markering === true ? 'green' : 'red')};
+`;
+
+export const Metawrap = styled.div`
+  @media screen and (min-width: 768px) {
+  }
+`;
+
+export const DshbrdWrpr = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    padding: 0 0 100px 0;
+  }
 `;

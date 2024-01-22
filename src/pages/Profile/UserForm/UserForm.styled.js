@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const FieldName = styled.p`
   margin-block-start: 0;
   margin-block-end: 4px;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   opacity: 0.5;
   font-weight: 400;
   font-size: 12px;
@@ -55,8 +55,12 @@ export const FieldContainer = styled.div`
 
 export const MainInput = styled.input`
   all: unset;
-  border: 1px solid var(--border-color);
-  color: var(--main-text-color);
+  border: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? '1px solid var(--border-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)';
+  }};
+  /* color: var(--main-text-color); */
   font-size: 14px;
   border-radius: 12px;
   box-sizing: border-box;
@@ -75,8 +79,13 @@ export const MainInput = styled.input`
 
 export const SecondaryInput = styled.input`
   all: unset;
-  border: 1px solid var(--border-color);
-  color: var(--main-text-color);
+  /* border: 1px solid var(--border-color); */
+  border: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? '1px solid var(--border-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)';
+  }};
+  /* color: var(--main-text-color); */
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 12px;
@@ -140,7 +149,7 @@ export const RadioContainer = styled.label`
   margin-block-end: 8px;
 
   label {
-    color: var(--main-text-color);
+    /* color: var(--main-text-color); */
     font-size: 14px;
 
     @media screen and (min-width: 768px) {
@@ -161,9 +170,7 @@ export const RadioContainer = styled.label`
       background-color: var(--icon-color);
       box-shadow: 0px 0px 0px 2px black inset;
     }
-    &:active {
-      border-color: orange;
-    }
+    
 
     @media screen and (min-width: 768px) {
       width: 24px;
@@ -180,7 +187,7 @@ export const RadioContainer = styled.label`
 `;
 
 export const ActivityContainer = styled.label`
-  display:block;
+  display: block;
   margin-right: 8px;
   margin-block-end: 40px;
 
@@ -192,6 +199,8 @@ export const ActivityContainer = styled.label`
 export const NameEmailInput = styled.div`
   @media screen and (min-width: 768px) {
     margin-block-end: 8px;
+      display:flex;
+  justify-content:space-between;
   }
 
   @media screen and (min-width: 1440px) {
@@ -213,5 +222,18 @@ export const SaveButton = styled(Button)`
   @media screen and (min-width: 1440px) {
     width: 144px;
     height: 56px;
+  }
+`;
+
+export const StyledCalendarIcon = styled.svg`
+  width: 15px;
+  height: 15px;
+  fill: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
+
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
   }
 `;

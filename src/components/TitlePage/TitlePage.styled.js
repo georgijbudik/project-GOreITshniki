@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledTitlePage = styled.h2`
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
 
   font-size: 24px;
   font-weight: 700;

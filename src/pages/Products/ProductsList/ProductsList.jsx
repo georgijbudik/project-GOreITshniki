@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchProducts } from '../../../redux/products/productOperations';
 import ProductsItem from '../ProductsItem';
 import {
+  selectHasMore,
   selectPage,
   selectProducts,
 } from '../../../redux/products/productSlice';
@@ -21,6 +22,7 @@ const ProductsList = () => {
   const products = useSelector(selectProducts);
 
   const page = useSelector(selectPage);
+  const hasMore = useSelector(selectHasMore);
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -32,21 +34,24 @@ const ProductsList = () => {
   const recommendationFromParams = searchParams.get('recommendation') ?? '';
 
   const fetchMoreProducts = useCallback(async () => {
-    dispatch(
-      fetchProducts({
-        search: searchFromParams,
-        category: categoryFromParams,
-        recommendation: recommendationFromParams,
-        page: page,
-        limit: 10,
-      })
-    );
+    if (hasMore) {
+      dispatch(
+        fetchProducts({
+          search: searchFromParams,
+          category: categoryFromParams,
+          recommendation: recommendationFromParams,
+          page: page,
+          limit: 10,
+        })
+      );
+    }
   }, [
     dispatch,
     searchFromParams,
     categoryFromParams,
     recommendationFromParams,
     page,
+    hasMore,
   ]);
 
   useEffect(() => {
@@ -72,7 +77,7 @@ const ProductsList = () => {
 
   return (
     <>
-      {products.length === 0 && (
+      {products && (products.length === 0 && (
         <StyledContainerNoResults>
           <StyledTextNoResults>
             <StyledTextNoResultsRed>
@@ -86,8 +91,8 @@ const ProductsList = () => {
             Try changing the search parameters.
           </StyledTextTryAgain>
         </StyledContainerNoResults>
-      )}
-      {products.length > 0 && (
+      ))}
+      {products && (products.length > 0 && (
         <StyledContainer>
           <StyledList>
             {products.map(product => (
@@ -96,7 +101,7 @@ const ProductsList = () => {
           </StyledList>
           <div ref={elementRef}></div>
         </StyledContainer>
-      )}
+      ))}
     </>
   );
 };

@@ -5,7 +5,13 @@ import DayDashboard from './DayDashboard';
 import DaySwitch from './DaySwitch';
 import DayProducts from './DayProducts';
 import DayExercises from './DayExercises';
-import { PageTitle, DaySwitchRight, Wrap } from './Diary.styled';
+import {
+  PageTitle,
+  DaySwitchRight,
+  Wrap,
+  MediaWrapper,
+  MediaWrapDayDashBoard,
+} from './Diary.styled';
 
 const Diary = () => {
   return (
@@ -16,9 +22,15 @@ const Diary = () => {
           <DaySwitch>DaySwitch</DaySwitch>
         </DaySwitchRight>
       </PageTitle>
-      <DayDashboard>DayDashboard</DayDashboard>
-      <DayProducts>DayProducts</DayProducts>
-      <DayExercises>DayExercises</DayExercises>
+      <MediaWrapper>
+        <MediaWrapDayDashBoard>
+          <DayDashboard>DayDashboard</DayDashboard>
+        </MediaWrapDayDashBoard>
+        <div>
+          <DayProducts>DayProducts</DayProducts>
+          <DayExercises>DayExercises</DayExercises>
+        </div>
+      </MediaWrapper>
     </Wrap>
   );
 };

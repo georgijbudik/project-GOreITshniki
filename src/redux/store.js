@@ -14,6 +14,7 @@ import { globalReducer } from './global/globalSlice';
 import { authReducer } from './auth/authSlice';
 import { productReducer } from './products/productSlice';
 import { exeReducer } from './exercises/exerciseSlice';
+import { profileReducer } from './profile/profileSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -32,6 +33,7 @@ const globalPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    profile: persistReducer(authPersistConfig, profileReducer),
     global: persistReducer(globalPersistConfig, globalReducer),
     products: productReducer,
     exercises: exeReducer,
