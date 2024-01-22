@@ -61,10 +61,10 @@ const ExercisesList = () => {
 
     const fetchMoreExercises = async () => {
       if (exeFilter.length % 10 === 0 && !isLoading) {
-        dispatch(setLoading(true)); // Set loading to true
+        dispatch(setLoading(true));
         dispatch(setPage());
         const filters = { type, name, page: page + 1 };
-        await dispatch(getExercisesFilter(filters)); // Wait for the API call to finish
+        await dispatch(getExercisesFilter(filters));
         dispatch(setLoading(false));
       }
     };

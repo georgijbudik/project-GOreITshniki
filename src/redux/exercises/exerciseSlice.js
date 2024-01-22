@@ -47,7 +47,6 @@ const exeSlice = createSlice({
       state.page = 1;
     },
     setPage: state => {
-      // state.page = state.page += 1;
       state.page += 1;
     },
     setLoading: (state, action) => {
