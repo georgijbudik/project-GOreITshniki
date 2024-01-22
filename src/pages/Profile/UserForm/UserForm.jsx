@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 // import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
-import {
-  refreshUser,
-  updateUser,
-} from '../../../redux/profile/profileOperations';
-import { selectUserInfo } from '../../../redux/profile/profileSelectors';
+import { updateUser } from '../../../redux/profile/profileOperations';
+// import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 import {
   Container,
@@ -62,6 +59,13 @@ const UserForm = () => {
 
       const dateNow = new Date();
 
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
         dispatch(
           updateUser({
@@ -72,7 +76,7 @@ const UserForm = () => {
             blood: Number(blood),
             sex: sex,
             levelActivity: Number(levelActivity),
-            birthday: startDate,
+            birthday: formatDate(startDate),
           })
         );
       }
