@@ -6,6 +6,7 @@ export const StyledMainImageWrapper = styled.div`
   position: fixed;
   z-index: -1;
 
+
   /* background: linear-gradient(89deg, #040404 91.1%, rgba(4, 4, 4, 0) 90.79%); */
   /* linear-gradient(
       168.14deg,

@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
 
-// axios.defaults.baseURL = 'http://localhost:3001';
 axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
 
 const setAuthHeader = token => {
@@ -14,9 +13,6 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-/*
- * body: { name, email, password }
- */
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -34,9 +30,6 @@ export const register = createAsyncThunk(
   }
 );
 
-/*
- * body: { email, password }
- */
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
@@ -48,7 +41,6 @@ export const logIn = createAsyncThunk(
     } catch (error) {
       toastError(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data.message);
-      // console.log('first', res.data);
     }
   }
 );
@@ -77,21 +69,9 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('users/current');
-      // console.log('first', res.data);
       return res.data;
     } catch (error) {
-      toastError(error.response.data.message);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
-
-// export const getUserInfo = async () => {
-//   try {
-//     const response = await axios.get('/users/current');
-//     console.log('user auth', response.data);
-//     return response.data;
-//   } catch (error) {
-//     return error.message;
-//   }
-// };

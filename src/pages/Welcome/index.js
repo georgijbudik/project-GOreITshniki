@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const HeroText = styled.h1`
-  /* color: #efede8; */
   font-size: 38px;
   font-weight: 500;
   line-height: calc(40 / 38);
@@ -19,7 +18,6 @@ export const WelcomePageContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 90px 0px 35px 0px;
-  /* position: relative; */
 
   @media screen and (min-width: 768px) {
     width: 598px;
