@@ -170,11 +170,11 @@ export const SvgExclamationIcon = styled.svg`
   padding: 5px;
   background-color: #efa082;
   margin-right: 8px;
-  max-width: 35px;
-  width: 35px;
+  max-width: 15px;
+  width: 40px;
 
   @media screen and (min-width: 768px) {
-    max-width: 30px;
+    max-width: 15px;
     width: 30px;
   }
 `;

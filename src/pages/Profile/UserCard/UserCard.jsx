@@ -125,18 +125,6 @@ const UserCard = () => {
           </SvgExclamationIcon>
           {t('profile.user_card.exclamation')}
         </DisclaimerContainer>
-        {/* <LogOutButton>
-          {t('profile.user_card.logout')}
-          <SvgLogoutIcon height="20" width="20">
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL +
-                '/images/sprite/sprite.svg#icon-log-out'
-              }
-            ></use>
-          </SvgLogoutIcon>
-        </LogOutButton> */}
-
         <LogOutBtnWraper>
           <LogOutBtn filled />
         </LogOutBtnWraper>

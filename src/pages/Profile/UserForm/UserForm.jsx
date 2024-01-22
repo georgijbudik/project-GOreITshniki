@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 // import * as yup from 'yup';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
+import {
+  refreshUser,
+  updateUser,
+} from '../../../redux/profile/profileOperations';
+import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 import {
   Container,
@@ -40,27 +45,56 @@ const initialValues = {
 const UserForm = () => {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
+  const currentUser = useSelector(selectUserInfo);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  });
 
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
       const {
-        // email,
-        // name,
-        // height,
-        // currentWeight,
-        // desiredWeight,
+        email,
+        name,
+        height,
+        currentWeight,
+        desiredWeight,
         blood,
         sex,
-        activity,
+        levelActivity,
       } = values;
-      var dateOfBirth;
       const dateNow = new Date();
-      console.log(activity + ' ' + sex + ' ' + blood);
+      console.log(currentUser);
 
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
-        dateOfBirth = startDate;
-        console.log(dateOfBirth);
+        const birthday = startDate.toJSON().slice(0, 10);
+        console.log(`${email} ${levelActivity}`);
+        dispatch(
+          updateUser({
+            name: name,
+            height: height,
+            currentWeight: currentWeight,
+            desiredWeight: desiredWeight,
+            blood: blood,
+            sex: sex,
+            levelActivity: levelActivity,
+            birthday: birthday,
+          })
+        );
+
+        console.log(
+          email,
+          name,
+          height,
+          currentWeight,
+          desiredWeight,
+          birthday,
+          blood,
+          sex,
+          levelActivity
+        );
       }
     },
   });
@@ -200,7 +234,12 @@ const UserForm = () => {
           value={formik.values.activity}
         >
           <RadioContainer>
-            <input type="radio" id="no_activity" name="activity" value="1" />
+            <input
+              type="radio"
+              id="no_activity"
+              name="levelActivity"
+              value="1"
+            />
             <label htmlFor="no_activity">
               {t('profile.user_form.activity_1')}
             </label>
@@ -210,7 +249,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="little_activity"
-              name="activity"
+              name="levelActivity"
               value="2"
             />
             <label htmlFor="little_activity">
@@ -221,7 +260,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="normal_activity"
-              name="activity"
+              name="levelActivity"
               value="3"
             />
             <label htmlFor="normal_activity">
@@ -229,7 +268,12 @@ const UserForm = () => {
             </label>
           </RadioContainer>
           <RadioContainer>
-            <input type="radio" id="very_activity" name="activity" value="4" />
+            <input
+              type="radio"
+              id="very_activity"
+              name="levelActivity"
+              value="4"
+            />
             <label htmlFor="very_activity">
               {t('profile.user_form.activity_4')}
             </label>
@@ -238,7 +282,7 @@ const UserForm = () => {
             <input
               type="radio"
               id="extreme_activity"
-              name="activity"
+              name="levelActivity"
               value="5"
             />
             <label htmlFor="extreme_activity">

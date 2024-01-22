@@ -170,9 +170,7 @@ export const RadioContainer = styled.label`
       background-color: var(--icon-color);
       box-shadow: 0px 0px 0px 2px black inset;
     }
-    &:active {
-      border-color: orange;
-    }
+    
 
     @media screen and (min-width: 768px) {
       width: 24px;
