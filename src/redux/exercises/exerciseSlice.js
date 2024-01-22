@@ -47,7 +47,11 @@ const exeSlice = createSlice({
       state.page = 1;
     },
     setPage: state => {
-      state.page = state.page += 1;
+      // state.page = state.page += 1;
+      state.page += 1;
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
   },
   extraReducers: builder =>
@@ -72,5 +76,5 @@ const exeSlice = createSlice({
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });
-export const { clearExeciseFilter, setPage } = exeSlice.actions;
+export const { clearExeciseFilter, setPage, setLoading } = exeSlice.actions;
 export const exeReducer = exeSlice.reducer;

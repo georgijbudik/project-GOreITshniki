@@ -21,6 +21,7 @@ import ChapterTemplate from '../ChapterTemplate';
 import {
   clearExeciseFilter,
   setPage,
+  setLoading,
 } from '../../../redux/exercises/exerciseSlice';
 
 const ExercisesList = () => {
@@ -58,11 +59,13 @@ const ExercisesList = () => {
       threshold: 0.5,
     };
 
-    const fetchMoreExercises = () => {
-      if (exeFilter.length % 10 === 0) {
+    const fetchMoreExercises = async () => {
+      if (exeFilter.length % 10 === 0 && !isLoading) {
+        dispatch(setLoading(true)); // Set loading to true
         dispatch(setPage());
         const filters = { type, name, page: page + 1 };
-        dispatch(getExercisesFilter(filters));
+        await dispatch(getExercisesFilter(filters)); // Wait for the API call to finish
+        dispatch(setLoading(false));
       }
     };
 
@@ -72,7 +75,7 @@ const ExercisesList = () => {
       }
     };
     const observer = new IntersectionObserver(onIntersection, options);
-    if (observer && intersectionRef.current) {
+    if (observer && intersectionRef.current && !isLoading) {
       observer.observe(intersectionRef.current);
     }
 
@@ -81,7 +84,7 @@ const ExercisesList = () => {
         observer.disconnect();
       }
     };
-  }, [exeFilter, dispatch, exercisesListRef, type, name, page]);
+  }, [exeFilter, dispatch, type, name, page, isLoading]);
 
   const ucFirst = str => {
     if (!str) return str;
