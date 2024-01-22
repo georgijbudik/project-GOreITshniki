@@ -1,4 +1,6 @@
+// import { useCallback, useEffect, useRef } from 'react';
 import { useEffect, useRef } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -19,9 +21,14 @@ import { ChaptersWrapper, LinkStyled } from '../Exercises.styled';
 import ExercisesItem from '../ExercisesItem';
 import SectionTemplate from '../SectionTemplate';
 import ChapterTemplate from '../ChapterTemplate';
+import {
+  clearExeciseFilter,
+  setPage,
+} from '../../../redux/exercises/exerciseSlice';
 
 const ExercisesList = () => {
   const dispatch = useDispatch();
+  const { exeFilter, page, isLoading } = useSelector(state => state.exercises);
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/exercises');
   const backLinkBodyparts = useRef(
@@ -32,17 +39,65 @@ const ExercisesList = () => {
     location.state?.from ?? '/exercises/equipment'
   );
   const [type, name] = location.pathname.split('/exercises/')[1].split('/');
+  const params = useParams();
+  const current = params.id;
+
+  const exercisesListRef = useRef(null);
+
+  const intersectionRef = useRef(null);
 
   useEffect(() => {
     const filters = { type, name };
 
     dispatch(getExercisesFilter(filters));
-  }, [dispatch, name, type]);
+    // dispatch(setPage());
+    return () => {
+      dispatch(clearExeciseFilter());
+    };
+  }, [dispatch, type, name]);
 
-  const { exeFilter, isLoading } = useSelector(state => state.exercises);
+  useEffect(() => {
+    const options = {
+      rootMargin: '0px',
+      // threshold: 1.0,
+      threshold: 0.5, // Adjust this value
+    };
 
-  const params = useParams();
-  const current = params.id;
+    const fetchMoreExercises = () => {
+      // Check if there are more exercises to fetch
+      if (exeFilter.length % 10 === 0) {
+        const nextPage = page + 1;
+        // dispatch(setPage());
+        dispatch(setPage(nextPage)); // Increment the page number
+        // const filters = { type, name, page };
+        const filters = { type, name, page: nextPage }; // Update filters with new page
+        dispatch(getExercisesFilter(filters));
+      }
+    };
+
+    const onIntersection = entries => {
+      console.log('Intersection observed');
+      if (entries[0].isIntersecting) {
+        fetchMoreExercises();
+      }
+    };
+    const observer = new IntersectionObserver(onIntersection, options);
+    if (observer && intersectionRef.current) {
+      observer.observe(intersectionRef.current);
+    }
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+    // const observer = new IntersectionObserver(onIntersection, options);
+    // observer.observe(intersectionRef.current);
+
+    // return () => {
+    //   observer.disconnect();
+    // };
+  }, [exeFilter, dispatch, exercisesListRef, type, name, page]);
 
   const ucFirst = str => {
     if (!str) return str;
@@ -51,7 +106,11 @@ const ExercisesList = () => {
 
   return (
     <SectionTemplate>
-      <ButtonGoBack>
+      <ButtonGoBack
+        onClick={() => {
+          dispatch(clearExeciseFilter());
+        }}
+      >
         <IconWrapperBack>
           <use
             xlinkHref={
@@ -62,7 +121,6 @@ const ExercisesList = () => {
         <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
       </ButtonGoBack>
       <DesktopBackgroundContainer></DesktopBackgroundContainer>
-
       <WrapperNav>
         {isLoading && <Loader />}
         <NameExercises>{ucFirst(current)}</NameExercises>
@@ -84,8 +142,8 @@ const ExercisesList = () => {
             </LinkStyled>
           </li>
         </ChaptersWrapper>
-      </WrapperNav>
-      <WrapperExercises>
+      </WrapperNav>{' '}
+      <WrapperExercises ref={exercisesListRef}>
         {exeFilter.map(
           ({
             bodyPart,
@@ -96,26 +154,73 @@ const ExercisesList = () => {
             equipment,
             gifUrl,
             time,
-          }) => {
-            return (
-              <ExercisesItem
-                key={_id}
-                calories={burnedCalories}
-                target={ucFirst(target)}
-                NameBodyPart={ucFirst(bodyPart)}
-                name={ucFirst(name)}
-                equipment={equipment}
-                gifUrl={gifUrl}
-                burnedCalories={burnedCalories}
-                exeId={_id}
-                time={time}
-              />
-            );
-          }
+          }) => (
+            <ExercisesItem
+              key={_id}
+              calories={burnedCalories}
+              target={ucFirst(target)}
+              NameBodyPart={ucFirst(bodyPart)}
+              name={ucFirst(name)}
+              equipment={equipment}
+              gifUrl={gifUrl}
+              burnedCalories={burnedCalories}
+              exeId={_id}
+              time={time}
+            />
+          )
         )}
+        {exeFilter.length > 0 && <div ref={intersectionRef}></div>}
       </WrapperExercises>
+      {isLoading && <Loader />}
     </SectionTemplate>
   );
 };
 
 export default ExercisesList;
+
+//*=============
+// useEffect(() => {
+//   const filters = { type, name };
+
+//   // Initial fetch
+//   dispatch(getExercisesFilter(filters));
+
+//   // Intersection Observer
+//   const options = {
+//     rootMargin: '0px',
+//     threshold: 1.0,
+//   };
+
+//   const fetchMoreExercises = () => {
+//     const updatedPage = page + 1;
+
+//     // Check if there are more exercises to fetch
+//     // if (exeFilter.length % 10 === 0) {
+//     const updatedFilters = { type, name, page: updatedPage };
+
+//     dispatch(getExercisesFilter(updatedFilters));
+//     dispatch(setPage()); // Update the page in the state
+//     // }
+//   };
+
+//   const onIntersection = entries => {
+//     console.log('Intersection observed');
+//     if (entries[0].isIntersecting) {
+//       fetchMoreExercises();
+//     }
+//   };
+
+//   const observer = new IntersectionObserver(onIntersection, options);
+//   if (observer && intersectionRef.current) {
+//     observer.observe(intersectionRef.current);
+//   }
+
+//   return () => {
+//     if (observer) {
+//       observer.disconnect();
+//     }
+//     dispatch(clearExeciseFilter());
+//   };
+// }, [dispatch, type, name, page, intersectionRef]);
+
+//*=============
