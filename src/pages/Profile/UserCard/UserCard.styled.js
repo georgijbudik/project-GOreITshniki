@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+@media screen and (min-width: 768px) {
+
+  }
+
   @media screen and (min-width: 1440px) {
     padding-left: 49px;
     margin-block-start: 143px;
@@ -29,6 +33,11 @@ export const ProfileSettings = styled.h3`
   font-weight: 700;
   font-family: Roboto;
   /* color: var(--main-text-color); */
+
+  @media screen and (min-width: 768px) {
+    margin-block-end: 38px;
+    margin-block-start: 72px;
+  }
 
   @media screen and (min-width: 1440px) {
     margin-block-end: 32px;
