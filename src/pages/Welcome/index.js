@@ -37,12 +37,15 @@ export const ButtonContainer = styled.div`
 `;
 
 export const BodyLine = styled.svg`
-  position: absolute;
+z-index:-1;  
+position: absolute;
   left: -9px;
   top: 6px;
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px;
+    left: -19px;
+    top: 9px;
   }
 `;
 
