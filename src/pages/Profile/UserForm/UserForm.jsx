@@ -22,6 +22,7 @@ import {
   ActivityContainer,
   NameEmailInput,
   SaveButton,
+  StyledCalendarIcon,
 } from './UserForm.styled';
 
 const initialValues = {
@@ -143,17 +144,14 @@ const UserForm = () => {
               required
               onChange={date => setStartDate(date)}
             />
-            <svg>
+            <StyledCalendarIcon>
               <use
-                fill="#efede8"
-                width="15"
-                height="15"
                 xlinkHref={
                   process.env.PUBLIC_URL +
                   '/images/sprite/sprite.svg#icon-calender-outline'
                 }
               />
-            </svg>
+            </StyledCalendarIcon>
           </FieldContainer>
         </SecondaryInputContainer>
 
