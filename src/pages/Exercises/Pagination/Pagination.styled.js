@@ -5,15 +5,20 @@ export const WrapperPaginate = styled.div`
   justify-content: center;
   gap: 8px;
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   margin-left: auto;
   margin-right: auto;
   /* width: 6em; */
   width: 100%;
 
   @media screen and (min-width: 768px) {
+    padding-top: 35px;
+    padding-bottom: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
     padding-top: 32px;
-    padding-bottom: 40px;
+    padding-bottom: 46px;
   }
 `;
 

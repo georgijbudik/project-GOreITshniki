@@ -7,18 +7,22 @@ import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem';
 import Pagination from '../Pagination';
 
 import { NavLink } from 'react-router-dom';
+import Loader from 'components/Loader';
 
 const ExercisesSubcategoriesList = () => {
   const arr = useSelector(selectExercisesByType);
+  const { isLoading } = useSelector(state => state.exercises);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   function perPage() {
     let exePerPage;
-    if (window.matchMedia('(min-width: 1440px)').matches) {
-      exePerPage = 10;
-    } else {
+    if (
+      window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches
+    ) {
       exePerPage = 9;
+    } else {
+      exePerPage = 10;
     }
     return exePerPage;
   }
@@ -38,6 +42,7 @@ const ExercisesSubcategoriesList = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <WrapperStyled>
         {arrayPerPage().map(({ name, imgURL, _id, filter }) => {
           return (

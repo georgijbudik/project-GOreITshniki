@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader';
+import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
 
 import {
   NameExercises,
@@ -12,8 +14,6 @@ import {
   WrapperNav,
   DesktopBackgroundContainer,
 } from './ExercisesList.styled';
-import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
-
 import { ChaptersWrapper, LinkStyled } from '../Exercises.styled';
 
 import ExercisesItem from '../ExercisesItem';
@@ -39,7 +39,7 @@ const ExercisesList = () => {
     dispatch(getExercisesFilter(filters));
   }, [dispatch, name, type]);
 
-  const { exeFilter } = useSelector(state => state.exercises);
+  const { exeFilter, isLoading } = useSelector(state => state.exercises);
 
   const params = useParams();
   const current = params.id;
@@ -61,58 +61,59 @@ const ExercisesList = () => {
         </IconWrapperBack>
         <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
       </ButtonGoBack>
-      <DesktopBackgroundContainer>
-        <WrapperNav>
-          <NameExercises>{ucFirst(current)}</NameExercises>
+      <DesktopBackgroundContainer></DesktopBackgroundContainer>
 
-          <ChaptersWrapper>
-            <li>
-              <LinkStyled to={backLinkBodyparts.current}>
-                <ChapterTemplate>Body parts</ChapterTemplate>
-              </LinkStyled>
-            </li>
-            <li>
-              <LinkStyled to={backLinkMuscles.current}>
-                <ChapterTemplate>Muscles</ChapterTemplate>
-              </LinkStyled>
-            </li>
-            <li>
-              <LinkStyled to={backLinkEquipment.current}>
-                <ChapterTemplate>Equipment</ChapterTemplate>
-              </LinkStyled>
-            </li>
-          </ChaptersWrapper>
-        </WrapperNav>
-        <WrapperExercises>
-          {exeFilter.map(
-            ({
-              bodyPart,
-              name,
-              target,
-              _id,
-              burnedCalories,
-              equipment,
-              gifUrl,
-              time,
-            }) => {
-              return (
-                <ExercisesItem
-                  key={_id}
-                  calories={burnedCalories}
-                  target={ucFirst(target)}
-                  NameBodyPart={ucFirst(bodyPart)}
-                  name={ucFirst(name)}
-                  equipment={equipment}
-                  gifUrl={gifUrl}
-                  burnedCalories={burnedCalories}
-                  exeId={_id}
-                  time={time}
-                />
-              );
-            }
-          )}
-        </WrapperExercises>
-      </DesktopBackgroundContainer>
+      <WrapperNav>
+        {isLoading && <Loader />}
+        <NameExercises>{ucFirst(current)}</NameExercises>
+
+        <ChaptersWrapper>
+          <li>
+            <LinkStyled to={backLinkBodyparts.current}>
+              <ChapterTemplate>Body parts</ChapterTemplate>
+            </LinkStyled>
+          </li>
+          <li>
+            <LinkStyled to={backLinkMuscles.current}>
+              <ChapterTemplate>Muscles</ChapterTemplate>
+            </LinkStyled>
+          </li>
+          <li>
+            <LinkStyled to={backLinkEquipment.current}>
+              <ChapterTemplate>Equipment</ChapterTemplate>
+            </LinkStyled>
+          </li>
+        </ChaptersWrapper>
+      </WrapperNav>
+      <WrapperExercises>
+        {exeFilter.map(
+          ({
+            bodyPart,
+            name,
+            target,
+            _id,
+            burnedCalories,
+            equipment,
+            gifUrl,
+            time,
+          }) => {
+            return (
+              <ExercisesItem
+                key={_id}
+                calories={burnedCalories}
+                target={ucFirst(target)}
+                NameBodyPart={ucFirst(bodyPart)}
+                name={ucFirst(name)}
+                equipment={equipment}
+                gifUrl={gifUrl}
+                burnedCalories={burnedCalories}
+                exeId={_id}
+                time={time}
+              />
+            );
+          }
+        )}
+      </WrapperExercises>
     </SectionTemplate>
   );
 };

@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom';
 
 import { Outlet } from 'react-router';
 
+import { useSelector } from 'react-redux';
+import Loader from 'components/Loader';
 import SectionTemplate from './SectionTemplate';
 import ExercisesCategories from './ExercisesCategories';
 
@@ -13,6 +15,7 @@ const Exercises = () => {
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
+  const { isLoading } = useSelector(state => state.exercises);
 
   const type = pathname.split('/exercises/')[1];
   // console.log('type', type);
@@ -23,6 +26,7 @@ const Exercises = () => {
 
   return (
     <SectionTemplate>
+      {isLoading && <Loader />}
       <ExercisesCategories />
       {/* <m_o_d_a_l /> */}
       <Outlet />

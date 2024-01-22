@@ -1,1 +1,1 @@
-export { default } from './Muscles';
+// export { default } from './Muscles';
