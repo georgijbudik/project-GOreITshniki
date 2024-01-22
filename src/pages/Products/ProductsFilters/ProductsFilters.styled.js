@@ -39,7 +39,8 @@ export const StyledSearchContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
+  border: ${({ $hasFocus }) =>
+    $hasFocus ? '1px solid var(--accent-color)' : '1px solid var(--border-color)'};
 
   @media screen and (min-width: 375px) {
     width: 335px;

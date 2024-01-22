@@ -24,6 +24,7 @@ const ProductsFilters = () => {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [recommendation, setRecommendation] = useState('');
+  const [hasSearchInputFocus, setHasSearchInputFocus] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categories = useSelector(selectCategories);
@@ -87,7 +88,9 @@ const ProductsFilters = () => {
   return (
     <StyledForm onSubmit={handleSearchSubmit}>
       <StyledTextFilters>Filters</StyledTextFilters>
-      <StyledSearchContainer>
+      <StyledSearchContainer 
+      $hasFocus={hasSearchInputFocus}
+      >
         <label>
           <StyledSearchInput
             type="text"
@@ -95,6 +98,8 @@ const ProductsFilters = () => {
             placeholder="Search"
             onChange={handleSearchOnChange}
             value={search}
+            onFocus={() => setHasSearchInputFocus(true)}
+            onBlur={() => setHasSearchInputFocus(false)}
           />
         </label>
         <StyledBtnsContainer>
