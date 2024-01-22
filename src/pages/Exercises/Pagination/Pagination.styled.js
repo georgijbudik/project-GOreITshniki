@@ -28,11 +28,13 @@ export const SpanPagination = styled.a`
   height: 12px;
 
   background: rgba(239, 237, 232, 0.1);
-  border: ${props => (props.isactive ? '1px solid rgba(230, 83, 60, 1)' : '')};
+  border: ${props =>
+    props.isactive ? '1px solid rgba(230, 83, 60, 1)' : '1px solid grey'};
 
   border-radius: 50%;
   display: flex;
   position: relative;
+  transition: var(--transition);
 
   &::after {
     content: '';
@@ -47,7 +49,8 @@ export const SpanPagination = styled.a`
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 1;
-    transition: opacity 0.2s;
+
+    transition: var(--transition);
   }
 
   &:hover {

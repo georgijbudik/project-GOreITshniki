@@ -17,7 +17,7 @@ export const ContHover = styled.div`
 export const Img = styled.img`
   width: 335px;
   height: 206px;
-  opacity: 0.3;
+  opacity: ${({ theme }) => (theme.palette.mode === 'dark' ? '0.3' : '0.7')};
   border-radius: 12px;
   object-fit: cover;
   transition: var(--transition);
@@ -59,6 +59,9 @@ export const NameCategory = styled.p`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.33;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.9)'};
   text-align: center;
 `;

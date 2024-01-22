@@ -16,14 +16,16 @@ export const DesktopBackgroundContainer = styled.div`
     background-position: right bottom;
     background-size: contain;
 
-    background-image: ${() =>
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'dark' &&
       `url(${
         process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image.jpg'
       })`};
   }
 
   @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
-    background-image: ${() =>
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'dark' &&
       `url(${
         process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image@2x.jpg'
       })`};
@@ -93,22 +95,44 @@ export const ButtonGoBack = styled.button`
   top: 10px;
   left: 0;
 
+  transition: var(--transition);
+
+  &:hover {
+    & > a {
+      color: ${({ theme }) => theme.palette.text.primary};
+    }
+
+    & > svg {
+      stroke: ${({ theme }) => theme.palette.text.primary};
+    }
+  }
+
   @media screen and (min-width: 768px) {
     top: 32px;
   }
 `;
 
 export const LinkBtn = styled(Link)`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.7)'};
   padding-left: 8px;
   font-size: 14px;
+  transition: var(--transition);
 `;
 
 export const IconWrapperBack = styled.svg`
-  stroke: rgba(239, 237, 232, 0.4);
+  stroke: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.7)'};
   width: 13px;
   height: 13px;
   transform: rotate(180deg);
+
+  transition: var(--transition);
+
   @media screen and (min-width: 1440px) {
     width: 16px;
     height: 16px;
