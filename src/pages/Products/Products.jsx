@@ -65,7 +65,7 @@ const Products = () => {
       {isLoading && <Loader />}
       {isProductToAdd && <AddProductForm />}
       {isProductSuccesAdded && <AddProductSuccess />}
-      <StyledWrapper>
+      <StyledWrapper />
         <StyledSection>
           <StyledContainer>
             <TitlePage>Products</TitlePage>
@@ -73,7 +73,6 @@ const Products = () => {
           </StyledContainer>
           <ProductsList />
         </StyledSection>
-      </StyledWrapper>
     </main>
   );
 };

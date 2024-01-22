@@ -6,7 +6,10 @@ export const StyledContainer = styled.div`
   padding: 16px;
   min-width: 280px;
   height: 141px;
-  border: 1px solid var(--border-color);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid var(--border-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
 
@@ -149,7 +152,10 @@ export const StyledBottomContainer = styled.div`
 export const StyledBottomText = styled.p`
   font-size: 11px;
   line-height: 1.5;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
 
   @media screen and (min-width: 375px) {
     font-size: 12px;
@@ -157,5 +163,8 @@ export const StyledBottomText = styled.p`
 `;
 
 export const StyledBottomAmount = styled.span`
-  color: var(--main-text-color);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'var(--main-text-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
 `;
