@@ -12,16 +12,17 @@ import Loader from 'components/Loader';
 const ExercisesSubcategoriesList = () => {
   const arr = useSelector(selectExercisesByType);
   const { isLoading } = useSelector(state => state.exercises);
-  console.log('isLoading:', isLoading);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   function perPage() {
     let exePerPage;
-    if (window.matchMedia('(min-width: 1440px)').matches) {
-      exePerPage = 10;
-    } else {
+    if (
+      window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches
+    ) {
       exePerPage = 9;
+    } else {
+      exePerPage = 10;
     }
     return exePerPage;
   }

@@ -61,59 +61,59 @@ const ExercisesList = () => {
         </IconWrapperBack>
         <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
       </ButtonGoBack>
-      <DesktopBackgroundContainer>
-        <WrapperNav>
-          {isLoading && <Loader />}
-          <NameExercises>{ucFirst(current)}</NameExercises>
+      <DesktopBackgroundContainer></DesktopBackgroundContainer>
 
-          <ChaptersWrapper>
-            <li>
-              <LinkStyled to={backLinkBodyparts.current}>
-                <ChapterTemplate>Body parts</ChapterTemplate>
-              </LinkStyled>
-            </li>
-            <li>
-              <LinkStyled to={backLinkMuscles.current}>
-                <ChapterTemplate>Muscles</ChapterTemplate>
-              </LinkStyled>
-            </li>
-            <li>
-              <LinkStyled to={backLinkEquipment.current}>
-                <ChapterTemplate>Equipment</ChapterTemplate>
-              </LinkStyled>
-            </li>
-          </ChaptersWrapper>
-        </WrapperNav>
-        <WrapperExercises>
-          {exeFilter.map(
-            ({
-              bodyPart,
-              name,
-              target,
-              _id,
-              burnedCalories,
-              equipment,
-              gifUrl,
-              time,
-            }) => {
-              return (
-                <ExercisesItem
-                  key={_id}
-                  calories={burnedCalories}
-                  target={ucFirst(target)}
-                  NameBodyPart={ucFirst(bodyPart)}
-                  name={ucFirst(name)}
-                  equipment={equipment}
-                  gifUrl={gifUrl}
-                  burnedCalories={burnedCalories}
-                  exeId={_id}
-                  time={time}
-                />
-              );
-            }
-          )}
-        </WrapperExercises>
-      </DesktopBackgroundContainer>
+      <WrapperNav>
+        {isLoading && <Loader />}
+        <NameExercises>{ucFirst(current)}</NameExercises>
+
+        <ChaptersWrapper>
+          <li>
+            <LinkStyled to={backLinkBodyparts.current}>
+              <ChapterTemplate>Body parts</ChapterTemplate>
+            </LinkStyled>
+          </li>
+          <li>
+            <LinkStyled to={backLinkMuscles.current}>
+              <ChapterTemplate>Muscles</ChapterTemplate>
+            </LinkStyled>
+          </li>
+          <li>
+            <LinkStyled to={backLinkEquipment.current}>
+              <ChapterTemplate>Equipment</ChapterTemplate>
+            </LinkStyled>
+          </li>
+        </ChaptersWrapper>
+      </WrapperNav>
+      <WrapperExercises>
+        {exeFilter.map(
+          ({
+            bodyPart,
+            name,
+            target,
+            _id,
+            burnedCalories,
+            equipment,
+            gifUrl,
+            time,
+          }) => {
+            return (
+              <ExercisesItem
+                key={_id}
+                calories={burnedCalories}
+                target={ucFirst(target)}
+                NameBodyPart={ucFirst(bodyPart)}
+                name={ucFirst(name)}
+                equipment={equipment}
+                gifUrl={gifUrl}
+                burnedCalories={burnedCalories}
+                exeId={_id}
+                time={time}
+              />
+            );
+          }
+        )}
+      </WrapperExercises>
     </SectionTemplate>
   );
 };

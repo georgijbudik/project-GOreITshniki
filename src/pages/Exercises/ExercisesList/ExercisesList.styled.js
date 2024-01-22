@@ -2,57 +2,49 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const DesktopBackgroundContainer = styled.div`
-  @media screen and (min-width: 1440px) {
-    /* position: fixed;
-    bottom: 0;
-    right: 0; */
+  width: 670px;
+  height: 902px;
+  position: fixed;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: contain;
 
-    /* width: 670px;
-    height: 902px; */
-    /* flex-shrink: 0; */
-    /* position: relative; */
-    overflow: visible;
-    background-repeat: no-repeat;
-    /* background-position: right 30%; */
-    /* background-position: right bottom; */
-    background-position: calc(100% + 170px) calc(120% + 170px);
-    background-size: 46% auto; /* Adjust the values here */
-    /* background-position-y: calc(100% + 50px); */
-    /* background-size: contain; */
-    background-image: ${() => {
-      return `url('${process.env.PUBLIC_URL}/images/desktop/lg-welcome-image.jpg')`;
-    }};
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      background-image: inherit;
-      background-repeat: inherit;
-      background-position: inherit;
-      background-size: inherit;
-    }
+  @media screen and (min-width: 1440px) {
+    position: fixed;
+    right: -163px;
+    bottom: -156px;
+    background-position: right bottom;
+    background-size: contain;
+
+    background-image: ${() =>
+      `url(${
+        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image.jpg'
+      })`};
+  }
+
+  @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
+    background-image: ${() =>
+      `url(${
+        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image@2x.jpg'
+      })`};
   }
 `;
 
 export const WrapperExercises = styled.ul`
-  width: 335px;
+  /* width: 335px; */
   /* max-height: 726px; */
-
-  /* width: 768px;
-  height: 1024px; */
 
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 48px;
-  margin-bottom: 10px;
+  padding-bottom: 80px;
 
   @media screen and (min-width: 768px) {
-    width: 710px;
+    /* width: 710px; */
+    height: 726px;
+    padding-bottom: 66px;
+
     overflow-y: scroll;
     max-height: 1024px;
     &::-webkit-scrollbar {
@@ -72,7 +64,8 @@ export const WrapperExercises = styled.ul`
   }
   @media screen and (min-width: 1440px) {
     width: 850px;
-    margin-bottom: 10px;
+    height: 487px;
+    padding-bottom: 81px;
   }
 `;
 

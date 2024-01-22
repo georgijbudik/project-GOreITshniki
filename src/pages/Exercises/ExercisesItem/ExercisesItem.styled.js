@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const WrapperExercisesItem = styled.li`
   padding: 16px;
   width: 335px;
-  /* height: 163px; */
+  max-height: 163px;
 
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
