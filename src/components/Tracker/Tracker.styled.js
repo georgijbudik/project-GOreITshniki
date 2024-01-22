@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const TrackerVideoContainer = styled.div`
   position: absolute;
+  width: auto;
   top: 433px;
   left: 101px;
 
@@ -10,7 +11,7 @@ export const TrackerVideoContainer = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
 
   padding: 14px 18px;
 
@@ -18,12 +19,15 @@ export const TrackerVideoContainer = styled.div`
     top: 525px;
     left: 299px;
 
+    gap: 12px;
     padding: 20px 36px;
   }
 
   @media screen and (min-width: 1440px) {
     top: 150px;
-    left: 674px;
+    left: 694px;
+
+    width: max-content;
   }
 `;
 
@@ -56,7 +60,7 @@ export const TrackerVideoIcon = styled.svg`
 `;
 
 export const TrackerVideoStyled = styled.span`
-  color: var(--main-text);
+  color: var(--main-text-color);
   font-size: 16px;
   font-weight: 700;
   line-height: 112.5%;
@@ -72,11 +76,13 @@ export const TrackerVideoText = styled.p`
   font-size: 12px;
   line-height: 133.333%;
 
-  padding-top: 4px;
+  margin-top: 4px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 150%;
+
+    margin-top: 8px;
   }
 `;
 

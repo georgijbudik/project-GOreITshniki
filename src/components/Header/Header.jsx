@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import {
   selectIsLoggedin,
-  // selectUserBlood,
+  selectUserBlood,
 } from '../../redux/auth/authSelectors';
 
 import Logo from 'components/Logo';
@@ -14,20 +14,13 @@ import { StyledHeader, StyledHeaderUserMenu } from './Header.styled';
 
 export function Header() {
   const isLoggedIn = useSelector(selectIsLoggedin);
-  // const userInfo = useSelector(selectUserBlood);
+  const userInfo = useSelector(selectUserBlood);
 
   return (
     <StyledHeader $isLoggedIn={isLoggedIn}>
       <Logo filled />
-      {/* 
-      {isLoggedIn && userInfo && (
-        <StyledHeaderUserMenu>
-          <UserBar />
-          <UserNav />
-        </StyledHeaderUserMenu>
-      )} */}
 
-      {isLoggedIn ? (
+      {isLoggedIn && userInfo ? (
         <StyledHeaderUserMenu>
           <UserBar />
           <UserNav />

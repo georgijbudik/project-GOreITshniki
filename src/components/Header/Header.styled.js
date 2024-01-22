@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   width: 100%;
+  position: relative;
 
   padding-top: ${({ $isLoggedIn }) => ($isLoggedIn ? '12px' : '24px')};
   padding-bottom: ${({ $isLoggedIn }) => ($isLoggedIn ? '12px' : '24px')};
@@ -12,9 +13,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: ${({ $isLoggedIn }) => {
+  border-bottom: ${({ $isLoggedIn, theme }) => {
     if ($isLoggedIn) {
-      return '1px solid rgba(239, 237, 232, 0.2)';
+      return theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.2)'
+        : '1px solid rgba(100, 100, 100, 0.3)';
     } else {
       return 'none';
     }

@@ -13,10 +13,12 @@ export const StyledMainImageWrapper = styled.div`
       rgba(4, 4, 4, 0) 52.97%
     ),
     linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%), */
-  background-image: ${() =>
-    `url(${
-      process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image@2x.jpg'
-    })`};
+  background-image: ${({ theme }) =>
+    theme.palette.mode === 'light'
+      ? 'none'
+      : `url(${
+          process.env.PUBLIC_URL + '/images/mobile/sm-welcome-image@2x.jpg'
+        })`};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right bottom;
@@ -32,10 +34,12 @@ export const StyledMainImageWrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) and (min-resolution: 2dppx) {
-    background-image: ${() => {
-      return `url(${
-        process.env.PUBLIC_URL + '/images/tablet/md-welcome-image@2x.jpg'
-      })`;
+    background-image: ${({ theme }) => {
+      return theme.palette.mode === 'light'
+        ? 'none'
+        : `url(${
+            process.env.PUBLIC_URL + '/images/tablet/md-welcome-image@2x.jpg'
+          })`;
     }};
   }
 
@@ -46,20 +50,25 @@ export const StyledMainImageWrapper = styled.div`
     background-position: right bottom;
     background-size: contain;
 
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image.jpg'
-      })`};
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'light'
+        ? 'none'
+        : `url(${
+            process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image.jpg'
+          })`};
   }
 
   @media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
-    background-image: ${() =>
-      `url(${
-        process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image@2x.jpg'
-      })`};
+    background-image: ${({ theme }) =>
+      theme.palette.mode === 'light'
+        ? 'none'
+        : `url(${
+            process.env.PUBLIC_URL + '/images/desktop/lg-welcome-image@2x.jpg'
+          })`};
   }
 `;
 
 export const ContainerStatisticsInfo = styled.div`
+  width: auto;
   position: relative;
 `;
