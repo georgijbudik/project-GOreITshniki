@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Container,
   ProfileSettings,
@@ -15,8 +16,6 @@ import {
   DisclaimerContainer,
   SvgExclamationIcon,
   LogOutBtnWraper,
-  // LogOutButton,
-  // SvgLogoutIcon,
   AddProfilePicCross,
   AddProfilePicBackground,
   ProfilePicContainer,
@@ -24,18 +23,19 @@ import {
   AddAvatarLabel,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
+import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 const UserCard = () => {
   const { t } = useTranslation();
+  const currentUser = useSelector(selectUserInfo);
   const [file, setFile] = useState();
 
   const handleFileChange = e => {
     if (e.target.files) {
       setFile(e.target.files[0]);
+      console.log(file);
     }
   };
-
-  console.log(file);
 
   return (
     <Container>
@@ -48,6 +48,7 @@ const UserCard = () => {
             <AddAvatarButton
               id="add-avatar-button"
               onChange={handleFileChange}
+              accept="image/png, image/jpg"
               className="add-avatar-button"
               type="file"
             />
@@ -82,7 +83,7 @@ const UserCard = () => {
           </UserAvatar>
         </ProfilePicContainer>
 
-        <UserName>Anna Rybachok</UserName>
+        <UserName>{currentUser.name}</UserName>
         <UserRole>{t('profile.user_card.user')}</UserRole>
         <DailyContainer>
           <DailyCard>

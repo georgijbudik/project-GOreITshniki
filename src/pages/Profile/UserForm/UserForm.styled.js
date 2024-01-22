@@ -199,6 +199,8 @@ export const ActivityContainer = styled.label`
 export const NameEmailInput = styled.div`
   @media screen and (min-width: 768px) {
     margin-block-end: 8px;
+      display:flex;
+  justify-content:space-between;
   }
 
   @media screen and (min-width: 1440px) {

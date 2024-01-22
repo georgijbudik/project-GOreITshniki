@@ -31,15 +31,15 @@ import {
 } from './UserForm.styled';
 
 const initialValues = {
-  email: '',
-  name: '',
-  height: '',
-  currentWeight: '',
-  desiredWeight: '',
-  dateOfBirth: '',
-  blood: '',
-  sex: '',
-  activity: '',
+  email: null,
+  name: null,
+  height: null,
+  currentWeight: null,
+  desiredWeight: null,
+  birthday: null,
+  blood: null,
+  sex: null,
+  levelActivity: null,
 };
 
 const UserForm = () => {
@@ -49,14 +49,13 @@ const UserForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUser(), [currentUser]);
   });
 
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
       const {
-        email,
         name,
         height,
         currentWeight,
@@ -66,34 +65,19 @@ const UserForm = () => {
         levelActivity,
       } = values;
       const dateNow = new Date();
-      console.log(currentUser);
-
+      console.log(dateNow);
       if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
-        const birthday = startDate.toJSON().slice(0, 10);
-        console.log(`${email} ${levelActivity}`);
         dispatch(
           updateUser({
             name: name,
-            height: height,
-            currentWeight: currentWeight,
-            desiredWeight: desiredWeight,
-            blood: blood,
+            height: Number(height),
+            currentWeight: Number(currentWeight),
+            desiredWeight: Number(desiredWeight),
+            blood: Number(blood),
             sex: sex,
-            levelActivity: levelActivity,
-            birthday: birthday,
+            levelActivity: Number(levelActivity),
+            birthday: dateNow,
           })
-        );
-
-        console.log(
-          email,
-          name,
-          height,
-          currentWeight,
-          desiredWeight,
-          birthday,
-          blood,
-          sex,
-          levelActivity
         );
       }
     },
@@ -106,7 +90,7 @@ const UserForm = () => {
           {t('profile.user_form.settings')}{' '}
         </ProfileSettings>
         <NameEmailInput>
-          <FieldContainer>
+          <FieldContainer className="nameEmail">
             <FieldName>{t('profile.user_form.name')} </FieldName>
             <MainInput
               type="text"
@@ -117,7 +101,7 @@ const UserForm = () => {
               value={formik.values.name}
             />
           </FieldContainer>
-          <FieldContainer>
+          <FieldContainer className="nameEmail">
             <FieldName>{t('profile.user_form.email')} </FieldName>
             <MainInput
               type="email"

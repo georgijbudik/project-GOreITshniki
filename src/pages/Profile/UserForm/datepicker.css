@@ -21,6 +21,12 @@
   }
 }
 
+.nameEmail{
+  @media screen and (min-width: 768px) {
+      max-width: 341px;
+    }
+}
+
 .react-datepicker,
 .react-datepicker__header {
   background-color: #ef8964;
