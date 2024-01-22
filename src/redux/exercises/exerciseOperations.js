@@ -17,7 +17,6 @@ export const getExercises = createAsyncThunk(
 export const getExercisesByType = createAsyncThunk(
   'exercises/getExercisesByType',
   async (type, thunkAPI) => {
-    console.log('type', type);
     try {
       const res = await axios.get(`exercises/${type}`);
       return res.data;
@@ -72,10 +71,8 @@ export const getExercisesFilter = createAsyncThunk(
           paramsExe.page || 1
         }&limit=${paramsExe.limit || 10}`
       );
-      console.log('API Response:', response.data);
       return response.data;
     } catch (e) {
-      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

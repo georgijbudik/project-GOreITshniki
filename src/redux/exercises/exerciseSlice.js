@@ -13,9 +13,6 @@ const InitialState = {
   error: null,
   array: [],
   exercisesByType: [],
-  // muscles: [],
-  // bodyparts: [],
-  // equipment: [],
   exeFilter: [],
   page: 1,
 };
@@ -49,11 +46,8 @@ const exeSlice = createSlice({
       state.exeFilter = [];
       state.page = 1;
     },
-    // setPage: state => {
-    //   state.page = state.page + 1;
-    // },
-    setPage: (state, action) => {
-      setPage(state, action);
+    setPage: state => {
+      state.page = state.page += 1;
     },
   },
   extraReducers: builder =>
@@ -63,12 +57,7 @@ const exeSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getExercisesFilter.fulfilled, (state, action) => {
-        // if (state.page === 1) {
-        //   state.exeFilter = action.payload;
-        // } else if (action.payload.length > 0) {
         state.exeFilter = [...state.exeFilter, ...action.payload];
-        // }
-        // state.page = state.page + 1;
         state.isLoading = false;
         state.error = null;
       })
@@ -80,18 +69,6 @@ const exeSlice = createSlice({
         state.exercisesByType = action.payload;
         state.isLoading = false;
       })
-      // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
-      //   state.muscles = action.payload;
-      //   state.isLoading = false;
-      // })
-      // .addCase(getExercisesEquipment.fulfilled, (state, action) => {
-      //   state.equipment = action.payload;
-      //   state.isLoading = false;
-      // })
-      // .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
-      //   state.bodyparts = action.payload;
-      //   state.isLoading = false;
-      // })
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });

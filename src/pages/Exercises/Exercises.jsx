@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-// import { refreshUser } from '../../redux/auth/authOperations';
 import { useEffect } from 'react';
 import { getExercisesByType } from '../../redux/exercises/exerciseOperations';
 import { useLocation } from 'react-router-dom';
@@ -18,7 +17,6 @@ const Exercises = () => {
   const { isLoading } = useSelector(state => state.exercises);
 
   const type = pathname.split('/exercises/')[1];
-  // console.log('type', type);
 
   useEffect(() => {
     dispatch(getExercisesByType(type));
