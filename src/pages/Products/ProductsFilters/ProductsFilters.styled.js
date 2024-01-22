@@ -99,6 +99,7 @@ export const StyledSelectContainer = styled.div`
   margin-top: 16px;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
@@ -107,51 +108,18 @@ export const StyledSelectContainer = styled.div`
 `;
 
 export const StyledCategoryContainer = styled.div`
-  width: 150px;
+  width: 146px;
   height: 46px;
-
-  @media screen and (min-width: 375px) {
-    width: 146px;
-  }
 
   @media screen and (min-width: 768px) {
     width: 192px;
     height: 52px;
-  }
-`;
-
-export const StyledCategorySelect = styled.select`
-  padding: 12px;
-  width: 150px;
-  height: 46px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background: transparent;
-  color: var(--main-text-color);
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.3;
-
-  @media screen and (min-width: 375px) {
-    width: 146px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 192px;
-    height: 52px;
-    font-size: 16px;
-    line-height: 1.5;
   }
 `;
 
 export const StyledRecommendContainer = styled.div`
-  width: 130px;
+  width: 173px;
   height: 46px;
-
-  @media screen and (min-width: 375px) {
-    width: 173px;
-  }
 
   @media screen and (min-width: 768px) {
     width: 204px;

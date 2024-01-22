@@ -3,8 +3,8 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 
 import BasicModalWindow from 'components/BasicModalWindow';
-import { addProduct } from '../../../redux/products/productOperations';
 import Button from 'components/Button';
+import { addProduct } from '../../../redux/products/productOperations';
 import {
   selectProductToAdd,
   setCaloriesByUser,
@@ -13,15 +13,18 @@ import {
 import {
   StyledBtnContainer,
   StyledForm,
+  StyledGramsContainer,
   StyledGramsInput,
   StyledInputContainer,
   StyledNameInput,
   StyledTextAmount,
   StyledTextCalories,
+  StyledTextGrams,
 } from './AddProductForm.styled';
 
 const AddProductForm = () => {
   const [grams, setGrams] = useState(null);
+  const [hasGramsInputFocus, setHasGramsInputFocus] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -39,9 +42,9 @@ const AddProductForm = () => {
   const formattedDate = dayjs(date).format('DD.MM.YYYY');
 
   const productToAddToDiary = {
-    productId:productToAdd._id,
+    productId: productToAdd._id,
     date: formattedDate,
-    weight: grams
+    weight: grams,
   };
 
   const handleAddToDiaryBtn = e => {
@@ -68,17 +71,20 @@ const AddProductForm = () => {
               readOnly
             />
           </label>
+          <StyledGramsContainer  $hasFocus={hasGramsInputFocus}>
           <label>
             <StyledGramsInput
               type="number"
               onChange={handleChangeGrams}
-              placeholder="grams"
               required
+              onFocus={() => setHasGramsInputFocus(true)}
+              onBlur={() => setHasGramsInputFocus(false)}
             />
           </label>
+          <StyledTextGrams>grams</StyledTextGrams></StyledGramsContainer>
         </StyledInputContainer>
         <StyledTextCalories>
-          Calories:{' '}
+          Calories:
           <StyledTextAmount>
             {!grams ? 0 : caloriesByUsersGrams}
           </StyledTextAmount>
