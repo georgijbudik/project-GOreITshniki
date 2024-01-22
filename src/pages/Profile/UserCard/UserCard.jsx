@@ -98,7 +98,7 @@ const UserCard = () => {
               </SvgDailyIcon>
               {t('profile.user_card.daily_calorie_intake')}
             </DailyTitle>
-            <DailyResult>0</DailyResult>
+            <DailyResult>{currentUser.calories}</DailyResult>
           </DailyCard>
           <DailyCard>
             <DailyTitle>
