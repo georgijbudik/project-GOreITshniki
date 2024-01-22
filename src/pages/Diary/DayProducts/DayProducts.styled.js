@@ -11,11 +11,17 @@ export const Wrapper = styled.div`
   margin-top: 40px;
   padding: 16px;
   color: white;
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    margin-top: 0;
+    /* height: 234px; */
+  }
 `;
 
 export const CellProductsHeader = styled.div`
   display: flex;
   justify-content: space-between;
+
   & div {
     display: flex;
     align-items: center;
@@ -40,6 +46,10 @@ export const CellProductsHeader = styled.div`
       height: 16px;
       margin-left: 8px;
     }
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    /* height: 234px; */
   }
 `;
 

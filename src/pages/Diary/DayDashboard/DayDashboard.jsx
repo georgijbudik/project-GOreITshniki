@@ -20,6 +20,8 @@ import {
   AttentionPic,
   AttentionMessage,
   CelNameBottom,
+  Metawrap,
+  DshbrdWrpr,
 } from './DayDashboard.styled';
 
 const DayDashboard = () => {
@@ -32,11 +34,8 @@ const DayDashboard = () => {
   }, [dispatch]);
 
   if (isFetching) {
-    // Обработка состояния загрузки
     return <div>Loading...</div>;
   }
-
-  // Теперь userInfo содержит данные пользователя
 
   const totalCalories = userInfo.calories;
   const caloriesConsumed = 2000;
@@ -46,113 +45,118 @@ const DayDashboard = () => {
 
   return (
     <>
-      <DailyCalorieIntakeWrapper>
-        <DailyCalorieIntake>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-fluent_food-24-filled_OMG'
-                }
-              />
-            </DashBoardElementPic>
+      <Metawrap>
+        <DshbrdWrpr>
+          <DailyCalorieIntakeWrapper>
+            <DailyCalorieIntake>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-fluent_food-24-filled_OMG'
+                    }
+                  />
+                </DashBoardElementPic>
 
-            <CelName>Daily calorie intake</CelName>
-          </CellHeader>
-          <CelValue>{totalCalories}</CelValue>
-        </DailyCalorieIntake>
+                <CelName>Daily calorie intake</CelName>
+              </CellHeader>
+              <CelValue>{totalCalories}</CelValue>
+            </DailyCalorieIntake>
 
-        <DailyCalorieIntake>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-dumbbell'
-                }
-              />
-            </DashBoardElementPic>
-            <CelName>Daily physical activity</CelName>
-          </CellHeader>
-          <CelValue>110 min</CelValue>
-        </DailyCalorieIntake>
-      </DailyCalorieIntakeWrapper>
-      <ProcessedDashboardDataWrapper>
-        <ProcessedDashboardData>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-apple'
-                }
-              />
-            </DashBoardElementPic>
-            <CelNameBottom> Сalories consumed</CelNameBottom>
-          </CellHeader>
-          <CelValue>{caloriesConsumed}</CelValue>
-        </ProcessedDashboardData>
-        <ProcessedDashboardData>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-calories-1_OMG'
-                }
-              />
-            </DashBoardElementPic>
-            <CelNameBottom>Сalories burned</CelNameBottom>
-          </CellHeader>
-          <CelValue>{caloriesBurned}</CelValue>
-        </ProcessedDashboardData>
-      </ProcessedDashboardDataWrapper>
-      <ProcessedDashboardDataWrapper>
-        <ProcessedDashboardDataMarked markering={caloriesRemaining}>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-bubble'
-                }
-              />
-            </DashBoardElementPic>
-            <CelNameBottom>Calories remaining</CelNameBottom>
-          </CellHeader>
-          <CelValue>{caloriesRemaining}</CelValue>
-        </ProcessedDashboardDataMarked>
+            <DailyCalorieIntake>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-dumbbell'
+                    }
+                  />
+                </DashBoardElementPic>
+                <CelName>Daily physical activity</CelName>
+              </CellHeader>
+              <CelValue>110 min</CelValue>
+            </DailyCalorieIntake>
+          </DailyCalorieIntakeWrapper>
+          <ProcessedDashboardDataWrapper>
+            <ProcessedDashboardData>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-apple'
+                    }
+                  />
+                </DashBoardElementPic>
+                <CelNameBottom> Сalories consumed</CelNameBottom>
+              </CellHeader>
+              <CelValue>{caloriesConsumed}</CelValue>
+            </ProcessedDashboardData>
+            <ProcessedDashboardData>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-calories-1_OMG'
+                    }
+                  />
+                </DashBoardElementPic>
+                <CelNameBottom>Сalories burned</CelNameBottom>
+              </CellHeader>
+              <CelValue>{caloriesBurned}</CelValue>
+            </ProcessedDashboardData>
+          </ProcessedDashboardDataWrapper>
 
-        <ProcessedDashboardData>
-          <CellHeader>
-            <DashBoardElementPic>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-running-stick-figure-svgrepo-com_OMG'
-                }
-              />
-            </DashBoardElementPic>
-            <CelNameBottom>Sports remaining</CelNameBottom>
-          </CellHeader>
-          <CelValue>1 min</CelValue>
-        </ProcessedDashboardData>
-      </ProcessedDashboardDataWrapper>
-      <AttentionMessage>
-        <AttentionPic>
-          <use
-            xlinkHref={
-              process.env.PUBLIC_URL +
-              '/images/sprite/sprite.svg#icon-Attention1'
-            }
-          />
-        </AttentionPic>
-        <AttentionText>
-          Record all your meals in the calorie diary every day. This will help
-          you be aware of your nutrition and make informed choices.
-        </AttentionText>
-      </AttentionMessage>
+          <ProcessedDashboardDataWrapper>
+            <ProcessedDashboardDataMarked $markering={caloriesRemaining}>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-bubble'
+                    }
+                  />
+                </DashBoardElementPic>
+                <CelNameBottom>Calories remaining</CelNameBottom>
+              </CellHeader>
+              <CelValue>{caloriesRemaining}</CelValue>
+            </ProcessedDashboardDataMarked>
+
+            <ProcessedDashboardData>
+              <CellHeader>
+                <DashBoardElementPic>
+                  <use
+                    xlinkHref={
+                      process.env.PUBLIC_URL +
+                      '/images/sprite/sprite.svg#icon-running-stick-figure-svgrepo-com_OMG'
+                    }
+                  />
+                </DashBoardElementPic>
+                <CelNameBottom>Sports remaining</CelNameBottom>
+              </CellHeader>
+              <CelValue>1 min</CelValue>
+            </ProcessedDashboardData>
+          </ProcessedDashboardDataWrapper>
+        </DshbrdWrpr>
+        <AttentionMessage>
+          <AttentionPic>
+            <use
+              xlinkHref={
+                process.env.PUBLIC_URL +
+                '/images/sprite/sprite.svg#icon-Attention1'
+              }
+            />
+          </AttentionPic>
+          <AttentionText>
+            Record all your meals in the calorie diary every day. This will help
+            you be aware of your nutrition and make informed choices.
+          </AttentionText>
+        </AttentionMessage>
+      </Metawrap>
     </>
   );
 };
