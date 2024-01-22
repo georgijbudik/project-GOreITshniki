@@ -191,6 +191,7 @@ export const TitleWrapper = styled.button`
 export const GlobWrapDP = styled.div`
   display: flex;
   justify-content: flex-end;
+
   /* flex-direction: column; */
 `;
 

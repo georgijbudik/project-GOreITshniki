@@ -2,6 +2,7 @@ import {
   Wrapper,
   CellExercisesHeader,
   NotFoundMessage,
+  WrapElem,
 } from './DayExercises.styled';
 
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +14,7 @@ const DayExercises = () => {
     <Wrapper>
       <CellExercisesHeader>
         <div>Execrcises</div>
-        <div>
-          {/* <a href="http://www.google.com">Add product</a> */}
+        <WrapElem>
           <button
             onClick={() => {
               navigate('/exercises');
@@ -30,7 +30,7 @@ const DayExercises = () => {
               }
             />
           </svg>
-        </div>
+        </WrapElem>
       </CellExercisesHeader>
       <NotFoundMessage>Not found exercises</NotFoundMessage>
     </Wrapper>

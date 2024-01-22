@@ -4,7 +4,12 @@ export const PageTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 28px;
+  margin-bottom: 43px;
+  @media screen and (min-width: 768px) {
+    margin-top: 38px;
+    margin-bottom: 64px;
+  }
 `;
 
 export const DaySwitchRight = styled.div`
@@ -13,4 +18,22 @@ export const DaySwitchRight = styled.div`
 
 export const Wrap = styled.div`
   padding-bottom: 80px;
+  /* @media screen and (min-width: 768px) {
+    padding-bottom: 0;
+  } */
+`;
+
+export const MediaWrapper = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    /* padding-top: 64px; */
+  }
+`;
+
+export const MediaWrapDayDashBoard = styled.div`
+  @media screen and (min-width: 768px) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 `;
