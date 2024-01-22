@@ -14,14 +14,16 @@ import {
   SvgDailyIcon,
   DisclaimerContainer,
   SvgExclamationIcon,
-  LogOutButton,
-  SvgLogoutIcon,
+  LogOutBtnWraper,
+  // LogOutButton,
+  // SvgLogoutIcon,
   AddProfilePicCross,
   AddProfilePicBackground,
   ProfilePicContainer,
   AddAvatarButton,
   AddAvatarLabel,
 } from './UserCard.styled';
+import LogOutBtn from 'components/LogOutBtn';
 
 const UserCard = () => {
   const { t } = useTranslation();
@@ -123,7 +125,7 @@ const UserCard = () => {
           </SvgExclamationIcon>
           {t('profile.user_card.exclamation')}
         </DisclaimerContainer>
-        <LogOutButton>
+        {/* <LogOutButton>
           {t('profile.user_card.logout')}
           <SvgLogoutIcon height="20" width="20">
             <use
@@ -133,7 +135,11 @@ const UserCard = () => {
               }
             ></use>
           </SvgLogoutIcon>
-        </LogOutButton>
+        </LogOutButton> */}
+
+        <LogOutBtnWraper>
+          <LogOutBtn filled />
+        </LogOutBtnWraper>
       </UserInfo>
     </Container>
   );

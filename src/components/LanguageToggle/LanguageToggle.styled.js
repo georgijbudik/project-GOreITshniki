@@ -30,8 +30,8 @@ export const StyledLanguageToggleListButton = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
-  color: ${({ $active }) =>
-    $active ? 'var(--accent-color)' : 'var(--main-text-color)'};
+  color: ${({ $active, theme }) =>
+    $active ? 'var(--accent-color)' : theme.palette.text.primary};
 
   font-size: 12px;
 
