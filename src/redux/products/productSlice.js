@@ -7,7 +7,7 @@ import {
 
 const productInitialState = {
   categories: [],
-  products: [],
+  products: null,
   page: 1,
   limit: 10,
   hasMore: true,
