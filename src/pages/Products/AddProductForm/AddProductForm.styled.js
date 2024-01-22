@@ -46,6 +46,10 @@ export const StyledNameInput = styled.input`
   line-height: 1.3;
   outline: none;
 
+  &:focus {
+    border: 1px solid var(--accent-color);
+  }
+
   @media screen and (min-width: 768px) {
     width: 244px;
     height: 40px;
@@ -55,13 +59,30 @@ export const StyledNameInput = styled.input`
   }
 `;
 
-export const StyledGramsInput = styled.input`
-  box-sizing: border-box;
-  padding: 8px 14px;
+export const StyledGramsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 34px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
+  background: transparent;
+
+  border: ${({ $hasFocus }) =>
+    $hasFocus ? '1px solid var(--accent-color)' : '1px solid var(--border-color)'};
+
+  @media screen and (min-width: 768px) {
+    width: 155px;
+    height: 40px;
+  }
+`;
+
+export const StyledGramsInput = styled.input`
+  box-sizing: border-box;
+  padding: 8px 14px;
+  width: 100%;
+  border: none;
   background: transparent;
   color: var(--main-text-color);
   font-family: Roboto;
@@ -71,12 +92,17 @@ export const StyledGramsInput = styled.input`
   outline: none;
 
   @media screen and (min-width: 768px) {
-    width: 155px;
-    height: 40px;
     font-size: 16px;
-    font-weight: 400;
     line-height: 1.5;
   }
+`;
+
+export const StyledTextGrams = styled.span`
+  width: 62px;
+  padding: 0 14px;
+  color: rgba(239, 237, 232, 0.4);
+  font-size: 12px;
+  line-height: 1.5;
 `;
 
 export const StyledTextCalories = styled.p`

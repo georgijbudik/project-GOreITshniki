@@ -17,13 +17,14 @@ import {
   StyledRecommendContainer,
   StyledCategoryContainer,
   StyledEm,
-  StyledInput
+  StyledInput,
 } from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [recommendation, setRecommendation] = useState('');
+  const [hasSearchInputFocus, setHasSearchInputFocus] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categories = useSelector(selectCategories);
@@ -87,7 +88,7 @@ const ProductsFilters = () => {
   return (
     <StyledForm onSubmit={handleSearchSubmit}>
       <StyledTextFilters>Filters</StyledTextFilters>
-      <StyledSearchContainer>
+      <StyledSearchContainer $hasFocus={hasSearchInputFocus}>
         <label>
           <StyledSearchInput
             type="text"
@@ -95,6 +96,8 @@ const ProductsFilters = () => {
             placeholder="Search"
             onChange={handleSearchOnChange}
             value={search}
+            onFocus={() => setHasSearchInputFocus(true)}
+            onBlur={() => setHasSearchInputFocus(false)}
           />
         </label>
         <StyledBtnsContainer>
@@ -135,18 +138,23 @@ const ProductsFilters = () => {
                 PaperProps: {
                   sx: {
                     height: '228px',
-                    m: '4px',
+                    mt: '4px',
+                    ml: '4px',
                     borderRadius: '12px',
                     bgcolor: '#1C1C1C',
                   },
                 },
               }}
             >
-              <MenuItem value="">
+              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px' }}>
                 <StyledEm>All categories</StyledEm>
               </MenuItem>
               {categories.map(item => (
-                <MenuItem key={item._id} value={item.category}>
+                <MenuItem
+                  key={item._id}
+                  value={item.category}
+                  sx={{ fontSize: '14px', m: 0, px: '10px' }}
+                >
                   {item.category[0].toUpperCase() + item.category.slice(1)}
                 </MenuItem>
               ))}
@@ -165,18 +173,28 @@ const ProductsFilters = () => {
                 PaperProps: {
                   sx: {
                     height: '160px',
-                    m: '4px',
+                    mt: '4px',
                     borderRadius: '12px',
                     bgcolor: '#1C1C1C',
                   },
                 },
               }}
             >
-              <MenuItem value="">
+              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px' }}>
                 <StyledEm>All</StyledEm>
               </MenuItem>
-              <MenuItem value={'recommended'}>Recommended</MenuItem>
-              <MenuItem value={'not recommended'}>Not recommended</MenuItem>
+              <MenuItem
+                value={'recommended'}
+                sx={{ fontSize: '14px', m: 0, px: '10px' }}
+              >
+                Recommended
+              </MenuItem>
+              <MenuItem
+                value={'not recommended'}
+                sx={{ fontSize: '14px', m: 0, px: '10px' }}
+              >
+                Not recommended
+              </MenuItem>
             </Select>
           </FormControl>
         </StyledRecommendContainer>
