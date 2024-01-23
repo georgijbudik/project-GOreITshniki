@@ -76,3 +76,19 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const updateAvatar = createAsyncThunk(
+  'profile/avatar',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('users/avatar', credentials);
+      setAuthHeader(res.data.token);
+      // toastSuccess('You were successfully login', res.data.email);
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      toastError(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

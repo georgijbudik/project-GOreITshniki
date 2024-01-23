@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   ProfileSettings,
@@ -24,23 +24,31 @@ import {
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
 import { selectUserInfo } from '../../../redux/profile/profileSelectors';
+// import { updateAvatar } from '../../../redux/profile/profileOperations';
 
 const UserCard = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(selectUserInfo);
   const [calories, setCalories] = useState(0);
   const [file, setFile] = useState();
+  const dispatch = useDispatch();
 
   const handleFileChange = e => {
-    if (e.target.files) {
+    if (e.target.files)
       setFile(e.target.files[0]);
-      console.log(file);
-    }
-  };
+
+  }
+
+  //   const handleClick=async e=>{
+  //  const formData = new FormData();
+  //   formData.append("image", file);
+  //  dispatch(updateAvatar(formData));
+  //   }
 
   useEffect(() => {
     setCalories(currentUser.calories);
   }, [currentUser.calories])
+
 
   return (
     <Container>
@@ -53,10 +61,11 @@ const UserCard = () => {
             <AddAvatarButton
               id="add-avatar-button"
               onChange={handleFileChange}
-              accept="image/png, image/jpg"
+              accept=".png, .jpg"
               className="add-avatar-button"
               type="file"
             />
+            <butto onClick={handleClick}></butto>
             <AddProfilePicBackground>
               <use
                 stroke="#e6533c"
@@ -79,13 +88,14 @@ const UserCard = () => {
               />
             </AddProfilePicCross>
           </AddAvatarLabel>
-          <UserAvatar fill="rgba(239, 237, 232, 0.1)">
+          {file ? <img url={currentUser.avatarURL}></img> : <UserAvatar fill="rgba(239, 237, 232, 0.1)">
             <use
               xlinkHref={
                 process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
               }
             ></use>
-          </UserAvatar>
+          </UserAvatar>}
+
         </ProfilePicContainer>
 
         <UserName>{currentUser.name}</UserName>
