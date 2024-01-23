@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { closeModalSuccess } from '../../../redux/exercises/exerciseSlice';
@@ -15,6 +16,7 @@ import {
   StyledAddExerciseSuccessTitle,
 } from './AddExerciseSuccess.styled';
 const AddExerciseSuccess = ({ time, calories }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,22 +47,23 @@ const AddExerciseSuccess = ({ time, calories }) => {
 
         <StyledAddExerciseSuccessInfo>
           <StyledAddExerciseSuccessTitle>
-            Well done
+            {t('exercises.exercise_success.title')}
           </StyledAddExerciseSuccessTitle>
           <StyledAddExerciseSuccessInfoItem>
-            Your time: <span>{time}</span>
+            {t('exercises.exercise_success.time')}: <span>{time}</span>
           </StyledAddExerciseSuccessInfoItem>
           <StyledAddExerciseSuccessInfoItem>
-            Burned calories: <span>{calories}</span>
+            {t('exercises.exercise_success.burned_calories')}:{' '}
+            <span>{calories}</span>
           </StyledAddExerciseSuccessInfoItem>
         </StyledAddExerciseSuccessInfo>
 
         <StyledAddExerciseSuccessNavigation>
           <StyledAddExerciseSuccessNavigationButton onClick={handleCloseModal}>
-            Next exercise
+            {t('exercises.exercise_success.next')}
           </StyledAddExerciseSuccessNavigationButton>
           <StyledAddExerciseSuccessNavigationLink onClick={handleNavigateDiary}>
-            To the diary
+            {t('exercises.exercise_success.diary')}
             <StyledAddExerciseSuccessNavigationIcon>
               <use
                 xlinkHref={
