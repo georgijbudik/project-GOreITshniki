@@ -40,7 +40,7 @@ const AddProductSuccess = () => {
       <StyledContainer>
         <StyledImgContainer>
           <img
-            srcset={
+            srcSet={
               process.env.PUBLIC_URL +
               '/images/mobile/productsSuccess-image@2x.png'
             }

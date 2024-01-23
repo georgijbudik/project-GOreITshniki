@@ -77,3 +77,19 @@ export const getExercisesFilter = createAsyncThunk(
     }
   }
 );
+
+export const addExerciseToDiary = createAsyncThunk(
+  'exercises/addToDiary',
+  async (data, thunkAPI) => {
+    try {
+      const { id, date, time } = data;
+      const response = await axios.patch(`/diary/exercise/${id}`, {
+        date,
+        time,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

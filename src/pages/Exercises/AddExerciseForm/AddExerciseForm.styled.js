@@ -57,7 +57,7 @@ export const StyledAddExerciseFormTimer = styled.div`
 `;
 
 export const StyledAddExerciseFormTime = styled.p`
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 16px;
   line-height: 150%;
@@ -66,7 +66,10 @@ export const StyledAddExerciseFormTime = styled.p`
 `;
 
 export const StyledAddExerciseFormTimerTitle = styled.p`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.7)'};
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 10px;
   line-height: 140%;
@@ -86,7 +89,10 @@ export const StyledAddExerciseFormTimerButton = styled.button`
 `;
 
 export const StyledAddExerciseFormTimerCalories = styled.p`
-  color: rgba(239, 237, 232, 0.3);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.7)'};
 
   font-size: 14px;
   line-height: 128.571%;
@@ -129,15 +135,27 @@ export const StyledAddExerciseFormInfoItem = styled.div`
   gap: 4px;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  background: rgba(239, 237, 232, 0.05);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
+  /* border: 1px solid rgba(239, 237, 232, 0.2); */
+
+  background: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.05)'
+      : 'rgba(100, 100, 100, 0.05)'};
+  /* background: ; */
 
   @media screen and (min-width: 768px) {
     width: 150px;
   }
 
   & > span {
-    color: rgba(239, 237, 232, 0.4);
+    color: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? 'rgba(239, 237, 232, 0.4)'
+        : 'rgba(100, 100, 100, 0.7)'};
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 12px;
     line-height: 133.333%;
@@ -148,7 +166,7 @@ export const StyledAddExerciseFormInfoItem = styled.div`
   }
 
   & > p {
-    color: var(--main-text-color);
+    /* color: var(--main-text-color); */
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 14px;
     font-weight: 700;

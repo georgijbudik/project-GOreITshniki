@@ -6,6 +6,7 @@ import {
   getExercisesEquipment,
   getExercisesBodyparts,
   getExercisesFilter,
+  addExerciseToDiary,
 } from './exerciseOperations';
 
 const InitialState = {
@@ -15,6 +16,7 @@ const InitialState = {
   exercisesByType: [],
   exeFilter: [],
   page: 1,
+  addSuccess: { isOpened: false, calories: 0, time: 0 },
 };
 
 const onPending = state => {
@@ -52,6 +54,10 @@ const exeSlice = createSlice({
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+
+    closeModalSuccess: state => {
+      state.addSuccess.isOpened = false;
+    },
   },
   extraReducers: builder =>
     builder
@@ -74,6 +80,32 @@ const exeSlice = createSlice({
       })
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
+      // .addCase(addExerciseToDiary.pending, state => {
+      //   state.isLoading = true;
+      // })
+      .addCase(addExerciseToDiary.fulfilled, (state, payload) => {
+        state.addSuccess.isOpened = true;
+        state.addSuccess.time = payload.meta.arg.time;
+        state.addSuccess.calories = payload.meta.arg.calories;
+
+        state.isLoading = false;
+      }),
+      // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
+      //   state.muscles = action.payload;
+      //   state.isLoading = false;
+      // })
+      // .addCase(getExercisesEquipment.fulfilled, (state, action) => {
+      //   state.equipment = action.payload;
+      //   state.isLoading = false;
+      // })
+      // .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
+      //   state.bodyparts = action.payload;
+      //   state.isLoading = false;
+      // })
+      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending),
+      .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });
-export const { clearExeciseFilter, setPage, setLoading } = exeSlice.actions;
+export const { clearExeciseFilter, setPage, closeModalSuccess } =
+  exeSlice.actions;
+
 export const exeReducer = exeSlice.reducer;

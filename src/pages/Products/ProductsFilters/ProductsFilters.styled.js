@@ -60,7 +60,9 @@ export const StyledSearchInput = styled.input`
   height: 46px;
   border: none;
   background: transparent;
-  color: var(--main-text-color);
+  color: ${({ theme }) => {
+    return theme.palette.text.primary;
+  }};
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;
@@ -134,7 +136,6 @@ export const StyledInput = styled(InputBase)({
     borderRadius: '12px',
     border: '1px solid var(--border-color)',
     background: 'transparent',
-    color: 'var(--main-text-color)',
     fontFamily: 'Roboto',
     fontSize: '14px',
     fontWeight: 400,

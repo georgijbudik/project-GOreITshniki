@@ -25,7 +25,7 @@ const ExercisesItem = ({
   target,
   NameBodyPart,
   name,
-  _id,
+  exeId,
   equipment,
   burnedCalories,
   gifUrl,
@@ -93,7 +93,7 @@ const ExercisesItem = ({
       {isModalOpen && (
         <AddExerciseForm
           onClose={onClickEnd}
-          exeId={_id}
+          exeId={exeId}
           gifUrl={gifUrl}
           name={name}
           bodyPart={NameBodyPart}
