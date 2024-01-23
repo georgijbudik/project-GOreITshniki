@@ -20,7 +20,6 @@ import PublicRoute from 'routes/PublicRoute';
 // import PrivateRoute from 'routes/PrivateRoute';
 
 import PrivateRoute from 'routes/PrivateRoute';
-import ProfileRoute from 'routes/ProfileRoute';
 
 // import PrivateRoute from '../routes/PrivateRoute';
 
@@ -42,7 +41,7 @@ export const App = () => {
         <Route
           index
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <Welcome />
             </PublicRoute>
           }
@@ -50,7 +49,7 @@ export const App = () => {
         <Route
           path="signup"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <SignUp />
             </PublicRoute>
           }
@@ -58,7 +57,7 @@ export const App = () => {
         <Route
           path="signin"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <SignIn />
             </PublicRoute>
           }

@@ -20,18 +20,7 @@ export function Header() {
     <StyledHeader $isLoggedIn={isLoggedIn}>
       <Logo filled />
 
-      {/* {isLoggedIn && userInfo ? (
-        <StyledHeaderUserMenu>
-          <UserBar />
-          <UserNav />
-        </StyledHeaderUserMenu>
-      ) : (
-        <StyledHeaderUserMenu>
-          <LanguageToggle />
-          <ThemeToggle />
-        </StyledHeaderUserMenu>
-      )} */}
-      {isLoggedIn ? (
+      {isLoggedIn && userInfo ? (
         <StyledHeaderUserMenu>
           <UserBar />
           <UserNav />
@@ -42,6 +31,17 @@ export function Header() {
           <ThemeToggle />
         </StyledHeaderUserMenu>
       )}
+      {/* {isLoggedIn ? (
+        <StyledHeaderUserMenu>
+          <UserBar />
+          <UserNav />
+        </StyledHeaderUserMenu>
+      ) : (
+        <StyledHeaderUserMenu>
+          <LanguageToggle />
+          <ThemeToggle />
+        </StyledHeaderUserMenu>
+      )} */}
     </StyledHeader>
   );
 }
