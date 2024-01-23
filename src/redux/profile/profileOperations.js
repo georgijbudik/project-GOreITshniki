@@ -62,7 +62,8 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const updateUser = createAsyncThunk('users/update',
+export const updateUser = createAsyncThunk(
+  'users/update',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.patch('users/update', credentials);
@@ -71,9 +72,7 @@ export const updateUser = createAsyncThunk('users/update',
       return res.data;
     } catch (error) {
       toastError(error.response.data.message);
-      console.log("Problems")
       return thunkAPI.rejectWithValue(error.message);
-      
     }
-  
-})
+  }
+);

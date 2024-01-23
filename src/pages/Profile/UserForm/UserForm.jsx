@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 // import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
 import { updateUser } from '../../../redux/profile/profileOperations';
-// import { selectUserInfo } from '../../../redux/profile/profileSelectors';
+import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 
 import {
   Container,
@@ -43,6 +43,7 @@ const UserForm = () => {
   const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectUserInfo);
 
   const formik = useFormik({
     initialValues,
@@ -96,7 +97,7 @@ const UserForm = () => {
               type="text"
               name="name"
               required
-              placeholder={t('profile.user_form.name_example')}
+              placeholder={currentUser.name}
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -107,9 +108,8 @@ const UserForm = () => {
               type="email"
               name="email"
               required
-              placeholder="annarybachok@gmail.com"
-              onChange={formik.handleChange}
-              value={formik.values.email}
+              placeholder={currentUser.email}
+              disabled
             />
           </FieldContainer>
         </NameEmailInput>
