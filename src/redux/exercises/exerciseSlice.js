@@ -78,34 +78,33 @@ const exeSlice = createSlice({
         state.exercisesByType = action.payload;
         state.isLoading = false;
       })
-      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
-      .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
-      // .addCase(addExerciseToDiary.pending, state => {
-      //   state.isLoading = true;
-      // })
       .addCase(addExerciseToDiary.fulfilled, (state, payload) => {
         state.addSuccess.isOpened = true;
         state.addSuccess.time = payload.meta.arg.time;
         state.addSuccess.calories = payload.meta.arg.calories;
 
         state.isLoading = false;
-      }),
-      // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
-      //   state.muscles = action.payload;
-      //   state.isLoading = false;
-      // })
-      // .addCase(getExercisesEquipment.fulfilled, (state, action) => {
-      //   state.equipment = action.payload;
-      //   state.isLoading = false;
-      // })
-      // .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
-      //   state.bodyparts = action.payload;
-      //   state.isLoading = false;
-      // })
-      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending),
+      })
+      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
+  // .addCase(addExerciseToDiary.pending, state => {
+  //   state.isLoading = true;
+  // })
+
+  // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
+  //   state.muscles = action.payload;
+  //   state.isLoading = false;
+  // })
+  // .addCase(getExercisesEquipment.fulfilled, (state, action) => {
+  //   state.equipment = action.payload;
+  //   state.isLoading = false;
+  // })
+  // .addCase(getExercisesBodyparts.fulfilled, (state, action) => {
+  //   state.bodyparts = action.payload;
+  //   state.isLoading = false;
+  // })
 });
-export const { clearExeciseFilter, setPage, closeModalSuccess } =
+export const { clearExeciseFilter, setPage, closeModalSuccess, setLoading } =
   exeSlice.actions;
 
 export const exeReducer = exeSlice.reducer;
