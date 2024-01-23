@@ -34,10 +34,8 @@ const UserCard = () => {
   const dispatch = useDispatch();
 
   const handleFileChange = e => {
-    if (e.target.files)
-      setFile(e.target.files[0]);
-
-  }
+    if (e.target.files) setFile(e.target.files[0]);
+  };
 
   //   const handleClick=async e=>{
   //  const formData = new FormData();
@@ -47,8 +45,7 @@ const UserCard = () => {
 
   useEffect(() => {
     setCalories(currentUser.calories);
-  }, [currentUser.calories])
-
+  }, [currentUser.calories]);
 
   return (
     <Container>
@@ -65,7 +62,7 @@ const UserCard = () => {
               className="add-avatar-button"
               type="file"
             />
-            <butto onClick={handleClick}></butto>
+            {/* <butto onClick={handleClick}></butto> */}
             <AddProfilePicBackground>
               <use
                 stroke="#e6533c"
@@ -88,14 +85,18 @@ const UserCard = () => {
               />
             </AddProfilePicCross>
           </AddAvatarLabel>
-          {file ? <img url={currentUser.avatarURL}></img> : <UserAvatar fill="rgba(239, 237, 232, 0.1)">
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
-              }
-            ></use>
-          </UserAvatar>}
-
+          {file ? (
+            <img url={currentUser.avatarURL}></img>
+          ) : (
+            <UserAvatar fill="rgba(239, 237, 232, 0.1)">
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-avatar'
+                }
+              ></use>
+            </UserAvatar>
+          )}
         </ProfilePicContainer>
 
         <UserName>{currentUser.name}</UserName>

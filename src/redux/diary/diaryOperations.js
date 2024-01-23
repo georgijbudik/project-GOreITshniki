@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+// import { selectToken } from '../../redux/auth/authSelectors';
 
 // axios.defaults.baseURL = 'http://localhost:3000';
 
@@ -41,7 +41,19 @@ export const deleteProduct = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const { id, date } = data;
-      await axios.delete(`/diary/products/${id}?date=${date}`);
+      await axios.delete(`/diary/product/${id}?date=${date}`);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteExercise = createAsyncThunk(
+  'diary/deleteExercise',
+  async (data, thunkAPI) => {
+    try {
+      const { id, date } = data;
+      await axios.delete(`/diary/exercise/${id}?date=${date}`);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

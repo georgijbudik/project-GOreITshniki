@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { getCurrentUser } from './diaryOperations';
-import { getDayInfo, deleteProduct } from './diaryOperations';
+import { getDayInfo, deleteProduct, deleteExercise } from './diaryOperations';
 const initialState = {
   // user: {
   //   name: null,
@@ -46,7 +46,18 @@ const diarySlice = createSlice({
       state.date = action.payload.days[0].date;
     });
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
-      console.log(action);
+      const productIdToDelete = action.meta.arg.id;
+
+      state.products = state.products.filter(
+        productObj => productObj.product._id !== productIdToDelete
+      );
+    });
+    builder.addCase(deleteExercise.fulfilled, (state, action) => {
+      const exerciseIdToDelete = action.meta.arg.id;
+
+      state.exercises = state.exercises.filter(
+        exerciseObj => exerciseObj.exercise._id !== exerciseIdToDelete
+      );
     });
   },
 });
