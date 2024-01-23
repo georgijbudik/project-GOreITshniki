@@ -67,9 +67,9 @@ export const App = () => {
         <Route
           path="profile"
           element={
-            <ProfileRoute>
+            <PrivateRoute>
               <Profile />
-            </ProfileRoute>
+            </PrivateRoute>
           }
         />
         <Route

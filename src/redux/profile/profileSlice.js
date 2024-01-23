@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {logOut, refreshUser } from './profileOperations';
+import { logOut, refreshUser, updateAvatar } from './profileOperations';
 
 const initialState = {
   user: {
@@ -26,7 +26,6 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   extraReducers: builder => {
-    
     builder.addCase(logOut.pending, (state, action) => {
       state.isFetching = true;
     });
@@ -50,6 +49,19 @@ const profileSlice = createSlice({
       state.isFetching = false;
     });
     builder.addCase(refreshUser.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(updateAvatar.pending, (state, action) => {
+      state.isFetching = true;
+    });
+    builder.addCase(updateAvatar.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLoggedIn = true;
+      state.isFetching = false;
+    });
+    builder.addCase(updateAvatar.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
     });
