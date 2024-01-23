@@ -1,4 +1,8 @@
 import React from 'react';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { getDayInfo } from '../../redux/diary/diaryOperations';
+
 // import MainContainer from '../../components/MainContainer';
 import TitlePage from '../../components/TitlePage';
 import DayDashboard from './DayDashboard';
@@ -14,6 +18,10 @@ import {
 } from './Diary.styled';
 
 const Diary = () => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getDayInfo('01.01.2024'));
+  // }, [dispatch]);
   return (
     <Wrap>
       <PageTitle>

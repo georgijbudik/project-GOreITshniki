@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDayInfo } from '../../../redux/diary/diaryOperations';
+import dayjs from 'dayjs';
 import {
   selectUserInfo,
   selectIsFetching,
 } from '../../../redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
 
 import {
   DailyCalorieIntake,
@@ -27,11 +29,23 @@ import {
 const DayDashboard = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUserInfo);
+  const dayInfo = useSelector(state => state.dayInfo);
   const isFetching = useSelector(selectIsFetching);
+  const currentDate = dayjs();
+  const date = dayjs(currentDate).format('DD.MM.YYYY');
+  console.log('=== state === ', dayInfo);
 
   useEffect(() => {
-    dispatch(getDayInfo('01.01.2024'));
-  }, [dispatch]);
+    dispatch(getDayInfo(date))
+      .then(result => {
+        // Вивести отримані дані в консоль
+        console.log('Отримані дані:', result);
+      })
+      .catch(error => {
+        // Обробка помилок, якщо такі є
+        console.error('Помилка при отриманні даних:', error);
+      });
+  }, [dispatch, date]);
 
   if (isFetching) {
     return <div>Loading...</div>;
