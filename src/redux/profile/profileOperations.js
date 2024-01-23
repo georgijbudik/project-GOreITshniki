@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { toastError, toastSuccess } from '../helpers/toastCase';
 
-axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
+axios.defaults.baseURL = 'http://localhost:3001/api/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -13,19 +13,22 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
-  try {
-    const res = await axios.post('users/logout');
-    clearAuthHeader();
-    toastSuccess(_, res.data.message);
-  } catch (error) {
-    toastError(error.response.data.message);
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const logOut = createAsyncThunk(
+  'profile/logout',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.post('users/logout');
+      clearAuthHeader();
+      toastSuccess(_, res.data.message);
+    } catch (error) {
+      toastError(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
 export const refreshUser = createAsyncThunk(
-  '/users/current',
+  'profile/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -47,7 +50,7 @@ export const refreshUser = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  'users/login',
+  'profile/login',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('users/login', credentials);
@@ -63,7 +66,7 @@ export const logIn = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-  'users/update',
+  'profile/update',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.patch('users/update', credentials);
@@ -81,12 +84,17 @@ export const updateAvatar = createAsyncThunk(
   'profile/avatar',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('users/avatar', credentials);
+      const res = await axios.post('users/avatar', credentials, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
       setAuthHeader(res.data.token);
       // toastSuccess('You were successfully login', res.data.email);
-      console.log(res);
+
       return res.data;
     } catch (error) {
+      console.log(error);
       toastError(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }

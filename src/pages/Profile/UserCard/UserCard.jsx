@@ -23,32 +23,41 @@ import {
   AddAvatarLabel,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
-import { selectUserInfo } from '../../../redux/profile/profileSelectors';
-// import { updateAvatar } from '../../../redux/profile/profileOperations';
+import {
+  selectAvatarUrl,
+  selectUserInfo,
+} from '../../../redux/profile/profileSelectors';
+import { updateAvatar } from '../../../redux/profile/profileOperations';
 
 const UserCard = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(selectUserInfo);
   const [calories, setCalories] = useState(0);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   const dispatch = useDispatch();
+  const avatarURL = useSelector(selectAvatarUrl);
 
   const handleFileChange = e => {
-    if (e.target.files)
-      setFile(e.target.files[0]);
+    if (e.target.files) setFile(e.target.files[0]);
+  };
 
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('avatarURL', file);
+  //   dispatch(updateAvatar(formData));
+  // };
 
-  //   const handleClick=async e=>{
-  //  const formData = new FormData();
-  //   formData.append("image", file);
-  //  dispatch(updateAvatar(formData));
-  //   }
+  useEffect(() => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('avatarURL', file);
+    dispatch(updateAvatar(formData));
+  }, [file, dispatch]);
 
   useEffect(() => {
     setCalories(currentUser.calories);
-  }, [currentUser.calories])
-
+  }, [currentUser.calories]);
 
   return (
     <Container>
@@ -61,11 +70,11 @@ const UserCard = () => {
             <AddAvatarButton
               id="add-avatar-button"
               onChange={handleFileChange}
-              accept=".png, .jpg"
+              accept="image/png, image/jpg"
               className="add-avatar-button"
               type="file"
             />
-            <butto onClick={handleClick}></butto>
+
             <AddProfilePicBackground>
               <use
                 stroke="#e6533c"
@@ -88,14 +97,23 @@ const UserCard = () => {
               />
             </AddProfilePicCross>
           </AddAvatarLabel>
-          {file ? <img url={currentUser.avatarURL}></img> : <UserAvatar fill="rgba(239, 237, 232, 0.1)">
-            <use
-              xlinkHref={
-                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
-              }
-            ></use>
-          </UserAvatar>}
-
+          {avatarURL ? (
+            <img
+              alt="User avatar"
+              url={avatarURL}
+              width="100px"
+              height="100px"
+            ></img>
+          ) : (
+            <UserAvatar fill="rgba(239, 237, 232, 0.1)">
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-avatar'
+                }
+              ></use>
+            </UserAvatar>
+          )}
         </ProfilePicContainer>
 
         <UserName>{currentUser.name}</UserName>
