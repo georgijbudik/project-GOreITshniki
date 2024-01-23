@@ -39,8 +39,17 @@ export const StyledSearchContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  border: ${({ $hasFocus }) =>
-    $hasFocus ? '1px solid var(--accent-color)' : '1px solid var(--border-color)'};
+  border: ${({ $hasFocus, theme }) => {
+    const darkColor =
+      $hasFocus && theme.palette.mode === 'dark'
+        ? '1px solid var(--accent-color)'
+        : '1px solid var(--border-color)';
+    const lightColor =
+      $hasFocus && theme.palette.mode === 'light'
+        ? '1px solid var(--accent-color)'
+        : '1px solid rgba(100, 100, 100, 0.2)';
+    return theme.palette.mode === 'dark' ? darkColor : lightColor;
+  }};
 
   @media screen and (min-width: 375px) {
     width: 335px;
@@ -86,6 +95,10 @@ export const StyledSearchBtn = styled.button`
   display: flex;
   align-items: center;
   border: none;
+  fill: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'var(--main-text-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
   background-color: transparent;
 
   @media screen and (min-width: 768px) {
@@ -129,30 +142,35 @@ export const StyledRecommendContainer = styled.div`
   }
 `;
 
-export const StyledInput = styled(InputBase)({
-  '& .MuiInputBase-input': {
-    padding: '12px',
-    height: '20px',
-    borderRadius: '12px',
-    border: '1px solid var(--border-color)',
-    background: 'transparent',
-    fontFamily: 'Roboto',
-    fontSize: '14px',
-    fontWeight: 400,
-    lineHeight: 1.3,
-    outline: 'none',
-
-    '&:focus': {
+export const StyledInput = styled(InputBase)(({ theme }) => {
+  return {
+    '& .MuiInputBase-input': {
+      padding: '12px',
+      height: '20px',
       borderRadius: '12px',
-      borderColor: 'var(--accent-color)',
-    },
+      border:
+        theme.palette.mode === 'dark'
+          ? '1px solid var(--border-color)'
+          : '1px solid rgba(100, 100, 100, 0.2)',
+      background: 'transparent',
+      fontFamily: 'Roboto',
+      fontSize: '14px',
+      fontWeight: 400,
+      lineHeight: 1.3,
+      outline: 'none',
 
-    '@media screen and (min-width: 768px)': {
-      height: '26px',
-      fontSize: '16px',
-      lineHeight: 1.5,
+      '&:focus': {
+        borderRadius: '12px',
+        borderColor: 'var(--accent-color)',
+      },
+
+      '@media screen and (min-width: 768px)': {
+        height: '26px',
+        fontSize: '16px',
+        lineHeight: 1.5,
+      },
     },
-  },
+  };
 });
 
 export const StyledEm = styled('em')({

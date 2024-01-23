@@ -114,7 +114,7 @@ const ProductsFilters = () => {
             </StyledSearchBtn>
           )}
           <StyledSearchBtn type="submit">
-            <svg width="18" height="18" fill="var(--main-text-color)">
+            <svg width="18" height="18">
               <use
                 href={
                   process.env.PUBLIC_URL +
