@@ -41,13 +41,6 @@ const UserCard = () => {
     if (e.target.files) setFile(e.target.files[0]);
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('avatarURL', file);
-  //   dispatch(updateAvatar(formData));
-  // };
-
   useEffect(() => {
     if (!file) return;
     const formData = new FormData();
