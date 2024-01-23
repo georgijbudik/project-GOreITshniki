@@ -1,11 +1,15 @@
-import React from 'react';
+import dayjs from 'dayjs';
+import { setDate } from '../../../redux/diary/diarySlice';
 
 import { forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { format, subDays, addDays } from 'date-fns';
-import { useSelector } from 'react-redux';
+import {
+  // useSelector,
+  useDispatch,
+} from 'react-redux';
 import {
   CalendarGlobalStyles,
   TitleWrapper,
@@ -16,8 +20,9 @@ import {
 } from './DaySwitch.styled';
 
 const DaySwitch = () => {
-  const user = useSelector(state => state.auth.user);
-  console.log(user);
+  const dispatch = useDispatch();
+  // const user = useSelector(state => state.auth.user);
+  // console.log(user);
 
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
@@ -34,6 +39,8 @@ const DaySwitch = () => {
       <DatePicker
         selected={selectedDate}
         onChange={date => {
+          const formatedDate = dayjs(date).format('DD.MM.YYYY');
+          dispatch(setDate(formatedDate));
           setSelectedDate(date);
         }}
         customInput={<CustomInput />}

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDayInfo } from '../../../redux/diary/diaryOperations';
-import dayjs from 'dayjs';
+import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
+// import dayjs from 'dayjs';
 import {
   selectUserInfo,
   selectIsFetching,
@@ -31,8 +32,9 @@ const DayDashboard = () => {
   const userInfo = useSelector(selectUserInfo);
   const dayInfo = useSelector(state => state.dayInfo);
   const isFetching = useSelector(selectIsFetching);
-  const currentDate = dayjs();
-  const date = dayjs(currentDate).format('DD.MM.YYYY');
+  // const currentDate = dayjs();
+  // const date = dayjs(currentDate).format('DD.MM.YYYY');
+  const date = useSelector(selectDiaryDate);
   console.log('=== state === ', dayInfo);
 
   useEffect(() => {
