@@ -68,7 +68,7 @@ export const StyledGramsContainer = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: transparent;
-  
+
   border: ${({ $hasFocus }) =>
     $hasFocus ? '1px solid var(--accent-color)' : '1px solid var(--border-color)'};
 
