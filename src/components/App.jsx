@@ -20,6 +20,8 @@ import PublicRoute from 'routes/PublicRoute';
 // import PrivateRoute from 'routes/PrivateRoute';
 
 import PrivateRoute from 'routes/PrivateRoute';
+import ProfileRoute from 'routes/ProfileRoute';
+
 // import PrivateRoute from '../routes/PrivateRoute';
 
 export const App = () => {
@@ -40,7 +42,7 @@ export const App = () => {
         <Route
           index
           element={
-            <PublicRoute>
+            <PublicRoute restricted>
               <Welcome />
             </PublicRoute>
           }
@@ -61,9 +63,31 @@ export const App = () => {
             </PublicRoute>
           }
         />
-        <Route path="profile" element={<Profile />} />
-        <Route path="diary" element={<Diary />} />
-        <Route path="products" element={<Products />} />
+
+        <Route
+          path="profile"
+          element={
+            <ProfileRoute>
+              <Profile />
+            </ProfileRoute>
+          }
+        />
+        <Route
+          path="diary"
+          element={
+            <PrivateRoute>
+              <Diary />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="products"
+          element={
+            <PrivateRoute>
+              <Products />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="exercises"
