@@ -114,7 +114,7 @@ const ProductsFilters = () => {
             </StyledSearchBtn>
           )}
           <StyledSearchBtn type="submit">
-            <svg width="18" height="18" fill="var(--main-text-color)">
+            <svg width="18" height="18">
               <use
                 href={
                   process.env.PUBLIC_URL +
@@ -146,14 +146,14 @@ const ProductsFilters = () => {
                 },
               }}
             >
-              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px' }}>
+              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}>
                 <StyledEm>All categories</StyledEm>
               </MenuItem>
               {categories.map(item => (
                 <MenuItem
                   key={item._id}
                   value={item.category}
-                  sx={{ fontSize: '14px', m: 0, px: '10px' }}
+                  sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
                 >
                   {item.category[0].toUpperCase() + item.category.slice(1)}
                 </MenuItem>
@@ -179,18 +179,18 @@ const ProductsFilters = () => {
                 },
               }}
             >
-              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px' }}>
+              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}>
                 <StyledEm>All</StyledEm>
               </MenuItem>
               <MenuItem
                 value={'recommended'}
-                sx={{ fontSize: '14px', m: 0, px: '10px' }}
+                sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
               >
                 Recommended
               </MenuItem>
               <MenuItem
                 value={'not recommended'}
-                sx={{ fontSize: '14px', m: 0, px: '10px' }}
+                sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
               >
                 Not recommended
               </MenuItem>
