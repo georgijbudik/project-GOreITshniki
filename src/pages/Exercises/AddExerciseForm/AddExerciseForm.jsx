@@ -64,6 +64,7 @@ const AddExerciseForm = ({
   const dispatch = useDispatch();
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
+  const [passedTime, setPassedTime] = useState(0);
 
   const currentDate = dayjs();
   const date = dayjs(currentDate).format('DD.MM.YYYY');
@@ -73,8 +74,8 @@ const AddExerciseForm = ({
     const data = {
       id: exeId,
       date,
-      time,
-      calories: exeCalories,
+      time: passedTime,
+      calories: burnedCalories,
     };
     dispatch(addExerciseToDiary(data));
   };
@@ -107,6 +108,8 @@ const AddExerciseForm = ({
                   const calories =
                     (exeCalories / (time * 60)) * (time * 60 - remainingTime);
 
+                  const passedTime = time * 60 - remainingTime;
+                  setPassedTime(passedTime);
                   setBurnedCalories(calories.toFixed());
                 }}
                 onComplete={() => {
