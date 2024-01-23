@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Container,
@@ -28,6 +28,7 @@ import { selectUserInfo } from '../../../redux/profile/profileSelectors';
 const UserCard = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(selectUserInfo);
+  const [calories, setCalories] = useState(0);
   const [file, setFile] = useState();
 
   const handleFileChange = e => {
@@ -36,6 +37,10 @@ const UserCard = () => {
       console.log(file);
     }
   };
+
+  useEffect(() => {
+    setCalories(currentUser.calories);
+  }, [currentUser.calories])
 
   return (
     <Container>
@@ -98,7 +103,7 @@ const UserCard = () => {
               </SvgDailyIcon>
               {t('profile.user_card.daily_calorie_intake')}
             </DailyTitle>
-            <DailyResult>{currentUser.calories}</DailyResult>
+            <DailyResult>{calories}</DailyResult>
           </DailyCard>
           <DailyCard>
             <DailyTitle>
