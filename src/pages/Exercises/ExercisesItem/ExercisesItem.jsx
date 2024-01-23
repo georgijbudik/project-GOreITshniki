@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import {
   Indexes,
@@ -31,6 +32,7 @@ const ExercisesItem = ({
   gifUrl,
   time,
 }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModalSuccess, setShowModalSuccess] = useState(false);
 
@@ -49,7 +51,9 @@ const ExercisesItem = ({
     <>
       <WrapperExercisesItem>
         <HeaderIndexes>
-          <ExercisesTitle>WORKOUT</ExercisesTitle>
+          <ExercisesTitle>
+            {t('exercises.exercise_item.workout')}
+          </ExercisesTitle>
           <WrapperStart onClick={onClickStart}>
             <TextStart>Start</TextStart>
             <IconWrapperStart>
@@ -77,15 +81,17 @@ const ExercisesItem = ({
         </WrapperNameExes>
         <WrapperIndexes>
           <Indexes>
-            <IndexesText>Burned calories:</IndexesText>
+            <IndexesText>
+              {t('exercises.exercise_item.burned_calories')}:
+            </IndexesText>
             <IndexesValue>{calories}</IndexesValue>
           </Indexes>
           <Indexes>
-            <IndexesText>Body part:</IndexesText>
+            <IndexesText>{t('exercises.exercise_item.body_part')}:</IndexesText>
             <IndexesValue>{NameBodyPart}</IndexesValue>
           </Indexes>
           <Indexes>
-            <IndexesText>Target:</IndexesText>
+            <IndexesText>{t('exercises.exercise_item.target')}:</IndexesText>
             <IndexesValue>{target}</IndexesValue>
           </Indexes>
         </WrapperIndexes>

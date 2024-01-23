@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,6 +28,7 @@ import {
 } from '../../../redux/exercises/exerciseSlice';
 
 const ExercisesList = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { exeFilter, page, isLoading, addSuccess } = useSelector(
     state => state.exercises
@@ -115,7 +117,9 @@ const ExercisesList = () => {
             }
           ></use>
         </IconWrapperBack>
-        <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
+        <LinkBtn to={backLinkLocation.current}>
+          {t('exercises.navigation.back_link')}
+        </LinkBtn>
       </ButtonGoBack>
       <DesktopBackgroundContainer></DesktopBackgroundContainer>
       <WrapperNav>
@@ -125,17 +129,23 @@ const ExercisesList = () => {
         <ChaptersWrapper>
           <li>
             <LinkStyled to={backLinkBodyparts.current}>
-              <ChapterTemplate>Body parts</ChapterTemplate>
+              <ChapterTemplate>
+                {t('exercises.navigation.bodyparts')}
+              </ChapterTemplate>
             </LinkStyled>
           </li>
           <li>
             <LinkStyled to={backLinkMuscles.current}>
-              <ChapterTemplate>Muscles</ChapterTemplate>
+              <ChapterTemplate>
+                {t('exercises.navigation.muscles')}
+              </ChapterTemplate>
             </LinkStyled>
           </li>
           <li>
             <LinkStyled to={backLinkEquipment.current}>
-              <ChapterTemplate>Equipment</ChapterTemplate>
+              <ChapterTemplate>
+                {t('exercises.navigation.equipment')}
+              </ChapterTemplate>
             </LinkStyled>
           </li>
         </ChaptersWrapper>

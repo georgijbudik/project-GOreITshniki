@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addExerciseToDiary } from '../../../redux/exercises/exerciseOperations';
@@ -61,6 +62,7 @@ const AddExerciseForm = ({
   burnedCalories: exeCalories,
   time,
 }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
@@ -90,7 +92,7 @@ const AddExerciseForm = ({
 
           <StyledAddExerciseFormTimerWrapper>
             <StyledAddExerciseFormTimerTitle>
-              Time
+              {t('exercises.exercise_modal.time')}
             </StyledAddExerciseFormTimerTitle>
 
             <StyledAddExerciseFormTimer>
@@ -147,34 +149,35 @@ const AddExerciseForm = ({
             </StyledAddExerciseFormTimerButton>
 
             <StyledAddExerciseFormTimerCalories>
-              Burned calories: <span>{burnedCalories}</span>
+              {t('exercises.exercise_modal.burned_calories')}:{' '}
+              <span>{burnedCalories}</span>
             </StyledAddExerciseFormTimerCalories>
           </StyledAddExerciseFormTimerWrapper>
         </div>
         <StyledAddExerciseFormRightPartWrapper>
           <StyledAddExerciseFormInfoList>
             <StyledAddExerciseFormInfoItem>
-              <span>Name</span>
+              <span>{t('exercises.exercise_modal.name')}</span>
               <p>{formatDescription(name)}</p>
             </StyledAddExerciseFormInfoItem>
             <StyledAddExerciseFormInfoItem>
-              <span>Target</span>
+              <span>{t('exercises.exercise_modal.target')}</span>
               <p>{formatDescription(target)}</p>
             </StyledAddExerciseFormInfoItem>
 
             <StyledAddExerciseFormInfoItem>
-              <span>Body part</span>
+              <span>{t('exercises.exercise_modal.body_part')}</span>
               <p>{formatDescription(bodyPart)}</p>
             </StyledAddExerciseFormInfoItem>
 
             <StyledAddExerciseFormInfoItem>
-              <span>Equipment</span>
+              <span>{t('exercises.exercise_modal.equipment')}</span>
               <p>{formatDescription(equipment)}</p>
             </StyledAddExerciseFormInfoItem>
           </StyledAddExerciseFormInfoList>
 
           <Button paddingX={32} paddingY={12} onClick={handleAddToDiary}>
-            Add to diary
+            {t('exercises.exercise_modal.add')}
           </Button>
         </StyledAddExerciseFormRightPartWrapper>
       </StyledAddExerciseFormWrapper>

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import TitlePage from '../../../components/TitlePage';
 import ChapterTemplate from '../ChapterTemplate';
 
@@ -8,23 +10,31 @@ import {
 } from '../Exercises.styled';
 
 const ExercisesCategories = () => {
+  const { t } = useTranslation();
+
   return (
     <DesktopWrapper>
-      <TitlePage>Exercises</TitlePage>
+      <TitlePage>{t('exercises.navigation.title')}</TitlePage>
       <ChaptersWrapper>
         <li>
           <LinkStyled to="bodyparts">
-            <ChapterTemplate>Body parts</ChapterTemplate>
+            <ChapterTemplate>
+              {t('exercises.navigation.bodyparts')}
+            </ChapterTemplate>
           </LinkStyled>
         </li>
         <li>
           <LinkStyled to="muscles">
-            <ChapterTemplate>Muscles</ChapterTemplate>
+            <ChapterTemplate>
+              {t('exercises.navigation.muscles')}
+            </ChapterTemplate>
           </LinkStyled>
         </li>
         <li>
           <LinkStyled to="equipment">
-            <ChapterTemplate>Equipment</ChapterTemplate>
+            <ChapterTemplate>
+              {t('exercises.navigation.equipment')}
+            </ChapterTemplate>
           </LinkStyled>
         </li>
       </ChaptersWrapper>
