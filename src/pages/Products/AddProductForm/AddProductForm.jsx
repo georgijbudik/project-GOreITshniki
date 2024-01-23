@@ -84,7 +84,7 @@ const AddProductForm = () => {
           <StyledTextGrams>grams</StyledTextGrams></StyledGramsContainer>
         </StyledInputContainer>
         <StyledTextCalories>
-          Calories:
+          Calories:  
           <StyledTextAmount>
             {!grams ? 0 : caloriesByUsersGrams}
           </StyledTextAmount>

@@ -4,7 +4,8 @@ export const StyledForm = styled.form`
   box-sizing: border-box;
   min-width: 278px;
   padding: 48px 32px 60px 32px;
-  background-color: #10100f;
+  background-color: ${({ theme }) =>
+    theme.palette.mode === 'dark' ? '#10100f' : '#efede8'};
 
   @media screen and (min-width: 375px) {
     width: 333px;
@@ -36,10 +37,16 @@ export const StyledNameInput = styled.input`
   padding: 8px 14px;
   width: 100%;
   height: 34px;
-  border: 1px solid var(--border-color);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid var(--border-color)'
+      : '1px solid rgba(110, 110, 110, 0.32)'};
   border-radius: 12px;
   background: transparent;
-  color: rgba(239, 237, 232, 0.3);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;
@@ -65,12 +72,19 @@ export const StyledGramsContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 34px;
-  border: 1px solid var(--border-color);
   border-radius: 12px;
   background: transparent;
-
-  border: ${({ $hasFocus }) =>
-    $hasFocus ? '1px solid var(--accent-color)' : '1px solid var(--border-color)'};
+  border: ${({ $hasFocus, theme }) => {
+    const darkColor =
+      $hasFocus && theme.palette.mode === 'dark'
+        ? '1px solid var(--accent-color)'
+        : '1px solid var(--border-color)';
+    const lightColor =
+      $hasFocus && theme.palette.mode === 'light'
+        ? '1px solid var(--accent-color)'
+        : '1px solid rgba(100, 100, 100, 0.2)';
+    return theme.palette.mode === 'dark' ? darkColor : lightColor;
+  }};
 
   @media screen and (min-width: 768px) {
     width: 155px;
@@ -84,7 +98,10 @@ export const StyledGramsInput = styled.input`
   width: 100%;
   border: none;
   background: transparent;
-  color: var(--main-text-color);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'var(--main-text-color)'
+      : '1px solid rgba(#040404)'};
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;
@@ -100,7 +117,10 @@ export const StyledGramsInput = styled.input`
 export const StyledTextGrams = styled.span`
   width: 62px;
   padding: 0 14px;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : '1px solid rgba(#040404)'};
   font-size: 12px;
   line-height: 1.5;
 `;
@@ -108,7 +128,10 @@ export const StyledTextGrams = styled.span`
 export const StyledTextCalories = styled.p`
   margin-top: 16px;
   margin-bottom: 24px;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : '1px solid rgba(#040404)'};
   font-size: 12px;
   line-height: 1.5;
 
@@ -119,7 +142,11 @@ export const StyledTextCalories = styled.p`
 
 export const StyledTextAmount = styled.span`
   margin-top: 16px;
-  color: var(--main-text-color);
+  margin-left: 4px;
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'var(--main-text-color)'
+      : '1px solid rgba(100, 100, 100, 0.2)'};
   font-size: 12px;
   line-height: 1.5;
 `;
