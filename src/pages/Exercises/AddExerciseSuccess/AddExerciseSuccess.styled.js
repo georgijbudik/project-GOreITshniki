@@ -10,7 +10,7 @@ export const StyledAddExerciseSuccessWrapper = styled.div`
   padding-top: 48px;
   padding-bottom: 48px;
 
-  width: 320px;
+  width: 300px;
   max-width: 335px;
 
   @media screen and (min-width: 768px) {

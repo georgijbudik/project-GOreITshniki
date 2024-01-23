@@ -57,23 +57,28 @@ const AddProductSuccess = () => {
         <StyledTextCalories>
           Calories: <StyledTextAmount>{caloriesByUser}</StyledTextAmount>
         </StyledTextCalories>
-        <StyledNextBtn type="button" onClick={handleCloseSuccessModal}>
-          Next product
-        </StyledNextBtn>
-        <StyledToDiaryBtn type="button" onClick={handleToDiaryBtn}>
-          To the diary
-          <StyledToDiarySvg
-            width="16"
-            height="16"
-            stroke="rgba(239, 237, 232, 0.30)"
-          >
-            <use
-              href={
-                process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-add'
-              }
-            ></use>
-          </StyledToDiarySvg>
-        </StyledToDiaryBtn>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+            alignItems: 'center',
+          }}
+        >
+          <StyledNextBtn type="button" onClick={handleCloseSuccessModal}>
+            Next product
+          </StyledNextBtn>
+          <StyledToDiaryBtn type="button" onClick={handleToDiaryBtn}>
+            To the diary
+            <StyledToDiarySvg>
+              <use
+                href={
+                  process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-add'
+                }
+              ></use>
+            </StyledToDiarySvg>
+          </StyledToDiaryBtn>
+        </div>
       </StyledContainer>
     </BasicModalWindow>
   );
