@@ -10,9 +10,12 @@ import { refreshUser } from '../redux/auth/authOperations';
 
 import { Navigate } from 'react-router-dom';
 
-const PublicRoute = ({ restricted = false, children }) => {
+const PublicRoute = ({ children }) => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+
+  const isLoggedIn = useSelector(selectIsLoggedin);
+  const userInfo = useSelector(selectUserBlood);
 
   useEffect(() => {
     if (token) {
@@ -20,19 +23,15 @@ const PublicRoute = ({ restricted = false, children }) => {
     }
   }, [token, dispatch]);
 
-  const isLoggedIn = useSelector(selectIsLoggedin);
-  const userInfo = useSelector(selectUserBlood);
-  const shouldRestrict = isLoggedIn && restricted;
+  if (!userInfo && isLoggedIn) {
+    return <Navigate to="/profile" replace />;
+  }
 
-  return shouldRestrict ? (
-    userInfo ? (
-      <Navigate to="/diary" replace />
-    ) : (
-      <Navigate to="/profile" replace />
-    )
-  ) : (
-    children
-  );
+  if (isLoggedIn) {
+    return <Navigate to="/diary" replace />;
+  }
+
+  return children;
 };
 
 export default PublicRoute;
