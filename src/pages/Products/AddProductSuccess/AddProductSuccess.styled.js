@@ -4,7 +4,8 @@ export const StyledContainer = styled.div`
   box-sizing: border-box;
   min-width: 278px;
   padding: 48px 88px;
-  background-color: #10100f;
+  background-color: ${({ theme }) =>
+    theme.palette.mode === 'dark' ? '#10100f' : '#efeff0'};
 
   @media screen and (min-width: 375px) {
     width: 333px;
@@ -29,7 +30,7 @@ export const StyledImgContainer = styled.div`
 
 export const StyledTextWellDone = styled.p`
   margin-top: 3px;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
   font-size: 24px;
   font-weight: 700;
   line-height: 1.3;
@@ -43,7 +44,10 @@ export const StyledTextWellDone = styled.p`
 export const StyledTextCalories = styled.p`
   margin-top: 16px;
   margin-bottom: 24px;
-  color: rgba(239, 237, 232, 0.3);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   font-size: 14px;
   line-height: 1.3;
   text-align: center;
@@ -62,7 +66,7 @@ export const StyledNextBtn = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: var(--main-text-color);
+  color: ${({ theme }) => theme.palette.text.primary};
   border-radius: 12px;
   border: none;
   background-color: var(--accent-color);
@@ -81,27 +85,38 @@ export const StyledNextBtn = styled.button`
   }
 `;
 
-export const StyledToDiaryBtn = styled.button`
-  box-sizing: border-box;
-  height: 18px;
-  margin: 16px auto 0 auto;
-  padding: 0;
+export const StyledToDiaryBtn = styled.p`
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.3)'
+      : 'rgba(100, 100, 100, 0.7)'};
+
+  font-size: 14px;
+  line-height: 128.571%;
+
   display: flex;
   align-items: center;
-  border: none;
-  background-color: transparent;
-  color: rgba(239, 237, 232, 0.3);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.3;
+  gap: 8px;
+
+  cursor: pointer;
   transition: var(--transition);
 
-  &:hover,
-  &:focus {
-    scale: 1.1;
+  &:hover {
+    color: ${({ theme }) => theme.palette.text.primary};
+
+    & > svg {
+      stroke: ${({ theme }) => theme.palette.text.primary};
+    }
   }
 `;
 
 export const StyledToDiarySvg = styled.svg`
-  margin-left: 8px;
+  width: 16px;
+  height: 16px;
+  stroke: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.3)'
+      : 'rgba(100, 100, 100, 0.7)'};
+
+  transition: var(--transition);
 `;
