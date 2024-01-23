@@ -23,25 +23,30 @@ import {
   AddAvatarLabel,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
-import { selectUserInfo } from '../../../redux/profile/profileSelectors';
-// import { updateAvatar } from '../../../redux/profile/profileOperations';
+import {
+  selectAvatarUrl,
+  selectUserInfo,
+} from '../../../redux/profile/profileSelectors';
+import { updateAvatar } from '../../../redux/profile/profileOperations';
 
 const UserCard = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(selectUserInfo);
   const [calories, setCalories] = useState(0);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   const dispatch = useDispatch();
+  const avatarURL = useSelector(selectAvatarUrl);
 
   const handleFileChange = e => {
     if (e.target.files) setFile(e.target.files[0]);
   };
 
-  //   const handleClick=async e=>{
-  //  const formData = new FormData();
-  //   formData.append("image", file);
-  //  dispatch(updateAvatar(formData));
-  //   }
+  useEffect(() => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('avatarURL', file);
+    dispatch(updateAvatar(formData));
+  }, [file, dispatch]);
 
   useEffect(() => {
     setCalories(currentUser.calories);
@@ -58,11 +63,11 @@ const UserCard = () => {
             <AddAvatarButton
               id="add-avatar-button"
               onChange={handleFileChange}
-              accept=".png, .jpg"
+              accept="image/png, image/jpg"
               className="add-avatar-button"
               type="file"
             />
-            {/* <butto onClick={handleClick}></butto> */}
+
             <AddProfilePicBackground>
               <use
                 stroke="#e6533c"
@@ -85,8 +90,13 @@ const UserCard = () => {
               />
             </AddProfilePicCross>
           </AddAvatarLabel>
-          {file ? (
-            <img url={currentUser.avatarURL}></img>
+          {avatarURL ? (
+            <img
+              alt="User avatar"
+              url={avatarURL}
+              width="100px"
+              height="100px"
+            ></img>
           ) : (
             <UserAvatar fill="rgba(239, 237, 232, 0.1)">
               <use
