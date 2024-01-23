@@ -33,19 +33,14 @@ export const DesktopBackgroundContainer = styled.div`
 `;
 
 export const WrapperExercises = styled.ul`
-  /* width: 335px; */
-  /* max-height: 726px; */
-
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 48px;
-  padding-bottom: 80px;
 
   @media screen and (min-width: 768px) {
-    /* width: 710px; */
     height: 726px;
-    padding-bottom: 66px;
+    margin-bottom: 66px;
 
     overflow-y: scroll;
     max-height: 1024px;
@@ -67,7 +62,7 @@ export const WrapperExercises = styled.ul`
   @media screen and (min-width: 1440px) {
     width: 850px;
     height: 487px;
-    padding-bottom: 81px;
+    margin-bottom: 81px;
   }
 `;
 
@@ -142,7 +137,6 @@ export const IconWrapperBack = styled.svg`
 export const WrapperNav = styled.div`
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;

@@ -32,12 +32,9 @@ export const LinkStyled = styled(NavLink)`
   color: ${({ theme }) => {
     return theme.palette.text.primary;
   }};
-  // color: var(--border-color);
   text-decoration: none;
 
   &.active {
-    /* color: var(--main-text-color); */
-
     &::before {
       content: '';
       position: absolute;

@@ -36,7 +36,6 @@ export const HeaderIndexes = styled.div`
 `;
 
 export const ExercisesTitle = styled.p`
-  /* color: #fff; */
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -73,7 +72,6 @@ export const IconWrapperStart = styled.svg`
 `;
 
 export const NameExes = styled.p`
-  /* color: rgba(239, 237, 232, 1); */
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;

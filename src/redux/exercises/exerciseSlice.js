@@ -14,9 +14,6 @@ const InitialState = {
   error: null,
   array: [],
   exercisesByType: [],
-  // muscles: [],
-  // bodyparts: [],
-  // equipment: [],
   exeFilter: [],
   page: 1,
   addSuccess: { isOpened: false, calories: 0, time: 0 },
@@ -51,11 +48,11 @@ const exeSlice = createSlice({
       state.exeFilter = [];
       state.page = 1;
     },
-    // setPage: state => {
-    //   state.page = state.page + 1;
-    // },
-    setPage: (state, action) => {
-      setPage(state, action);
+    setPage: state => {
+      state.page += 1;
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
 
     closeModalSuccess: state => {
@@ -69,12 +66,7 @@ const exeSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getExercisesFilter.fulfilled, (state, action) => {
-        // if (state.page === 1) {
-        //   state.exeFilter = action.payload;
-        // } else if (action.payload.length > 0) {
         state.exeFilter = [...state.exeFilter, ...action.payload];
-        // }
-        // state.page = state.page + 1;
         state.isLoading = false;
         state.error = null;
       })
@@ -86,6 +78,8 @@ const exeSlice = createSlice({
         state.exercisesByType = action.payload;
         state.isLoading = false;
       })
+      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
+      .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
       // .addCase(addExerciseToDiary.pending, state => {
       //   state.isLoading = true;
       // })
@@ -95,7 +89,7 @@ const exeSlice = createSlice({
         state.addSuccess.calories = payload.meta.arg.calories;
 
         state.isLoading = false;
-      })
+      }),
       // .addCase(getExercisesMuscles.fulfilled, (state, action) => {
       //   state.muscles = action.payload;
       //   state.isLoading = false;
@@ -108,7 +102,7 @@ const exeSlice = createSlice({
       //   state.bodyparts = action.payload;
       //   state.isLoading = false;
       // })
-      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
+      .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending),
       .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected),
 });
 export const { clearExeciseFilter, setPage, closeModalSuccess } =

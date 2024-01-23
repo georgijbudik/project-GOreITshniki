@@ -13,9 +13,6 @@ import Exercises from 'pages/Exercises/Exercises';
 import ExercisesList from 'pages/Exercises/ExercisesList';
 import Error from 'pages/Error/Error';
 import SharedLayout from 'pages/Shared/SharedLayout';
-// import BodyParts from 'pages/Exercises/BodyParts';
-// import Muscles from 'pages/Exercises/Muscles';
-// import Equipment from 'pages/Exercises/Equipment';
 import ExercisesSubcategoriesList from 'pages/Exercises/ExercisesSubcategoriesList';
 
 import PublicRoute from 'routes/PublicRoute';
@@ -76,9 +73,6 @@ export const App = () => {
             </PrivateRoute>
           }
         >
-          {/* <Route path="bodyparts" element={<BodyParts />} />
-          <Route path="muscles" element={<Muscles />} />
-          <Route path="equipment" element={<Equipment />} /> */}
           <Route path=":type" element={<ExercisesSubcategoriesList />} />
         </Route>
         <Route

@@ -1,13 +1,11 @@
-// import { useCallback, useEffect, useRef } from 'react';
 import { useEffect, useRef } from 'react';
-
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import { getExercisesFilter } from '../../../redux/exercises/exerciseOperations';
-import AddExerciseSuccess from '../AddExerciseSuccess';
 
+import AddExerciseSuccess from '../AddExerciseSuccess';
 import {
   NameExercises,
   WrapperExercises,
@@ -25,6 +23,7 @@ import ChapterTemplate from '../ChapterTemplate';
 import {
   clearExeciseFilter,
   setPage,
+  setLoading,
 } from '../../../redux/exercises/exerciseSlice';
 
 const ExercisesList = () => {
@@ -53,7 +52,6 @@ const ExercisesList = () => {
     const filters = { type, name };
 
     dispatch(getExercisesFilter(filters));
-    // dispatch(setPage());
     return () => {
       dispatch(clearExeciseFilter());
     };
@@ -62,30 +60,26 @@ const ExercisesList = () => {
   useEffect(() => {
     const options = {
       rootMargin: '0px',
-      // threshold: 1.0,
-      threshold: 0.5, // Adjust this value
+      threshold: 0.5,
     };
 
-    const fetchMoreExercises = () => {
-      // Check if there are more exercises to fetch
-      if (exeFilter.length % 10 === 0) {
-        const nextPage = page + 1;
-        // dispatch(setPage());
-        dispatch(setPage(nextPage)); // Increment the page number
-        // const filters = { type, name, page };
-        const filters = { type, name, page: nextPage }; // Update filters with new page
-        dispatch(getExercisesFilter(filters));
+    const fetchMoreExercises = async () => {
+      if (exeFilter.length % 10 === 0 && !isLoading) {
+        dispatch(setLoading(true));
+        dispatch(setPage());
+        const filters = { type, name, page: page + 1 };
+        await dispatch(getExercisesFilter(filters));
+        dispatch(setLoading(false));
       }
     };
 
     const onIntersection = entries => {
-      console.log('Intersection observed');
       if (entries[0].isIntersecting) {
         fetchMoreExercises();
       }
     };
     const observer = new IntersectionObserver(onIntersection, options);
-    if (observer && intersectionRef.current) {
+    if (observer && intersectionRef.current && !isLoading) {
       observer.observe(intersectionRef.current);
     }
 
@@ -94,13 +88,7 @@ const ExercisesList = () => {
         observer.disconnect();
       }
     };
-    // const observer = new IntersectionObserver(onIntersection, options);
-    // observer.observe(intersectionRef.current);
-
-    // return () => {
-    //   observer.disconnect();
-    // };
-  }, [exeFilter, dispatch, exercisesListRef, type, name, page]);
+  }, [exeFilter, dispatch, type, name, page, isLoading]);
 
   const ucFirst = str => {
     if (!str) return str;
@@ -188,50 +176,3 @@ const ExercisesList = () => {
 };
 
 export default ExercisesList;
-
-//*=============
-// useEffect(() => {
-//   const filters = { type, name };
-
-//   // Initial fetch
-//   dispatch(getExercisesFilter(filters));
-
-//   // Intersection Observer
-//   const options = {
-//     rootMargin: '0px',
-//     threshold: 1.0,
-//   };
-
-//   const fetchMoreExercises = () => {
-//     const updatedPage = page + 1;
-
-//     // Check if there are more exercises to fetch
-//     // if (exeFilter.length % 10 === 0) {
-//     const updatedFilters = { type, name, page: updatedPage };
-
-//     dispatch(getExercisesFilter(updatedFilters));
-//     dispatch(setPage()); // Update the page in the state
-//     // }
-//   };
-
-//   const onIntersection = entries => {
-//     console.log('Intersection observed');
-//     if (entries[0].isIntersecting) {
-//       fetchMoreExercises();
-//     }
-//   };
-
-//   const observer = new IntersectionObserver(onIntersection, options);
-//   if (observer && intersectionRef.current) {
-//     observer.observe(intersectionRef.current);
-//   }
-
-//   return () => {
-//     if (observer) {
-//       observer.disconnect();
-//     }
-//     dispatch(clearExeciseFilter());
-//   };
-// }, [dispatch, type, name, page, intersectionRef]);
-
-//*=============
