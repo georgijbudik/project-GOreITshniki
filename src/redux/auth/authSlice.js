@@ -22,6 +22,7 @@ const initialState = {
     calorie: null,
     levelActivity: null,
   },
+  isLoading: false,
   token: null,
   isLoggedIn: false,
   isFetching: false,
@@ -79,7 +80,6 @@ const authSlice = createSlice({
       state.isFetching = true;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetching = false;
@@ -90,14 +90,19 @@ const authSlice = createSlice({
     });
     builder.addCase(updateUser.pending, (state, action) => {
       state.isFetching = true;
+      state.isLoading = true;
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isFetching = false;
+      state.isLoading = false;
+      state.isProfileComplete = true;
     });
     builder.addCase(updateUser.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.isLoading = false;
+      state.isProfileComplete = false;
     });
     builder.addCase(updateAvatar.pending, (state, action) => {
       state.isFetching = true;

@@ -50,53 +50,61 @@ const activityOptions = [
 const UserForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const currentUser = useSelector(selectUserInfo);
+  const {
+    name,
+    email,
+    height,
+    currentWeight,
+    desiredWeight,
+    birthday,
+    blood,
+    sex,
+    levelActivity,
+  } = useSelector(selectUserInfo);
   const initialValues = {
-    name: currentUser.name || '',
-    email: currentUser.email,
-    height: currentUser.height || '',
-    currentWeight: currentUser.currentWeight || '',
-    desiredWeight: currentUser.desiredWeight || '',
-    birthday: currentUser.birthday ? new Date(currentUser.birthday) : '',
-    blood: currentUser.blood || '',
-    sex: currentUser.sex || '',
-    levelActivity: currentUser.levelActivity || '',
+    name: name || '',
+    email: email,
+    height: height || '',
+    currentWeight: currentWeight || '',
+    desiredWeight: desiredWeight || '',
+    birthday: birthday ? new Date(birthday) : new Date(),
+    blood: blood || '',
+    sex: sex || '',
+    levelActivity: levelActivity || '',
   };
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   const formik = useFormik({
     initialValues,
-    onSubmit: values => {
-      const {
-        name,
-        height,
-        currentWeight,
-        desiredWeight,
-        blood,
-        sex,
-        levelActivity,
-        birthday,
-      } = values;
-
-      console.log(levelActivity);
-
+    onSubmit: ({
+      name,
+      height,
+      currentWeight,
+      desiredWeight,
+      blood,
+      sex,
+      levelActivity,
+      birthday,
+    }) => {
       const formattedBirthday = birthday
         ? dayjs(birthday).format('YYYY-MM-DD')
         : null;
 
-      const user = {
-        name,
-        height: Number(height),
-        currentWeight: Number(currentWeight),
-        desiredWeight: Number(desiredWeight),
-        blood: Number(blood),
-        sex,
-        levelActivity: Number(levelActivity),
-        birthday: formattedBirthday,
-      };
-      dispatch(updateUser(user));
+      dispatch(
+        updateUser({
+          name,
+          height: Number(height),
+          currentWeight: Number(currentWeight),
+          desiredWeight: Number(desiredWeight),
+          blood: Number(blood),
+          sex,
+          levelActivity: Number(levelActivity),
+          birthday: formattedBirthday,
+        })
+      );
     },
   });
 
@@ -113,7 +121,7 @@ const UserForm = () => {
               type="text"
               name="name"
               required
-              placeholder={currentUser.name}
+              placeholder={name}
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -124,7 +132,7 @@ const UserForm = () => {
               type="email"
               name="email"
               required
-              placeholder={currentUser.email}
+              placeholder={email}
               disabled
               value={formik.initialValues.email}
             />
@@ -231,26 +239,32 @@ const UserForm = () => {
           onChange={formik.handleChange}
           value={formik.values.levelActivity}
         >
-          {activityOptions.map(option => (
-            <RadioContainer key={option.id}>
+          {activityOptions.map(({ id, value }) => (
+            <RadioContainer key={id}>
               <input
                 type="radio"
-                id={option.id}
+                id={id}
                 name="levelActivity"
-                value={option.value}
-                checked={
-                  String(formik.values.levelActivity) === String(option.value)
-                }
+                value={value}
+                checked={String(formik.values.levelActivity) === String(value)}
                 onChange={formik.handleChange}
               />
-              <label htmlFor={option.id}>
-                {t(`profile.user_form.activity_${option.value}`)}
+              <label htmlFor={id}>
+                {t(`profile.user_form.activity_${value}`)}
               </label>
             </RadioContainer>
           ))}
         </ActivityContainer>
 
-        <SaveButton type="submit" className="save-button">
+        <SaveButton
+          type="submit"
+          className="save-button"
+          disabled={
+            !formik.dirty ||
+            !formik.isValid ||
+            Object.values(formik.values).some(value => value === '')
+          }
+        >
           {t('profile.user_form.save')}
         </SaveButton>
       </Container>
