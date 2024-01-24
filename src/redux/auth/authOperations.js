@@ -5,7 +5,7 @@ import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
 
 axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
 
-const setAuthHeader = token => {
+export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -45,7 +45,7 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const res = await axios.post('users/logout');
     clearAuthHeader();
@@ -57,7 +57,7 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
 });
 
 export const refreshUser = createAsyncThunk(
-  '/users/current',
+  'auth/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -72,6 +72,22 @@ export const refreshUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('users/update', credentials);
+      // setAuthHeader(res.data.token);
+      // toastSuccess('You were successfully login', res.data.email);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      toastError(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

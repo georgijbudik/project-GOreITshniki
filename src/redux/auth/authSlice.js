@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logIn, logOut, refreshUser, register } from './authOperations';
+import { updateUser } from './authOperations';
 
 const initialState = {
   user: {
     name: null,
     email: null,
-    password: null,
   },
   token: null,
   isLoggedIn: false,
@@ -69,6 +69,17 @@ const authSlice = createSlice({
       state.isFetching = false;
     });
     builder.addCase(refreshUser.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    });
+    builder.addCase(updateUser.pending, (state, action) => {
+      state.isFetching = true;
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isFetching = false;
+    });
+    builder.addCase(updateUser.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
     });

@@ -23,16 +23,17 @@ import {
   AddAvatarLabel,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
-import {
-  selectAvatarUrl,
-  selectUserInfo,
-} from '../../../redux/profile/profileSelectors';
+import { selectAvatarUrl } from '../../../redux/profile/profileSelectors';
 import { updateAvatar } from '../../../redux/profile/profileOperations';
+import {
+  selectUserCalories,
+  selectUserInfo,
+} from '../../../redux/auth/authSelectors';
 
 const UserCard = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(selectUserInfo);
-  const [calories, setCalories] = useState(0);
+  const calories = useSelector(selectUserCalories);
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const avatarURL = useSelector(selectAvatarUrl);
@@ -48,9 +49,9 @@ const UserCard = () => {
     dispatch(updateAvatar(formData));
   }, [file, dispatch]);
 
-  useEffect(() => {
-    setCalories(currentUser.calories);
-  }, [currentUser.calories]);
+  // useEffect(() => {
+  //   setCalories(currentUser.calories);
+  // }, [currentUser.calories]);
 
   return (
     <Container>
@@ -91,12 +92,7 @@ const UserCard = () => {
             </AddProfilePicCross>
           </AddAvatarLabel>
           {avatarURL ? (
-            <img
-              alt="User avatar"
-              url={avatarURL}
-              width="100px"
-              height="100px"
-            ></img>
+            <img alt="User avatar" url={avatarURL}></img>
           ) : (
             <UserAvatar fill="rgba(239, 237, 232, 0.1)">
               <use
