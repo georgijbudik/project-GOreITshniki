@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logOut, refreshUser, updateAvatar } from './profileOperations';
+import { updateAvatar } from './profileOperations';
 
 const initialState = {
   user: {
@@ -26,38 +26,40 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   extraReducers: builder => {
-    builder.addCase(logOut.pending, (state, action) => {
-      state.isFetching = true;
-    });
-    builder.addCase(logOut.fulfilled, (state, action) => {
-      state.user = { name: null, email: null, password: null };
-      state.token = null;
-      state.isLoggedIn = false;
-      state.isFetching = false;
-    });
-    builder.addCase(logOut.rejected, (state, action) => {
-      state.error = action.payload;
-      state.isFetching = false;
-    });
+    // builder.addCase(logOut.pending, (state, action) => {
+    //   state.isFetching = true;
+    // });
+    // builder.addCase(logOut.fulfilled, (state, action) => {
+    //   state.user = { name: null, email: null, password: null };
+    //   state.token = null;
+    //   state.isLoggedIn = false;
+    //   state.isFetching = false;
+    // });
+    // builder.addCase(logOut.rejected, (state, action) => {
+    //   state.error = action.payload;
+    //   state.isFetching = false;
+    // });
 
-    builder.addCase(refreshUser.pending, (state, action) => {
-      state.isFetching = true;
-    });
-    builder.addCase(refreshUser.fulfilled, (state, action) => {
-      state.user = action.payload;
-      state.isLoggedIn = true;
-      state.isFetching = false;
-    });
-    builder.addCase(refreshUser.rejected, (state, action) => {
-      state.isFetching = false;
-      state.error = action.payload;
-    });
+    // builder.addCase(refreshUser.pending, (state, action) => {
+    //   state.isFetching = true;
+    // });
+    // builder.addCase(refreshUser.fulfilled, (state, action) => {
+    //   state.user = action.payload;
+    //   state.isLoggedIn = true;
+    //   state.isFetching = false;
+    // });
+    // builder.addCase(refreshUser.rejected, (state, action) => {
+    //   state.isFetching = false;
+    //   state.error = action.payload;
+    // });
 
     builder.addCase(updateAvatar.pending, (state, action) => {
       state.isFetching = true;
     });
     builder.addCase(updateAvatar.fulfilled, (state, action) => {
-      state.user = action.payload;
+      console.log(action);
+      console.log(state.user);
+      state.user.avatarURL = action.payload.avatarURL;
       state.isLoggedIn = true;
       state.isFetching = false;
     });

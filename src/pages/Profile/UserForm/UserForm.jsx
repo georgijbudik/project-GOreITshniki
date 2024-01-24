@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
 // import * as yup from 'yup';
@@ -7,9 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import './datepicker.css';
 import { ProfileSettings } from '../UserCard/UserCard.styled';
-import { updateUser } from '../../../redux/profile/profileOperations';
-import { selectUserInfo } from '../../../redux/profile/profileSelectors';
-
+import { refreshUser, updateUser } from '../../../redux/auth/authOperations';
 import {
   Container,
   FieldName,
@@ -26,24 +23,49 @@ import {
   SaveButton,
   StyledCalendarIcon,
 } from './UserForm.styled';
+import { useEffect, useState } from 'react';
+import { selectUserInfo } from '../../../redux/auth/authSelectors';
+import dayjs from 'dayjs';
+import { t } from 'i18next';
 
-const initialValues = {
-  email: null,
-  name: null,
-  height: null,
-  currentWeight: null,
-  desiredWeight: null,
-  birthday: null,
-  blood: null,
-  sex: null,
-  levelActivity: null,
-};
+const activityOptions = [
+  { id: 'no_activity', value: '1', label: t('profile.user_form.activity_1') },
+  {
+    id: 'little_activity',
+    value: '2',
+    label: t('profile.user_form.activity_2'),
+  },
+  {
+    id: 'normal_activity',
+    value: '3',
+    label: t('profile.user_form.activity_3'),
+  },
+  { id: 'very_activity', value: '4', label: t('profile.user_form.activity_4') },
+  {
+    id: 'extreme_activity',
+    value: '5',
+    label: t('profile.user_form.activity_5'),
+  },
+];
 
 const UserForm = () => {
   const { t } = useTranslation();
-  const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUserInfo);
+
+  const initialValues = {
+    name: currentUser.name || '',
+    height: currentUser.height || '',
+    currentWeight: currentUser.currentWeight || '',
+    desiredWeight: currentUser.desiredWeight || '',
+    birthday: currentUser.birthday ? new Date(currentUser.birthday) : '',
+    blood: currentUser.blood || '',
+    sex: currentUser.sex || '',
+    levelActivity: currentUser.levelActivity || '',
+  };
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   const formik = useFormik({
     initialValues,
@@ -56,31 +78,25 @@ const UserForm = () => {
         blood,
         sex,
         levelActivity,
+        birthday,
       } = values;
 
-      const dateNow = new Date();
+      const formattedBirthday = birthday
+        ? dayjs(birthday).format('YYYY-MM-DD')
+        : null;
 
-      function formatDate(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-      }
-
-      if (dateNow.getFullYear() - startDate.getFullYear() >= 18) {
-        dispatch(
-          updateUser({
-            name: name,
-            height: Number(height),
-            currentWeight: Number(currentWeight),
-            desiredWeight: Number(desiredWeight),
-            blood: Number(blood),
-            sex: sex,
-            levelActivity: Number(levelActivity),
-            birthday: formatDate(startDate),
-          })
-        );
-      }
+      dispatch(
+        updateUser({
+          name,
+          height: Number(height),
+          currentWeight: Number(currentWeight),
+          desiredWeight: Number(desiredWeight),
+          blood: Number(blood),
+          sex,
+          levelActivity: Number(levelActivity),
+          birthday: formattedBirthday,
+        })
+      );
     },
   });
 
@@ -157,10 +173,10 @@ const UserForm = () => {
           <FieldContainer>
             <FieldName>{t('profile.user_form.date_of_birth')} </FieldName>
             <DatePicker
-              selected={startDate}
+              selected={formik.values.birthday}
               name="dateOfBirth"
               required
-              onChange={date => setStartDate(date)}
+              onChange={date => formik.setFieldValue('birthday', date)}
             />
             <StyledCalendarIcon>
               <use
@@ -175,104 +191,59 @@ const UserForm = () => {
 
         <FieldName>{t('profile.user_form.blood')} </FieldName>
         <BloodSexContainer>
-          <BloodContainer
-            onChange={formik.handleChange}
-            value={formik.values.blood}
-          >
-            <RadioContainer>
-              <input type="radio" id="blood_1" name="blood" value="1" />
-              <label htmlFor="blood_1">1</label>
-            </RadioContainer>
-            <RadioContainer>
-              <input type="radio" id="blood_2" name="blood" value="2" />
-              <label htmlFor="blood_2">2</label>
-            </RadioContainer>
-            <RadioContainer>
-              <input type="radio" id="blood_3" name="blood" value="3" />
-              <label htmlFor="blood_3">3</label>
-            </RadioContainer>
-            <RadioContainer>
-              <input type="radio" id="blood_4" name="blood" value="4" />
-              <label htmlFor="blood_4">4</label>
-            </RadioContainer>
+          <BloodContainer>
+            {[1, 2, 3, 4].map(value => (
+              <RadioContainer key={value}>
+                <input
+                  type="radio"
+                  id={`blood_${value}`}
+                  name="blood"
+                  value={value}
+                  defaultChecked={formik.values.blood === value}
+                  onChange={formik.handleChange}
+                />
+                <label htmlFor={`blood_${value}`}>{value}</label>
+              </RadioContainer>
+            ))}
           </BloodContainer>
 
-          <SexContainer
-            onChange={formik.handleChange}
-            value={formik.values.sex}
-          >
-            <RadioContainer>
-              <input type="radio" id="sex_male" name="sex" value="male" />
-              <label htmlFor="sex_male">{t('profile.user_form.male')} </label>
-            </RadioContainer>
-            <RadioContainer>
-              <input type="radio" id="sex_female" name="sex" value="female" />
-              <label htmlFor="sex_female">
-                {t('profile.user_form.female')}{' '}
-              </label>
-            </RadioContainer>
+          <SexContainer>
+            {['male', 'female'].map(value => (
+              <RadioContainer key={value}>
+                <input
+                  type="radio"
+                  id={`sex_${value}`}
+                  name="sex"
+                  value={value}
+                  checked={formik.values.sex === value}
+                  onChange={formik.handleChange}
+                />
+                <label htmlFor={`sex_${value}`}>
+                  {t(`profile.user_form.${value}`)}
+                </label>
+              </RadioContainer>
+            ))}
           </SexContainer>
         </BloodSexContainer>
         <ActivityContainer
           onChange={formik.handleChange}
-          value={formik.values.activity}
+          value={formik.values.levelActivity}
         >
-          <RadioContainer>
-            <input
-              type="radio"
-              id="no_activity"
-              name="levelActivity"
-              value="1"
-            />
-            <label htmlFor="no_activity">
-              {t('profile.user_form.activity_1')}
-            </label>
-          </RadioContainer>
-
-          <RadioContainer>
-            <input
-              type="radio"
-              id="little_activity"
-              name="levelActivity"
-              value="2"
-            />
-            <label htmlFor="little_activity">
-              {t('profile.user_form.activity_2')}
-            </label>
-          </RadioContainer>
-          <RadioContainer>
-            <input
-              type="radio"
-              id="normal_activity"
-              name="levelActivity"
-              value="3"
-            />
-            <label htmlFor="normal_activity">
-              {t('profile.user_form.activity_3')}
-            </label>
-          </RadioContainer>
-          <RadioContainer>
-            <input
-              type="radio"
-              id="very_activity"
-              name="levelActivity"
-              value="4"
-            />
-            <label htmlFor="very_activity">
-              {t('profile.user_form.activity_4')}
-            </label>
-          </RadioContainer>
-          <RadioContainer>
-            <input
-              type="radio"
-              id="extreme_activity"
-              name="levelActivity"
-              value="5"
-            />
-            <label htmlFor="extreme_activity">
-              {t('profile.user_form.activity_5')}
-            </label>
-          </RadioContainer>
+          {activityOptions.map(option => (
+            <RadioContainer key={option.id}>
+              <input
+                type="radio"
+                id={option.id}
+                name="levelActivity"
+                value={option.value}
+                checked={formik.values.levelActivity === option.value}
+                onChange={formik.handleChange}
+              />
+              <label htmlFor={option.id}>
+                {t(`profile.user_form.activity_${option.value}`)}
+              </label>
+            </RadioContainer>
+          ))}
         </ActivityContainer>
 
         <SaveButton type="submit" className="save-button">
