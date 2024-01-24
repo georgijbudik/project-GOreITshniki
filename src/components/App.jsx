@@ -74,9 +74,9 @@ export const App = () => {
         <Route
           path="diary"
           element={
-            <PrivateRoute>
-              <Diary />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <Diary />
+            // </PrivateRoute>
           }
         />
         <Route
