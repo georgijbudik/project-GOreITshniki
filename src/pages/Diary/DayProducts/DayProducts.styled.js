@@ -27,12 +27,35 @@ export const Wrapper = styled.div`
     max-width: 704px;
     margin-top: 0;
     /* height: 234px; */
+    height: ${props => (props.noExercises ? '234px' : '234px')};
+
+    overflow-y: auto; /* був unset  */
+
+    position: relative;
+    width: 100%;
+  }
+`;
+export const TableHeaderTablet = styled.ul`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `;
 
 export const CellProductsHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  overflow-x: auto; /* Add this line to enable horizontal scrolling */
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.2);
+    border-radius: 4px;
+  }
 
   & div {
     display: flex;
@@ -62,6 +85,16 @@ export const CellProductsHeader = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 704px;
     /* height: 234px; */
+    /* Add additional styles for larger screens */
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(239, 237, 232, 0.3);
+      border-radius: 6px;
+    }
   }
 `;
 
@@ -69,12 +102,27 @@ export const NotFoundMessage = styled.div`
   margin-top: 145px;
   justify-content: center;
   text-align: center;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    margin-top: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
-export const ProdWrap = styled.div``;
+export const ProdWrap = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+`;
 
 export const TopProdBlock = styled.div`
-  & p {
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+
+  /* & p {
     max-width: 297px;
     height: 38px;
 
@@ -82,19 +130,19 @@ export const TopProdBlock = styled.div`
     border: 1px solid rgba(239, 237, 232, 0.3);
     display: block;
     padding: 10px 14px;
-    /* gap: 10px; */
-  }
+    gap: 10px;
+  } */
 `;
 
 export const BottomProdBlock = styled.div`
   display: Flex;
+
   & p {
     max-width: 80px;
     height: 38px;
     padding: 10px, 42px, 10px, 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
-    /* gap: 10px; */
   }
   & button {
     display: flex;
@@ -113,6 +161,11 @@ export const BottomProdBlock = styled.div`
     max-width: 20px;
     height: 20px;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 90px;
+    height: 40px;
+  }
 `;
 
 export const TitleText = styled.div`
@@ -125,17 +178,84 @@ export const TitleText = styled.div`
   color: var(--icon-color);
   padding-bottom: 8px;
   padding-top: 16px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const TitleTextTablet = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--icon-color);
+    padding-bottom: 8px;
+    padding-top: 16px;
+  }
 `;
 
 export const MainText = styled.div`
-  display: flex;
+  /* display: flex; */
   align-items: center;
   max-width: 297px;
   height: 38px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 10px 14px;
+  padding: 7px 14px;
   color: rgba(239, 237, 232, 1);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MainTextTablet = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    align-items: center;
+    max-width: 297px;
+    height: 38px;
+    border-radius: 12px;
+    border: 1px solid rgba(239, 237, 232, 0.3);
+    padding: 7px 14px;
+    color: rgba(239, 237, 232, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 204px;
+    height: 40px;
+  }
+`;
+
+export const MainTextTablett = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    align-items: center;
+    max-width: 297px;
+    height: 38px;
+    border-radius: 12px;
+    border: 1px solid rgba(239, 237, 232, 0.3);
+    padding: 7px 14px;
+    color: rgba(239, 237, 232, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 128px;
+    height: 40px;
+    margin-left: 8px;
+  }
 `;
 
 export const MainTextBottom = styled.div`
@@ -149,6 +269,14 @@ export const MainTextBottom = styled.div`
   padding: 10px 14px;
   margin-right: 16px;
   color: rgba(239, 237, 232, 1);
+  @media screen and (min-width: 768px) {
+    /* display: none; */
+    max-width: 90px;
+    width: 90px;
+    height: 40px;
+    margin: 0;
+    margin-left: 8px;
+  }
 `;
 
 export const ButtonWrap = styled.div`
@@ -156,8 +284,14 @@ export const ButtonWrap = styled.div`
   align-items: flex-end;
   padding-bottom: 10px;
   margin-left: -8px;
+  @media screen and (min-width: 768px) {
+    margin-left: 12px;
+  }
 `;
 
 export const LiWrap = styled.li`
   margin-bottom: 24px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 8px;
+  }
 `;

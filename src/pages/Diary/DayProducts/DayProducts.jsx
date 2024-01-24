@@ -14,7 +14,11 @@ import {
   TopProdBlock,
   BottomProdBlock,
   TitleText,
+  TitleTextTablet,
+  TableHeaderTablet,
   MainText,
+  MainTextTablet,
+  MainTextTablett,
   MainTextBottom,
   ButtonWrap,
   LiWrap,
@@ -56,10 +60,36 @@ const DayProducts = () => {
           </svg>
         </div>
       </CellProductsHeader>
+      {products.length > 0 ? (
+        <TableHeaderTablet>
+          <li>
+            <TitleTextTablet style={{ width: '212px' }}>Title</TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '132px' }}>
+              Category
+            </TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '98px' }}>
+              Calories
+            </TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '98px' }}>Weight</TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet>Recommend</TitleTextTablet>
+          </li>
+        </TableHeaderTablet>
+      ) : (
+        <div></div>
+      )}
       {products.length === 0 ? (
         <NotFoundMessage>Not found products</NotFoundMessage>
       ) : (
         <ul>
+          {' '}
           {products.map(({ product, consumedCalories }) => {
             return (
               <LiWrap>
@@ -68,10 +98,12 @@ const DayProducts = () => {
                     <div>
                       <TitleText>Title</TitleText>
                       <MainText>{product.title}</MainText>
+                      <MainTextTablet>{product.title}</MainTextTablet>
                     </div>
                     <div>
                       <TitleText>Category</TitleText>
                       <MainText> {product.category}</MainText>
+                      <MainTextTablett>{product.category}</MainTextTablett>
                     </div>
                   </TopProdBlock>
                   <BottomProdBlock>
