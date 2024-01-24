@@ -282,7 +282,7 @@ i18n
             },
             exercise_item: {
               workout: 'ВПРАВА',
-              start: 'Початок',
+              start: 'Почати',
               burned_calories: 'Спалено калорій',
               body_part: 'Частина тіла',
               target: 'Ціль',
@@ -449,7 +449,7 @@ i18n
             },
             exercise_item: {
               workout: 'ENTRENA',
-              start: 'Comenzar',
+              start: 'Comen',
               burned_calories: 'Calorías quemadas',
               body_part: 'Parte del cuerpo',
               target: 'Objetivo',

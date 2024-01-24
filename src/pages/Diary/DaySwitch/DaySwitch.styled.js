@@ -174,61 +174,85 @@ export const CalendarGlobalStyles = createGlobalStyle`
 `;
 
 export const TitleWrapper = styled.button`
-  width: 120px;
-  color: #efede8;
-  background: black;
   border: 0;
   font-weight: 700;
   line-height: 18px;
   text-align: right;
   text-transform: uppercase;
-  /* padding: 8px 12px; */
+  background-color: transparent;
+  color: ${({ theme }) => theme.palette.text.primary};
   font-size: 16px;
   justify-content: space-around;
   align-items: center;
-`;
-
-export const GlobWrapDP = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  /* flex-direction: column; */
-`;
-
-export const ChangDayBtn = styled.button`
-  /* color: #efede8;
-  background-color: #040404;
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  border: 1px;
-  border-color: #efede8; */
-  width: 16px;
-  height: 16px;
   padding: 0;
-  border: 0;
-  /* display: flex;
-  justify-content: center; */
-  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 133.333%;
+  }
 `;
 
-export const CalendarIcon = styled.svg`
-  fill: green;
-  /* background-color: #040404; */
-  width: 16px;
-  height: 16px;
-  margin: 0 20px 0 2px;
+export const StyledDaySwitchWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+  }
 `;
 
-export const ChangeDayIcon = styled.svg`
-  fill: red;
-  background-color: #040404;
-  width: 16px;
-  height: 16px;
+export const StyledCalendarButton = styled.button`
+  line-height: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+`;
+
+export const StyledCalendarIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+
+  stroke: var(--accent-color);
+  fill: transparent;
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const StyledCalendarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const StyledCalendarNavigationContainer = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
+export const StyledCalendarNavigationButton = styled.button`
+  line-height: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 
   &:hover {
-    /* filter: brightness(0) invert(1.2); // Легкое изменение яркости при наведении */
-    fill: red;
+    & > svg {
+      fill: ${({ theme }) => theme.palette.text.primary};
+    }
   }
+`;
+
+export const StyledCalendarNavigationIcon = styled.svg`
+  width: 16px;
+  height: 16px;
+
+  transition: var(--transition);
+
+  fill: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.2)'
+      : 'rgba(100, 100, 100, 0.7)'};
 `;
