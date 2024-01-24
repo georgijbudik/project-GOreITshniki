@@ -10,12 +10,17 @@ import {
   CellExercisesHeader,
   NotFoundMessage,
   WrapElem,
-  // -
   TopProdBlock,
   BottomProdBlock,
   TitleText,
+  TitleTextTablet,
+  TableHeaderTablet,
   MainText,
   MainTextBottom,
+  MainTextBottom1,
+  MainTextBottom2,
+  MainTextTablet,
+  MainTextTablett,
   ButtonWrap,
   LiWrap,
   ProdWrap,
@@ -55,64 +60,98 @@ const DayExercises = () => {
           </svg>
         </WrapElem>
       </CellExercisesHeader>
-      {exercises.length === 0 && (
-        <NotFoundMessage>Not found exercises</NotFoundMessage>
+      {exercises.length > 0 ? (
+        <TableHeaderTablet>
+          <li>
+            <TitleTextTablet style={{ width: '98px' }}>
+              Body Part
+            </TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '138px' }}>
+              Body weight
+            </TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '138px' }}>Name</TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '92px' }}>
+              Calories
+            </TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet style={{ width: '90px' }}>Weight</TitleTextTablet>
+          </li>
+          <li>
+            <TitleTextTablet>Recommend</TitleTextTablet>
+          </li>
+        </TableHeaderTablet>
+      ) : (
+        <div></div>
       )}
-      <ul>
-        {exercises.map(({ exercise }) => {
-          return (
-            <LiWrap key={exercise._id}>
-              <ProdWrap>
-                <TopProdBlock>
+      {exercises.length === 0 ? (
+        <NotFoundMessage>Not found exercises</NotFoundMessage>
+      ) : (
+        <ul>
+          {exercises.map(({ exercise }) => {
+            return (
+              <LiWrap key={exercise._id}>
+                <ProdWrap>
+                  <TopProdBlock>
+                    <div>
+                      <TitleText>Body Part</TitleText>
+                      <MainText>{exercise.bodyPart}</MainText>
+                      <MainTextTablet>{exercise.bodyPart}</MainTextTablet>
+                    </div>
+                    <div>
+                      <TitleText>Equipment</TitleText>
+                      <MainText>{exercise.equipment}</MainText>
+                      <MainTextTablett>{exercise.equipment}</MainTextTablett>
+                    </div>
+                    <div>
+                      <TitleText>Name</TitleText>
+                      <MainText>{exercise.name}</MainText>
+                      <MainTextTablett>{exercise.name}</MainTextTablett>
+                    </div>
+                  </TopProdBlock>
+                </ProdWrap>
+                <BottomProdBlock>
                   <div>
-                    <TitleText>Body Part</TitleText>
-                    <MainText>{exercise.bodyPart}</MainText>
+                    <TitleText>Target</TitleText>
+                    <MainTextBottom>{exercise.target}</MainTextBottom>
                   </div>
                   <div>
-                    <TitleText>Equipment</TitleText>
-                    <MainText>{exercise.equipment}</MainText>
+                    <TitleText>Burned Calories</TitleText>
+                    <MainTextBottom1>{exercise.burnedCalories}</MainTextBottom1>
                   </div>
                   <div>
-                    <TitleText>Name</TitleText>
-                    <MainText>{exercise.name}</MainText>
+                    <TitleText>Time</TitleText>
+                    <MainTextBottom2>{exercise.time}</MainTextBottom2>
                   </div>
-                </TopProdBlock>
-              </ProdWrap>
-              <BottomProdBlock>
-                <div>
-                  <TitleText>Target</TitleText>
-                  <MainTextBottom>{exercise.target}</MainTextBottom>
-                </div>
-                <div>
-                  <TitleText>Burned Calories</TitleText>
-                  <MainTextBottom>{exercise.burnedCalories}</MainTextBottom>
-                </div>
-                <div>
-                  <TitleText>Time</TitleText>
-                  <MainTextBottom>{exercise.time}</MainTextBottom>
-                </div>
-                <ButtonWrap>
-                  <button
-                    onClick={() => {
-                      const data = { date, id: exercise._id };
-                      handleDelete(data);
-                    }}
-                  >
-                    <svg>
-                      <use
-                        xlinkHref={
-                          process.env.PUBLIC_URL +
-                          '/images/sprite/sprite.svg#icon-trash-03_OMG'
-                        }
-                      />
-                    </svg>
-                  </button>
-                </ButtonWrap>
-              </BottomProdBlock>
-            </LiWrap>
-          );
-        })}
-      </ul>
+                  <ButtonWrap>
+                    <button
+                      onClick={() => {
+                        const data = { date, id: exercise._id };
+                        handleDelete(data);
+                      }}
+                    >
+                      <svg>
+                        <use
+                          xlinkHref={
+                            process.env.PUBLIC_URL +
+                            '/images/sprite/sprite.svg#icon-trash-03_OMG'
+                          }
+                        />
+                      </svg>
+                    </button>
+                  </ButtonWrap>
+                </BottomProdBlock>
+              </LiWrap>
+            );
+          })}
+        </ul>
+      )}
     </Wrapper>
   );
 };
