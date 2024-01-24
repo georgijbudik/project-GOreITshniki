@@ -12,7 +12,7 @@ import ThemeToggle from 'components/ThemeToggle';
 
 import { StyledHeader, StyledHeaderUserMenu } from './Header.styled';
 
-export function Header() {
+function Header() {
   const isLoggedIn = useSelector(selectIsLoggedin);
   const userInfo = useSelector(selectUserBlood);
 
@@ -31,17 +31,8 @@ export function Header() {
           <ThemeToggle />
         </StyledHeaderUserMenu>
       )}
-      {/* {isLoggedIn ? (
-        <StyledHeaderUserMenu>
-          <UserBar />
-          <UserNav />
-        </StyledHeaderUserMenu>
-      ) : (
-        <StyledHeaderUserMenu>
-          <LanguageToggle />
-          <ThemeToggle />
-        </StyledHeaderUserMenu>
-      )} */}
     </StyledHeader>
   );
 }
+
+export default Header;

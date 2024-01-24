@@ -1,7 +1,4 @@
 import { Route, Routes, Navigate, useLocation } from 'react-router';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { refreshUser } from '../redux/auth/authOperations';
 
 import Welcome from 'pages/Welcome/Welcome';
 import SignUp from 'pages/SignUp/SignUp';
@@ -17,19 +14,10 @@ import ExercisesSubcategoriesList from 'pages/Exercises/ExercisesSubcategoriesLi
 
 import PublicRoute from 'routes/PublicRoute';
 
-// import PrivateRoute from 'routes/PrivateRoute';
-
 import PrivateRoute from 'routes/PrivateRoute';
-
-// import PrivateRoute from '../routes/PrivateRoute';
 
 export const App = () => {
   const location = useLocation();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
 
   if (location.pathname === '/exercises') {
     return <Navigate to="/exercises/bodyparts" />;

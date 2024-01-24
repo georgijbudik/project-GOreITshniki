@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledTitlePage = styled.h2`
-  /* color: var(--main-text-color); */
-
   font-size: 24px;
   font-weight: 700;
   line-height: 116.667%;

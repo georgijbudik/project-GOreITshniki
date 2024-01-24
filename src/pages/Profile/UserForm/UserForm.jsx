@@ -1,6 +1,5 @@
 import DatePicker from 'react-datepicker';
 import { useFormik } from 'formik';
-// import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +22,7 @@ import {
   SaveButton,
   StyledCalendarIcon,
 } from './UserForm.styled';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { selectUserInfo } from '../../../redux/auth/authSelectors';
 import dayjs from 'dayjs';
 import { t } from 'i18next';

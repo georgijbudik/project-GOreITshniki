@@ -6,7 +6,6 @@ export const StyledAddExerciseFormWrapper = styled.div`
   @media screen and (min-width: 768px) {
     padding: 48px 32px;
     display: flex;
-    /* height: 456px; */
     gap: 16px;
   }
 
@@ -57,7 +56,6 @@ export const StyledAddExerciseFormTimer = styled.div`
 `;
 
 export const StyledAddExerciseFormTime = styled.p`
-  /* color: var(--main-text-color); */
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 16px;
   line-height: 150%;
@@ -139,13 +137,11 @@ export const StyledAddExerciseFormInfoItem = styled.div`
     theme.palette.mode === 'dark'
       ? '1px solid rgba(239, 237, 232, 0.2)'
       : '1px solid rgba(100, 100, 100, 0.7)'};
-  /* border: 1px solid rgba(239, 237, 232, 0.2); */
 
   background: ${({ theme }) =>
     theme.palette.mode === 'dark'
       ? 'rgba(239, 237, 232, 0.05)'
       : 'rgba(100, 100, 100, 0.05)'};
-  /* background: ; */
 
   @media screen and (min-width: 768px) {
     width: 150px;
@@ -166,7 +162,6 @@ export const StyledAddExerciseFormInfoItem = styled.div`
   }
 
   & > p {
-    /* color: var(--main-text-color); */
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 14px;
     font-weight: 700;

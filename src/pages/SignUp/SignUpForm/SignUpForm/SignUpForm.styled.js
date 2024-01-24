@@ -6,7 +6,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 90px 0px 35px 0px;
-  /* position: relative; */
 
   @media screen and (min-width: 768px) {
     width: 496px;
@@ -20,7 +19,6 @@ export const Heading = styled.h1`
   margin: 0 0 14px 0;
   line-height: calc(28 / 24);
   letter-spacing: 0.02em;
-  /* color: var(--main-text-color); */
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
@@ -36,7 +34,6 @@ export const Info = styled.p`
   margin-bottom: 28px;
   line-height: calc(18 / 14);
   letter-spacing: -0.02em;
-  /* color: var(--main-text-color); */
   opacity: 0.3;
 
   @media screen and (min-width: 768px) {
@@ -53,7 +50,6 @@ export const InfoLink = styled.p`
   margin-top: 12px;
   line-height: calc(18 / 12);
   letter-spacing: 0.02em;
-  /* color: var(--main-text-color); */
   opacity: 0.6;
 `;
 
@@ -67,14 +63,12 @@ export const StyledLink = styled(Link)`
   }};
 `;
 
-// Forma CSS
 export const Forma = styled(Form)`
   width: 335px;
   display: flex;
   align-items: left;
   justify-content: center;
   flex-direction: column;
-  /* gap: 18px; */
   @media screen and (min-width: 768px) {
     width: 364px;
   }
@@ -96,7 +90,6 @@ export const ContainerInput = styled.div`
 export const Input = styled(Field)`
   font-size: 18px;
   line-height: calc(24 / 18);
-  /* color: #efede8; */
   color: ${({ theme }) => theme.palette.text.primary};
   width: 100%;
   height: 46px;
@@ -146,7 +139,6 @@ export const Error = styled(ErrorMessage)`
     transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `;
 
-// button
 export const StyledAuthButton = styled.button`
   display: inline-flex;
   justify-content: center;
@@ -157,7 +149,6 @@ export const StyledAuthButton = styled.button`
     return theme.palette.text.primary;
   }};
   transition: var(--transition);
-  /* z-index: 10; */
 
   padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
 
@@ -205,7 +196,6 @@ export const StyledAuthButton = styled.button`
   }
 `;
 
-// password eye
 export const ContainerShowButton = styled.div`
   position: relative;
 `;
