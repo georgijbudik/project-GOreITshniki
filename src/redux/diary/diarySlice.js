@@ -49,9 +49,20 @@ const diarySlice = createSlice({
     //   state.error = action.payload;
     // });
     builder.addCase(getDayInfo.fulfilled, (state, action) => {
-      state.products = action.payload?.days[0].products;
-      state.exercises = action.payload?.days[0].exercises;
-      state.date = action.payload?.days[0].date;
+      if (action.payload.message !== undefined) {
+        state.products = [];
+        state.exercises = [];
+        state.date = action.meta.arg;
+
+        state.burnedCalories = 0;
+        state.sportSeconds = 0;
+        state.consumedCalories = 0;
+        return;
+      }
+
+      state.products = action.payload.days[0].products;
+      state.exercises = action.payload.days[0].exercises;
+      state.date = action.payload.days[0].date;
 
       const { totalTime, totalBurnedCalories } =
         action.payload.days[0].exercises.reduce(

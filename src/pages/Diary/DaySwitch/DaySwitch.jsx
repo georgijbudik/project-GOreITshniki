@@ -59,7 +59,14 @@ const DaySwitch = () => {
         />
       </CalendarIcon>
 
-      <ChangDayBtn onClick={() => setSelectedDate(subDays(selectedDate, 1))}>
+      <ChangDayBtn
+        onClick={() => {
+          const date = subDays(selectedDate, 1);
+          const formatedDate = dayjs(date).format('DD.MM.YYYY');
+          dispatch(setDate(formatedDate));
+          setSelectedDate(date);
+        }}
+      >
         <ChangeDayIcon width="16" height="16">
           <use
             xlinkHref={
@@ -70,7 +77,14 @@ const DaySwitch = () => {
         </ChangeDayIcon>
       </ChangDayBtn>
 
-      <ChangDayBtn onClick={() => setSelectedDate(addDays(selectedDate, 1))}>
+      <ChangDayBtn
+        onClick={() => {
+          const date = addDays(selectedDate, 1);
+          const formatedDate = dayjs(date).format('DD.MM.YYYY');
+          dispatch(setDate(formatedDate));
+          setSelectedDate(date);
+        }}
+      >
         <ChangeDayIcon width="16" height="16">
           <use
             xlinkHref={
