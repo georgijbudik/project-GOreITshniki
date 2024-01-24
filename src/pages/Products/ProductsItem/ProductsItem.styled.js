@@ -36,7 +36,10 @@ export const StyledDietContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: 4px;
-  background-color: rgba(239, 237, 232, 0.05);
+  background-color: ${({ theme }) =>
+    theme.palette.text.primary === 'dark'
+      ? 'rgba(239, 237, 232, 0.05)'
+      : 'rgba(100, 100, 100, 0.2)'};
 `;
 
 export const StyledDietText = styled.p`
@@ -87,7 +90,11 @@ export const StyledAddBtn = styled.button`
 
   &:hover,
   &:focus {
-    scale: 1.1;
+    color: var(--icon-color);
+
+    & > svg {
+      stroke: var(--icon-color);
+    }
   }
 
   @media screen and (min-width: 375px) {
@@ -98,7 +105,11 @@ export const StyledAddBtn = styled.button`
 `;
 
 export const StyledAddSvg = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-color);
   margin-left: 8px;
+  transition: var(--transition);
 `;
 
 export const StyledTitleContainer = styled.div`

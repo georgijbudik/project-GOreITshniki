@@ -68,7 +68,7 @@ const ProductsItem = ({ product }) => {
             <StyledAddBtn type="button" onClick={handleAddBtn}>
               {t('products.product_item.add')}
 
-              <StyledAddSvg width="16" height="16" stroke="var(--accent-color)">
+              <StyledAddSvg>
                 <use
                   href={
                     process.env.PUBLIC_URL +

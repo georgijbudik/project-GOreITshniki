@@ -31,14 +31,14 @@ export const HeaderIndexes = styled.div`
 `;
 
 export const ExercisesTitle = styled.p`
-  font-family: Roboto;
   font-size: 12px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   padding: 5px 7.5px;
   border-radius: 4px;
-  background: rgba(239, 237, 232, 0.05);
+  background-color: ${({ theme }) =>
+    theme.palette.text.primary === 'dark'
+      ? 'rgba(239, 237, 232, 0.05)'
+      : 'rgba(100, 100, 100, 0.2)'};
 `;
 
 export const WrapperStart = styled.button`
@@ -47,6 +47,17 @@ export const WrapperStart = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  &:hover,
+  &:focus {
+    & > p {
+      color: var(--icon-color);
+    }
+
+    & > svg {
+      stroke: var(--icon-color);
+    }
+  }
 `;
 
 export const TextStart = styled.p`
@@ -55,11 +66,13 @@ export const TextStart = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
+  transition: var(--transition);
 `;
 export const IconWrapperStart = styled.svg`
   width: 13px;
   height: 13px;
   stroke: var(--accent-color);
+  transition: var(--transition);
 `;
 
 export const NameExes = styled.p`
