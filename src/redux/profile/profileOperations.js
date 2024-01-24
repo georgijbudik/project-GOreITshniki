@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { toastError } from '../helpers/toastCase';
 
 export const updateAvatar = createAsyncThunk(
   'profile/avatar',
