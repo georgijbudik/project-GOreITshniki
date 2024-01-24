@@ -10,6 +10,4 @@ export const StyledLoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* background: rgba(4, 4, 4, 0.2); */
 `;

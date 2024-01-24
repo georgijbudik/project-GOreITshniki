@@ -25,17 +25,6 @@ import {
   StyledAddExerciseFormInfoItem,
 } from './AddExerciseForm.styled';
 
-// const mockExercise = {
-//   _id: '64f2458d6f67bc34bae4f7f7',
-//   bodyPart: 'chest',
-//   equipment: 'leverage machine',
-//   gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0009.gif',
-//   name: 'assisted chest dip (kneeling)',
-//   target: 'pectorals',
-//   burnedCalories: 329,
-//   time: 3,
-// };
-
 const formatDescription = text => {
   const shortenText = text.length > 12 ? text.slice(0, 12) + '...' : text;
 

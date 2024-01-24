@@ -6,10 +6,7 @@ import {
   BodyLine,
 } from './index';
 import { useNavigate } from 'react-router-dom';
-// import {
-//   TrackerCalories,
-//   TrackerVideo,
-// } from '../../components/Tracker/Tracker';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import {

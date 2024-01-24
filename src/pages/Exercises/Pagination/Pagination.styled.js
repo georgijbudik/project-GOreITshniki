@@ -8,7 +8,6 @@ export const WrapperPaginate = styled.div`
   padding-bottom: 80px;
   margin-left: auto;
   margin-right: auto;
-  /* width: 6em; */
   width: 100%;
 
   @media screen and (min-width: 768px) {

@@ -19,7 +19,6 @@ export const Container = styled.div`
 export const FieldName = styled.p`
   margin-block-start: 0;
   margin-block-end: 4px;
-  /* color: var(--main-text-color); */
   opacity: 0.5;
   font-weight: 400;
   font-size: 12px;
@@ -60,7 +59,6 @@ export const MainInput = styled.input`
       ? '1px solid var(--border-color)'
       : '1px solid rgba(100, 100, 100, 0.2)';
   }};
-  /* color: var(--main-text-color); */
   font-size: 14px;
   border-radius: 12px;
   box-sizing: border-box;
@@ -79,13 +77,11 @@ export const MainInput = styled.input`
 
 export const SecondaryInput = styled.input`
   all: unset;
-  /* border: 1px solid var(--border-color); */
   border: ${({ theme }) => {
     return theme.palette.mode === 'dark'
       ? '1px solid var(--border-color)'
       : '1px solid rgba(100, 100, 100, 0.2)';
   }};
-  /* color: var(--main-text-color); */
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 12px;
@@ -133,15 +129,6 @@ export const BloodContainer = styled.div`
   }
 `;
 
-// export const BloodSexContainerLabel = styled.label`
-//   color: var(--main-text-color);
-//   font-size: 14px;
-
-//   @media screen and (min-width: 768px) {
-//     font-size: 16px;
-//   }
-// `;
-
 export const RadioContainer = styled.label`
   display: flex;
   align-items: center;
@@ -149,7 +136,6 @@ export const RadioContainer = styled.label`
   margin-block-end: 8px;
 
   label {
-    /* color: var(--main-text-color); */
     font-size: 14px;
 
     @media screen and (min-width: 768px) {
@@ -170,7 +156,6 @@ export const RadioContainer = styled.label`
       background-color: var(--icon-color);
       box-shadow: 0px 0px 0px 2px black inset;
     }
-    
 
     @media screen and (min-width: 768px) {
       width: 24px;
@@ -199,8 +184,8 @@ export const ActivityContainer = styled.label`
 export const NameEmailInput = styled.div`
   @media screen and (min-width: 768px) {
     margin-block-end: 8px;
-      display:flex;
-  justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
   }
 
   @media screen and (min-width: 1440px) {

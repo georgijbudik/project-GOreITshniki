@@ -17,10 +17,10 @@ export const StyledLanguageToggleListItem = styled.li`
     &::after {
       content: '';
       display: block;
-      width: 1px; /* Adjust the width as needed */
-      height: 18px; /* Adjust the height as needed */
+      width: 1px;
+      height: 18px;
       background-color: var(--accent-color);
-      margin-left: 10px; /* Adjust the margin as needed */
+      margin-left: 10px;
     }
   }
 `;

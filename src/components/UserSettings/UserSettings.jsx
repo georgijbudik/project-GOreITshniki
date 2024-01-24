@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import { setLanguage, setTheme } from '../../redux/global/globalSlice';
 import { logOut } from '../../redux/auth/authOperations';
 
-// import Avatar from '@mui/material/Avatar';
-
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -17,7 +15,6 @@ import {
   StyledUserSettingsAvatarBackgroundIcon,
   StyledUserSettingsAvatarIcon,
   StyledUserSettingsAvatarWrapper,
-  // StyledUserSettingsAvatarButton,
 } from './UserSettings.styled';
 
 const UserSettings = () => {
@@ -90,10 +87,6 @@ const UserSettings = () => {
           ></use>
         </StyledUserSettingsAvatarIcon>
       </StyledUserSettingsAvatarWrapper>
-
-      {/* <StyledUserSettingsAvatarButton onClick={handleOpenUserMenu}>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-      </StyledUserSettingsAvatarButton> */}
 
       <Menu
         sx={{ mt: '45px' }}

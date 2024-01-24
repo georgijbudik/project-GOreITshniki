@@ -11,13 +11,8 @@ export const WrapperExercisesItem = styled.li`
       : '1px solid rgba(100, 100, 100, 0.2)'};
   border-radius: 12px;
 
-  /* @media screen and (min-width: 768px) {
-    height: 163px;
-  } */
-
   @media screen and (min-width: 1440px) {
     width: 405px;
-    /* height: 141px; */
   }
 `;
 
@@ -57,10 +52,6 @@ export const WrapperStart = styled.button`
 export const TextStart = styled.p`
   color: var(--accent-color);
 
-  /* ${({ theme }) =>
-    theme.palette.mode === 'dark'
-      ? 'rgba(230, 83, 60, 1)'
-      : 'rgba(100, 100, 100, 1'}; */
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
