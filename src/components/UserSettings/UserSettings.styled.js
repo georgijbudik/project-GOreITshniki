@@ -7,6 +7,24 @@ export const StyledUserSettingsAvatarWrapper = styled.div`
   cursor: pointer;
 `;
 
+export const StyledUserSettingsRealAvatarWrapper = styled.div`
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+  }
+`;
+
 export const StyledUserSettingsAvatarBackgroundIcon = styled.svg`
   width: 37px;
   height: 37px;
