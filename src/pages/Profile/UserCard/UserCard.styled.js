@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-@media screen and (min-width: 768px) {
-
+  @media screen and (min-width: 768px) {
   }
 
   @media screen and (min-width: 1440px) {
@@ -73,6 +72,12 @@ export const UserAvatar = styled.svg`
 
     padding: 24px;
   }
+`;
+
+export const AvatarContainer = styled.div`
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
 `;
 
 export const UserName = styled.p`

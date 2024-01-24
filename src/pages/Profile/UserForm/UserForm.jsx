@@ -51,9 +51,9 @@ const UserForm = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUserInfo);
-
   const initialValues = {
     name: currentUser.name || '',
+    email: currentUser.email,
     height: currentUser.height || '',
     currentWeight: currentUser.currentWeight || '',
     desiredWeight: currentUser.desiredWeight || '',
@@ -80,22 +80,23 @@ const UserForm = () => {
         birthday,
       } = values;
 
+      console.log(levelActivity);
+
       const formattedBirthday = birthday
         ? dayjs(birthday).format('YYYY-MM-DD')
         : null;
 
-      dispatch(
-        updateUser({
-          name,
-          height: Number(height),
-          currentWeight: Number(currentWeight),
-          desiredWeight: Number(desiredWeight),
-          blood: Number(blood),
-          sex,
-          levelActivity: Number(levelActivity),
-          birthday: formattedBirthday,
-        })
-      );
+      const user = {
+        name,
+        height: Number(height),
+        currentWeight: Number(currentWeight),
+        desiredWeight: Number(desiredWeight),
+        blood: Number(blood),
+        sex,
+        levelActivity: Number(levelActivity),
+        birthday: formattedBirthday,
+      };
+      dispatch(updateUser(user));
     },
   });
 
@@ -125,6 +126,7 @@ const UserForm = () => {
               required
               placeholder={currentUser.email}
               disabled
+              value={formik.initialValues.email}
             />
           </FieldContainer>
         </NameEmailInput>
@@ -176,6 +178,7 @@ const UserForm = () => {
               name="dateOfBirth"
               required
               onChange={date => formik.setFieldValue('birthday', date)}
+              dateFormat={'dd.MM.yyyy'}
             />
             <StyledCalendarIcon>
               <use
@@ -235,7 +238,9 @@ const UserForm = () => {
                 id={option.id}
                 name="levelActivity"
                 value={option.value}
-                checked={formik.values.levelActivity === option.value}
+                checked={
+                  String(formik.values.levelActivity) === String(option.value)
+                }
                 onChange={formik.handleChange}
               />
               <label htmlFor={option.id}>
