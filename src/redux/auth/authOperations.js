@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
 
-axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
+axios.defaults.baseURL = 'http://localhost:3001/api/';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -81,8 +81,25 @@ export const updateUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.patch('users/update', credentials);
-      // setAuthHeader(res.data.token);
-      // toastSuccess('You were successfully login', res.data.email);
+      console.log(res.data);
+      return res.data;
+    } catch (error) {
+      toastError(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/avatar',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('users/avatar', credentials, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
+
       return res.data;
     } catch (error) {
       toastError(error.response.data.message);

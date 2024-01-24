@@ -21,13 +21,14 @@ import {
   ProfilePicContainer,
   AddAvatarButton,
   AddAvatarLabel,
+  AvatarContainer,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
-import { selectAvatarUrl } from '../../../redux/profile/profileSelectors';
-import { updateAvatar } from '../../../redux/profile/profileOperations';
+import { updateAvatar } from '../../../redux/auth/authOperations';
 import {
   selectUserCalories,
   selectUserInfo,
+  selectAvatarUrl,
 } from '../../../redux/auth/authSelectors';
 
 const UserCard = () => {
@@ -48,10 +49,6 @@ const UserCard = () => {
     formData.append('avatarURL', file);
     dispatch(updateAvatar(formData));
   }, [file, dispatch]);
-
-  // useEffect(() => {
-  //   setCalories(currentUser.calories);
-  // }, [currentUser.calories]);
 
   return (
     <Container>
@@ -77,7 +74,7 @@ const UserCard = () => {
                   process.env.PUBLIC_URL +
                   '/images/sprite/sprite.svg#icon-add-avatar'
                 }
-              />{' '}
+              />
             </AddProfilePicBackground>
             <AddProfilePicCross>
               <use
@@ -92,7 +89,9 @@ const UserCard = () => {
             </AddProfilePicCross>
           </AddAvatarLabel>
           {avatarURL ? (
-            <img alt="User avatar" url={avatarURL}></img>
+            <AvatarContainer>
+              <img alt="User avatar" src={avatarURL} />
+            </AvatarContainer>
           ) : (
             <UserAvatar fill="rgba(239, 237, 232, 0.1)">
               <use
@@ -134,7 +133,7 @@ const UserCard = () => {
               </SvgDailyIcon>
               {t('profile.user_card.daily_phisycal_activity')}
             </DailyTitle>
-            <DailyResult>0 {t('profile.user_card.min')}</DailyResult>
+            <DailyResult>110 {t('profile.user_card.min')}</DailyResult>
           </DailyCard>
         </DailyContainer>
         <DisclaimerContainer>

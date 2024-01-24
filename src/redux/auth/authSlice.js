@@ -1,11 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, register } from './authOperations';
-import { updateUser } from './authOperations';
+import {
+  logIn,
+  logOut,
+  refreshUser,
+  register,
+  updateAvatar,
+  updateUser,
+} from './authOperations';
 
 const initialState = {
   user: {
     name: null,
     email: null,
+    avatarURL: null,
+    height: null,
+    currentWeight: null,
+    desiredWeight: null,
+    birthday: null,
+    blood: null,
+    sex: null,
+    calorie: null,
+    levelActivity: null,
   },
   token: null,
   isLoggedIn: false,
@@ -64,6 +79,7 @@ const authSlice = createSlice({
       state.isFetching = true;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
+      console.log(action.payload);
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetching = false;
@@ -80,6 +96,18 @@ const authSlice = createSlice({
       state.isFetching = false;
     });
     builder.addCase(updateUser.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    });
+    builder.addCase(updateAvatar.pending, (state, action) => {
+      state.isFetching = true;
+    });
+    builder.addCase(updateAvatar.fulfilled, (state, action) => {
+      state.user.avatarURL = action.payload.avatarURL;
+      state.isLoggedIn = true;
+      state.isFetching = false;
+    });
+    builder.addCase(updateAvatar.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
     });

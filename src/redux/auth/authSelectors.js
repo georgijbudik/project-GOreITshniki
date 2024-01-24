@@ -13,3 +13,7 @@ export const selectIsFetching = state => state.auth.isFetching;
 export const selectToken = state => state.auth.token;
 
 export const selectError = state => state.auth.error;
+
+export const selectAvatarUrl = state => state.auth.user.avatarURL;
+
+export const selectLevelActivity = state => state.auth.user.levelActivity;
