@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import dayjs from 'dayjs';
@@ -23,6 +24,7 @@ import {
 } from './AddProductForm.styled';
 
 const AddProductForm = () => {
+  const { t } = useTranslation();
   const [grams, setGrams] = useState(null);
   const [hasGramsInputFocus, setHasGramsInputFocus] = useState(false);
 
@@ -71,27 +73,28 @@ const AddProductForm = () => {
               readOnly
             />
           </label>
-          <StyledGramsContainer  $hasFocus={hasGramsInputFocus}>
-          <label>
-            <StyledGramsInput
-              type="number"
-              onChange={handleChangeGrams}
-              required
-              onFocus={() => setHasGramsInputFocus(true)}
-              onBlur={() => setHasGramsInputFocus(false)}
-            />
-          </label>
-          <StyledTextGrams>grams</StyledTextGrams></StyledGramsContainer>
+          <StyledGramsContainer $hasFocus={hasGramsInputFocus}>
+            <label>
+              <StyledGramsInput
+                type="number"
+                onChange={handleChangeGrams}
+                required
+                onFocus={() => setHasGramsInputFocus(true)}
+                onBlur={() => setHasGramsInputFocus(false)}
+              />
+            </label>
+            <StyledTextGrams>{t('products.add_product.grams')}</StyledTextGrams>
+          </StyledGramsContainer>
         </StyledInputContainer>
         <StyledTextCalories>
-          Calories:
+          {t('products.add_product.calories')}:
           <StyledTextAmount>
             {!grams ? 0 : caloriesByUsersGrams}
           </StyledTextAmount>
         </StyledTextCalories>
         <StyledBtnContainer>
           <Button type="submit" paddingY={12} paddingX={29} fontSize={16}>
-            Add to diary
+            {t('products.add_product.add')}
           </Button>
           <Button
             type="button"
@@ -101,7 +104,7 @@ const AddProductForm = () => {
             secondary
             onClick={handleCloseAddModal}
           >
-            Cancel
+            {t('products.add_product.cancel')}
           </Button>
         </StyledBtnContainer>
       </StyledForm>

@@ -50,10 +50,6 @@ const UserCard = () => {
     dispatch(updateAvatar(formData));
   }, [file, dispatch]);
 
-  // useEffect(() => {
-  //   setCalories(currentUser.calories);
-  // }, [currentUser.calories]);
-
   return (
     <Container>
       <ProfileSettings className="profile-desktop-hidden">

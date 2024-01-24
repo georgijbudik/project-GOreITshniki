@@ -10,6 +10,15 @@ import {
   CellExercisesHeader,
   NotFoundMessage,
   WrapElem,
+  // -
+  TopProdBlock,
+  BottomProdBlock,
+  TitleText,
+  MainText,
+  MainTextBottom,
+  ButtonWrap,
+  LiWrap,
+  ProdWrap,
 } from './DayExercises.styled';
 
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +34,7 @@ const DayExercises = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper noExercises={exercises.length > 0}>
       <CellExercisesHeader>
         <div>Execrcises</div>
         <WrapElem>
@@ -34,7 +43,7 @@ const DayExercises = () => {
               navigate('/exercises');
             }}
           >
-            Add product
+            Add exercise
           </button>
           <svg>
             <use
@@ -46,21 +55,61 @@ const DayExercises = () => {
           </svg>
         </WrapElem>
       </CellExercisesHeader>
-      <NotFoundMessage>Not found exercises</NotFoundMessage>
+      {exercises.length === 0 && (
+        <NotFoundMessage>Not found exercises</NotFoundMessage>
+      )}
       <ul>
         {exercises.map(({ exercise }) => {
           return (
-            <div key={exercise._id}>
-              <p>{exercise.name}</p>
-              <button
-                onClick={() => {
-                  const data = { date, id: exercise._id };
-                  handleDelete(data);
-                }}
-              >
-                Delete
-              </button>
-            </div>
+            <LiWrap key={exercise._id}>
+              <ProdWrap>
+                <TopProdBlock>
+                  <div>
+                    <TitleText>Body Part</TitleText>
+                    <MainText>{exercise.bodyPart}</MainText>
+                  </div>
+                  <div>
+                    <TitleText>Equipment</TitleText>
+                    <MainText>{exercise.equipment}</MainText>
+                  </div>
+                  <div>
+                    <TitleText>Name</TitleText>
+                    <MainText>{exercise.name}</MainText>
+                  </div>
+                </TopProdBlock>
+              </ProdWrap>
+              <BottomProdBlock>
+                <div>
+                  <TitleText>Target</TitleText>
+                  <MainTextBottom>{exercise.target}</MainTextBottom>
+                </div>
+                <div>
+                  <TitleText>Burned Calories</TitleText>
+                  <MainTextBottom>{exercise.burnedCalories}</MainTextBottom>
+                </div>
+                <div>
+                  <TitleText>Time</TitleText>
+                  <MainTextBottom>{exercise.time}</MainTextBottom>
+                </div>
+                <ButtonWrap>
+                  <button
+                    onClick={() => {
+                      const data = { date, id: exercise._id };
+                      handleDelete(data);
+                    }}
+                  >
+                    <svg>
+                      <use
+                        xlinkHref={
+                          process.env.PUBLIC_URL +
+                          '/images/sprite/sprite.svg#icon-trash-03_OMG'
+                        }
+                      />
+                    </svg>
+                  </button>
+                </ButtonWrap>
+              </BottomProdBlock>
+            </LiWrap>
           );
         })}
       </ul>

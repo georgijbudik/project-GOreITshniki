@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -19,6 +20,7 @@ import {
 } from './ProductsList.styled';
 
 const ProductsList = () => {
+  const { t } = useTranslation();
   const products = useSelector(selectProducts);
 
   const page = useSelector(selectPage);
@@ -77,22 +79,20 @@ const ProductsList = () => {
 
   return (
     <>
-      {products && (products.length === 0 && (
+      {products && products.length === 0 && (
         <StyledContainerNoResults>
           <StyledTextNoResults>
             <StyledTextNoResultsRed>
-              Sorry, no results were found
+              {t('products.product_list.no_results_1')}
             </StyledTextNoResultsRed>{' '}
-            for the product filters you selected. You may want to consider other
-            search options to find the product you want. Our range is wide and
-            you have the opportunity to find more options that suit your needs.
+            {t('products.product_list.no_results_2')}
           </StyledTextNoResults>
           <StyledTextTryAgain>
-            Try changing the search parameters.
+            {t('products.product_list.no_results_3')}
           </StyledTextTryAgain>
         </StyledContainerNoResults>
-      ))}
-      {products && (products.length > 0 && (
+      )}
+      {products && products.length > 0 && (
         <StyledContainer>
           <StyledList>
             {products.map(product => (
@@ -101,7 +101,7 @@ const ProductsList = () => {
           </StyledList>
           <div ref={elementRef}></div>
         </StyledContainer>
-      ))}
+      )}
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setProductToAdd } from '../../../redux/products/productSlice';
@@ -23,6 +24,7 @@ import {
 } from './ProductsItem.styled';
 
 const ProductsItem = ({ product }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const userGroupBlood = useSelector(selectUserBlood);
@@ -46,7 +48,7 @@ const ProductsItem = ({ product }) => {
       <StyledContainer>
         <StyledTopContainer>
           <StyledDietContainer>
-            <StyledDietText>DIET</StyledDietText>
+            <StyledDietText>{t('products.product_item.diet')}</StyledDietText>
           </StyledDietContainer>
           <StyledTopRightContainer>
             <StyledRecomContainer>
@@ -54,13 +56,18 @@ const ProductsItem = ({ product }) => {
                 $isNotAllowed={isProductNotAllowedForUser}
               ></StyledCircle>
               {isProductNotAllowedForUser ? (
-                <StyledRecomText>Not recommended</StyledRecomText>
+                <StyledRecomText>
+                  {t('products.product_item.not_recommended')}
+                </StyledRecomText>
               ) : (
-                <StyledRecomText>Recommended</StyledRecomText>
+                <StyledRecomText>
+                  {t('products.product_item.recommended')}
+                </StyledRecomText>
               )}
             </StyledRecomContainer>
             <StyledAddBtn type="button" onClick={handleAddBtn}>
-              Add
+              {t('products.product_item.add')}
+
               <StyledAddSvg width="16" height="16" stroke="var(--accent-color)">
                 <use
                   href={
@@ -87,17 +94,18 @@ const ProductsItem = ({ product }) => {
         </StyledTitleContainer>
         <StyledBottomContainer>
           <StyledBottomText>
-            Calories:{' '}
+            {t('products.product_item.calories')}:{' '}
             <StyledBottomAmount>{product.calories}</StyledBottomAmount>
           </StyledBottomText>
           <StyledBottomText>
-            Category:{' '}
+            {t('products.product_item.category')}:{' '}
             <StyledBottomAmount>
               {formatText(makeShortText(product.category))}
             </StyledBottomAmount>
           </StyledBottomText>
           <StyledBottomText>
-            Weight: <StyledBottomAmount>{product.weight}</StyledBottomAmount>
+            {t('products.product_item.weight')}:{' '}
+            <StyledBottomAmount>{product.weight}</StyledBottomAmount>
           </StyledBottomText>
         </StyledBottomContainer>
       </StyledContainer>

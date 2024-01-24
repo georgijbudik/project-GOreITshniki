@@ -45,7 +45,13 @@ export const StyledNameInput = styled.input`
   border-radius: 12px;
   background: transparent;
 
-  color: ${({ theme }) => theme.palette.text.primary};
+  /* color: ${({ theme }) => theme.palette.text.primary};
+   */
+
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.30)'
+      : 'rgba(100, 100, 100, 0.7)'};
 
   font-family: Roboto;
   font-size: 14px;
@@ -80,6 +86,11 @@ export const StyledGramsContainer = styled.div`
       : '1px solid rgba(100, 100, 100, 0.7)'};
   border-radius: 12px;
   background: transparent;
+
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.30)'
+      : 'rgba(100, 100, 100, 0.7)'};
 
   transition: var(--transition);
 
@@ -126,19 +137,23 @@ export const StyledTextCalories = styled.p`
   margin-bottom: 24px;
   color: ${({ theme }) =>
     theme.palette.mode === 'dark'
-      ? '1px solid rgba(239, 237, 232, 0.4)'
-      : '1px solid rgba(100, 100, 100, 0.7)'};
+      ? 'rgba(239, 237, 232, 0.30)'
+      : 'rgba(100, 100, 100, 0.7)'};
   font-size: 12px;
   line-height: 1.5;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 64px;
+
+    line-height: 150%;
   }
 `;
 
 export const StyledTextAmount = styled.span`
   margin-top: 16px;
   /* color: var(--main-text-color); */
+  color: ${({ theme }) => theme.palette.text.primary};
+  margin-left: 4px;
   font-size: 12px;
   line-height: 1.5;
 `;
