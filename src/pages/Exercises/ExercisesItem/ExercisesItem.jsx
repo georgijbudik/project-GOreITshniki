@@ -55,7 +55,7 @@ const ExercisesItem = ({
             {t('exercises.exercise_item.workout')}
           </ExercisesTitle>
           <WrapperStart onClick={onClickStart}>
-            <TextStart>Start</TextStart>
+            <TextStart>{t('exercises.exercise_item.start')}</TextStart>
             <IconWrapperStart>
               <use
                 xlinkHref={
