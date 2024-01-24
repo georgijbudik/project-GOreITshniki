@@ -100,6 +100,12 @@ export const StyledSearchBtn = styled.button`
       ? 'var(--main-text-color)'
       : '1px solid rgba(100, 100, 100, 0.2)'};
   background-color: transparent;
+  transition: var(--transition);
+
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+  }
 
   @media screen and (min-width: 768px) {
     height: 52px;
@@ -158,6 +164,12 @@ export const StyledInput = styled(InputBase)(({ theme }) => {
       fontWeight: 400,
       lineHeight: 1.3,
       outline: 'none',
+      transition: 'var(--transition)',
+
+      '&:hover': {
+        borderRadius: '12px',
+        borderColor: 'var(--accent-color)',
+      },
 
       '&:focus': {
         borderRadius: '12px',

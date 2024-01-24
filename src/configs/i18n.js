@@ -305,7 +305,7 @@ i18n
             },
           },
           products: {
-            title: 'Товари',
+            title: 'Продукти',
             product_list: {
               no_results_1: 'Вибачте, результатів не знайдено',
               no_results_2:
