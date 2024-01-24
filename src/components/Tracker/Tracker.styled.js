@@ -93,7 +93,7 @@ export const TrackerVideoTextContainer = styled.div`
 export const TrackerCaloriesContainer = styled.div`
   position: absolute;
   top: 569px;
-  left: 216px;
+  left: 166px;
 
   border-radius: 12px;
   background: #ef8964;
