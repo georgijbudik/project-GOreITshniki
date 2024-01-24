@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ import {
 } from './AddProductSuccess.styled';
 
 const AddProductSuccess = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const caloriesByUser = useSelector(selectCaloriesByUser);
@@ -53,9 +55,12 @@ const AddProductSuccess = () => {
             height="97"
           />
         </StyledImgContainer>
-        <StyledTextWellDone>Well done</StyledTextWellDone>
+        <StyledTextWellDone>
+          {t('products.add_success.title')}
+        </StyledTextWellDone>
         <StyledTextCalories>
-          Calories: <StyledTextAmount>{caloriesByUser}</StyledTextAmount>
+          {t('products.add_success.calories')}:{' '}
+          <StyledTextAmount>{caloriesByUser}</StyledTextAmount>
         </StyledTextCalories>
         <div
           style={{
@@ -66,10 +71,10 @@ const AddProductSuccess = () => {
           }}
         >
           <StyledNextBtn type="button" onClick={handleCloseSuccessModal}>
-            Next product
+            {t('products.add_success.next')}
           </StyledNextBtn>
           <StyledToDiaryBtn type="button" onClick={handleToDiaryBtn}>
-            To the diary
+            {t('products.add_success.diary')}
             <StyledToDiarySvg>
               <use
                 href={

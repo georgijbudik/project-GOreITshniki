@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -21,6 +22,7 @@ import {
 } from './ProductsFilters.styled';
 
 const ProductsFilters = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [recommendation, setRecommendation] = useState('');
@@ -87,13 +89,13 @@ const ProductsFilters = () => {
 
   return (
     <StyledForm onSubmit={handleSearchSubmit}>
-      <StyledTextFilters>Filters</StyledTextFilters>
+      <StyledTextFilters>{t('products.filters.title')}</StyledTextFilters>
       <StyledSearchContainer $hasFocus={hasSearchInputFocus}>
         <label>
           <StyledSearchInput
             type="text"
             name="search"
-            placeholder="Search"
+            placeholder={t('products.filters.search')}
             onChange={handleSearchOnChange}
             value={search}
             onFocus={() => setHasSearchInputFocus(true)}
@@ -146,14 +148,27 @@ const ProductsFilters = () => {
                 },
               }}
             >
-              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}>
-                <StyledEm>All categories</StyledEm>
+              <MenuItem
+                value=""
+                sx={{
+                  fontSize: '14px',
+                  m: 0,
+                  px: '10px',
+                  color: 'var(--main-text-color)',
+                }}
+              >
+                <StyledEm>{t('products.filters.all_categories')}</StyledEm>
               </MenuItem>
               {categories.map(item => (
                 <MenuItem
                   key={item._id}
                   value={item.category}
-                  sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
+                  sx={{
+                    fontSize: '14px',
+                    m: 0,
+                    px: '10px',
+                    color: 'var(--main-text-color)',
+                  }}
                 >
                   {item.category[0].toUpperCase() + item.category.slice(1)}
                 </MenuItem>
@@ -179,20 +194,38 @@ const ProductsFilters = () => {
                 },
               }}
             >
-              <MenuItem value="" sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}>
-                <StyledEm>All</StyledEm>
+              <MenuItem
+                value=""
+                sx={{
+                  fontSize: '14px',
+                  m: 0,
+                  px: '10px',
+                  color: 'var(--main-text-color)',
+                }}
+              >
+                <StyledEm>{t('products.filters.all')}</StyledEm>
               </MenuItem>
               <MenuItem
                 value={'recommended'}
-                sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
+                sx={{
+                  fontSize: '14px',
+                  m: 0,
+                  px: '10px',
+                  color: 'var(--main-text-color)',
+                }}
               >
-                Recommended
+                {t('products.filters.recommended')}
               </MenuItem>
               <MenuItem
                 value={'not recommended'}
-                sx={{ fontSize: '14px', m: 0, px: '10px', color: 'var(--main-text-color)' }}
+                sx={{
+                  fontSize: '14px',
+                  m: 0,
+                  px: '10px',
+                  color: 'var(--main-text-color)',
+                }}
               >
-                Not recommended
+                {t('products.filters.not_recommended')}
               </MenuItem>
             </Select>
           </FormControl>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -26,6 +27,7 @@ import {
 } from './Products.styled';
 
 const Products = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   const dispatch = useDispatch();
@@ -66,13 +68,13 @@ const Products = () => {
       {isProductToAdd && <AddProductForm />}
       {isProductSuccesAdded && <AddProductSuccess />}
       <StyledWrapper />
-        <StyledSection>
-          <StyledContainer>
-            <TitlePage>Products</TitlePage>
-            <ProductsFilters />
-          </StyledContainer>
-          <ProductsList />
-        </StyledSection>
+      <StyledSection>
+        <StyledContainer>
+          <TitlePage>{t('products.title')}</TitlePage>
+          <ProductsFilters />
+        </StyledContainer>
+        <ProductsList />
+      </StyledSection>
     </main>
   );
 };

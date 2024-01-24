@@ -31,7 +31,7 @@ export const StyledTopContainer = styled.div`
 export const StyledDietContainer = styled.div`
   box-sizing: border-box;
   padding: 5px 7.5px;
-  width: 41px;
+  /* width: 41px; */
   height: 24px;
   display: flex;
   align-items: center;
