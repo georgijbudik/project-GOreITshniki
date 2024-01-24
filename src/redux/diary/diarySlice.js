@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { getCurrentUser } from './diaryOperations';
 import { getDayInfo, deleteProduct, deleteExercise } from './diaryOperations';
+import dayjs from 'dayjs';
 const initialState = {
   // user: {
   //   name: null,
@@ -22,12 +23,17 @@ const initialState = {
   error: null,
   products: [],
   exercises: [],
-  date: null,
+  date: dayjs().format('DD.MM.YYYY'),
 };
 
 const diarySlice = createSlice({
   name: 'diaryCurrent',
   initialState,
+  reducers: {
+    setDate: (state, action) => {
+      state.date = action.payload;
+    },
+  },
   extraReducers: builder => {
     // builder.addCase(getCurrentUser.fulfilled, (state, action) => {
     //   state.user = action.payload;
@@ -61,5 +67,7 @@ const diarySlice = createSlice({
     });
   },
 });
+
+export const { setDate } = diarySlice.actions;
 
 export const diaryReducer = diarySlice.reducer;
