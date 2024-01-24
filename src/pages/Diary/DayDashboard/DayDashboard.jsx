@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDayInfo } from '../../../redux/diary/diaryOperations';
-import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
+import {
+  selectDiaryDate,
+  selectConsumedCalories,
+  selectSportSeconds,
+  selectBurnedCalories,
+} from '../../../redux/diary/diarySelectors';
 // import dayjs from 'dayjs';
 import {
   selectUserInfo,
@@ -30,34 +35,40 @@ import {
 const DayDashboard = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUserInfo);
-  const dayInfo = useSelector(state => state.dayInfo);
   const isFetching = useSelector(selectIsFetching);
+  const date = useSelector(selectDiaryDate);
+
+  const consumedCalories = useSelector(selectConsumedCalories);
+  const burnedCalories = useSelector(selectBurnedCalories);
+  const sportSeconds = useSelector(selectSportSeconds);
+
+  // const dayInfo = useSelector(state => state.dayInfo);
   // const currentDate = dayjs();
   // const date = dayjs(currentDate).format('DD.MM.YYYY');
-  const date = useSelector(selectDiaryDate);
-  console.log('=== state === ', dayInfo);
+  // console.log('=== state === ', dayInfo);
+
+  const totalCalories = userInfo.calories;
+  const caloriesRemaining =
+    consumedCalories > totalCalories
+      ? 0
+      : Math.round(totalCalories - consumedCalories);
+  const sportRemaining = (110 - sportSeconds / 60).toFixed();
 
   useEffect(() => {
-    dispatch(getDayInfo(date))
-      .then(result => {
-        // Вивести отримані дані в консоль
-        console.log('Отримані дані:', result);
-      })
-      .catch(error => {
-        // Обробка помилок, якщо такі є
-        console.error('Помилка при отриманні даних:', error);
-      });
+    dispatch(getDayInfo(date));
+    // .then(result => {
+    //   // Вивести отримані дані в консоль
+    //   console.log('Отримані дані:', result);
+    // })
+    // .catch(error => {
+    //   // Обробка помилок, якщо такі є
+    //   console.error('Помилка при отриманні даних:', error);
+    // });
   }, [dispatch, date]);
 
   if (isFetching) {
     return <div>Loading...</div>;
   }
-
-  const totalCalories = userInfo.calories;
-  const caloriesConsumed = 2000;
-  const caloriesRemaining = totalCalories - caloriesConsumed;
-
-  const caloriesBurned = 1;
 
   return (
     <>
@@ -106,9 +117,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelNameBottom> Сalories consumed</CelNameBottom>
+                <CelNameBottom>Сalories consumed</CelNameBottom>
               </CellHeader>
-              <CelValue>{caloriesConsumed}</CelValue>
+              <CelValue>{Math.round(consumedCalories)}</CelValue>
             </ProcessedDashboardData>
             <ProcessedDashboardData>
               <CellHeader>
@@ -122,7 +133,7 @@ const DayDashboard = () => {
                 </DashBoardElementPic>
                 <CelNameBottom>Сalories burned</CelNameBottom>
               </CellHeader>
-              <CelValue>{caloriesBurned}</CelValue>
+              <CelValue>{burnedCalories}</CelValue>
             </ProcessedDashboardData>
           </ProcessedDashboardDataWrapper>
 
@@ -154,7 +165,7 @@ const DayDashboard = () => {
                 </DashBoardElementPic>
                 <CelNameBottom>Sports remaining</CelNameBottom>
               </CellHeader>
-              <CelValue>1 min</CelValue>
+              <CelValue>{sportRemaining} min</CelValue>
             </ProcessedDashboardData>
           </ProcessedDashboardDataWrapper>
         </DshbrdWrpr>
