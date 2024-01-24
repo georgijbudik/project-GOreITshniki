@@ -9,7 +9,7 @@ export const StyledLogo = styled.button`
   cursor: pointer;
 
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 8px;
 `;
 
