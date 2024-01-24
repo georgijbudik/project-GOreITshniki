@@ -10,6 +10,14 @@ import {
   Wrapper,
   CellProductsHeader,
   NotFoundMessage,
+  ProdWrap,
+  TopProdBlock,
+  BottomProdBlock,
+  TitleText,
+  MainText,
+  MainTextBottom,
+  ButtonWrap,
+  LiWrap,
 } from './DayProducts.styled';
 
 const DayProducts = () => {
@@ -25,8 +33,9 @@ const DayProducts = () => {
     console.log(data);
     dispatch(deleteProduct(data));
   };
+
   return (
-    <Wrapper>
+    <Wrapper noExercises={products.length > 0}>
       <CellProductsHeader>
         <div>Products</div>
         <div>
@@ -47,29 +56,61 @@ const DayProducts = () => {
           </svg>
         </div>
       </CellProductsHeader>
-      {products.length === 0 && (
+      {products.length === 0 ? (
         <NotFoundMessage>Not found products</NotFoundMessage>
+      ) : (
+        <ul>
+          {products.map(({ product, consumedCalories }) => {
+            return (
+              <LiWrap>
+                <ProdWrap>
+                  <TopProdBlock>
+                    <div>
+                      <TitleText>Title</TitleText>
+                      <MainText>{product.title}</MainText>
+                    </div>
+                    <div>
+                      <TitleText>Category</TitleText>
+                      <MainText> {product.category}</MainText>
+                    </div>
+                  </TopProdBlock>
+                  <BottomProdBlock>
+                    <div>
+                      <TitleText>Calories</TitleText>
+                      <MainTextBottom>{product.calories}</MainTextBottom>
+                    </div>
+                    <div>
+                      <TitleText>Weight</TitleText>
+                      <MainTextBottom>{product.weight}</MainTextBottom>
+                    </div>
+                    <div>
+                      <TitleText>Recommend</TitleText>
+                      <MainTextBottom>Yes</MainTextBottom>
+                    </div>
+                    <ButtonWrap>
+                      <button
+                        onClick={() => {
+                          const data = { id: product._id, date };
+                          handleProductDelete(data);
+                        }}
+                      >
+                        <svg>
+                          <use
+                            xlinkHref={
+                              process.env.PUBLIC_URL +
+                              '/images/sprite/sprite.svg#icon-trash-03_OMG'
+                            }
+                          />
+                        </svg>
+                      </button>
+                    </ButtonWrap>
+                  </BottomProdBlock>
+                </ProdWrap>
+              </LiWrap>
+            );
+          })}
+        </ul>
       )}
-      <ul>
-        {products.map(({ product }) => {
-          return (
-            <p>
-              <span>{product.title}</span>
-              <span> {product.category}</span>
-              <span>{product.calories}</span>
-              <span>{product.weight}</span>
-              <button
-                onClick={() => {
-                  const data = { id: product._id, date };
-                  handleProductDelete(data);
-                }}
-              >
-                Delete
-              </button>
-            </p>
-          );
-        })}
-      </ul>
     </Wrapper>
   );
 };
