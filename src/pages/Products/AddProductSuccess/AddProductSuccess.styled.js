@@ -85,7 +85,7 @@ export const StyledNextBtn = styled.button`
   }
 `;
 
-export const StyledToDiaryBtn = styled.p`
+export const StyledToDiaryBtn = styled.button`
   color: ${({ theme }) =>
     theme.palette.mode === 'dark'
       ? 'rgba(239, 237, 232, 0.3)'
@@ -101,7 +101,8 @@ export const StyledToDiaryBtn = styled.p`
   cursor: pointer;
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.palette.text.primary};
 
     & > svg {

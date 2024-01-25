@@ -45,7 +45,8 @@ export const StyledModalCloseButton = styled.button`
 
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     stroke: var(--accent-color);
     transform: rotate(90deg);
   }

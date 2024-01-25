@@ -22,6 +22,13 @@ export const StyledUserBarSettingButton = styled.button`
   cursor: pointer;
 
   color: rgba(239, 237, 232, 0.3);
+
+  &:hover,
+  &:focus {
+    & > svg {
+      stroke: var(--accent-color);
+    }
+  }
 `;
 
 export const StyledUserBarSettingsIcon = styled.svg`
@@ -33,10 +40,6 @@ export const StyledUserBarSettingsIcon = styled.svg`
       : 'rgba(39, 37, 32, 0.6)';
   }};
   transition: var(--transition);
-
-  &:hover {
-    stroke: var(--accent-color);
-  }
 
   & > use {
     width: 100%;

@@ -11,7 +11,8 @@ export const StyledLogOutBtn = styled.button`
   gap: 8px;
 
   @media screen and (min-width: 1440px) {
-    &:hover {
+    &:hover,
+    &:focus {
       & > span {
         color: var(--accent-color);
       }
