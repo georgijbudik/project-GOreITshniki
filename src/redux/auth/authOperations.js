@@ -3,7 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/';
+// axios.defaults.baseURL = 'http://localhost:3001/api/';
+
+axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

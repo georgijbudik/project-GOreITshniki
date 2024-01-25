@@ -14,7 +14,11 @@ import {
   TopProdBlock,
   BottomProdBlock,
   TitleText,
-  TitleTextTablet,
+  TitleTextTablet1,
+  TitleTextTablet2,
+  TitleTextTablet3,
+  TitleTextTablet4,
+  TitleTextTablet5,
   TableHeaderTablet,
   MainText,
   MainTextTablet,
@@ -63,23 +67,19 @@ const DayProducts = () => {
       {products.length > 0 ? (
         <TableHeaderTablet>
           <li>
-            <TitleTextTablet style={{ width: '212px' }}>Title</TitleTextTablet>
+            <TitleTextTablet1>Title</TitleTextTablet1>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '132px' }}>
-              Category
-            </TitleTextTablet>
+            <TitleTextTablet2>Category</TitleTextTablet2>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '98px' }}>
-              Calories
-            </TitleTextTablet>
+            <TitleTextTablet3>Calories</TitleTextTablet3>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '98px' }}>Weight</TitleTextTablet>
+            <TitleTextTablet4>Weight</TitleTextTablet4>
           </li>
           <li>
-            <TitleTextTablet>Recommend</TitleTextTablet>
+            <TitleTextTablet5>Recommend</TitleTextTablet5>
           </li>
         </TableHeaderTablet>
       ) : (

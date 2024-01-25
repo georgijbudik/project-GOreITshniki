@@ -8,6 +8,12 @@ export const DailyCalorieIntakeWrapper = styled.div`
     height: 116px; */
     display: block;
     justify-content: flex-start;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    gap: 16px;
   }
 `;
 
@@ -30,8 +36,8 @@ export const DailyCalorieIntake = styled.div`
     max-width: none;
     width: 187px;
     height: 116px;
-    display: block;
-    justify-content: flex-start;
+    /* display: block; */
+    justify-content: space-between;
     margin-bottom: 16px;
   }
 `;
@@ -103,6 +109,12 @@ export const ProcessedDashboardDataWrapper = styled.div`
     margin-top: 0;
     padding: 0 0 0 16px;
   }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    padding: 0;
+    gap: 16px;
+    margin-top: 16px;
+  }
 `;
 
 export const ProcessedDashboardData = styled.div`
@@ -115,15 +127,19 @@ export const ProcessedDashboardData = styled.div`
   gap: 32px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
+  justify-content: space-between;
   /* border-color: ${props => (props.markering > 0 ? 'red' : 'green')}; */
   @media screen and (min-width: 768px) {
     display: flex;
     max-width: none;
     width: 187px;
     height: 116px;
-    display: block;
+    /* display: block; */
     justify-content: flex-start;
     margin-bottom: 16px;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
   }
 `;
 
@@ -142,16 +158,22 @@ export const ProcessedDashboardDataMarked = styled.div`
     max-width: none;
     width: 187px;
     height: 116px;
-    display: block;
+    /* display: block; */
     justify-content: space-between;
     margin-bottom: 16px;
     padding-left: 16px;
+  }
+  @media screen and (min-width: 768px) {
+    /* display: block; */
   }
 `;
 
 export const AttentionMessage = styled.div`
   display: flex;
   margin-top: 16px;
+  @media screen and (min-width: 768px) {
+    margin-top: 48px;
+  }
 `;
 
 export const AttentionPic = styled.svg`
@@ -181,6 +203,10 @@ export const AttentionText = styled.p`
     width: 593px;
     height: 48px;
   }
+  @media screen and (min-width: 1440px) {
+    width: 358px;
+    height: 72px;
+  }
 `;
 export const Markered = styled.span`
   background-color: ${props => (props.$markering === true ? 'green' : 'red')};
@@ -195,5 +221,8 @@ export const DshbrdWrpr = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     padding: 0 0 0 0;
+  }
+  @media screen and (min-width: 1440px) {
+    flex-direction: column;
   }
 `;

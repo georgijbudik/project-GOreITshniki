@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   height: ${props => (props.noExercises ? '824px' : '335px')};
   &::-webkit-scrollbar {
     width: 6px;
-    height: 203px;
+    height: 90px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -33,6 +33,14 @@ export const Wrapper = styled.div`
 
     position: relative;
     width: 100%;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 824px;
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 203px;
+    }
   }
 `;
 export const TableHeaderTablet = styled.ul`
@@ -95,6 +103,9 @@ export const CellProductsHeader = styled.div`
       background-color: rgba(239, 237, 232, 0.3);
       border-radius: 6px;
     }
+  }
+  @media screen and (min-width: 768px) {
+    max-width: none;
   }
 `;
 
@@ -183,7 +194,7 @@ export const TitleText = styled.div`
   }
 `;
 
-export const TitleTextTablet = styled.div`
+export const TitleTextTablet1 = styled.div`
   display: none;
 
   @media screen and (min-width: 768px) {
@@ -197,6 +208,90 @@ export const TitleTextTablet = styled.div`
     color: var(--icon-color);
     padding-bottom: 8px;
     padding-top: 16px;
+    width: 212px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+export const TitleTextTablet2 = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--icon-color);
+    padding-bottom: 8px;
+    padding-top: 16px;
+    width: 138px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 138px;
+  }
+`;
+export const TitleTextTablet3 = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--icon-color);
+    padding-bottom: 8px;
+    padding-top: 16px;
+    width: 212px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 138px;
+  }
+`;
+export const TitleTextTablet4 = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--icon-color);
+    padding-bottom: 8px;
+    padding-top: 16px;
+    width: 212px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+export const TitleTextTablet5 = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: var(--icon-color);
+    padding-bottom: 8px;
+    padding-top: 16px;
+    width: 212px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 212px;
   }
 `;
 
@@ -233,8 +328,13 @@ export const MainTextTablet = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
     width: 204px;
     height: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 230px;
   }
 `;
 
@@ -243,7 +343,7 @@ export const MainTextTablett = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     align-items: center;
-    max-width: 297px;
+    width: 128px;
     height: 38px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
@@ -252,9 +352,13 @@ export const MainTextTablett = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 128px;
+    width: 128166pxpx;
     height: 40px;
     margin-left: 8px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 166px;
   }
 `;
 
@@ -276,6 +380,10 @@ export const MainTextBottom = styled.div`
     height: 40px;
     margin: 0;
     margin-left: 8px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 105px;
   }
 `;
 

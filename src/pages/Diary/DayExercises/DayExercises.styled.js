@@ -34,6 +34,11 @@ export const Wrapper = styled.div`
     position: relative;
     width: 100%;
   }
+
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 824px;
+  }
 `;
 
 export const TableHeaderTablet = styled.ul`
@@ -97,6 +102,9 @@ export const CellExercisesHeader = styled.div`
       background-color: rgba(239, 237, 232, 0.3);
       border-radius: 6px;
     }
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
   }
 `;
 
@@ -245,6 +253,10 @@ export const MainTextTablet = styled.div`
     width: 204px;
     height: 40px;
   }
+  @media screen and (min-width: 1440px) {
+    max-width: none;
+    width: 115px;
+  }
 `;
 
 export const MainTextTablett = styled.div`
@@ -264,6 +276,32 @@ export const MainTextTablett = styled.div`
     width: 130px;
     height: 40px;
     margin-left: 8px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 157px;
+  }
+`;
+
+export const MainTextTablettt = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    align-items: center;
+    /* max-width: 130px;
+    height: 40px; */
+    border-radius: 12px;
+    border: 1px solid rgba(239, 237, 232, 0.3);
+    padding: 7px 14px;
+    color: rgba(239, 237, 232, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 130px;
+    height: 40px;
+    margin-left: 8px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 152px;
   }
 `;
 
@@ -286,6 +324,9 @@ export const MainTextBottom = styled.div`
     margin: 0 0 0 8px;
     padding: 14px;
   }
+  @media screen and (min-width: 1440px) {
+    width: 106px;
+  }
 `;
 
 export const MainTextBottom1 = styled.div`
@@ -307,6 +348,9 @@ export const MainTextBottom1 = styled.div`
     margin: 0 0 0 8px;
     padding: 14px;
   }
+  @media screen and (min-width: 1440px) {
+    width: 91px;
+  }
 `;
 export const MainTextBottom2 = styled.div`
   display: flex;
@@ -326,6 +370,9 @@ export const MainTextBottom2 = styled.div`
     height: 40px;
     margin: 0 0 0 8px;
     padding: 14px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 82px;
   }
 `;
 
