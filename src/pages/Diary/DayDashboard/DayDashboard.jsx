@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDayInfo } from '../../../redux/diary/diaryOperations';
@@ -30,6 +31,7 @@ import {
 } from './DayDashboard.styled';
 
 const DayDashboard = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUserInfo);
   const date = useSelector(selectDiaryDate);
@@ -78,7 +80,7 @@ const DayDashboard = () => {
                   />
                 </DashBoardElementPic>
 
-                <CelName>Daily calorie intake</CelName>
+                <CelName>{t('diary.dashboard.daily_calories_intake')}</CelName>
               </CellHeader>
               <CelValue>{totalCalories}</CelValue>
             </DailyCalorieIntake>
@@ -93,7 +95,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelName>Daily physical activity</CelName>
+                <CelName>
+                  {t('diary.dashboard.daily_physical_activity')}
+                </CelName>
               </CellHeader>
               <CelValue>110 min</CelValue>
             </DailyCalorieIntake>
@@ -109,7 +113,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelNameBottom>Сalories consumed</CelNameBottom>
+                <CelNameBottom>
+                  {t('diary.dashboard.consumed_calories')}
+                </CelNameBottom>
               </CellHeader>
               <CelValue>{Math.round(consumedCalories)}</CelValue>
             </ProcessedDashboardData>
@@ -123,7 +129,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelNameBottom>Сalories burned</CelNameBottom>
+                <CelNameBottom>
+                  {t('diary.dashboard.burned_calories')}
+                </CelNameBottom>
               </CellHeader>
               <CelValue>{burnedCalories}</CelValue>
             </ProcessedDashboardData>
@@ -140,7 +148,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelNameBottom>Calories remaining</CelNameBottom>
+                <CelNameBottom>
+                  {t('diary.dashboard.calories_remaining')}
+                </CelNameBottom>
               </CellHeader>
               <CelValue>{caloriesRemaining}</CelValue>
             </ProcessedDashboardDataMarked>
@@ -155,7 +165,9 @@ const DayDashboard = () => {
                     }
                   />
                 </DashBoardElementPic>
-                <CelNameBottom>Sports remaining</CelNameBottom>
+                <CelNameBottom>
+                  {t('diary.dashboard.sports_remaining')}
+                </CelNameBottom>
               </CellHeader>
               <CelValue>{sportRemaining} min</CelValue>
             </ProcessedDashboardData>
@@ -170,10 +182,7 @@ const DayDashboard = () => {
               }
             />
           </AttentionPic>
-          <AttentionText>
-            Record all your meals in the calorie diary every day. This will help
-            you be aware of your nutrition and make informed choices.
-          </AttentionText>
+          <AttentionText>{t('diary.warning')}</AttentionText>
         </AttentionMessage>
       </Metawrap>
     </>

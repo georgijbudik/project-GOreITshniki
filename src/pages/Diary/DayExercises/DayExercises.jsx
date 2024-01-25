@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectDiaryExercises,
@@ -31,6 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import { CardTitle } from '../DayProducts/DayProducts.styled';
 
 const DayExercises = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const exercises = useSelector(selectDiaryExercises);
   const date = useSelector(selectDiaryDate);
@@ -43,14 +45,14 @@ const DayExercises = () => {
   return (
     <Wrapper $noexercises={exercises.length > 0}>
       <CellExercisesHeader>
-        <CardTitle>Execrcises</CardTitle>
+        <CardTitle> {t('diary.exercises.header')}</CardTitle>
         <WrapElem>
           <button
             onClick={() => {
               navigate('/exercises');
             }}
           >
-            Add exercise
+            {t('diary.exercises.add')}
           </button>
           <svg>
             <use
@@ -65,48 +67,50 @@ const DayExercises = () => {
       {exercises.length > 0 ? (
         <TableHeaderTablet>
           <li>
-            <TitleTextTablet>Body Part</TitleTextTablet>
+            <TitleTextTablet> {t('diary.exercises.body_part')}</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet>Body weight</TitleTextTablet>
+            <TitleTextTablet> {t('diary.exercises.equipment')}</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet>Name</TitleTextTablet>
+            <TitleTextTablet> {t('diary.exercises.name')}</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet>Calories</TitleTextTablet>
+            <TitleTextTablet> {t('diary.exercises.target')}</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet>Weight</TitleTextTablet>
+            <TitleTextTablet>
+              {t('diary.exercises.burned_calories')}
+            </TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet>Recommend</TitleTextTablet>
+            <TitleTextTablet>{t('diary.exercises.time')}</TitleTextTablet>
           </li>
         </TableHeaderTablet>
       ) : (
         <div></div>
       )}
       {exercises.length === 0 ? (
-        <NotFoundMessage>Not found exercises</NotFoundMessage>
+        <NotFoundMessage>{t('diary.exercises.not_found')}</NotFoundMessage>
       ) : (
         <ul>
-          {exercises.map(({ exercise }) => {
+          {exercises.map(({ exercise, burnedCalories, time }) => {
             return (
               <LiWrap key={exercise._id}>
                 <ProdWrap>
                   <TopProdBlock>
                     <div>
-                      <TitleText>Body Part</TitleText>
+                      <TitleText> {t('diary.exercises.body_part')}</TitleText>
                       <MainText>{exercise.bodyPart}</MainText>
                       <MainTextTablet>{exercise.bodyPart}</MainTextTablet>
                     </div>
                     <div>
-                      <TitleText>Equipment</TitleText>
+                      <TitleText> {t('diary.exercises.equipment')}</TitleText>
                       <MainText>{exercise.equipment}</MainText>
                       <MainTextTablett>{exercise.equipment}</MainTextTablett>
                     </div>
                     <div>
-                      <TitleText>Name</TitleText>
+                      <TitleText> {t('diary.exercises.name')}</TitleText>
                       <MainText>{exercise.name}</MainText>
                       <MainTextTablettt>{exercise.name}</MainTextTablettt>
                     </div>
@@ -114,16 +118,18 @@ const DayExercises = () => {
                 </ProdWrap>
                 <BottomProdBlock>
                   <div>
-                    <TitleText>Target</TitleText>
+                    <TitleText> {t('diary.exercises.target')}</TitleText>
                     <MainTextBottom>{exercise.target}</MainTextBottom>
                   </div>
                   <div>
-                    <TitleText>Burned Calories</TitleText>
-                    <MainTextBottom1>{exercise.burnedCalories}</MainTextBottom1>
+                    <TitleText>
+                      {t('diary.exercises.burned_calories')}
+                    </TitleText>
+                    <MainTextBottom1>{burnedCalories}</MainTextBottom1>
                   </div>
                   <div>
-                    <TitleText>Time</TitleText>
-                    <MainTextBottom2>{exercise.time}</MainTextBottom2>
+                    <TitleText> {t('diary.exercises.time')}</TitleText>
+                    <MainTextBottom2>{time}</MainTextBottom2>
                   </div>
                   <ButtonWrap>
                     <button
