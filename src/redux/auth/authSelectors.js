@@ -23,3 +23,5 @@ export const selectIsLoading = state => state.auth.isLoading;
 export const selectIsProfileComplete = state => state.auth.isProfileComplete;
 
 export const selectIsImageLoading = state => state.auth.isImageLoading;
+
+export const selectRegisterDate = state => state.auth.user.registerDate;

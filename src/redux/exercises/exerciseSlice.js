@@ -78,11 +78,17 @@ const exeSlice = createSlice({
         state.exercisesByType = action.payload;
         state.isLoading = false;
       })
+      .addCase(addExerciseToDiary.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(addExerciseToDiary.fulfilled, (state, payload) => {
         state.addSuccess.isOpened = true;
         state.addSuccess.time = payload.meta.arg.time;
         state.addSuccess.calories = payload.meta.arg.calories;
 
+        state.isLoading = false;
+      })
+      .addCase(addExerciseToDiary.rejected, (state, action) => {
         state.isLoading = false;
       })
       .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)

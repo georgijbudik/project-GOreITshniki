@@ -46,8 +46,8 @@ export const StyledTextCalories = styled.p`
   margin-bottom: 24px;
   color: ${({ theme }) =>
     theme.palette.mode === 'dark'
-      ? '1px solid rgba(239, 237, 232, 0.3)'
-      : '1px solid rgba(100, 100, 100, 0.7)'};
+      ? 'rgba(239, 237, 232, 0.3)'
+      : 'rgba(100, 100, 100, 0.7)'};
   font-size: 14px;
   line-height: 1.3;
   text-align: center;
@@ -93,7 +93,8 @@ export const StyledToDiaryBtn = styled.button`
 
   font-size: 14px;
   line-height: 128.571%;
-
+  background-color: transparent;
+  border: none;
   display: flex;
   align-items: center;
   gap: 8px;
