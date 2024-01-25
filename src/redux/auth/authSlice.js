@@ -31,6 +31,7 @@ const initialState = {
     sex: null,
     calorie: null,
     levelActivity: null,
+    registerDate: null,
   },
   isLoading: false,
   token: null,
