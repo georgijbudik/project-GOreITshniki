@@ -133,7 +133,7 @@ const DayDashboard = () => {
                   {t('diary.dashboard.burned_calories')}
                 </CelNameBottom>
               </CellHeader>
-              <CelValue>{burnedCalories}</CelValue>
+              <CelValue>{burnedCalories.toFixed()}</CelValue>
             </ProcessedDashboardData>
           </ProcessedDashboardDataWrapper>
 
