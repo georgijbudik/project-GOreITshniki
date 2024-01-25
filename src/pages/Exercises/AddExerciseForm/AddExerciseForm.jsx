@@ -57,9 +57,6 @@ const AddExerciseForm = ({
   const [passedTime, setPassedTime] = useState(0);
   const date = useSelector(selectDiaryDate);
 
-  // const currentDate = dayjs();
-  // const date = dayjs(currentDate).format('DD.MM.YYYY');
-
   const handleAddToDiary = () => {
     onClose();
     const data = {
@@ -165,7 +162,12 @@ const AddExerciseForm = ({
             </StyledAddExerciseFormInfoItem>
           </StyledAddExerciseFormInfoList>
 
-          <Button paddingX={32} paddingY={12} onClick={handleAddToDiary}>
+          <Button
+            paddingX={32}
+            paddingY={12}
+            onClick={handleAddToDiary}
+            disabled={!isPlaying}
+          >
             {t('exercises.exercise_modal.add')}
           </Button>
         </StyledAddExerciseFormRightPartWrapper>
