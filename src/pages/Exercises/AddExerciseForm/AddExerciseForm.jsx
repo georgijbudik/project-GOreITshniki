@@ -166,7 +166,7 @@ const AddExerciseForm = ({
             paddingX={32}
             paddingY={12}
             onClick={handleAddToDiary}
-            disabled={!isPlaying}
+            disabled={passedTime === 0}
           >
             {t('exercises.exercise_modal.add')}
           </Button>
