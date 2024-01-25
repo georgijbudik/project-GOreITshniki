@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
 
+import toast from 'react-hot-toast';
 import BasicModalWindow from 'components/BasicModalWindow';
 import Button from 'components/Button';
 import { addProduct } from '../../../redux/products/productOperations';
@@ -42,17 +43,20 @@ const AddProductForm = () => {
     (productToAdd.calories * grams) / 100
   );
 
-  // const date = dayjs();
-  // const formattedDate = dayjs(date).format('DD.MM.YYYY');
-
-  const productToAddToDiary = {
-    productId: productToAdd._id,
-    date: currentDate,
-    weight: grams,
-  };
-
   const handleAddToDiaryBtn = e => {
     e.preventDefault();
+
+    if (grams <= 0 || isNaN(grams)) {
+      toast.error('Number should be more that 0');
+      return;
+    }
+
+    const productToAddToDiary = {
+      productId: productToAdd._id,
+      date: currentDate,
+      weight: grams,
+    };
+
     dispatch(addProduct(productToAddToDiary));
     dispatch(setCaloriesByUser(caloriesByUsersGrams));
   };
