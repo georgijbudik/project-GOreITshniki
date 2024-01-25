@@ -39,7 +39,7 @@ const DayExercises = () => {
   };
 
   return (
-    <Wrapper noExercises={exercises.length > 0}>
+    <Wrapper $noexercises={exercises.length > 0}>
       <CellExercisesHeader>
         <div>Execrcises</div>
         <WrapElem>

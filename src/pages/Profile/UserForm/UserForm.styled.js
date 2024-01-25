@@ -17,14 +17,19 @@ export const Container = styled.div`
 `;
 
 export const FieldName = styled.p`
-  margin-block-start: 0;
-  margin-block-end: 4px;
-  opacity: 0.5;
+  margin-bottom: 4px;
+  color: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'var(--border-color)'
+      : 'rgba(100, 100, 100, 0.7)';
+  }};
+
   font-weight: 400;
   font-size: 12px;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
+    margin-bottom: 8px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -67,7 +72,6 @@ export const MainInput = styled.input`
 
   @media screen and (min-width: 768px) {
     width: 346px;
-    margin-block-start: 8px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -77,6 +81,7 @@ export const MainInput = styled.input`
 
 export const SecondaryInput = styled.input`
   all: unset;
+
   border: ${({ theme }) => {
     return theme.palette.mode === 'dark'
       ? '1px solid var(--border-color)'
@@ -87,6 +92,7 @@ export const SecondaryInput = styled.input`
   border-radius: 12px;
   padding: 14px;
   width: 160px;
+  color: ${({ theme }) => theme.palette.text.primary};
 
   @media screen and (min-width: 768px) {
     width: 164px;
@@ -167,7 +173,7 @@ export const RadioContainer = styled.label`
   }
 
   @media screen and (min-width: 768px) {
-    margin-block-end: 12px;
+    margin-block-end: 8px;
   }
 `;
 

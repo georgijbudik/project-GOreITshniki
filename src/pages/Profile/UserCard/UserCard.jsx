@@ -22,6 +22,7 @@ import {
   AddAvatarButton,
   AddAvatarLabel,
   AvatarContainer,
+  DisclaimerText,
 } from './UserCard.styled';
 import LogOutBtn from 'components/LogOutBtn';
 import { updateAvatar } from '../../../redux/auth/authOperations';
@@ -29,7 +30,9 @@ import {
   selectUserCalories,
   selectUserInfo,
   selectAvatarUrl,
+  selectIsImageLoading,
 } from '../../../redux/auth/authSelectors';
+import Loader from 'components/Loader';
 
 const UserCard = () => {
   const { t } = useTranslation();
@@ -38,6 +41,7 @@ const UserCard = () => {
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const avatarURL = useSelector(selectAvatarUrl);
+  const isImageLoading = useSelector(selectIsImageLoading);
 
   const handleFileChange = e => {
     if (e.target.files) setFile(e.target.files[0]);
@@ -88,7 +92,11 @@ const UserCard = () => {
               />
             </AddProfilePicCross>
           </AddAvatarLabel>
-          {avatarURL ? (
+          {isImageLoading ? (
+            <AvatarContainer>
+              <Loader />
+            </AvatarContainer>
+          ) : avatarURL ? (
             <AvatarContainer>
               <img alt="User avatar" src={avatarURL} />
             </AvatarContainer>
@@ -109,7 +117,7 @@ const UserCard = () => {
         <DailyContainer>
           <DailyCard>
             <DailyTitle>
-              <SvgDailyIcon width="18" height="18" fill="#EF8964">
+              <SvgDailyIcon width="20" height="20" fill="#EF8964">
                 <use
                   xlinkHref={
                     process.env.PUBLIC_URL +
@@ -137,15 +145,15 @@ const UserCard = () => {
           </DailyCard>
         </DailyContainer>
         <DisclaimerContainer>
-          <SvgExclamationIcon height="14.01" width="40" stroke="#EFEDE8">
+          <SvgExclamationIcon>
             <use
               xlinkHref={
                 process.env.PUBLIC_URL +
-                '/images/sprite/sprite.svg#icon-exclamation-mark'
+                '/images/sprite/sprite.svg#icon-Attention1'
               }
-            ></use>
+            />
           </SvgExclamationIcon>
-          {t('profile.user_card.exclamation')}
+          <DisclaimerText>{t('profile.user_card.exclamation')}</DisclaimerText>
         </DisclaimerContainer>
         <LogOutBtnWraper>
           <LogOutBtn filled />

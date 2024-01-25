@@ -21,3 +21,5 @@ export const selectLevelActivity = state => state.auth.user.levelActivity;
 export const selectIsLoading = state => state.auth.isLoading;
 
 export const selectIsProfileComplete = state => state.auth.isProfileComplete;
+
+export const selectIsImageLoading = state => state.auth.isImageLoading;
