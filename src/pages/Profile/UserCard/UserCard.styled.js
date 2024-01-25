@@ -10,7 +10,10 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     padding: 0 0 0 49px;
     margin-block-start: 143px;
-    border-left: 1px solid #efede833;
+    border-left: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.20)'
+        : '1px solid rgba(100, 100, 100, 0.30)'};
   }
 `;
 
@@ -51,8 +54,8 @@ export const ProfileSettings = styled.h2`
 `;
 
 export const UserAvatar = styled.svg`
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   border: 1px solid var(--accent-color);
   border-radius: 50%;
   /* background-color:rgba(239, 237, 232, 0.1) ; */
@@ -65,15 +68,15 @@ export const UserAvatar = styled.svg`
   padding: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 102px;
-    height: 102px;
+    width: 150px;
+    height: 150px;
 
     padding: 24px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 102px;
-    height: 102px;
+    width: 150px;
+    height: 150px;
 
     padding: 24px;
   }
@@ -282,7 +285,7 @@ export const AddProfilePicBackground = styled.svg`
   width: 24px;
   height: 24px;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 786px) {
     width: 32px;
     height: 32px;
   }
@@ -301,7 +304,11 @@ export const AddProfilePicCross = styled.svg`
   transform: rotate(45deg);
 
   @media screen and (min-width: 768px) {
-    margin-left: -12.3px;
+    /* margin-left: -12.3px; */
+    top: 100%;
+    left: 50%;
+    margin-left: -8.2px;
+    margin-top: -13.5px;
   }
 
   @media screen and (min-width: 1440px) {

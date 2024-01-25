@@ -16,7 +16,8 @@ export const Container = styled.div`
   }
 `;
 
-export const FieldName = styled.p`
+export const FieldName = styled.label`
+  display: block;
   margin-bottom: 4px;
   color: ${({ theme }) => {
     return theme.palette.mode === 'dark'
@@ -68,7 +69,21 @@ export const MainInput = styled.input`
   border-radius: 12px;
   box-sizing: border-box;
   padding: 14px;
-  width: 335px;
+  max-width: 335px;
+  width: 100%;
+  transition: var(--transition);
+
+  &::placeholder {
+    color: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? 'rgba(239, 237, 232, 0.60)'
+        : 'rgba(100, 100, 100, 1);'};
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    border: 1px solid var(--accent-color);
+  }
 
   @media screen and (min-width: 768px) {
     width: 346px;
@@ -93,6 +108,12 @@ export const SecondaryInput = styled.input`
   padding: 14px;
   width: 160px;
   color: ${({ theme }) => theme.palette.text.primary};
+  transition: var(--transition);
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--accent-color);
+  }
 
   @media screen and (min-width: 768px) {
     width: 164px;
@@ -119,7 +140,13 @@ export const SecondaryInputContainer = styled.div`
 
 export const BloodSexContainer = styled.label`
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-block-end: 32px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
 `;
 
 export const SexContainer = styled.label`
@@ -128,10 +155,10 @@ export const SexContainer = styled.label`
 
 export const BloodContainer = styled.div`
   display: flex;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 
   @media screen and (min-width: 768px) {
-    margin-right: 32px;
+    /* margin-right: 32px; */
   }
 `;
 
@@ -157,10 +184,15 @@ export const RadioContainer = styled.label`
     border: 1.5px #636366 solid;
     margin-right: 9px;
     cursor: pointer;
+    transition: var(--transition);
+
     &:checked {
       border-color: var(--icon-color);
       background-color: var(--icon-color);
-      box-shadow: 0px 0px 0px 2px black inset;
+      box-shadow: ${({ theme }) =>
+        theme.palette.mode === 'dark'
+          ? `0px 0px 0px 2px ${theme.palette.background.default} inset`
+          : `0px 0px 0px 2px ${theme.palette.background.default} inset`};
     }
 
     @media screen and (min-width: 768px) {

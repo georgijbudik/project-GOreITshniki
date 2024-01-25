@@ -116,8 +116,9 @@ const UserForm = () => {
         </ProfileSettings>
         <NameEmailInput>
           <FieldContainer className="nameEmail">
-            <FieldName>{t('profile.user_form.name')} </FieldName>
+            <FieldName htmlFor="name">{t('profile.user_form.name')} </FieldName>
             <MainInput
+              id="name"
               type="text"
               name="name"
               required
@@ -134,14 +135,17 @@ const UserForm = () => {
               required
               placeholder={email}
               disabled
-              value={formik.initialValues.email}
+              // value={formik.initialValues.email}
             />
           </FieldContainer>
         </NameEmailInput>
         <SecondaryInputContainer>
           <FieldContainer>
-            <FieldName>{t('profile.user_form.height')} </FieldName>
+            <FieldName htmlFor="height">
+              {t('profile.user_form.height')}{' '}
+            </FieldName>
             <SecondaryInput
+              id="height"
               type="number"
               name="height"
               min={150}
@@ -153,8 +157,11 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>{t('profile.user_form.current_weight')} </FieldName>
+            <FieldName htmlFor="currentWeight">
+              {t('profile.user_form.current_weight')}{' '}
+            </FieldName>
             <SecondaryInput
+              id="currentWeight"
               type="number"
               name="currentWeight"
               max={180}
@@ -166,8 +173,11 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>{t('profile.user_form.desired_weight')} </FieldName>
+            <FieldName htmlFor="desiredWeight">
+              {t('profile.user_form.desired_weight')}{' '}
+            </FieldName>
             <SecondaryInput
+              id="desiredWeight"
               className="desired-weight"
               name="desiredWeight"
               min={35}
@@ -180,8 +190,11 @@ const UserForm = () => {
             />
           </FieldContainer>
           <FieldContainer>
-            <FieldName>{t('profile.user_form.date_of_birth')} </FieldName>
+            <FieldName htmlFor="dateOfBirth">
+              {t('profile.user_form.date_of_birth')}{' '}
+            </FieldName>
             <DatePicker
+              id="dateOfBirth"
               selected={formik.values.birthday}
               name="dateOfBirth"
               required
