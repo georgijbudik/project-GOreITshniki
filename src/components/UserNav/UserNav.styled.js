@@ -133,7 +133,8 @@ export const StyledUserNavButton = styled(StyledButton)`
         : '1px solid rgba(239, 237, 232, 0.2)'};
   }
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
     background-color: ${({ $secondary }) =>
       $secondary ? 'transparent' : 'var(--accent-color)'};
 

@@ -92,7 +92,8 @@ export const ButtonGoBack = styled.button`
 
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     & > a {
       color: ${({ theme }) => theme.palette.text.primary};
     }

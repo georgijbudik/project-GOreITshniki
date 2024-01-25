@@ -238,7 +238,8 @@ export const StyledCalendarNavigationButton = styled.button`
   border: none;
   background-color: transparent;
 
-  &:hover {
+  &:hover,
+  &:focus {
     & > svg {
       fill: ${({ theme }) => theme.palette.text.primary};
     }

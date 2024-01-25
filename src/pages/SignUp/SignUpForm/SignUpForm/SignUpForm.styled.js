@@ -59,7 +59,8 @@ export const StyledLink = styled(Link)`
 
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--accent-color);
   }
 `;
@@ -114,7 +115,8 @@ export const Input = styled(Field)`
     line-height: calc(18 / 16);
     letter-spacing: 0.02em;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     border-color: var(--accent-color);
   }
 
@@ -162,7 +164,8 @@ export const ShowPassButton = styled.button`
   background-color: transparent;
   border: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     & > svg {
       fill: var(--accent-color);
       transform: scale(1.1);

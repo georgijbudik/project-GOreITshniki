@@ -50,7 +50,8 @@ export const StyledLanguageToggleListButton = styled.button`
 
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--accent-color);
   }
 

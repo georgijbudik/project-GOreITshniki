@@ -92,7 +92,8 @@ export const StyledAddExerciseSuccessNavigationLink = styled.p`
   cursor: pointer;
   transition: var(--transition);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.palette.text.primary};
 
     & > svg {
