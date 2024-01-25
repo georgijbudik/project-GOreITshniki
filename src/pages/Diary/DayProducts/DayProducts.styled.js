@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   margin-top: 40px;
   padding: 16px;
   color: var(--main-text-color);
-  height: ${props => (props.noExercises ? '824px' : '335px')};
+  height: ${props => (props.$noexercises ? '824px' : '335px')};
   &::-webkit-scrollbar {
     width: 6px;
     height: 203px;
@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
     max-width: 704px;
     margin-top: 0;
     /* height: 234px; */
-    height: ${props => (props.noExercises ? '234px' : '234px')};
+    height: ${props => (props.$noexercises ? '234px' : '234px')};
 
     overflow-y: auto; /* був unset  */
 

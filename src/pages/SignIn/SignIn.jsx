@@ -22,7 +22,6 @@ const SignIn = () => {
         <TitlePage>{t('sign_in.title')}</TitlePage>
       </TitleWrapper>
       <Info>{t('sign_in.description')}</Info>
-
       <SignInForm />
       <InfoLink>
         {t('sign_in.dont_have_account')}{' '}

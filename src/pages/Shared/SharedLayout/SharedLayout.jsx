@@ -6,7 +6,6 @@ import { GlobalStyles } from '../GlobalStyles.styled';
 
 import { useSelector } from 'react-redux';
 import { selectIsModalOpen } from '../../../redux/global/globalSlice';
-import Loader from 'components/Loader';
 
 const SharedLayout = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
@@ -18,7 +17,7 @@ const SharedLayout = () => {
         <Header />
 
         <main>
-          <Outlet fallback={<Loader />} />
+          <Outlet />
         </main>
       </MainContainer>
     </>
