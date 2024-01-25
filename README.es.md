@@ -1,33 +1,33 @@
 <img width="980" alt="readme" src="public/readme-cover.jpg">
 
-# Power Pulse - React & Node.js app
+# Power Pulse - Aplicación React & Node.js
 
-Discover the groundbreaking Power Pulse app — an innovative solution with
-intuitive interface compatible with any device, designed to support your pursuit
-of a healthy and energetic lifestyle :runner:
+Descubre la revolucionaria aplicación Power Pulse: una solución innovadora con
+una interfaz intuitiva compatible con cualquier dispositivo, diseñada para
+apoyar tu búsqueda de un estilo de vida saludable y enérgico :runner:
 
-## About the project
+## Sobre el proyecto
 
-This app allows you to explore and manage your sports activity and nutrition.
-Users can:
+Esta aplicación te permite explorar y gestionar tu actividad deportiva y
+nutrición. Los usuarios pueden:
 
-- [x] create accounts
-- [x] select different exercises
-- [x] count calories burned
-- [x] track time spent in physical activity
-- [x] calculate the number of calories consumed with a particular meal
-- [x] identify products suitable for their diet based on their blood type
-- [x] change language & dark/light theme
+- [x] crear cuentas
+- [x] seleccionar diferentes ejercicios
+- [x] contar calorías quemadas
+- [x] rastrear el tiempo dedicado a la actividad física
+- [x] calcular la cantidad de calorías consumidas en una comida específica
+- [x] identificar productos adecuados para su dieta según su tipo de sangre
+- [x] cambiar el idioma y el tema claro/oscuro
 
-## References
+## Referencias
 
-Live page:
+Página en vivo:
 [**Power Pulse**](https://georgijbudik.github.io/project-GOreITshniki)
 
-Project design:
+Diseño del proyecto:
 [**Layout**](https://www.figma.com/file/FHAaMcWwZCDbzWPlowFhEf/Power-Pulse?type=design&mode=design&t=pEbMMrU24sjh3Lm3-0)
 
-## Technologies used:
+## Tecnologías utilizadas:
 
 | `FrontEnd`        | `BackEnd`  | `General`  |
 | ----------------- | ---------- | ---------- |
@@ -41,24 +41,24 @@ Project design:
 | Styled Components |            |            |
 | Material-UI       |            |            |
 
-## Installation & Scripts
+## Instalación y Scripts
 
-1. Clone the repository:
+1. Clona el repositorio:
    `git clone https://github.com/georgijbudik/project-GOreITshniki`
-2. Install the dependencies: `npm install`
-3. Run development mode: `npm run dev`
-4. Start local server: `npm start`
-5. Run production build: `npm build`
+2. Instala las dependencias: `npm install`
+3. Ejecuta el modo de desarrollo: `npm run dev`
+4. Inicia el servidor local: `npm start`
+5. Ejecuta la compilación para producción: `npm build`
 
 ## API
 
-Our team also developed the backend this application relies on:
+Nuestro equipo también desarrolló el backend en el que se basa esta aplicación:
 [**Power Pulse BackEnd**](https://github.com/georgijbudik/backend-GOreITshniki)
 
-Endpoint documentation:
+Documentación de puntos finales::
 [**Power Pulse API**](https://backend-project-dl3a.onrender.com/api-docs/)
 
-# Development team - GOreITshniki :eyes:
+# Equipo de Desarrollo - GOreITshniki :eyes:
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/georgijbudik)
 Georgii Budik | **Team Lead** | **Full Stack Developer**
@@ -93,5 +93,5 @@ Yuliia Yaremenko | **Full Stack Developer**
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/Anatolii2709)
 Anatolii Tokariev | **Full Stack Developer**
 
-**A big thank you to our team for their contribution to this project!**
+**¡Muchas gracias a nuestro equipo por su contribución a este proyecto!**
 :blue_heart::yellow_heart:

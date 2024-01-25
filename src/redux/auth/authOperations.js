@@ -3,9 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { toastError, toastSuccess } from '../../redux/helpers/toastCase';
 
+axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3001/api/';
-
-axios.defaults.baseURL = 'https://backend-project-dl3a.onrender.com/api/';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -83,7 +82,6 @@ export const updateUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.patch('users/update', credentials);
-      console.log(res.data);
       return res.data;
     } catch (error) {
       toastError(error.response.data.message);

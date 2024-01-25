@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage, setTheme } from '../../redux/global/globalSlice';
 import { logOut } from '../../redux/auth/authOperations';
+import { selectAvatarUrl } from '../../redux/auth/authSelectors';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,14 +13,17 @@ import ContrastIcon from '@mui/icons-material/Contrast';
 import { Logout, Settings } from '@mui/icons-material';
 
 import {
+  StyledUserSettingsRealAvatarWrapper,
   StyledUserSettingsAvatarBackgroundIcon,
   StyledUserSettingsAvatarIcon,
   StyledUserSettingsAvatarWrapper,
+  StyledUserSettingsAvatarButton,
 } from './UserSettings.styled';
 
 const UserSettings = () => {
   const { i18n, t } = useTranslation();
   const dispatch = useDispatch();
+  const userAvatar = useSelector(selectAvatarUrl);
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElLanguage, setAnchorElLanguage] = useState(null);
@@ -71,21 +75,32 @@ const UserSettings = () => {
   return (
     <>
       <StyledUserSettingsAvatarWrapper onClick={handleOpenUserMenu}>
-        <StyledUserSettingsAvatarBackgroundIcon>
-          <use
-            xlinkHref={
-              process.env.PUBLIC_URL +
-              '/images/sprite/sprite.svg#icon-avatar-bg'
-            }
-          ></use>
-        </StyledUserSettingsAvatarBackgroundIcon>
-        <StyledUserSettingsAvatarIcon>
-          <use
-            xlinkHref={
-              process.env.PUBLIC_URL + '/images/sprite/sprite.svg#icon-avatar'
-            }
-          ></use>
-        </StyledUserSettingsAvatarIcon>
+        {userAvatar ? (
+          <StyledUserSettingsAvatarButton>
+            <StyledUserSettingsRealAvatarWrapper>
+              <img alt="Avatar" src={userAvatar} />
+            </StyledUserSettingsRealAvatarWrapper>
+          </StyledUserSettingsAvatarButton>
+        ) : (
+          <StyledUserSettingsAvatarButton>
+            <StyledUserSettingsAvatarBackgroundIcon>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-avatar-bg'
+                }
+              ></use>
+            </StyledUserSettingsAvatarBackgroundIcon>
+            <StyledUserSettingsAvatarIcon>
+              <use
+                xlinkHref={
+                  process.env.PUBLIC_URL +
+                  '/images/sprite/sprite.svg#icon-avatar'
+                }
+              ></use>
+            </StyledUserSettingsAvatarIcon>
+          </StyledUserSettingsAvatarButton>
+        )}
       </StyledUserSettingsAvatarWrapper>
 
       <Menu

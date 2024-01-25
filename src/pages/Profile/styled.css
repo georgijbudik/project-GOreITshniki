@@ -1,4 +1,10 @@
 .profile_container {
+  padding: 0 0 44px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 0 54px 0;
+  }
+
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;

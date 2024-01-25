@@ -1,13 +1,16 @@
 import { useTranslation } from 'react-i18next';
+
+import TitlePage from 'components/TitlePage';
+import MainImage from './SignUpForm/MainImage';
 import SignUpForm from './SignUpForm/SignUpForm';
+
 import {
-  Heading,
+  TitleWrapper,
   Info,
   Container,
   InfoLink,
   StyledLink,
 } from './SignUpForm/SignUpForm/SignUpForm.styled';
-import MainImage from './SignUpForm/MainImage';
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -15,7 +18,9 @@ const SignUp = () => {
   return (
     <Container>
       <MainImage />
-      <Heading>{t('sign_up.title')}</Heading>
+      <TitleWrapper>
+        <TitlePage>{t('sign_up.title')}</TitlePage>
+      </TitleWrapper>
       <Info>{t('sign_up.description')}</Info>
       <SignUpForm />
       <InfoLink>

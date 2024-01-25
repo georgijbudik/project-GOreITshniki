@@ -1,5 +1,6 @@
 import { Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
+import { StyledButton } from 'components/Button/Button.styled';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -13,16 +14,10 @@ export const Container = styled.div`
   }
 `;
 
-export const Heading = styled.h1`
-  font-weight: 700;
-  font-size: 24px;
-  margin: 0 0 14px 0;
-  line-height: calc(28 / 24);
-  letter-spacing: 0.02em;
+export const TitleWrapper = styled.div`
+  margin-bottom: 14px;
 
   @media screen and (min-width: 768px) {
-    font-size: 32px;
-    line-height: calc(44 / 32);
     margin-bottom: 16px;
   }
 `;
@@ -61,20 +56,26 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => {
     return theme.palette.text.primary;
   }};
+
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--accent-color);
+  }
 `;
 
 export const Forma = styled(Form)`
-  width: 335px;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  flex-direction: column;
+  max-width: 335px;
+  /* display: flex; */
+  /* align-items: left; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
   @media screen and (min-width: 768px) {
-    width: 364px;
+    max-width: 364px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 496px;
+    max-width: 496px;
   }
 `;
 
@@ -93,34 +94,35 @@ export const Input = styled(Field)`
   color: ${({ theme }) => theme.palette.text.primary};
   width: 100%;
   height: 46px;
-  opacity: 0.3;
+  /* opacity: 0.3; */
   padding: 0 0 0 14px;
   margin-bottom: 18px;
   background-color: transparent;
   border: ${({ theme }) => {
     return theme.palette.mode === 'dark'
-      ? '2px solid white'
-      : '2px solid black';
+      ? '1px solid rgba(239, 237, 232, 0.30);'
+      : '1px solid rgba(100, 100, 100, 0.7);';
   }};
+
   border-radius: 12px;
   outline: none;
+  transition: var(--transition);
   &::placeholder {
     color: ${({ theme }) => theme.palette.text.primary};
     font-weight: 400;
     font-size: 16px;
     line-height: calc(18 / 16);
     letter-spacing: 0.02em;
-    opacity: 0.6;
   }
   &:hover {
     border-color: var(--accent-color);
   }
 
   &:not(:placeholder-shown):valid {
-    border-color: var(--green-colro);
+    border: 1px solid #3cbf61;
   }
   &:not(:placeholder-shown):invalid {
-    border-color: var(--red-color);
+    border: 1px solid #d80027;
   }
 
   @media screen and (min-width: 768px) {
@@ -139,60 +141,11 @@ export const Error = styled(ErrorMessage)`
     transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 `;
 
-export const StyledAuthButton = styled.button`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 140px;
-  height: 42px;
-  color: ${({ theme }) => {
-    return theme.palette.text.primary;
-  }};
-  transition: var(--transition);
-
-  padding: ${({ $paddingY, $paddingX }) => `${$paddingY}px ${$paddingX}px`};
-
-  border-radius: 12px;
-  background-color: ${({ $secondary }) =>
-    $secondary ? 'transparent' : 'var(--accent-color)'};
-  border: ${({ $secondary }) =>
-    $secondary ? '1px solid rgba(239, 237, 232, 0.30);' : 'none'};
-
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 120%;
-
-  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background-color: ${({ $secondary }) =>
-      $secondary ? 'transparent' : 'var(--icon-color)'};
-
-    border: ${({ $secondary }) =>
-      $secondary ? `1px solid var(--accent-color)` : 'none'};
-  }
-
-  &:disabled {
-    color: rgba(239, 237, 232, 0.6);
-
-    &:hover,
-    &:focus {
-      background-color: ${({ $secondary }) =>
-        $secondary ? 'transparent' : 'var(--accent-color)'};
-
-      border: ${({ $secondary }) =>
-        $secondary ? '1px solid rgba(239, 237, 232, 0.30);' : 'none'};
-    }
-  }
+export const StyledAuthButton = styled(StyledButton)`
+  padding: 12px 40px;
 
   @media screen and (min-width: 768px) {
-    font-size: 20px;
-    width: 192px;
-    height: 56px;
-
-    padding: ${({ $paddingY, $paddingX }) =>
-      `${$paddingY * (4 / 3)}px ${$paddingX * (3 / 2)}px`};
+    padding: 16px 60px;
   }
 `;
 
@@ -208,14 +161,16 @@ export const ShowPassButton = styled.button`
   transform: translate(-50%, -50%);
   background-color: transparent;
   border: none;
+
+  &:hover {
+    & > svg {
+      fill: var(--accent-color);
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export const ShowPassSVG = styled.svg`
-  transition: stroke 2250ms cubic-bezier(0.4, 0, 0.2, 1),
-    scale 250ms ease-in-out;
-
-  &:hover {
-    stroke: #e6533c;
-    scale: 1.2;
-  }
+  fill: ${({ theme }) => theme.palette.text.primary};
+  transition: var(--transition);
 `;

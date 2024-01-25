@@ -38,7 +38,7 @@ const arrOfActs = [
   getExercisesFilter,
 ];
 
-const addStatusToActs = status => arrOfActs.map(el => el[status]);
+export const addStatusToActs = status => arrOfActs.map(el => el[status]);
 
 const exeSlice = createSlice({
   name: 'exercises',

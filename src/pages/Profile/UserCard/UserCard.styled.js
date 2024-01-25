@@ -1,22 +1,30 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  padding: 40px 0 20px 0;
+
   @media screen and (min-width: 768px) {
+    padding: 72px 0 38px 0;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-left: 49px;
+    padding: 0 0 0 49px;
     margin-block-start: 143px;
-    border-left: 1px solid #efede833;
+    border-left: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.20)'
+        : '1px solid rgba(100, 100, 100, 0.30)'};
   }
 `;
 
 export const UserInfo = styled.div`
   text-align: center;
+  margin-top: 40px;
 
   @media screen and (min-width: 768px) {
     max-width: 439px;
     margin: 0 auto;
+    margin-top: 64px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -25,7 +33,7 @@ export const UserInfo = styled.div`
   }
 `;
 
-export const ProfileSettings = styled.h3`
+export const ProfileSettings = styled.h2`
   margin-block-start: 0;
   margin-block-end: 45px;
   font-size: 24px;
@@ -34,8 +42,8 @@ export const ProfileSettings = styled.h3`
   /* color: var(--main-text-color); */
 
   @media screen and (min-width: 768px) {
-    margin-block-end: 38px;
-    margin-block-start: 72px;
+    margin-bottom: 64px;
+    font-size: 32px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -46,8 +54,8 @@ export const ProfileSettings = styled.h3`
 `;
 
 export const UserAvatar = styled.svg`
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   border: 1px solid var(--accent-color);
   border-radius: 50%;
   /* background-color:rgba(239, 237, 232, 0.1) ; */
@@ -60,24 +68,39 @@ export const UserAvatar = styled.svg`
   padding: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 102px;
-    height: 102px;
+    width: 150px;
+    height: 150px;
 
     padding: 24px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 102px;
-    height: 102px;
+    width: 150px;
+    height: 150px;
 
     padding: 24px;
   }
 `;
 
 export const AvatarContainer = styled.div`
+  display: inline-block;
   width: 90px;
   height: 90px;
-  border-radius: 50%;
+  img {
+    border-radius: 50%;
+    border: 1px solid var(--icon-color);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 150px;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 1px solid var(--icon-color);
+    }
+  }
 `;
 
 export const UserName = styled.p`
@@ -102,7 +125,7 @@ export const UserRole = styled.p`
   opacity: 0.5;
   font-weight: 400;
   font-size: 14px;
-
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin-block-start: 8px;
     margin-block-end: 32px;
@@ -111,18 +134,22 @@ export const UserRole = styled.p`
 
 export const DailyContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  text-align: left;
+  gap: 14px;
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 export const DailyTitle = styled.p`
-  margin-block-start: 0;
   font-size: 12px;
-  color: var(--main-text-color);
-  opacity: 0.8;
   display: flex;
   align-items: center;
+  text-align: start;
+  color: rgba(239, 237, 232, 0.8);
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 133.333%;
 `;
 
 export const SvgDailyIcon = styled.svg`
@@ -145,10 +172,11 @@ export const DailyResult = styled.p`
 export const DailyCard = styled.div`
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  align-items: start;
   justify-content: space-between;
+  flex-direction: column;
   background-color: var(--accent-color);
-  width: 157px;
+  width: 165px;
   height: 96px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -157,40 +185,41 @@ export const DailyCard = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 214px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 209px;
     height: 108px;
+    padding: 14px 18px;
   }
 `;
 
 export const DisclaimerContainer = styled.div`
-  /* color: #efede833; */
-  font-size: 13.5px;
-  text-align: left;
-  line-height: 1.3;
   display: flex;
-  height: 73px;
-  margin-block-end: 40px;
+  justify-content: center;
+  text-align: start;
+  margin-bottom: 40px;
+`;
+
+export const DisclaimerText = styled.p`
+  color: ${({ theme }) => {
+    return theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.3)'
+      : 'rgba(100, 100, 100, 0.8)';
+  }};
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 128.571%;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+    line-height: 150%;
   }
 `;
 
 export const SvgExclamationIcon = styled.svg`
-  border-radius: 50%;
-  padding: 5px;
-  background-color: #efa082;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
   margin-right: 8px;
-  max-width: 15px;
-  width: 40px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 15px;
-    width: 30px;
-  }
 `;
 
 export const LogOutBtnWraper = styled.div`
@@ -256,7 +285,7 @@ export const AddProfilePicBackground = styled.svg`
   width: 24px;
   height: 24px;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 786px) {
     width: 32px;
     height: 32px;
   }
@@ -275,7 +304,11 @@ export const AddProfilePicCross = styled.svg`
   transform: rotate(45deg);
 
   @media screen and (min-width: 768px) {
-    margin-left: -12.3px;
+    /* margin-left: -12.3px; */
+    top: 100%;
+    left: 50%;
+    margin-left: -8.2px;
+    margin-top: -13.5px;
   }
 
   @media screen and (min-width: 1440px) {
