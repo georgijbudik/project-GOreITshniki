@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteProduct } from '../../../redux/diary/diaryOperations';
 import {
@@ -32,6 +33,7 @@ import {
 import { selectUserBlood } from '../../../redux/auth/authSelectors';
 
 const DayProducts = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const products = useSelector(selectDiaryProducts);
   const bloodType = useSelector(selectUserBlood);
@@ -49,14 +51,14 @@ const DayProducts = () => {
   return (
     <Wrapper $noexercises={products.length > 0}>
       <CellProductsHeader>
-        <CardTitle>Products</CardTitle>
+        <CardTitle>{t('diary.products.header')}</CardTitle>
         <div>
           <button
             onClick={() => {
               navigate('/products');
             }}
           >
-            Add product
+            {t('diary.products.add')}
           </button>
           <svg>
             <use
@@ -71,29 +73,31 @@ const DayProducts = () => {
       {products.length > 0 ? (
         <TableHeaderTablet>
           <li>
-            <TitleTextTablet1>Title</TitleTextTablet1>
+            <TitleTextTablet1>{t('diary.products.title')}</TitleTextTablet1>
           </li>
           <li>
-            <TitleTextTablet2>Category</TitleTextTablet2>
+            <TitleTextTablet2>{t('diary.products.category')}</TitleTextTablet2>
           </li>
           <li>
-            <TitleTextTablet3>Calories</TitleTextTablet3>
+            <TitleTextTablet3>{t('diary.products.calories')}</TitleTextTablet3>
           </li>
           <li>
-            <TitleTextTablet4>Weight</TitleTextTablet4>
+            <TitleTextTablet4>{t('diary.products.weight')}</TitleTextTablet4>
           </li>
           <li>
-            <TitleTextTablet5>Recommend</TitleTextTablet5>
+            <TitleTextTablet5>
+              {t('diary.products.recommended')}
+            </TitleTextTablet5>
           </li>
         </TableHeaderTablet>
       ) : (
         <div></div>
       )}
       {products.length === 0 ? (
-        <NotFoundMessage>Not found products</NotFoundMessage>
+        <NotFoundMessage>{t('diary.products.not_found')}</NotFoundMessage>
       ) : (
         <ul>
-          {products.map(({ product, consumedCalories }) => {
+          {products.map(({ product, consumedCalories, weight }) => {
             const recommendation =
               product.groupBloodNotAllowed[bloodType] === true ? 'No' : 'Yes';
             return (
@@ -101,27 +105,27 @@ const DayProducts = () => {
                 <ProdWrap>
                   <TopProdBlock>
                     <div>
-                      <TitleText>Title</TitleText>
+                      <TitleText>{t('diary.products.title')}</TitleText>
                       <MainText>{product.title}</MainText>
                       <MainTextTablet>{product.title}</MainTextTablet>
                     </div>
                     <div>
-                      <TitleText>Category</TitleText>
+                      <TitleText>{t('diary.products.category')}</TitleText>
                       <MainText> {product.category}</MainText>
                       <MainTextTablett>{product.category}</MainTextTablett>
                     </div>
                   </TopProdBlock>
                   <BottomProdBlock>
                     <div>
-                      <TitleText>Calories</TitleText>
-                      <MainTextBottom>{product.calories}</MainTextBottom>
+                      <TitleText>{t('diary.products.calories')}</TitleText>
+                      <MainTextBottom>{consumedCalories}</MainTextBottom>
                     </div>
                     <div>
-                      <TitleText>Weight</TitleText>
-                      <MainTextBottom>{product.weight}</MainTextBottom>
+                      <TitleText>{t('diary.products.weight')}</TitleText>
+                      <MainTextBottom>{weight}</MainTextBottom>
                     </div>
                     <div>
-                      <TitleText>Recommend</TitleText>
+                      <TitleText>{t('diary.products.recommended')}</TitleText>
                       <RecommemdedTextBottom $recommended={recommendation}>
                         {recommendation}
                       </RecommemdedTextBottom>

@@ -1,9 +1,9 @@
-import React from 'react';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { getDayInfo } from '../../redux/diary/diaryOperations';
+import { useTranslation } from 'react-i18next';
 
-// import MainContainer from '../../components/MainContainer';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from '../../redux/diary/diarySelectors';
+import Loader from 'components/Loader';
+
 import TitlePage from '../../components/TitlePage';
 import DayDashboard from './DayDashboard';
 import DaySwitch from './DaySwitch';
@@ -18,28 +18,30 @@ import {
 } from './Diary.styled';
 
 const Diary = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getDayInfo('01.01.2024'));
-  // }, [dispatch]);
+  const { t } = useTranslation();
+  const isLoading = useSelector(selectIsLoading);
+
   return (
-    <Wrap>
-      <PageTitle>
-        <TitlePage>Diary</TitlePage>
-        <DaySwitchRight>
-          <DaySwitch>DaySwitch</DaySwitch>
-        </DaySwitchRight>
-      </PageTitle>
-      <MediaWrapper>
-        <MediaWrapDayDashBoard>
-          <DayDashboard>DayDashboard</DayDashboard>
-        </MediaWrapDayDashBoard>
-        <div>
-          <DayProducts>DayProducts</DayProducts>
-          <DayExercises>DayExercises</DayExercises>
-        </div>
-      </MediaWrapper>
-    </Wrap>
+    <>
+      {isLoading && <Loader />}
+      <Wrap>
+        <PageTitle>
+          <TitlePage>{t('diary.title')}</TitlePage>
+          <DaySwitchRight>
+            <DaySwitch />
+          </DaySwitchRight>
+        </PageTitle>
+        <MediaWrapper>
+          <MediaWrapDayDashBoard>
+            <DayDashboard />
+          </MediaWrapDayDashBoard>
+          <div>
+            <DayProducts />
+            <DayExercises />
+          </div>
+        </MediaWrapper>
+      </Wrap>
+    </>
   );
 };
 

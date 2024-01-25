@@ -185,6 +185,7 @@ i18n
               calories: 'Calories',
               weight: 'Weight',
               recommended: 'Recommend',
+              not_found: 'Not found products',
             },
             exercises: {
               header: 'Exercises',
@@ -192,8 +193,10 @@ i18n
               body_part: 'Body part',
               equipment: 'Equipment',
               name: 'Name',
+              target: 'Target',
               burned_calories: 'Burned calories',
               time: 'Time',
+              not_found: 'Not found exercises',
             },
             dashboard: {
               daily_calories_intake: 'Daily calorie intake',
@@ -377,21 +380,25 @@ i18n
             title: 'Щоденник',
             products: {
               header: 'Продукти',
-              add: 'Додати продукт',
+              add: 'Додати',
               title: 'Назва',
               category: 'Категорія',
               calories: 'Калорії',
               weight: 'Вага',
               recommended: 'Рекомендовано',
+              not_found: 'Товари не знайдені',
             },
             exercises: {
               header: 'Вправи',
-              add: 'Додати вправу',
+              add: 'Додати',
               body_part: 'Частина тіла',
               equipment: 'Обладнання',
               name: 'Назва',
+              target: 'Ціль',
+
               burned_calories: 'Спалені калорії',
               time: 'Час',
+              not_found: 'Вправи не знайдені',
             },
             dashboard: {
               daily_calories_intake: 'Норма калорій',
@@ -402,7 +409,7 @@ i18n
               sports_remaining: 'Залишок активного часу',
             },
             warning:
-              'Фіксуйте всі прийоми їжі в щоденнику калорій кожен день. Це допоможе вам бути уважним до свого харчування та приймати обдумані рішення.',
+              'Фіксуйте всі прийоми їжі в щоденнику калорій кожен день. Це допоможе вам бути уважним до свого харчування та приймати рішення.',
           },
         },
       },
@@ -575,21 +582,25 @@ i18n
             title: 'Diario',
             products: {
               header: 'Productos',
-              add: 'Agregar producto',
+              add: 'Agregar',
               title: 'Título',
               category: 'Categoría',
               calories: 'Calorías',
               weight: 'Peso',
               recommended: 'Recomendado',
+              not_found: 'Productos no encontrados',
             },
             exercises: {
               header: 'Ejercicios',
-              add: 'Agregar ejercicio',
+              add: 'Agregar',
               body_part: 'Parte del cuerpo',
               equipment: 'Equipo',
               name: 'Nombre',
+              target: 'Target',
+
               burned_calories: 'Calorías quemadas',
               time: 'Tiempo',
+              not_found: 'Ejercicios no encontrados',
             },
             dashboard: {
               daily_calories_intake: 'Ingesta de calorías',

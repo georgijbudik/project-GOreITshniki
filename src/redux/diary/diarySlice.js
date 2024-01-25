@@ -1,24 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { getCurrentUser } from './diaryOperations';
 import { getDayInfo, deleteProduct, deleteExercise } from './diaryOperations';
+
 import dayjs from 'dayjs';
+
 const initialState = {
-  // user: {
-  //   name: null,
-  //   email: null,
-  //   // password: null,
-  //   avatarURL: null,
-  //   height: null,
-  //   currentWeight: null,
-  //   desiredWeight: null,
-  //   birthday: null,
-  //   blood: null,
-  //   sex: null,
-  //   calorie: null,
-  //   levelActivity: null,
-  // },
-  // token: null,
-  // isLoggedIn: false,
   isFetching: false,
   error: null,
   products: [],
@@ -38,16 +23,11 @@ const diarySlice = createSlice({
     },
   },
   extraReducers: builder => {
-    // builder.addCase(getCurrentUser.fulfilled, (state, action) => {
-    //   state.user = action.payload;
-    //   state.isLoggedIn = true;
-    //   state.isFetching = false;
-    // });
+    builder.addCase(getDayInfo.pending, (state, action) => {
+      state.isFetching = true;
+      state.error = null;
+    });
 
-    // builder.addCase(getCurrentUser.rejected, (state, action) => {
-    //   state.isFetching = false;
-    //   state.error = action.payload;
-    // });
     builder.addCase(getDayInfo.fulfilled, (state, action) => {
       if (action.payload.message !== undefined) {
         state.products = [];
@@ -57,6 +37,8 @@ const diarySlice = createSlice({
         state.burnedCalories = 0;
         state.sportSeconds = 0;
         state.consumedCalories = 0;
+        state.isFetching = false;
+
         return;
       }
 
@@ -85,7 +67,19 @@ const diarySlice = createSlice({
       state.burnedCalories = totalBurnedCalories;
       state.sportSeconds = totalTime;
       state.consumedCalories = totalCaloriesConsumed;
+      state.isFetching = false;
     });
+
+    builder.addCase(getDayInfo.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(deleteProduct.pending, (state, action) => {
+      state.isFetching = true;
+      state.error = null;
+    });
+
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
       const productIdToDelete = action.meta.arg.id;
 
@@ -102,7 +96,19 @@ const diarySlice = createSlice({
       );
 
       state.consumedCalories = totalCaloriesConsumed;
+      state.isFetching = false;
     });
+
+    builder.addCase(deleteProduct.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(deleteExercise.pending, (state, action) => {
+      state.isFetching = true;
+      state.error = null;
+    });
+
     builder.addCase(deleteExercise.fulfilled, (state, action) => {
       const exerciseIdToDelete = action.meta.arg.id;
 
@@ -121,6 +127,12 @@ const diarySlice = createSlice({
 
       state.burnedCalories = totalBurnedCalories;
       state.sportSeconds = totalTime;
+      state.isFetching = false;
+    });
+
+    builder.addCase(deleteExercise.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
     });
   },
 });
