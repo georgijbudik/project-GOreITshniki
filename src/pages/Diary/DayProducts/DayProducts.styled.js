@@ -249,12 +249,11 @@ export const TitleTextTablet1 = styled.div`
     line-height: 150%;
     text-align: left;
     color: var(--icon-color);
-    padding-bottom: 8px;
-    padding-top: 22px;
-    width: 212px;
+    padding-top: 18px;
+    margin-right: 188px;
   }
   @media screen and (min-width: 1440px) {
-    width: 212px;
+    margin-right: 196px;
   }
 `;
 export const TitleTextTablet2 = styled.div`
@@ -268,10 +267,10 @@ export const TitleTextTablet2 = styled.div`
     color: var(--icon-color);
     padding-bottom: 8px;
     padding-top: 16px;
-    width: 138px;
+    margin-right: 87px;
   }
   @media screen and (min-width: 1440px) {
-    width: 138px;
+    margin-right: 125px;
   }
 `;
 export const TitleTextTablet3 = styled.div`
@@ -286,10 +285,10 @@ export const TitleTextTablet3 = styled.div`
     color: var(--icon-color);
     padding-bottom: 8px;
     padding-top: 16px;
-    width: 212px;
+    margin-right: 54px;
   }
   @media screen and (min-width: 1440px) {
-    width: 138px;
+    margin-right: 69px;
   }
 `;
 export const TitleTextTablet4 = styled.div`
@@ -303,10 +302,10 @@ export const TitleTextTablet4 = styled.div`
     color: var(--icon-color);
     padding-bottom: 8px;
     padding-top: 16px;
-    width: 212px;
+    margin-right: 60px;
   }
   @media screen and (min-width: 1440px) {
-    width: 212px;
+    margin-right: 75px;
   }
 `;
 export const TitleTextTablet5 = styled.div`

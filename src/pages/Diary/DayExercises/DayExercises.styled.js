@@ -46,7 +46,47 @@ export const TableHeaderTablet = styled.ul`
   display: none;
   @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
+
+    li:nth-child(1) {
+      margin-right: 45px;
+    }
+
+    li:nth-child(2) {
+      margin-right: 82px;
+    }
+
+    li:nth-child(3) {
+      margin-right: 104px;
+    }
+    li:nth-child(4) {
+      margin-right: 58px;
+    }
+
+    li:nth-child(5) {
+      margin-right: 8px;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+
+    li:nth-child(1) {
+      margin-right: 70px;
+    }
+
+    li:nth-child(2) {
+      margin-right: 107px;
+    }
+
+    li:nth-child(3) {
+      margin-right: 128px;
+    }
+    li:nth-child(4) {
+      margin-right: 80px;
+    }
+
+    li:nth-child(5) {
+      margin-right: 14px;
+    }
   }
 `;
 
@@ -192,7 +232,6 @@ export const TitleText = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  letter-spacing: 0px;
   text-align: left;
   color: var(--icon-color);
   padding-bottom: 8px;
@@ -210,10 +249,10 @@ export const TitleTextTablet = styled.p`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
+
     padding-top: 16px;
   }
 `;
@@ -306,7 +345,9 @@ export const MainTextBottom = styled.div`
   align-items: center;
   font-size: 14px;
   line-height: 128.571%;
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   width: 80px;
   height: 38px;
   padding: 10px 42px 10px 14px;
