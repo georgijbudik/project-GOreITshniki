@@ -30,7 +30,7 @@ export const getDayInfo = createAsyncThunk(
       const response = await axios.get(`/diary/day?date=${day}`);
       return response.data;
     } catch (e) {
-      console.log(e.message);
+      // console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
