@@ -223,7 +223,7 @@ const UserForm = () => {
               onChange={date => formik.setFieldValue('birthday', date)}
               dateFormat={'dd.MM.yyyy'}
               showYearDropdown
-              yearDropdownItemNumber={20}
+              yearDropdownItemNumber={50}
             />
           </FieldContainer>
         </SecondaryInputContainer>
