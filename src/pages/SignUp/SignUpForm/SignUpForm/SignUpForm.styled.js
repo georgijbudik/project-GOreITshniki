@@ -94,15 +94,16 @@ export const Input = styled(Field)`
   color: ${({ theme }) => theme.palette.text.primary};
   width: 100%;
   height: 46px;
-  opacity: 0.3;
+  /* opacity: 0.3; */
   padding: 0 0 0 14px;
   margin-bottom: 18px;
   background-color: transparent;
   border: ${({ theme }) => {
     return theme.palette.mode === 'dark'
-      ? '2px solid white'
-      : '2px solid black';
+      ? '1px solid rgba(239, 237, 232, 0.30);'
+      : '1px solid rgba(100, 100, 100, 0.7);';
   }};
+
   border-radius: 12px;
   outline: none;
   transition: var(--transition);
@@ -112,17 +113,16 @@ export const Input = styled(Field)`
     font-size: 16px;
     line-height: calc(18 / 16);
     letter-spacing: 0.02em;
-    opacity: 0.6;
   }
   &:hover {
     border-color: var(--accent-color);
   }
 
   &:not(:placeholder-shown):valid {
-    border-color: var(--green-colro);
+    border: 1px solid #3cbf61;
   }
   &:not(:placeholder-shown):invalid {
-    border-color: var(--red-color);
+    border: 1px solid #d80027;
   }
 
   @media screen and (min-width: 768px) {

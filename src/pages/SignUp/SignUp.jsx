@@ -24,7 +24,7 @@ const SignUp = () => {
       <Info>{t('sign_up.description')}</Info>
       <SignUpForm />
       <InfoLink>
-        {t('sign_up.have_account')}
+        {t('sign_up.have_account')}{' '}
         <StyledLink to="/signin">{t('sign_up.sign_in_link')}</StyledLink>
       </InfoLink>
     </Container>
