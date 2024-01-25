@@ -21,6 +21,7 @@ import {
   MainTextBottom2,
   MainTextTablet,
   MainTextTablett,
+  MainTextTablettt,
   ButtonWrap,
   LiWrap,
   ProdWrap,
@@ -112,7 +113,7 @@ const DayExercises = () => {
                     <div>
                       <TitleText>Name</TitleText>
                       <MainText>{exercise.name}</MainText>
-                      <MainTextTablett>{exercise.name}</MainTextTablett>
+                      <MainTextTablettt>{exercise.name}</MainTextTablettt>
                     </div>
                   </TopProdBlock>
                 </ProdWrap>

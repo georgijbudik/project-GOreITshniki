@@ -21,6 +21,9 @@ export const Wrap = styled.div`
   /* @media screen and (min-width: 768px) {
     padding-bottom: 0;
   } */
+  /* @media screen and (min-width: 1440px) {
+    padding-bottom: 0;
+  } */
 `;
 
 export const MediaWrapper = styled.div`
@@ -29,11 +32,25 @@ export const MediaWrapper = styled.div`
     flex-direction: column-reverse;
     /* padding-top: 64px; */
   }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row-reverse;
+
+    /* flex-direction: column; */
+  }
 `;
 
 export const MediaWrapDayDashBoard = styled.div`
   @media screen and (min-width: 768px) {
     padding-top: 64px;
     padding-bottom: 64px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 0 0 0;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 0;
+    margin: 0 0 0 32px;
   }
 `;
