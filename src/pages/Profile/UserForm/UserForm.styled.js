@@ -41,21 +41,6 @@ export const FieldName = styled.label`
 export const FieldContainer = styled.div`
   position: relative;
   margin-block-end: 14px;
-
-  svg {
-    position: absolute;
-    top: 38px;
-    left: 135.25px;
-    @media screen and (min-width: 768px) {
-      top: 50px;
-      left: 157.25px;
-    }
-
-    @media screen and (min-width: 1440px) {
-      top: 50px;
-      left: 157.25px;
-    }
-  }
 `;
 
 export const MainInput = styled.input`
@@ -113,6 +98,10 @@ export const SecondaryInput = styled.input`
   &:hover,
   &:focus {
     border: 1px solid var(--accent-color);
+
+    & + svg {
+      stroke: var(--accent-color);
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -248,15 +237,31 @@ export const SaveButton = styled(Button)`
   }
 `;
 
+export const StyledCalendarWrapper = styled.div`
+  position: relative;
+`;
+
 export const StyledCalendarIcon = styled.svg`
+  position: absolute;
+  top: 35%;
+  right: 10%;
+
   width: 15px;
   height: 15px;
-  fill: ${({ theme }) => {
+  fill: none;
+  stroke: ${({ theme }) => {
     return theme.palette.text.primary;
   }};
+
+  transition: var(--transition);
 
   @media screen and (min-width: 768px) {
     width: 18px;
     height: 18px;
+
+    top: 55%;
+    right: 10%;
+
+    transform: translateY(-50%);
   }
 `;

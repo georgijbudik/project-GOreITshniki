@@ -1,11 +1,14 @@
-import DatePicker from 'react-datepicker';
+import { forwardRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
-import './datepicker.css';
-import { ProfileSettings } from '../UserCard/UserCard.styled';
+
+import { selectUserInfo } from '../../../redux/auth/authSelectors';
 import { refreshUser, updateUser } from '../../../redux/auth/authOperations';
+
+import dayjs from 'dayjs';
+import DatePicker from 'react-datepicker';
+
 import {
   Container,
   FieldName,
@@ -21,10 +24,10 @@ import {
   NameEmailInput,
   SaveButton,
   StyledCalendarIcon,
+  StyledCalendarWrapper,
 } from './UserForm.styled';
-import { useEffect } from 'react';
-import { selectUserInfo } from '../../../redux/auth/authSelectors';
-import dayjs from 'dayjs';
+import { ProfileSettings } from '../UserCard/UserCard.styled';
+
 import { t } from 'i18next';
 
 const activityOptions = [
@@ -106,6 +109,23 @@ const UserForm = () => {
         })
       );
     },
+  });
+
+  const CustomInput = forwardRef(({ id, value, onClick }, ref) => {
+    return (
+      <StyledCalendarWrapper onClick={onClick} ref={ref}>
+        <SecondaryInput id={id} value={value} onChange={() => {}} />
+
+        <StyledCalendarIcon>
+          <use
+            xlinkHref={
+              process.env.PUBLIC_URL +
+              '/images/sprite/sprite.svg#icon-profile-calendar'
+            }
+          />
+        </StyledCalendarIcon>
+      </StyledCalendarWrapper>
+    );
   });
 
   return (
@@ -193,22 +213,18 @@ const UserForm = () => {
             <FieldName htmlFor="dateOfBirth">
               {t('profile.user_form.date_of_birth')}{' '}
             </FieldName>
+
             <DatePicker
-              id="dateOfBirth"
               selected={formik.values.birthday}
               name="dateOfBirth"
+              id="dateOfBirth"
               required
+              customInput={<CustomInput />}
               onChange={date => formik.setFieldValue('birthday', date)}
               dateFormat={'dd.MM.yyyy'}
+              showYearDropdown
+              yearDropdownItemNumber={20}
             />
-            <StyledCalendarIcon>
-              <use
-                xlinkHref={
-                  process.env.PUBLIC_URL +
-                  '/images/sprite/sprite.svg#icon-calender-outline'
-                }
-              />
-            </StyledCalendarIcon>
           </FieldContainer>
         </SecondaryInputContainer>
 
