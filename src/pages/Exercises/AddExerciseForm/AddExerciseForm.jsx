@@ -1,9 +1,8 @@
-import dayjs from 'dayjs';
-
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addExerciseToDiary } from '../../../redux/exercises/exerciseOperations';
+import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
 
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
@@ -56,9 +55,10 @@ const AddExerciseForm = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [burnedCalories, setBurnedCalories] = useState(0);
   const [passedTime, setPassedTime] = useState(0);
+  const date = useSelector(selectDiaryDate);
 
-  const currentDate = dayjs();
-  const date = dayjs(currentDate).format('DD.MM.YYYY');
+  // const currentDate = dayjs();
+  // const date = dayjs(currentDate).format('DD.MM.YYYY');
 
   const handleAddToDiary = () => {
     onClose();

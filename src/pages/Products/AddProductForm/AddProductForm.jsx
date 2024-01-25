@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import dayjs from 'dayjs';
+
+import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
 
 import BasicModalWindow from 'components/BasicModalWindow';
 import Button from 'components/Button';
@@ -31,6 +32,7 @@ const AddProductForm = () => {
   const dispatch = useDispatch();
 
   const productToAdd = useSelector(selectProductToAdd);
+  const currentDate = useSelector(selectDiaryDate);
 
   const handleChangeGrams = ({ target: { value } }) => {
     setGrams(Number(value));
@@ -40,12 +42,12 @@ const AddProductForm = () => {
     (productToAdd.calories * grams) / 100
   );
 
-  const date = dayjs();
-  const formattedDate = dayjs(date).format('DD.MM.YYYY');
+  // const date = dayjs();
+  // const formattedDate = dayjs(date).format('DD.MM.YYYY');
 
   const productToAddToDiary = {
     productId: productToAdd._id,
-    date: formattedDate,
+    date: currentDate,
     weight: grams,
   };
 

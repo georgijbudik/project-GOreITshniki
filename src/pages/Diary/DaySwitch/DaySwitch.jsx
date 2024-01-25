@@ -5,6 +5,7 @@ import { useState, forwardRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDate } from '../../../redux/diary/diarySlice';
 import { setIsModalOpen } from '../../../redux/global/globalSlice';
+import { selectDiaryDate } from '../../../redux/diary/diarySelectors';
 
 import DatePicker from 'react-datepicker';
 import { es, uk, enUS } from 'date-fns/locale';
@@ -29,8 +30,18 @@ const DaySwitch = () => {
 
   const lang = useSelector(selectLanguage);
   const registerDate = useSelector(selectRegisterDate);
+  const currentDate = useSelector(selectDiaryDate);
 
-  const [startDate, setStartDate] = useState(new Date());
+  const dateComponents = currentDate.split('.');
+
+  // Create a new Date object using the components (month is zero-based in JavaScript Date)
+  const date = new Date(
+    parseInt(dateComponents[2]),
+    parseInt(dateComponents[1]) - 1,
+    parseInt(dateComponents[0])
+  );
+
+  const [startDate, setStartDate] = useState(date);
 
   const getLocale = () => {
     switch (lang) {

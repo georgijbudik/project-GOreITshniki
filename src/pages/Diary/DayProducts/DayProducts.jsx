@@ -44,7 +44,7 @@ const DayProducts = () => {
   // console.log(dayInfo);
   const navigate = useNavigate();
   const handleProductDelete = data => {
-    console.log(data);
+    // console.log(data);
     dispatch(deleteProduct(data));
   };
 
