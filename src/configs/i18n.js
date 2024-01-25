@@ -6,7 +6,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
@@ -175,6 +175,37 @@ i18n
               diary: 'To the diary',
             },
           },
+          diary: {
+            title: 'Diary',
+            products: {
+              header: 'Products',
+              add: 'Add product',
+              title: 'Title',
+              category: 'Category',
+              calories: 'Calories',
+              weight: 'Weight',
+              recommended: 'Recommend',
+            },
+            exercises: {
+              header: 'Exercises',
+              add: 'Add exercise',
+              body_part: 'Body part',
+              equipment: 'Equipment',
+              name: 'Name',
+              burned_calories: 'Burned calories',
+              time: 'Time',
+            },
+            dashboard: {
+              daily_calories_intake: 'Daily calorie intake',
+              daily_physical_activity: 'Daily physical activity',
+              burned_calories: 'Сalories burned',
+              consumed_calories: 'Calories consumed',
+              calories_remaining: 'Calories remaining',
+              sports_remaining: 'Sports remainig',
+            },
+            warning:
+              'Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices.',
+          },
         },
       },
 
@@ -342,6 +373,37 @@ i18n
               diary: 'До щоденника',
             },
           },
+          diary: {
+            title: 'Щоденник',
+            products: {
+              header: 'Продукти',
+              add: 'Додати продукт',
+              title: 'Назва',
+              category: 'Категорія',
+              calories: 'Калорії',
+              weight: 'Вага',
+              recommended: 'Рекомендовано',
+            },
+            exercises: {
+              header: 'Вправи',
+              add: 'Додати вправу',
+              body_part: 'Частина тіла',
+              equipment: 'Обладнання',
+              name: 'Назва',
+              burned_calories: 'Спалені калорії',
+              time: 'Час',
+            },
+            dashboard: {
+              daily_calories_intake: 'Норма калорій',
+              daily_physical_activity: 'Норма активності',
+              burned_calories: 'Спалені калорії',
+              consumed_calories: 'Спожиті калорії',
+              calories_remaining: 'Залишок калорій',
+              sports_remaining: 'Залишок активного часу',
+            },
+            warning:
+              'Фіксуйте всі прийоми їжі в щоденнику калорій кожен день. Це допоможе вам бути уважним до свого харчування та приймати обдумані рішення.',
+          },
         },
       },
 
@@ -508,6 +570,37 @@ i18n
               next: 'Producto',
               diary: 'Al diario',
             },
+          },
+          diary: {
+            title: 'Diario',
+            products: {
+              header: 'Productos',
+              add: 'Agregar producto',
+              title: 'Título',
+              category: 'Categoría',
+              calories: 'Calorías',
+              weight: 'Peso',
+              recommended: 'Recomendado',
+            },
+            exercises: {
+              header: 'Ejercicios',
+              add: 'Agregar ejercicio',
+              body_part: 'Parte del cuerpo',
+              equipment: 'Equipo',
+              name: 'Nombre',
+              burned_calories: 'Calorías quemadas',
+              time: 'Tiempo',
+            },
+            dashboard: {
+              daily_calories_intake: 'Ingesta de calorías',
+              daily_physical_activity: 'Actividad física',
+              burned_calories: 'Calorías quemadas',
+              consumed_calories: 'Calorías consumidas',
+              calories_remaining: 'Calorías restantes',
+              sports_remaining: 'Actividades restantes',
+            },
+            warning:
+              'Registre todas sus comidas en el diario de calorías todos los días. Esto le ayudará a ser consciente de su nutrición y tomar decisiones informadas.',
           },
         },
       },
