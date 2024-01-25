@@ -35,7 +35,7 @@ Project design:
 | JavaScript        | Express    | GIT/GitHub |
 | React             | MongoDB    | Figma      |
 | Redux Toolkit     | Cloudinary | Webpack    |
-| Pagination        | Render     | Parcel     |
+| Pagination        | Render     |            |
 | React Router      | Swagger    |            |
 | Axios             | Mongoose   |            |
 | Styled Components |            |            |
