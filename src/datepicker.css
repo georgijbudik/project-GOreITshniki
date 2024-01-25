@@ -109,6 +109,8 @@
 }
 
 .react-datepicker__year-dropdown {
+  overflow: hidden;
+  overflow-y: scroll;
   height: 200px;
   background-color: var(--accent-color);
 }
