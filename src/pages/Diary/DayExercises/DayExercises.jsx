@@ -21,13 +21,14 @@ import {
   MainTextBottom2,
   MainTextTablet,
   MainTextTablett,
-  MainTextTablettt,
   ButtonWrap,
   LiWrap,
   ProdWrap,
+  MainTextTablettt,
 } from './DayExercises.styled';
 
 import { useNavigate } from 'react-router-dom';
+import { CardTitle } from '../DayProducts/DayProducts.styled';
 
 const DayExercises = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const DayExercises = () => {
   return (
     <Wrapper $noexercises={exercises.length > 0}>
       <CellExercisesHeader>
-        <div>Execrcises</div>
+        <CardTitle>Execrcises</CardTitle>
         <WrapElem>
           <button
             onClick={() => {
@@ -64,25 +65,19 @@ const DayExercises = () => {
       {exercises.length > 0 ? (
         <TableHeaderTablet>
           <li>
-            <TitleTextTablet style={{ width: '98px' }}>
-              Body Part
-            </TitleTextTablet>
+            <TitleTextTablet>Body Part</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '138px' }}>
-              Body weight
-            </TitleTextTablet>
+            <TitleTextTablet>Body weight</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '138px' }}>Name</TitleTextTablet>
+            <TitleTextTablet>Name</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '92px' }}>
-              Calories
-            </TitleTextTablet>
+            <TitleTextTablet>Calories</TitleTextTablet>
           </li>
           <li>
-            <TitleTextTablet style={{ width: '90px' }}>Weight</TitleTextTablet>
+            <TitleTextTablet>Weight</TitleTextTablet>
           </li>
           <li>
             <TitleTextTablet>Recommend</TitleTextTablet>

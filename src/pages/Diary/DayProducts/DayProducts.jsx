@@ -26,11 +26,15 @@ import {
   MainTextBottom,
   ButtonWrap,
   LiWrap,
+  RecommemdedTextBottom,
+  CardTitle,
 } from './DayProducts.styled';
+import { selectUserBlood } from '../../../redux/auth/authSelectors';
 
 const DayProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectDiaryProducts);
+  const bloodType = useSelector(selectUserBlood);
 
   const date = useSelector(selectDiaryDate);
 
@@ -45,7 +49,7 @@ const DayProducts = () => {
   return (
     <Wrapper $noexercises={products.length > 0}>
       <CellProductsHeader>
-        <div>Products</div>
+        <CardTitle>Products</CardTitle>
         <div>
           <button
             onClick={() => {
@@ -89,8 +93,9 @@ const DayProducts = () => {
         <NotFoundMessage>Not found products</NotFoundMessage>
       ) : (
         <ul>
-          {' '}
           {products.map(({ product, consumedCalories }) => {
+            const recommendation =
+              product.groupBloodNotAllowed[bloodType] === true ? 'No' : 'Yes';
             return (
               <LiWrap>
                 <ProdWrap>
@@ -117,7 +122,9 @@ const DayProducts = () => {
                     </div>
                     <div>
                       <TitleText>Recommend</TitleText>
-                      <MainTextBottom>Yes</MainTextBottom>
+                      <RecommemdedTextBottom $recommended={recommendation}>
+                        {recommendation}
+                      </RecommemdedTextBottom>
                     </div>
                     <ButtonWrap>
                       <button

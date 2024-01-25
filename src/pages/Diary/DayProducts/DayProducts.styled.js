@@ -13,15 +13,7 @@ export const Wrapper = styled.div`
   padding: 16px;
   color: var(--main-text-color);
   height: ${props => (props.$noexercises ? '824px' : '335px')};
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 90px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(239, 237, 232, 0.1);
-    border-radius: 4px;
-  }
+  overflow-x: hidden;
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -37,10 +29,6 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: none;
     width: 824px;
-    &::-webkit-scrollbar {
-      width: 6px;
-      height: 203px;
-    }
   }
 `;
 export const TableHeaderTablet = styled.ul`
@@ -76,7 +64,6 @@ export const CellProductsHeader = styled.div`
       font-size: 14px;
       font-weight: 500;
       line-height: 18px;
-      letter-spacing: 0em;
       text-align: left;
       background-color: transparent;
       border: 0;
@@ -107,6 +94,13 @@ export const CellProductsHeader = styled.div`
   @media screen and (min-width: 768px) {
     max-width: none;
   }
+`;
+
+export const CardTitle = styled.p`
+  color: rgba(239, 237, 232, 0.5);
+
+  font-size: 14px;
+  line-height: 128.571%;
 `;
 
 export const NotFoundMessage = styled.div`
@@ -148,6 +142,24 @@ export const TopProdBlock = styled.div`
 export const BottomProdBlock = styled.div`
   display: Flex;
 
+  :nth-child(1) > div {
+    &:nth-child(2) {
+      width: 81px;
+    }
+  }
+
+  :nth-child(2) > div {
+    &:nth-child(2) {
+      width: 80px;
+    }
+  }
+
+  :nth-child(3) > div {
+    &:nth-child(2) {
+      width: 76px;
+    }
+  }
+
   & p {
     max-width: 80px;
     height: 38px;
@@ -174,17 +186,51 @@ export const BottomProdBlock = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 90px;
     height: 40px;
+    :nth-child(1) > div {
+      &:nth-child(2) {
+        width: 90px;
+      }
+    }
+
+    :nth-child(2) > div {
+      &:nth-child(2) {
+        width: 90px;
+      }
+    }
+
+    :nth-child(3) > div {
+      &:nth-child(2) {
+        width: 80px;
+      }
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    height: 40px;
+    :nth-child(1) > div {
+      &:nth-child(2) {
+        width: 105px;
+      }
+    }
+
+    :nth-child(2) > div {
+      &:nth-child(2) {
+        width: 105px;
+      }
+    }
+
+    :nth-child(3) > div {
+      &:nth-child(2) {
+        width: 110px;
+      }
+    }
   }
 `;
 
 export const TitleText = styled.div`
-  font-family: Roboto;
   font-size: 12px;
   font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
+  line-height: 150%;
   text-align: left;
   color: var(--icon-color);
   padding-bottom: 8px;
@@ -199,15 +245,12 @@ export const TitleTextTablet1 = styled.div`
 
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: Roboto;
     font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0px;
+    line-height: 150%;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
-    padding-top: 16px;
+    padding-top: 22px;
     width: 212px;
   }
   @media screen and (min-width: 1440px) {
@@ -219,11 +262,8 @@ export const TitleTextTablet2 = styled.div`
 
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: Roboto;
     font-size: 12px;
-    font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
@@ -241,9 +281,7 @@ export const TitleTextTablet3 = styled.div`
     display: block;
     font-family: Roboto;
     font-size: 12px;
-    font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
@@ -259,11 +297,8 @@ export const TitleTextTablet4 = styled.div`
 
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: Roboto;
     font-size: 12px;
-    font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
@@ -279,11 +314,9 @@ export const TitleTextTablet5 = styled.div`
 
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: Roboto;
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0px;
     text-align: left;
     color: var(--icon-color);
     padding-bottom: 8px;
@@ -297,14 +330,12 @@ export const TitleTextTablet5 = styled.div`
 
 export const MainText = styled.div`
   /* display: flex; */
-  align-items: center;
   max-width: 297px;
-  height: 38px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 7px 14px;
+  padding: 10px 14px;
   color: rgba(239, 237, 232, 1);
-
+  font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -319,8 +350,8 @@ export const MainTextTablet = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     align-items: center;
-    max-width: 297px;
-    height: 38px;
+    width: 204px;
+    height: 40px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     padding: 7px 14px;
@@ -333,8 +364,7 @@ export const MainTextTablet = styled.div`
     height: 40px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: none;
-    width: 230px;
+    width: 212px;
   }
 `;
 
@@ -344,7 +374,7 @@ export const MainTextTablett = styled.div`
     display: block;
     align-items: center;
     width: 128px;
-    height: 38px;
+    height: 40px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     padding: 7px 14px;
@@ -352,12 +382,10 @@ export const MainTextTablett = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 128166pxpx;
     height: 40px;
     margin-left: 8px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: none;
     width: 166px;
   }
 `;
@@ -365,25 +393,39 @@ export const MainTextTablett = styled.div`
 export const MainTextBottom = styled.div`
   display: flex;
   align-items: center;
-  max-width: 80px;
+  font-size: 14px;
+  line-height: 128.571%;
+  width: 80px;
   height: 38px;
-  padding: 10px, 42px, 10px, 14px;
+  padding: 10px 42px 10px 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   padding: 10px 14px;
   margin-right: 16px;
   color: rgba(239, 237, 232, 1);
+
   @media screen and (min-width: 768px) {
     /* display: none; */
-    max-width: 90px;
     width: 90px;
     height: 40px;
     margin: 0;
     margin-left: 8px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: none;
     width: 105px;
+  }
+`;
+
+export const RecommemdedTextBottom = styled(MainTextBottom)`
+  &::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    top: 50%;
+    background-color: ${({ $recommended }) =>
+      $recommended === 'No' ? 'red' : 'green'};
+    border-radius: 50%;
+    margin-right: 8px;
   }
 `;
 
