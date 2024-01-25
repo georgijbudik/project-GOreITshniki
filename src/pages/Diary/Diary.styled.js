@@ -4,11 +4,14 @@ export const PageTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 28px;
-  margin-bottom: 43px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
-    margin-top: 38px;
-    margin-bottom: 64px;
+    h2 {
+      margin-top: 72px;
+    }
+    margin-top: 0;
+    margin-bottom: 32px;
   }
 `;
 
@@ -18,12 +21,12 @@ export const DaySwitchRight = styled.div`
 
 export const Wrap = styled.div`
   padding-bottom: 80px;
-  /* @media screen and (min-width: 768px) {
-    padding-bottom: 0;
-  } */
-  /* @media screen and (min-width: 1440px) {
-    padding-bottom: 0;
-  } */
+  @media screen and (min-width: 768px) {
+    padding-bottom: 64px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 68px;
+  }
 `;
 
 export const MediaWrapper = styled.div`

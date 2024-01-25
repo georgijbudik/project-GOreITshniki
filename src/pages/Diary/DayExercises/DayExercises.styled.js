@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   max-width: 335px;
   height: 335px;
   overflow-y: auto;
+  overflow-x: hidden;
 
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
@@ -13,15 +14,15 @@ export const Wrapper = styled.div`
   padding: 16px;
   color: var(--main-text-color);
   height: ${props => (props.$noexercises ? '824px' : '335px')};
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 6px;
     height: 203px;
-  }
-
+  } */
+  /* 
   &::-webkit-scrollbar-thumb {
     background-color: rgba(239, 237, 232, 0.1);
     border-radius: 4px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -45,6 +46,7 @@ export const TableHeaderTablet = styled.ul`
   display: none;
   @media screen and (min-width: 768px) {
     display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -200,12 +202,11 @@ export const TitleText = styled.div`
   }
 `;
 
-export const TitleTextTablet = styled.div`
+export const TitleTextTablet = styled.p`
   display: none;
 
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: Roboto;
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
@@ -219,12 +220,13 @@ export const TitleTextTablet = styled.div`
 
 export const MainText = styled.div`
   /* display: flex; */
-  align-items: center;
   max-width: 297px;
-  height: 38px;
+  font-size: 14px;
+
+  padding: 10px 14px;
+  line-height: 128.571%;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 7px 14px;
   color: rgba(239, 237, 232, 1);
 
   overflow: hidden;
@@ -241,8 +243,7 @@ export const MainTextTablet = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     align-items: center;
-    max-width: 90px;
-    height: 40px;
+    width: 90px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     padding: 7px 14px;
@@ -250,11 +251,9 @@ export const MainTextTablet = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 204px;
     height: 40px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: none;
     width: 115px;
   }
 `;
@@ -264,8 +263,7 @@ export const MainTextTablett = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     align-items: center;
-    /* max-width: 130px;
-    height: 40px; */
+
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     padding: 7px 14px;
@@ -273,7 +271,7 @@ export const MainTextTablett = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 130px;
+    width: 132px;
     height: 40px;
     margin-left: 8px;
   }
@@ -287,8 +285,6 @@ export const MainTextTablettt = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     align-items: center;
-    /* max-width: 130px;
-    height: 40px; */
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     padding: 7px 14px;
@@ -296,7 +292,7 @@ export const MainTextTablettt = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 130px;
+    width: 128px;
     height: 40px;
     margin-left: 8px;
   }
@@ -308,12 +304,14 @@ export const MainTextTablettt = styled.div`
 export const MainTextBottom = styled.div`
   display: flex;
   align-items: center;
-  max-width: 80px;
+  font-size: 14px;
+  line-height: 128.571%;
+
+  width: 80px;
   height: 38px;
-  padding: 10px, 42px, 10px, 14px;
+  padding: 10px 42px 10px 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 10px 14px;
   margin-right: 16px;
   color: rgba(239, 237, 232, 1);
 
@@ -334,10 +332,9 @@ export const MainTextBottom1 = styled.div`
   align-items: center;
   max-width: 80px;
   height: 38px;
-  padding: 10px, 42px, 10px, 14px;
+  padding: 10px 42px 10px 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 10px 14px;
   margin-right: 16px;
   color: rgba(239, 237, 232, 1);
 
@@ -357,10 +354,9 @@ export const MainTextBottom2 = styled.div`
   align-items: center;
   max-width: 80px;
   height: 38px;
-  padding: 10px, 42px, 10px, 14px;
+  padding: 10px 42px 10px 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  padding: 10px 14px;
   margin-right: 16px;
   color: rgba(239, 237, 232, 1);
 

@@ -8,10 +8,7 @@ import {
   selectBurnedCalories,
 } from '../../../redux/diary/diarySelectors';
 // import dayjs from 'dayjs';
-import {
-  selectUserInfo,
-  selectIsFetching,
-} from '../../../redux/auth/authSelectors';
+import { selectUserInfo } from '../../../redux/auth/authSelectors';
 // import { useSelector } from 'react-redux';
 
 import {
@@ -35,7 +32,6 @@ import {
 const DayDashboard = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUserInfo);
-  const isFetching = useSelector(selectIsFetching);
   const date = useSelector(selectDiaryDate);
 
   const consumedCalories = useSelector(selectConsumedCalories);
@@ -65,10 +61,6 @@ const DayDashboard = () => {
     //   console.error('Помилка при отриманні даних:', error);
     // });
   }, [dispatch, date]);
-
-  if (isFetching) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>

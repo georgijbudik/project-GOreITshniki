@@ -170,9 +170,13 @@ export const ProcessedDashboardDataMarked = styled.div`
 
 export const AttentionMessage = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top: 20px;
+  /* margin-top: 20px; */
   @media screen and (min-width: 768px) {
-    margin-top: 48px;
+    margin-top: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 32px;
   }
 `;
 
@@ -189,19 +193,17 @@ export const AttentionPic = styled.svg`
 export const AttentionText = styled.p`
   padding: 0;
   margin: 0 0 0 8px;
-
   width: 303px;
   height: 54px;
   color: #efede84d;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0px;
+  font-size: 14px;
+  line-height: 128.571%;
   text-align: left;
   @media screen and (min-width: 768px) {
-    width: 593px;
+    width: 561px;
     height: 48px;
+    font-size: 16px;
+    line-height: 150%;
   }
   @media screen and (min-width: 1440px) {
     width: 358px;
