@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -30,8 +31,10 @@ import {
 
 import { useNavigate } from 'react-router-dom';
 import { CardTitle } from '../DayProducts/DayProducts.styled';
+import DeleteModal from '../DeleteModal';
 
 const DayExercises = () => {
+  const [deleteModal, setDeleteModal] = useState(false);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const exercises = useSelector(selectDiaryExercises);
@@ -136,8 +139,7 @@ const DayExercises = () => {
                   <ButtonWrap>
                     <button
                       onClick={() => {
-                        const data = { date, id: exercise._id };
-                        handleDelete(data);
+                        setDeleteModal(true);
                       }}
                     >
                       <svg>
@@ -151,6 +153,17 @@ const DayExercises = () => {
                     </button>
                   </ButtonWrap>
                 </BottomProdBlock>
+                {deleteModal && (
+                  <DeleteModal
+                    onClose={() => {
+                      setDeleteModal(false);
+                    }}
+                    onDelete={() => {
+                      const data = { date, id: exercise._id };
+                      handleDelete(data);
+                    }}
+                  />
+                )}
               </LiWrap>
             );
           })}
