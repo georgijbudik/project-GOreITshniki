@@ -8,11 +8,15 @@ export const Wrapper = styled.div`
   overflow-x: hidden;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   background: rgba(239, 237, 232, 0.05);
   margin-top: 40px;
   padding: 16px;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
+  color: ${({ theme }) => theme.palette.text.primary};
   height: ${props => (props.$noexercises ? '824px' : '335px')};
   /* &::-webkit-scrollbar {
     width: 6px;
@@ -108,6 +112,17 @@ export const CellExercisesHeader = styled.div`
   & div {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      & > button {
+        color: var(--icon-color);
+      }
+      & > svg {
+        fill: var(--icon-color);
+      }
+    }
+
     & button {
       max-width: 81px;
       height: 18px;
@@ -123,11 +138,14 @@ export const CellExercisesHeader = styled.div`
       padding: 0;
 
       color: var(--accent-color);
+      transition: var(--transition);
     }
     & svg {
       max-width: 16px;
       height: 16px;
       margin-left: 8px;
+      fill: var(--accent-color);
+      transition: var(--transition);
     }
   }
   @media screen and (min-width: 768px) {
@@ -200,7 +218,10 @@ export const BottomProdBlock = styled.div`
     height: 38px;
     padding: 10px, 42px, 10px, 14px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     /* gap: 10px; */
   }
   & button {
@@ -217,8 +238,14 @@ export const BottomProdBlock = styled.div`
     align-items: center;
   }
   & svg {
+    fill: var(--icon-color);
     max-width: 20px;
     height: 20px;
+    transition: var(--transition);
+
+    &:hover {
+      fill: var(--accent-color);
+    }
   }
   @media screen and (min-width: 768px) {
     & p {
@@ -265,8 +292,11 @@ export const MainText = styled.div`
   padding: 10px 14px;
   line-height: 128.571%;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  color: rgba(239, 237, 232, 1);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
+  /* color: rgba(239, 237, 232, 1); */
 
   overflow: hidden;
   white-space: nowrap;
@@ -284,9 +314,12 @@ export const MainTextTablet = styled.div`
     align-items: center;
     width: 90px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     padding: 7px 14px;
-    color: rgba(239, 237, 232, 1);
+    /* color: rgba(239, 237, 232, 1); */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -304,9 +337,12 @@ export const MainTextTablett = styled.div`
     align-items: center;
 
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     padding: 7px 14px;
-    color: rgba(239, 237, 232, 1);
+    /* color: rgba(239, 237, 232, 1); */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -325,9 +361,12 @@ export const MainTextTablettt = styled.div`
     display: block;
     align-items: center;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     padding: 7px 14px;
-    color: rgba(239, 237, 232, 1);
+    /* color: rgba(239, 237, 232, 1); */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -343,7 +382,7 @@ export const MainTextTablettt = styled.div`
 export const MainTextBottom = styled.div`
   display: flex;
   align-items: center;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: 128.571%;
   overflow: hidden;
   white-space: nowrap;
@@ -352,9 +391,12 @@ export const MainTextBottom = styled.div`
   height: 38px;
   padding: 10px 42px 10px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   margin-right: 16px;
-  color: rgba(239, 237, 232, 1);
+  /* color: rgba(239, 237, 232, 1); */
 
   @media screen and (min-width: 768px) {
     max-width: none;
@@ -375,9 +417,12 @@ export const MainTextBottom1 = styled.div`
   height: 38px;
   padding: 10px 42px 10px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   margin-right: 16px;
-  color: rgba(239, 237, 232, 1);
+  /* color: rgba(239, 237, 232, 1); */
 
   @media screen and (min-width: 768px) {
     max-width: none;
@@ -397,9 +442,12 @@ export const MainTextBottom2 = styled.div`
   height: 38px;
   padding: 10px 42px 10px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   margin-right: 16px;
-  color: rgba(239, 237, 232, 1);
+  /* color: rgba(239, 237, 232, 1); */
 
   @media screen and (min-width: 768px) {
     max-width: none;

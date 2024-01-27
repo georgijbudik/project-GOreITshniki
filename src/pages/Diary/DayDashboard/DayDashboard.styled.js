@@ -25,10 +25,16 @@ export const DailyCalorieIntake = styled.div`
   padding: 14px;
   align-items: flex-start;
   /* gap: 32px; */
-  color: rgba(239, 237, 232, 0.8);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.8)'
+      : 'rgba(100, 100, 232, 0.8)'};
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
 
   background: #e6533c;
   justify-content: space-between;
@@ -72,7 +78,10 @@ export const CelName = styled.p`
 `;
 
 export const CelNameBottom = styled.p`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.4)'
+      : 'rgba(100, 100, 100, 0.8)'};
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
   font-size: 12px;
@@ -85,7 +94,7 @@ export const CelNameBottom = styled.p`
 `;
 
 export const CelValue = styled.p`
-  color: #efede8;
+  color: ${({ theme }) => theme.palette.text.primary};
 
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
@@ -126,7 +135,10 @@ export const ProcessedDashboardData = styled.div`
   align-items: flex-start;
   gap: 32px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   justify-content: space-between;
   /* border-color: ${props => (props.markering > 0 ? 'red' : 'green')}; */
   @media screen and (min-width: 768px) {
@@ -152,7 +164,10 @@ export const ProcessedDashboardDataMarked = styled.div`
   align-items: flex-start;
   gap: 32px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   border-color: ${props => (props.$markering > 0 ? 'red' : 'green')};
   @media screen and (min-width: 768px) {
     max-width: none;
@@ -195,7 +210,7 @@ export const AttentionText = styled.p`
   margin: 0 0 0 8px;
   width: 303px;
   height: 54px;
-  color: #efede84d;
+  /* color: #efede84d; */
   font-size: 14px;
   line-height: 128.571%;
   text-align: left;

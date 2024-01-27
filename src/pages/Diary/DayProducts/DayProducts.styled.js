@@ -7,11 +7,15 @@ export const Wrapper = styled.div`
   overflow-y: auto;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.2)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   background: rgba(239, 237, 232, 0.05);
   margin-top: 40px;
   padding: 16px;
-  color: var(--main-text-color);
+  /* color: var(--main-text-color); */
+  color: ${({ theme }) => theme.palette.text.primary};
   height: ${props => (props.$noexercises ? '824px' : '335px')};
   overflow-x: hidden;
 
@@ -56,6 +60,18 @@ export const CellProductsHeader = styled.div`
   & div {
     display: flex;
     align-items: center;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      & > button {
+        color: var(--icon-color);
+      }
+      & > svg {
+        fill: var(--icon-color);
+      }
+    }
+
     & button {
       max-width: 77px;
       height: 18px;
@@ -70,11 +86,14 @@ export const CellProductsHeader = styled.div`
       padding: 0;
 
       color: var(--accent-color);
+      transition: var(--transition);
     }
     & svg {
       max-width: 16px;
       height: 16px;
       margin-left: 8px;
+      fill: var(--accent-color);
+      transition: var(--transition);
     }
   }
   @media screen and (min-width: 768px) {
@@ -97,7 +116,10 @@ export const CellProductsHeader = styled.div`
 `;
 
 export const CardTitle = styled.p`
-  color: rgba(239, 237, 232, 0.5);
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? 'rgba(239, 237, 232, 0.5)'
+      : 'rgba(100, 100, 100, 0.7)'};
 
   font-size: 14px;
   line-height: 128.571%;
@@ -165,7 +187,10 @@ export const BottomProdBlock = styled.div`
     height: 38px;
     padding: 10px, 42px, 10px, 14px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
   }
   & button {
     display: flex;
@@ -181,8 +206,14 @@ export const BottomProdBlock = styled.div`
     align-items: center;
   }
   & svg {
+    fill: var(--icon-color);
     max-width: 20px;
     height: 20px;
+    transition: var(--transition);
+
+    &:hover {
+      fill: var(--accent-color);
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -331,9 +362,12 @@ export const MainText = styled.div`
   /* display: flex; */
   max-width: 297px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   padding: 10px 14px;
-  color: rgba(239, 237, 232, 1);
+  color: ${({ theme }) => theme.palette.text.primary};
   font-size: 14px;
   overflow: hidden;
   white-space: nowrap;
@@ -352,9 +386,12 @@ export const MainTextTablet = styled.div`
     width: 204px;
     height: 40px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     padding: 7px 14px;
-    color: rgba(239, 237, 232, 1);
+    color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -375,9 +412,12 @@ export const MainTextTablett = styled.div`
     width: 128px;
     height: 40px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? '1px solid rgba(239, 237, 232, 0.3)'
+        : '1px solid rgba(100, 100, 100, 0.7)'};
     padding: 7px 14px;
-    color: rgba(239, 237, 232, 1);
+    color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -398,10 +438,13 @@ export const MainTextBottom = styled.div`
   height: 38px;
   padding: 10px 42px 10px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(239, 237, 232, 0.3)'
+      : '1px solid rgba(100, 100, 100, 0.7)'};
   padding: 10px 14px;
   margin-right: 16px;
-  color: rgba(239, 237, 232, 1);
+  color: ${({ theme }) => theme.palette.text.primary};
 
   @media screen and (min-width: 768px) {
     /* display: none; */
