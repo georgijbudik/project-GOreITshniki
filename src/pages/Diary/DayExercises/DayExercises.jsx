@@ -119,7 +119,9 @@ const DayExercises = () => {
                 <BottomProdBlock>
                   <div>
                     <TitleText> {t('diary.exercises.target')}</TitleText>
-                    <MainTextBottom>{exercise.target}</MainTextBottom>
+                    <MainTextBottom>
+                      {exercise.target.slice(0, 8) + '...'}
+                    </MainTextBottom>
                   </div>
                   <div>
                     <TitleText>
